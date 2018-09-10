@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.orm.dao.ApiUserMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.ApiUser">
+    <id column="SCRATCH_USER" jdbcType="VARCHAR" property="scratchUser" />
+    <result column="SCRATCH_TOKEN" jdbcType="VARCHAR" property="scratchToken" />
+    <result column="SCRATCH_NAMES" jdbcType="VARCHAR" property="scratchNames" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    SCRATCH_USER, SCRATCH_TOKEN, SCRATCH_NAMES
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from api_user
+    where SCRATCH_USER = #{scratchUser,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from api_user
+    where SCRATCH_USER = #{scratchUser,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.ApiUser">
+    insert into api_user (SCRATCH_USER, SCRATCH_TOKEN, SCRATCH_NAMES
+      )
+    values (#{scratchUser,jdbcType=VARCHAR}, #{scratchToken,jdbcType=VARCHAR}, #{scratchNames,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.ApiUser">
+    insert into api_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scratchUser != null">
+        SCRATCH_USER,
+      </if>
+      <if test="scratchToken != null">
+        SCRATCH_TOKEN,
+      </if>
+      <if test="scratchNames != null">
+        SCRATCH_NAMES,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scratchUser != null">
+        #{scratchUser,jdbcType=VARCHAR},
+      </if>
+      <if test="scratchToken != null">
+        #{scratchToken,jdbcType=VARCHAR},
+      </if>
+      <if test="scratchNames != null">
+        #{scratchNames,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.ApiUser">
+    update api_user
+    <set>
+      <if test="scratchToken != null">
+        SCRATCH_TOKEN = #{scratchToken,jdbcType=VARCHAR},
+      </if>
+      <if test="scratchNames != null">
+        SCRATCH_NAMES = #{scratchNames,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SCRATCH_USER = #{scratchUser,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.ApiUser">
+    update api_user
+    set SCRATCH_TOKEN = #{scratchToken,jdbcType=VARCHAR},
+      SCRATCH_NAMES = #{scratchNames,jdbcType=VARCHAR}
+    where SCRATCH_USER = #{scratchUser,jdbcType=VARCHAR}
+  </update>
+</mapper>

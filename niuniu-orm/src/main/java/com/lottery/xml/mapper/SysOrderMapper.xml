@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.SysOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.SysOrder" >
+    <id column="soid" property="soid" jdbcType="INTEGER" />
+    <result column="gametype" property="gametype" jdbcType="VARCHAR" />
+    <result column="first" property="first" jdbcType="INTEGER" />
+    <result column="second" property="second" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    soid, gametype, first, second
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_order
+    where soid = #{soid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByOrderSid" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    a.soid, a.gametype, a.first, a.second
+    from sys_order a left join lottery_game b on a.gametype= b.gametype
+    where b.sid = #{sid,jdbcType=INTEGER}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_order
+    where soid = #{soid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.SysOrder" >
+    <selectKey resultType="java.lang.Integer" keyProperty="soid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_order (gametype, first, second
+      )
+    values (#{gametype,jdbcType=VARCHAR}, #{first,jdbcType=INTEGER}, #{second,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.SysOrder" >
+    <selectKey resultType="java.lang.Integer" keyProperty="soid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gametype != null" >
+        gametype,
+      </if>
+      <if test="first != null" >
+        first,
+      </if>
+      <if test="second != null" >
+        second,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gametype != null" >
+        #{gametype,jdbcType=VARCHAR},
+      </if>
+      <if test="first != null" >
+        #{first,jdbcType=INTEGER},
+      </if>
+      <if test="second != null" >
+        #{second,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.SysOrder" >
+    update sys_order
+    <set >
+      <if test="gametype != null" >
+        gametype = #{gametype,jdbcType=VARCHAR},
+      </if>
+      <if test="first != null" >
+        first = #{first,jdbcType=INTEGER},
+      </if>
+      <if test="second != null" >
+        second = #{second,jdbcType=INTEGER},
+      </if>
+    </set>
+    where soid = #{soid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.SysOrder" >
+    update sys_order
+    set gametype = #{gametype,jdbcType=VARCHAR},
+      first = #{first,jdbcType=INTEGER},
+      second = #{second,jdbcType=INTEGER}
+    where soid = #{soid,jdbcType=INTEGER}
+  </update>
+</mapper>

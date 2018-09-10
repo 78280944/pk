@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.SysFeeMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.SysFee" >
+    <id column="SFID" property="sfid" jdbcType="INTEGER" />
+    <result column="RATIO" property="ratio" jdbcType="DECIMAL" />
+    <result column="TIME" property="time" jdbcType="INTEGER" />
+    <result column="REFEE" property="refee" jdbcType="DECIMAL" />
+    <result column="CAFEE" property="cafee" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SFID, RATIO, TIME, REFEE, CAFEE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_fee
+    where SFID = #{sfid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_fee
+    where SFID = #{sfid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.SysFee" >
+    <selectKey resultType="java.lang.Integer" keyProperty="sfid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_fee (RATIO, TIME, REFEE, 
+      CAFEE)
+    values (#{ratio,jdbcType=DECIMAL}, #{time,jdbcType=INTEGER}, #{refee,jdbcType=DECIMAL}, 
+      #{cafee,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.SysFee" >
+    <selectKey resultType="java.lang.Integer" keyProperty="sfid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_fee
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="ratio != null" >
+        RATIO,
+      </if>
+      <if test="time != null" >
+        TIME,
+      </if>
+      <if test="refee != null" >
+        REFEE,
+      </if>
+      <if test="cafee != null" >
+        CAFEE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="ratio != null" >
+        #{ratio,jdbcType=DECIMAL},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=INTEGER},
+      </if>
+      <if test="refee != null" >
+        #{refee,jdbcType=DECIMAL},
+      </if>
+      <if test="cafee != null" >
+        #{cafee,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.SysFee" >
+    update sys_fee
+    <set >
+      <if test="ratio != null" >
+        RATIO = #{ratio,jdbcType=DECIMAL},
+      </if>
+      <if test="time != null" >
+        TIME = #{time,jdbcType=INTEGER},
+      </if>
+      <if test="refee != null" >
+        REFEE = #{refee,jdbcType=DECIMAL},
+      </if>
+      <if test="cafee != null" >
+        CAFEE = #{cafee,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where SFID = #{sfid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.SysFee" >
+    update sys_fee
+    set RATIO = #{ratio,jdbcType=DECIMAL},
+      TIME = #{time,jdbcType=INTEGER},
+      REFEE = #{refee,jdbcType=DECIMAL},
+      CAFEE = #{cafee,jdbcType=DECIMAL}
+    where SFID = #{sfid,jdbcType=INTEGER}
+  </update>
+</mapper>

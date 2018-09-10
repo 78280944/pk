@@ -1,0 +1,1159 @@
+2018-05-01 22:33:19,462 - Root WebApplicationContext: initialization started
+ 2018-05-01 22:33:21,531 - Refreshing Root WebApplicationContext: startup date [Tue May 01 22:33:21 CST 2018]; root of context hierarchy
+ 2018-05-01 22:33:21,989 - Loading XML bean definitions from class path resource [spring-config.xml]
+ 2018-05-01 22:33:25,776 - Loading XML bean definitions from class path resource [spring-timeTask.xml]
+ 2018-05-01 22:33:30,001 - Loading properties file from class path resource [log4j.properties]
+ 2018-05-01 22:33:30,003 - Loading properties file from class path resource [jdbc.properties]
+ 2018-05-01 22:33:30,007 - Loading properties file from class path resource [rest-config.properties]
+ 2018-05-01 22:33:30,851 - MLog clients using log4j logging.
+ 2018-05-01 22:33:31,043 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+ 2018-05-01 22:33:37,572 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 10, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge0ys9v7swrcqwzkrye|25a5c792, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge0ys9v7swrcqwzkrye|25a5c792, idleConnectionTestPeriod -> 120, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/niuniu?useUnicode=true&amp;characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 600, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 80, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 7, numHelperThreads -> 5, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+ 2018-05-01 22:33:42,419 - Trying to find Dozer configuration file: dozer.properties
+ 2018-05-01 22:33:42,470 - Dozer configuration file not found: dozer.properties.  Using defaults for all Dozer global properties.
+ 2018-05-01 22:33:42,481 - Initializing Dozer. Version: 5.4.0, Thread Name: localhost-startStop-1
+ 2018-05-01 22:33:42,491 - Dozer JMX MBean [org.dozer.jmx:type=DozerStatisticsController] auto registered with the Platform MBean Server
+ 2018-05-01 22:33:42,497 - Dozer JMX MBean [org.dozer.jmx:type=DozerAdminController] auto registered with the Platform MBean Server
+ 2018-05-01 22:33:42,514 - Initializing a new instance of dozer bean mapper.
+ 2018-05-01 22:33:45,385 - Mapped "{[/account/userExit],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userExit(com.lottery.api.dto.AccountRecordVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,387 - Mapped "{[/account/userRecharge],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.UserRechargeResult com.lottery.api.controller.AccountInfoController.userRecharge(com.lottery.api.dto.UserRechargeVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,389 - Mapped "{[/account/userCashApply],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashApply(com.lottery.api.dto.UserCashVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,391 - Mapped "{[/account/userCashAudit],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashAudit(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,392 - Mapped "{[/account/userCashdo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashdo(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,394 - Mapped "{[/account/bankCashList],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.BankCashResult com.lottery.api.controller.AccountInfoController.bankCashList() throws java.lang.Exception
+ 2018-05-01 22:33:45,396 - Mapped "{[/account/userOutResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userOutResult() throws java.lang.Exception
+ 2018-05-01 22:33:45,398 - Mapped "{[/account/getAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.AccountResult com.lottery.api.controller.AccountInfoController.getAccountInfo(com.lottery.api.dto.LoginParamVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,400 - Mapped "{[/account/getAccountSimInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccountSimResult com.lottery.api.controller.AccountInfoController.getAccountSimpleInfo(com.lottery.api.dto.LoginParamVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,402 - Mapped "{[/account/getAccountDemoInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccountResult com.lottery.api.controller.AccountInfoController.getAccountDemoInfo(com.lottery.api.dto.DemoInfoVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,403 - Mapped "{[/account/addAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.addAccountInfo(com.lottery.api.dto.PlayAccountInfoVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,405 - Mapped "{[/account/updateAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.updateAccountInfo(com.lottery.api.dto.UpdateAccountVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,407 - Mapped "{[/account/getRemarkInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RemarkResult com.lottery.api.controller.AccountInfoController.getAllAccountInfo() throws java.lang.Exception
+ 2018-05-01 22:33:45,409 - Mapped "{[/account/lotteryMessage],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.getLotteryMessage(com.lottery.api.dto.NoticeTypeVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,411 - Mapped "{[/account/lotteryHisMessage],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.NoticeResult com.lottery.api.controller.AccountInfoController.getLotteryHisMessage(com.lottery.api.dto.NoticeHisTypeVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,412 - Mapped "{[/account/userRechargeResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userRechargeResult(com.lottery.api.dto.UserRechargeResVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,414 - Mapped "{[/account/userCashCancel],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashCancel(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,427 - Mapped "{[/order/getOrderItem],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameOrderGrListResult com.lottery.api.controller.LotteryOrderController.getOrderItem(com.lottery.api.dto.RoomOrderVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,429 - Mapped "{[/order/getHisOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OrderListResult com.lottery.api.controller.LotteryOrderController.getHisOrder(com.lottery.api.dto.ResultParamVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,431 - Mapped "{[/order/addLotteryOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.LotteryOrderController.addLotteryOrder(com.lottery.api.dto.OrderParamVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,433 - Mapped "{[/order/getOrderAmount],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RoomAmountResult com.lottery.api.controller.LotteryOrderController.getOrderAmount(com.lottery.api.dto.RoomAmountVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,434 - Mapped "{[/order/getCurTermOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameOrderListResult com.lottery.api.controller.LotteryOrderController.getCurTermOrder(com.lottery.api.dto.CurResultParamVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,436 - Mapped "{[/order/getLotteryGameNoid],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryNoidResult com.lottery.api.controller.LotteryOrderController.getLotteryGameNoid(com.lottery.api.dto.RoomOrderVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,438 - Mapped "{[/order/getHisOrderAmount],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OrderAmountResult com.lottery.api.controller.LotteryOrderController.getHisOrderAmount(com.lottery.api.dto.ResultAmountVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,439 - Mapped "{[/order/getOrderAmountDetail],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RoomOrderDetaiResult com.lottery.api.controller.LotteryOrderController.getOrderAmountDetail(com.lottery.api.dto.RoomAmountVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,441 - Mapped "{[/order/getLotteryGameDetail],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryGameDetailResult com.lottery.api.controller.LotteryOrderController.getLotteryGameDetail(com.lottery.api.dto.LotteryGameDetailVO) throws java.lang.Exception
+ 2018-05-01 22:33:45,448 - Mapped "{[/report/getRoomQueryDate],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RoomListResult com.lottery.api.controller.LotteryReportController.getRoomQueryDate(com.lottery.api.dto.RoomParamVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,450 - Mapped "{[/report/getAgencyWinReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AgencyWinReportResult com.lottery.api.controller.LotteryReportController.getAgencyWinReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,452 - Mapped "{[/report/getAccWinReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccWinReportResult com.lottery.api.controller.LotteryReportController.getAccWinReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,453 - Mapped "{[/report/getAccTradeReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.OrderListResult com.lottery.api.controller.LotteryReportController.getAccTradeReport(com.lottery.api.dto.PlayTradeVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,455 - Mapped "{[/report/getPlayerInoutReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InoutAccReportResult com.lottery.api.controller.LotteryReportController.getPlayerInoutReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,457 - Mapped "{[/report/getProInoutReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InoutAccReportResult com.lottery.api.controller.LotteryReportController.getProInoutReport(com.lottery.api.dto.ProWinReVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,465 - Mapped "{[/lottery/getLotteryGame],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameResult com.lottery.api.controller.LotteryRoundController.getLotteryGame() throws java.lang.Exception
+ 2018-05-01 22:33:45,467 - Mapped "{[/lottery/getLotteryGameItem],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameItemResult com.lottery.api.controller.LotteryRoundController.getLotteryGameItem(com.lottery.api.dto.GameVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,468 - Mapped "{[/lottery/getLotteryTermResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameCurResult com.lottery.api.controller.LotteryRoundController.getLotteryTermResult(com.lottery.api.dto.GameCurVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,470 - Mapped "{[/lottery/getLotteryGameRoom],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameRoomResult com.lottery.api.controller.LotteryRoundController.getLotteryGameRoom(com.lottery.api.dto.GameLobbyVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,471 - Mapped "{[/lottery/getLotteryResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.ResultListResult com.lottery.api.controller.LotteryRoundController.getLotteryResult(com.lottery.api.dto.ResultParamVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,472 - Mapped "{[/lottery/getLotteryCurResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotterySidResult com.lottery.api.controller.LotteryRoundController.getLotteryCurResult(com.lottery.api.dto.GameLobbyVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,473 - Mapped "{[/lottery/getLotteryGameResults],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryGameResult com.lottery.api.controller.LotteryRoundController.getLotteryGameResults(com.lottery.api.dto.GameCurVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,476 - Mapped "{[/initService/initData],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InitInfoResult com.lottery.api.controller.LotteryServiceControl.getInitInfo() throws java.lang.Exception
+ 2018-05-01 22:33:45,478 - Mapped "{[/initService/updatePassword],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.LotteryServiceControl.updatePassword(com.lottery.api.dto.PasswordInfoVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,485 - Mapped "{[/offAccount/getAllAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OffAccountListResult com.lottery.api.controller.OffAccountInfoController.getAllAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,487 - Mapped "{[/offAccount/addOffAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.addOffAccountInfo(com.lottery.api.dto.OffAccountInfoVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,488 - Mapped "{[/offAccount/getAllOffAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OffAccountListResult com.lottery.api.controller.OffAccountInfoController.getAllOffAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,489 - Mapped "{[/offAccount/updateOffAccountPass],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateOffAccountPass(com.lottery.api.dto.UpdatePlayPassVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,491 - Mapped "{[/offAccount/updateAccountPercent],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateAccountPercent(com.lottery.api.dto.UpdateAccountPerVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,492 - Mapped "{[/offAccount/updateAccountState],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateAccountState(com.lottery.api.dto.UpdateAccountStateVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,497 - Mapped "{[/subAccount/addSubAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.addSubAccountInfo(com.lottery.api.dto.SubAccountInfoVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,498 - Mapped "{[/subAccount/getAllSubAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.SubAccountListResult com.lottery.api.controller.SubAccountInfoController.getAllSubAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,499 - Mapped "{[/subAccount/updateSubAccountPass],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.updateSubAccountPass(com.lottery.api.dto.UpdatePlayPassVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,501 - Mapped "{[/subAccount/updateSubAccountState],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.updateSubAccountState(com.lottery.api.dto.UpdateAccountStateVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,504 - Mapped "{[/trade/getTradeInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.TradeListResult com.lottery.api.controller.TradeInfoController.getTradeInfo(com.lottery.api.dto.TradeInfoVo) throws java.lang.Exception
+ 2018-05-01 22:33:45,535 - Mapped "{[/api-docs/{swaggerGroup}/{apiDeclaration}],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<com.mangofactory.swagger.models.dto.ApiListing> com.mangofactory.swagger.controllers.DefaultSwaggerController.getApiListing(java.lang.String,java.lang.String)
+ 2018-05-01 22:33:45,540 - Mapped "{[/api-docs],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<com.mangofactory.swagger.models.dto.ResourceListing> com.mangofactory.swagger.controllers.DefaultSwaggerController.getResourceListing(java.lang.String)
+ 2018-05-01 22:33:47,450 - Using default implementation for ThreadExecutor
+ 2018-05-01 22:33:47,668 - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2018-05-01 22:33:47,670 - Quartz Scheduler v.2.2.1 created.
+ 2018-05-01 22:33:47,675 - RAMJobStore initialized.
+ 2018-05-01 22:33:47,678 - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2018-05-01 22:33:47,679 - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+ 2018-05-01 22:33:47,679 - Quartz scheduler version: 2.2.1
+ 2018-05-01 22:33:47,685 - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@7ecaefb4
+ 2018-05-01 22:33:48,093 - Initializing ExecutorService 
+ 2018-05-01 22:33:48,136 - Initializing ExecutorService  'scheduler'
+ 2018-05-01 22:33:51,024 - HV000001: Hibernate Validator 5.1.2.Final
+ 2018-05-01 22:33:52,285 - Detected @ExceptionHandler methods in controllerValidationHandler
+ 2018-05-01 22:33:52,935 - Starting beans in phase 2147483647
+ 2018-05-01 22:33:52,936 - Starting Quartz Scheduler now
+ 2018-05-01 22:33:52,937 - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+ 2018-05-01 22:33:52,948 - Context refreshed
+ 2018-05-01 22:33:52,951 - Found custom SwaggerSpringMvcPlugins
+ 2018-05-01 22:33:52,952 - initializing plugin bean customImplementation
+ 2018-05-01 22:33:53,000 - Scanning for api listing references
+ 2018-05-01 22:33:53,029 - Group for method userExit was account
+ 2018-05-01 22:33:53,048 - Request mapping: userExit belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,048 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userExit
+ 2018-05-01 22:33:53,050 - Group for method userRecharge was account
+ 2018-05-01 22:33:53,053 - Request mapping: userRecharge belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,054 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userRecharge
+ 2018-05-01 22:33:53,056 - Group for method userCashApply was account
+ 2018-05-01 22:33:53,058 - Request mapping: userCashApply belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,058 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashApply
+ 2018-05-01 22:33:53,110 - Group for method userCashAudit was account
+ 2018-05-01 22:33:53,112 - Request mapping: userCashAudit belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,113 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashAudit
+ 2018-05-01 22:33:53,115 - Group for method userCashdo was account
+ 2018-05-01 22:33:53,117 - Request mapping: userCashdo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,117 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashdo
+ 2018-05-01 22:33:53,119 - Group for method bankCashList was account
+ 2018-05-01 22:33:53,121 - Request mapping: bankCashList belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,122 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:bankCashList
+ 2018-05-01 22:33:53,123 - Group for method userOutResult was account
+ 2018-05-01 22:33:53,125 - Request mapping: userOutResult belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,132 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userOutResult
+ 2018-05-01 22:33:53,134 - Group for method getAccountInfo was account
+ 2018-05-01 22:33:53,136 - Request mapping: getAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,136 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountInfo
+ 2018-05-01 22:33:53,138 - Group for method getAccountSimpleInfo was account
+ 2018-05-01 22:33:53,140 - Request mapping: getAccountSimpleInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,141 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountSimpleInfo
+ 2018-05-01 22:33:53,143 - Group for method getAccountDemoInfo was account
+ 2018-05-01 22:33:53,144 - Request mapping: getAccountDemoInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,145 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountDemoInfo
+ 2018-05-01 22:33:53,147 - Group for method addAccountInfo was account
+ 2018-05-01 22:33:53,149 - Request mapping: addAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,150 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:addAccountInfo
+ 2018-05-01 22:33:53,151 - Group for method updateAccountInfo was account
+ 2018-05-01 22:33:53,153 - Request mapping: updateAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,154 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:updateAccountInfo
+ 2018-05-01 22:33:53,156 - Group for method getAllAccountInfo was account
+ 2018-05-01 22:33:53,157 - Request mapping: getAllAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,158 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAllAccountInfo
+ 2018-05-01 22:33:53,160 - Group for method getLotteryMessage was account
+ 2018-05-01 22:33:53,162 - Request mapping: getLotteryMessage belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,163 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getLotteryMessage
+ 2018-05-01 22:33:53,165 - Group for method getLotteryHisMessage was account
+ 2018-05-01 22:33:53,167 - Request mapping: getLotteryHisMessage belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,190 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getLotteryHisMessage
+ 2018-05-01 22:33:53,192 - Group for method userRechargeResult was account
+ 2018-05-01 22:33:53,194 - Request mapping: userRechargeResult belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,195 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userRechargeResult
+ 2018-05-01 22:33:53,196 - Group for method userCashCancel was account
+ 2018-05-01 22:33:53,198 - Request mapping: userCashCancel belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 22:33:53,199 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashCancel
+ 2018-05-01 22:33:53,201 - Group for method getOrderItem was order
+ 2018-05-01 22:33:53,202 - Request mapping: getOrderItem belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 22:33:53,203 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderItem
+ 2018-05-01 22:33:53,210 - Group for method getHisOrder was order
+ 2018-05-01 22:33:53,212 - Request mapping: getHisOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 22:33:53,213 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getHisOrder
+ 2018-05-01 22:33:53,214 - Group for method addLotteryOrder was order
+ 2018-05-01 22:33:53,216 - Request mapping: addLotteryOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 22:33:53,217 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:addLotteryOrder
+ 2018-05-01 22:33:53,219 - Group for method getOrderAmount was order
+ 2018-05-01 22:33:53,220 - Request mapping: getOrderAmount belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 22:33:53,221 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderAmount
+ 2018-05-01 22:33:53,223 - Group for method getCurTermOrder was order
+ 2018-05-01 22:33:53,224 - Request mapping: getCurTermOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 22:33:53,236 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getCurTermOrder
+ 2018-05-01 22:33:53,238 - Group for method getLotteryGameNoid was order
+ 2018-05-01 22:33:53,240 - Request mapping: getLotteryGameNoid belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 22:33:53,240 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getLotteryGameNoid
+ 2018-05-01 22:33:53,242 - Group for method getHisOrderAmount was order
+ 2018-05-01 22:33:53,244 - Request mapping: getHisOrderAmount belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 22:33:53,244 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getHisOrderAmount
+ 2018-05-01 22:33:53,246 - Group for method getOrderAmountDetail was order
+ 2018-05-01 22:33:53,248 - Request mapping: getOrderAmountDetail belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 22:33:53,248 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderAmountDetail
+ 2018-05-01 22:33:53,250 - Group for method getLotteryGameDetail was order
+ 2018-05-01 22:33:53,254 - Request mapping: getLotteryGameDetail belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 22:33:53,255 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getLotteryGameDetail
+ 2018-05-01 22:33:53,256 - Group for method getRoomQueryDate was report
+ 2018-05-01 22:33:53,258 - Request mapping: getRoomQueryDate belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 22:33:53,259 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getRoomQueryDate
+ 2018-05-01 22:33:53,261 - Group for method getAgencyWinReport was report
+ 2018-05-01 22:33:53,262 - Request mapping: getAgencyWinReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 22:33:53,263 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAgencyWinReport
+ 2018-05-01 22:33:53,265 - Group for method getAccWinReport was report
+ 2018-05-01 22:33:53,266 - Request mapping: getAccWinReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 22:33:53,267 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAccWinReport
+ 2018-05-01 22:33:53,268 - Group for method getAccTradeReport was report
+ 2018-05-01 22:33:53,270 - Request mapping: getAccTradeReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 22:33:53,275 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAccTradeReport
+ 2018-05-01 22:33:53,283 - Group for method getPlayerInoutReport was report
+ 2018-05-01 22:33:53,284 - Request mapping: getPlayerInoutReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 22:33:53,285 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getPlayerInoutReport
+ 2018-05-01 22:33:53,287 - Group for method getProInoutReport was report
+ 2018-05-01 22:33:53,288 - Request mapping: getProInoutReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 22:33:53,289 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getProInoutReport
+ 2018-05-01 22:33:53,291 - Group for method getLotteryGame was lottery
+ 2018-05-01 22:33:53,293 - Request mapping: getLotteryGame belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 22:33:53,294 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGame
+ 2018-05-01 22:33:53,295 - Group for method getLotteryGameItem was lottery
+ 2018-05-01 22:33:53,296 - Request mapping: getLotteryGameItem belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 22:33:53,297 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameItem
+ 2018-05-01 22:33:53,303 - Group for method getLotteryTermResult was lottery
+ 2018-05-01 22:33:53,305 - Request mapping: getLotteryTermResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 22:33:53,305 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryTermResult
+ 2018-05-01 22:33:53,308 - Group for method getLotteryGameRoom was lottery
+ 2018-05-01 22:33:53,309 - Request mapping: getLotteryGameRoom belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 22:33:53,310 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameRoom
+ 2018-05-01 22:33:53,312 - Group for method getLotteryResult was lottery
+ 2018-05-01 22:33:53,313 - Request mapping: getLotteryResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 22:33:53,314 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryResult
+ 2018-05-01 22:33:53,315 - Group for method getLotteryCurResult was lottery
+ 2018-05-01 22:33:53,316 - Request mapping: getLotteryCurResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 22:33:53,330 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryCurResult
+ 2018-05-01 22:33:53,332 - Group for method getLotteryGameResults was lottery
+ 2018-05-01 22:33:53,334 - Request mapping: getLotteryGameResults belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 22:33:53,334 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameResults
+ 2018-05-01 22:33:53,336 - Group for method getInitInfo was initservice
+ 2018-05-01 22:33:53,338 - Request mapping: getInitInfo belongs to groups: [[ResourceGroup{groupName='initservice', position=0}]] 
+ 2018-05-01 22:33:53,338 - Adding resource to group:ResourceGroup{groupName='initservice', position=0} with description:初始化信息接口 for handler method:getInitInfo
+ 2018-05-01 22:33:53,340 - Group for method updatePassword was initservice
+ 2018-05-01 22:33:53,342 - Request mapping: updatePassword belongs to groups: [[ResourceGroup{groupName='initservice', position=0}]] 
+ 2018-05-01 22:33:53,342 - Adding resource to group:ResourceGroup{groupName='initservice', position=0} with description:初始化信息接口 for handler method:updatePassword
+ 2018-05-01 22:33:53,358 - Group for method getAllAccountInfo was offaccount
+ 2018-05-01 22:33:53,360 - Request mapping: getAllAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 22:33:53,361 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:getAllAccountInfo
+ 2018-05-01 22:33:53,364 - Group for method addOffAccountInfo was offaccount
+ 2018-05-01 22:33:53,367 - Request mapping: addOffAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 22:33:53,367 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:addOffAccountInfo
+ 2018-05-01 22:33:53,369 - Group for method getAllOffAccountInfo was offaccount
+ 2018-05-01 22:33:53,373 - Request mapping: getAllOffAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 22:33:53,374 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:getAllOffAccountInfo
+ 2018-05-01 22:33:53,380 - Group for method updateOffAccountPass was offaccount
+ 2018-05-01 22:33:53,383 - Request mapping: updateOffAccountPass belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 22:33:53,383 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateOffAccountPass
+ 2018-05-01 22:33:53,385 - Group for method updateAccountPercent was offaccount
+ 2018-05-01 22:33:53,387 - Request mapping: updateAccountPercent belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 22:33:53,387 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateAccountPercent
+ 2018-05-01 22:33:53,389 - Group for method updateAccountState was offaccount
+ 2018-05-01 22:33:53,391 - Request mapping: updateAccountState belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 22:33:53,391 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateAccountState
+ 2018-05-01 22:33:53,393 - Group for method addSubAccountInfo was subaccount
+ 2018-05-01 22:33:53,394 - Request mapping: addSubAccountInfo belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 22:33:53,394 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:addSubAccountInfo
+ 2018-05-01 22:33:53,396 - Group for method getAllSubAccountInfo was subaccount
+ 2018-05-01 22:33:53,398 - Request mapping: getAllSubAccountInfo belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 22:33:53,398 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:getAllSubAccountInfo
+ 2018-05-01 22:33:53,400 - Group for method updateSubAccountPass was subaccount
+ 2018-05-01 22:33:53,401 - Request mapping: updateSubAccountPass belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 22:33:53,402 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:updateSubAccountPass
+ 2018-05-01 22:33:53,403 - Group for method updateSubAccountState was subaccount
+ 2018-05-01 22:33:53,406 - Request mapping: updateSubAccountState belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 22:33:53,407 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:updateSubAccountState
+ 2018-05-01 22:33:53,408 - Group for method getTradeInfo was trade
+ 2018-05-01 22:33:53,409 - Request mapping: getTradeInfo belongs to groups: [[ResourceGroup{groupName='trade', position=0}]] 
+ 2018-05-01 22:33:53,410 - Adding resource to group:ResourceGroup{groupName='trade', position=0} with description:鍑哄叆閲戞椤规帴鍙? for handler method:getTradeInfo
+ 2018-05-01 22:33:53,412 - Excluding method as it contains the excluded annotation: interface com.mangofactory.swagger.annotations.ApiIgnore
+ 2018-05-01 22:33:53,412 - Excluding method as it contains the excluded annotation: interface com.mangofactory.swagger.annotations.ApiIgnore
+ 2018-05-01 22:33:53,484 - Created resource listing Path: /user/order Description: order Position: 0
+ 2018-05-01 22:33:53,488 - Created resource listing Path: /user/subaccount Description: subaccount Position: 0
+ 2018-05-01 22:33:53,489 - Created resource listing Path: /user/initservice Description: initservice Position: 0
+ 2018-05-01 22:33:53,490 - Created resource listing Path: /user/report Description: report Position: 0
+ 2018-05-01 22:33:53,491 - Created resource listing Path: /user/offaccount Description: offaccount Position: 0
+ 2018-05-01 22:33:53,492 - Created resource listing Path: /user/trade Description: trade Position: 0
+ 2018-05-01 22:33:53,494 - Created resource listing Path: /user/account Description: account Position: 0
+ 2018-05-01 22:33:53,495 - Created resource listing Path: /user/lottery Description: lottery Position: 0
+ 2018-05-01 22:33:59,083 - 读取API接口：Tue May 01 22:33:59 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-01 22:34:02,088 - Added a resource listing with (8) api resources: 
+ 2018-05-01 22:34:02,089 -   玩家帐号信息接口 at location: /api-docs/user/account
+ 2018-05-01 22:34:02,089 -   初始化信息接口 at location: /api-docs/user/initservice
+ 2018-05-01 22:34:02,090 -   游戏信息接口 at location: /api-docs/user/lottery
+ 2018-05-01 22:34:02,090 -   代理帐号信息接口 at location: /api-docs/user/offaccount
+ 2018-05-01 22:34:02,091 -   投注信息接口 at location: /api-docs/user/order
+ 2018-05-01 22:34:02,091 -   报表信息接口 at location: /api-docs/user/report
+ 2018-05-01 22:34:02,092 -   代理的子帐号信息接口 at location: /api-docs/user/subaccount
+ 2018-05-01 22:34:02,092 -   鍑哄叆閲戞椤规帴鍙? at location: /api-docs/user/trade
+ 2018-05-01 22:34:02,105 - Root WebApplicationContext: initialization completed in 42631 ms
+ 2018-05-01 22:34:02,178 - FrameworkServlet 'niuniu': initialization started
+ 2018-05-01 22:34:02,189 - Refreshing WebApplicationContext for namespace 'niuniu-servlet': startup date [Tue May 01 22:34:02 CST 2018]; parent: Root WebApplicationContext
+ 2018-05-01 22:34:02,194 - Loading XML bean definitions from class path resource [spring-mvc.xml]
+ 2018-05-01 22:34:02,891 - Mapped URL path [/*.html] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+ 2018-05-01 22:34:02,908 - Mapped URL path [/*.json] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+ 2018-05-01 22:34:02,931 - Mapped URL path [/swagger/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+ 2018-05-01 22:34:02,971 - Skipping SwaggerSpringMvcPlugin initialization already initialized!
+ 2018-05-01 22:34:02,973 - FrameworkServlet 'niuniu': initialization completed in 795 ms
+ 2018-05-01 22:34:23,423 - 读取API接口：Tue May 01 22:34:23 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-01 22:34:43,500 - 读取API接口：Tue May 01 22:34:43 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-01 22:35:07,665 - 读取API接口：Tue May 01 22:35:07 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-01 22:35:37,001 - 读取API接口：Tue May 01 22:35:37 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-01 22:35:56,380 - 读取API接口：Tue May 01 22:35:56 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-01 22:36:32,626 - 读取API接口：Tue May 01 22:36:32 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-01 22:38:41,206 - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+ 2018-05-01 22:38:41,344 - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+ 2018-05-01 22:38:43,754 - 读取API接口：Tue May 01 22:38:43 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-01 22:38:44,161 - 读取API接口：Tue May 01 22:38:44 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-01 22:38:44,393 - 读取API接口：Tue May 01 22:38:44 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-01 22:40:49,840 - 读取API接口：Tue May 01 22:40:49 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-01 22:42:43,862 - 读取API接口：Tue May 01 22:42:43 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-01 22:44:54,572 - 读取API接口：Tue May 01 22:44:54 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-01 22:46:57,403 - 读取API接口：Tue May 01 22:46:57 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-01 22:46:57,927 - 读取API接口：Tue May 01 22:46:57 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-01 22:49:47,824 - 读取API接口：Tue May 01 22:49:47 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-01 22:52:08,580 - 读取API接口：Tue May 01 22:52:08 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-01 22:54:21,905 - 读取API接口：Tue May 01 22:54:21 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-01 22:56:32,133 - 读取API接口：Tue May 01 22:56:32 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-01 23:02:43,614 - Root WebApplicationContext: initialization started
+ 2018-05-01 23:02:44,041 - Refreshing Root WebApplicationContext: startup date [Tue May 01 23:02:44 CST 2018]; root of context hierarchy
+ 2018-05-01 23:02:44,333 - Loading XML bean definitions from class path resource [spring-config.xml]
+ 2018-05-01 23:02:48,693 - Loading XML bean definitions from class path resource [spring-timeTask.xml]
+ 2018-05-01 23:02:53,580 - Loading properties file from class path resource [log4j.properties]
+ 2018-05-01 23:02:53,581 - Loading properties file from class path resource [jdbc.properties]
+ 2018-05-01 23:02:53,586 - Loading properties file from class path resource [rest-config.properties]
+ 2018-05-01 23:02:55,102 - MLog clients using log4j logging.
+ 2018-05-01 23:02:55,580 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+ 2018-05-01 23:03:03,236 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 100, acquireRetryAttempts -> 300, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge0ys9v7tykv1rq3q2h|99b0e85, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge0ys9v7tykv1rq3q2h|99b0e85, idleConnectionTestPeriod -> 1200, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/niuniu?useUnicode=true&amp;characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 600, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 80, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 7, numHelperThreads -> 5, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+ 2018-05-01 23:03:05,945 - Trying to find Dozer configuration file: dozer.properties
+ 2018-05-01 23:03:05,983 - Dozer configuration file not found: dozer.properties.  Using defaults for all Dozer global properties.
+ 2018-05-01 23:03:06,014 - Initializing Dozer. Version: 5.4.0, Thread Name: localhost-startStop-1
+ 2018-05-01 23:03:06,034 - Dozer JMX MBean [org.dozer.jmx:type=DozerStatisticsController] auto registered with the Platform MBean Server
+ 2018-05-01 23:03:06,041 - Dozer JMX MBean [org.dozer.jmx:type=DozerAdminController] auto registered with the Platform MBean Server
+ 2018-05-01 23:03:06,063 - Initializing a new instance of dozer bean mapper.
+ 2018-05-01 23:03:09,431 - Mapped "{[/account/userExit],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userExit(com.lottery.api.dto.AccountRecordVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,434 - Mapped "{[/account/userRecharge],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.UserRechargeResult com.lottery.api.controller.AccountInfoController.userRecharge(com.lottery.api.dto.UserRechargeVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,436 - Mapped "{[/account/userCashApply],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashApply(com.lottery.api.dto.UserCashVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,439 - Mapped "{[/account/userCashAudit],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashAudit(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,441 - Mapped "{[/account/userCashdo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashdo(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,443 - Mapped "{[/account/bankCashList],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.BankCashResult com.lottery.api.controller.AccountInfoController.bankCashList() throws java.lang.Exception
+ 2018-05-01 23:03:09,445 - Mapped "{[/account/userOutResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userOutResult() throws java.lang.Exception
+ 2018-05-01 23:03:09,447 - Mapped "{[/account/getAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.AccountResult com.lottery.api.controller.AccountInfoController.getAccountInfo(com.lottery.api.dto.LoginParamVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,449 - Mapped "{[/account/getAccountSimInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccountSimResult com.lottery.api.controller.AccountInfoController.getAccountSimpleInfo(com.lottery.api.dto.LoginParamVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,451 - Mapped "{[/account/getAccountDemoInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccountResult com.lottery.api.controller.AccountInfoController.getAccountDemoInfo(com.lottery.api.dto.DemoInfoVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,453 - Mapped "{[/account/addAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.addAccountInfo(com.lottery.api.dto.PlayAccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,455 - Mapped "{[/account/updateAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.updateAccountInfo(com.lottery.api.dto.UpdateAccountVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,458 - Mapped "{[/account/getRemarkInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RemarkResult com.lottery.api.controller.AccountInfoController.getAllAccountInfo() throws java.lang.Exception
+ 2018-05-01 23:03:09,460 - Mapped "{[/account/lotteryMessage],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.getLotteryMessage(com.lottery.api.dto.NoticeTypeVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,462 - Mapped "{[/account/lotteryHisMessage],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.NoticeResult com.lottery.api.controller.AccountInfoController.getLotteryHisMessage(com.lottery.api.dto.NoticeHisTypeVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,464 - Mapped "{[/account/userRechargeResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userRechargeResult(com.lottery.api.dto.UserRechargeResVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,466 - Mapped "{[/account/userCashCancel],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashCancel(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,480 - Mapped "{[/order/getOrderItem],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameOrderGrListResult com.lottery.api.controller.LotteryOrderController.getOrderItem(com.lottery.api.dto.RoomOrderVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,482 - Mapped "{[/order/getHisOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OrderListResult com.lottery.api.controller.LotteryOrderController.getHisOrder(com.lottery.api.dto.ResultParamVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,485 - Mapped "{[/order/addLotteryOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.LotteryOrderController.addLotteryOrder(com.lottery.api.dto.OrderParamVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,487 - Mapped "{[/order/getOrderAmount],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RoomAmountResult com.lottery.api.controller.LotteryOrderController.getOrderAmount(com.lottery.api.dto.RoomAmountVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,489 - Mapped "{[/order/getCurTermOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameOrderListResult com.lottery.api.controller.LotteryOrderController.getCurTermOrder(com.lottery.api.dto.CurResultParamVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,492 - Mapped "{[/order/getLotteryGameNoid],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryNoidResult com.lottery.api.controller.LotteryOrderController.getLotteryGameNoid(com.lottery.api.dto.RoomOrderVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,494 - Mapped "{[/order/getHisOrderAmount],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OrderAmountResult com.lottery.api.controller.LotteryOrderController.getHisOrderAmount(com.lottery.api.dto.ResultAmountVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,496 - Mapped "{[/order/getOrderAmountDetail],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RoomOrderDetaiResult com.lottery.api.controller.LotteryOrderController.getOrderAmountDetail(com.lottery.api.dto.RoomAmountVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,498 - Mapped "{[/order/getLotteryGameDetail],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryGameDetailResult com.lottery.api.controller.LotteryOrderController.getLotteryGameDetail(com.lottery.api.dto.LotteryGameDetailVO) throws java.lang.Exception
+ 2018-05-01 23:03:09,508 - Mapped "{[/report/getRoomQueryDate],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RoomListResult com.lottery.api.controller.LotteryReportController.getRoomQueryDate(com.lottery.api.dto.RoomParamVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,510 - Mapped "{[/report/getAgencyWinReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AgencyWinReportResult com.lottery.api.controller.LotteryReportController.getAgencyWinReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,512 - Mapped "{[/report/getAccWinReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccWinReportResult com.lottery.api.controller.LotteryReportController.getAccWinReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,514 - Mapped "{[/report/getAccTradeReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.OrderListResult com.lottery.api.controller.LotteryReportController.getAccTradeReport(com.lottery.api.dto.PlayTradeVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,516 - Mapped "{[/report/getPlayerInoutReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InoutAccReportResult com.lottery.api.controller.LotteryReportController.getPlayerInoutReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,518 - Mapped "{[/report/getProInoutReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InoutAccReportResult com.lottery.api.controller.LotteryReportController.getProInoutReport(com.lottery.api.dto.ProWinReVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,529 - Mapped "{[/lottery/getLotteryGame],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameResult com.lottery.api.controller.LotteryRoundController.getLotteryGame() throws java.lang.Exception
+ 2018-05-01 23:03:09,531 - Mapped "{[/lottery/getLotteryGameItem],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameItemResult com.lottery.api.controller.LotteryRoundController.getLotteryGameItem(com.lottery.api.dto.GameVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,541 - Mapped "{[/lottery/getLotteryTermResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameCurResult com.lottery.api.controller.LotteryRoundController.getLotteryTermResult(com.lottery.api.dto.GameCurVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,543 - Mapped "{[/lottery/getLotteryGameRoom],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameRoomResult com.lottery.api.controller.LotteryRoundController.getLotteryGameRoom(com.lottery.api.dto.GameLobbyVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,545 - Mapped "{[/lottery/getLotteryResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.ResultListResult com.lottery.api.controller.LotteryRoundController.getLotteryResult(com.lottery.api.dto.ResultParamVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,547 - Mapped "{[/lottery/getLotteryCurResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotterySidResult com.lottery.api.controller.LotteryRoundController.getLotteryCurResult(com.lottery.api.dto.GameLobbyVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,549 - Mapped "{[/lottery/getLotteryGameResults],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryGameResult com.lottery.api.controller.LotteryRoundController.getLotteryGameResults(com.lottery.api.dto.GameCurVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,554 - Mapped "{[/initService/initData],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InitInfoResult com.lottery.api.controller.LotteryServiceControl.getInitInfo() throws java.lang.Exception
+ 2018-05-01 23:03:09,556 - Mapped "{[/initService/updatePassword],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.LotteryServiceControl.updatePassword(com.lottery.api.dto.PasswordInfoVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,566 - Mapped "{[/offAccount/getAllAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OffAccountListResult com.lottery.api.controller.OffAccountInfoController.getAllAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,568 - Mapped "{[/offAccount/addOffAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.addOffAccountInfo(com.lottery.api.dto.OffAccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,571 - Mapped "{[/offAccount/getAllOffAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OffAccountListResult com.lottery.api.controller.OffAccountInfoController.getAllOffAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,572 - Mapped "{[/offAccount/updateOffAccountPass],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateOffAccountPass(com.lottery.api.dto.UpdatePlayPassVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,574 - Mapped "{[/offAccount/updateAccountPercent],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateAccountPercent(com.lottery.api.dto.UpdateAccountPerVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,577 - Mapped "{[/offAccount/updateAccountState],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateAccountState(com.lottery.api.dto.UpdateAccountStateVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,585 - Mapped "{[/subAccount/addSubAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.addSubAccountInfo(com.lottery.api.dto.SubAccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,587 - Mapped "{[/subAccount/getAllSubAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.SubAccountListResult com.lottery.api.controller.SubAccountInfoController.getAllSubAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,589 - Mapped "{[/subAccount/updateSubAccountPass],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.updateSubAccountPass(com.lottery.api.dto.UpdatePlayPassVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,591 - Mapped "{[/subAccount/updateSubAccountState],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.updateSubAccountState(com.lottery.api.dto.UpdateAccountStateVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,595 - Mapped "{[/trade/getTradeInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.TradeListResult com.lottery.api.controller.TradeInfoController.getTradeInfo(com.lottery.api.dto.TradeInfoVo) throws java.lang.Exception
+ 2018-05-01 23:03:09,630 - Mapped "{[/api-docs/{swaggerGroup}/{apiDeclaration}],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<com.mangofactory.swagger.models.dto.ApiListing> com.mangofactory.swagger.controllers.DefaultSwaggerController.getApiListing(java.lang.String,java.lang.String)
+ 2018-05-01 23:03:09,634 - Mapped "{[/api-docs],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<com.mangofactory.swagger.models.dto.ResourceListing> com.mangofactory.swagger.controllers.DefaultSwaggerController.getResourceListing(java.lang.String)
+ 2018-05-01 23:03:13,076 - Using default implementation for ThreadExecutor
+ 2018-05-01 23:03:13,165 - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2018-05-01 23:03:13,167 - Quartz Scheduler v.2.2.1 created.
+ 2018-05-01 23:03:13,173 - RAMJobStore initialized.
+ 2018-05-01 23:03:13,178 - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2018-05-01 23:03:13,179 - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+ 2018-05-01 23:03:13,179 - Quartz scheduler version: 2.2.1
+ 2018-05-01 23:03:13,190 - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@c8c44b6
+ 2018-05-01 23:03:13,926 - Initializing ExecutorService 
+ 2018-05-01 23:03:14,018 - Initializing ExecutorService  'scheduler'
+ 2018-05-01 23:03:16,202 - HV000001: Hibernate Validator 5.1.2.Final
+ 2018-05-01 23:03:17,410 - Detected @ExceptionHandler methods in controllerValidationHandler
+ 2018-05-01 23:03:18,081 - Starting beans in phase 2147483647
+ 2018-05-01 23:03:18,083 - Starting Quartz Scheduler now
+ 2018-05-01 23:03:18,084 - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+ 2018-05-01 23:03:18,092 - Context refreshed
+ 2018-05-01 23:03:18,096 - Found custom SwaggerSpringMvcPlugins
+ 2018-05-01 23:03:18,097 - initializing plugin bean customImplementation
+ 2018-05-01 23:03:18,149 - Scanning for api listing references
+ 2018-05-01 23:03:18,213 - Group for method userExit was account
+ 2018-05-01 23:03:18,234 - Request mapping: userExit belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,235 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userExit
+ 2018-05-01 23:03:18,238 - Group for method userRecharge was account
+ 2018-05-01 23:03:18,240 - Request mapping: userRecharge belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,241 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userRecharge
+ 2018-05-01 23:03:18,243 - Group for method userCashApply was account
+ 2018-05-01 23:03:18,244 - Request mapping: userCashApply belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,245 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashApply
+ 2018-05-01 23:03:18,248 - Group for method userCashAudit was account
+ 2018-05-01 23:03:18,250 - Request mapping: userCashAudit belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,251 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashAudit
+ 2018-05-01 23:03:18,255 - Group for method userCashdo was account
+ 2018-05-01 23:03:18,257 - Request mapping: userCashdo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,258 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashdo
+ 2018-05-01 23:03:18,259 - Group for method bankCashList was account
+ 2018-05-01 23:03:18,261 - Request mapping: bankCashList belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,262 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:bankCashList
+ 2018-05-01 23:03:18,263 - Group for method userOutResult was account
+ 2018-05-01 23:03:18,267 - Request mapping: userOutResult belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,268 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userOutResult
+ 2018-05-01 23:03:18,270 - Group for method getAccountInfo was account
+ 2018-05-01 23:03:18,272 - Request mapping: getAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,272 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountInfo
+ 2018-05-01 23:03:18,274 - Group for method getAccountSimpleInfo was account
+ 2018-05-01 23:03:18,276 - Request mapping: getAccountSimpleInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,277 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountSimpleInfo
+ 2018-05-01 23:03:18,279 - Group for method getAccountDemoInfo was account
+ 2018-05-01 23:03:18,282 - Request mapping: getAccountDemoInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,282 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountDemoInfo
+ 2018-05-01 23:03:18,284 - Group for method addAccountInfo was account
+ 2018-05-01 23:03:18,287 - Request mapping: addAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,289 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:addAccountInfo
+ 2018-05-01 23:03:18,291 - Group for method updateAccountInfo was account
+ 2018-05-01 23:03:18,293 - Request mapping: updateAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,294 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:updateAccountInfo
+ 2018-05-01 23:03:18,296 - Group for method getAllAccountInfo was account
+ 2018-05-01 23:03:18,298 - Request mapping: getAllAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,299 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAllAccountInfo
+ 2018-05-01 23:03:18,301 - Group for method getLotteryMessage was account
+ 2018-05-01 23:03:18,302 - Request mapping: getLotteryMessage belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,303 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getLotteryMessage
+ 2018-05-01 23:03:18,305 - Group for method getLotteryHisMessage was account
+ 2018-05-01 23:03:18,307 - Request mapping: getLotteryHisMessage belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,308 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getLotteryHisMessage
+ 2018-05-01 23:03:18,310 - Group for method userRechargeResult was account
+ 2018-05-01 23:03:18,311 - Request mapping: userRechargeResult belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,312 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userRechargeResult
+ 2018-05-01 23:03:18,314 - Group for method userCashCancel was account
+ 2018-05-01 23:03:18,316 - Request mapping: userCashCancel belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:03:18,317 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashCancel
+ 2018-05-01 23:03:18,318 - Group for method getOrderItem was order
+ 2018-05-01 23:03:18,326 - Request mapping: getOrderItem belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:03:18,327 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderItem
+ 2018-05-01 23:03:18,328 - Group for method getHisOrder was order
+ 2018-05-01 23:03:18,330 - Request mapping: getHisOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:03:18,331 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getHisOrder
+ 2018-05-01 23:03:18,332 - Group for method addLotteryOrder was order
+ 2018-05-01 23:03:18,334 - Request mapping: addLotteryOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:03:18,335 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:addLotteryOrder
+ 2018-05-01 23:03:18,336 - Group for method getOrderAmount was order
+ 2018-05-01 23:03:18,338 - Request mapping: getOrderAmount belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:03:18,339 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderAmount
+ 2018-05-01 23:03:18,341 - Group for method getCurTermOrder was order
+ 2018-05-01 23:03:18,343 - Request mapping: getCurTermOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:03:18,344 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getCurTermOrder
+ 2018-05-01 23:03:18,346 - Group for method getLotteryGameNoid was order
+ 2018-05-01 23:03:18,348 - Request mapping: getLotteryGameNoid belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:03:18,348 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getLotteryGameNoid
+ 2018-05-01 23:03:18,350 - Group for method getHisOrderAmount was order
+ 2018-05-01 23:03:18,351 - Request mapping: getHisOrderAmount belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:03:18,352 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getHisOrderAmount
+ 2018-05-01 23:03:18,354 - Group for method getOrderAmountDetail was order
+ 2018-05-01 23:03:18,355 - Request mapping: getOrderAmountDetail belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:03:18,356 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderAmountDetail
+ 2018-05-01 23:03:18,358 - Group for method getLotteryGameDetail was order
+ 2018-05-01 23:03:18,361 - Request mapping: getLotteryGameDetail belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:03:18,361 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getLotteryGameDetail
+ 2018-05-01 23:03:18,363 - Group for method getRoomQueryDate was report
+ 2018-05-01 23:03:18,364 - Request mapping: getRoomQueryDate belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:03:18,365 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getRoomQueryDate
+ 2018-05-01 23:03:18,368 - Group for method getAgencyWinReport was report
+ 2018-05-01 23:03:18,370 - Request mapping: getAgencyWinReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:03:18,370 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAgencyWinReport
+ 2018-05-01 23:03:18,388 - Group for method getAccWinReport was report
+ 2018-05-01 23:03:18,390 - Request mapping: getAccWinReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:03:18,390 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAccWinReport
+ 2018-05-01 23:03:18,392 - Group for method getAccTradeReport was report
+ 2018-05-01 23:03:18,395 - Request mapping: getAccTradeReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:03:18,396 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAccTradeReport
+ 2018-05-01 23:03:18,398 - Group for method getPlayerInoutReport was report
+ 2018-05-01 23:03:18,411 - Request mapping: getPlayerInoutReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:03:18,412 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getPlayerInoutReport
+ 2018-05-01 23:03:18,414 - Group for method getProInoutReport was report
+ 2018-05-01 23:03:18,415 - Request mapping: getProInoutReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:03:18,416 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getProInoutReport
+ 2018-05-01 23:03:18,418 - Group for method getLotteryGame was lottery
+ 2018-05-01 23:03:18,419 - Request mapping: getLotteryGame belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:03:18,420 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGame
+ 2018-05-01 23:03:18,421 - Group for method getLotteryGameItem was lottery
+ 2018-05-01 23:03:18,424 - Request mapping: getLotteryGameItem belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:03:18,424 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameItem
+ 2018-05-01 23:03:18,426 - Group for method getLotteryTermResult was lottery
+ 2018-05-01 23:03:18,428 - Request mapping: getLotteryTermResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:03:18,428 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryTermResult
+ 2018-05-01 23:03:18,430 - Group for method getLotteryGameRoom was lottery
+ 2018-05-01 23:03:18,432 - Request mapping: getLotteryGameRoom belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:03:18,432 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameRoom
+ 2018-05-01 23:03:18,434 - Group for method getLotteryResult was lottery
+ 2018-05-01 23:03:18,439 - Request mapping: getLotteryResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:03:18,439 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryResult
+ 2018-05-01 23:03:18,441 - Group for method getLotteryCurResult was lottery
+ 2018-05-01 23:03:18,443 - Request mapping: getLotteryCurResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:03:18,443 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryCurResult
+ 2018-05-01 23:03:18,445 - Group for method getLotteryGameResults was lottery
+ 2018-05-01 23:03:18,447 - Request mapping: getLotteryGameResults belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:03:18,447 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameResults
+ 2018-05-01 23:03:18,449 - Group for method getInitInfo was initservice
+ 2018-05-01 23:03:18,450 - Request mapping: getInitInfo belongs to groups: [[ResourceGroup{groupName='initservice', position=0}]] 
+ 2018-05-01 23:03:18,457 - Adding resource to group:ResourceGroup{groupName='initservice', position=0} with description:初始化信息接口 for handler method:getInitInfo
+ 2018-05-01 23:03:18,459 - Group for method updatePassword was initservice
+ 2018-05-01 23:03:18,461 - Request mapping: updatePassword belongs to groups: [[ResourceGroup{groupName='initservice', position=0}]] 
+ 2018-05-01 23:03:18,462 - Adding resource to group:ResourceGroup{groupName='initservice', position=0} with description:初始化信息接口 for handler method:updatePassword
+ 2018-05-01 23:03:18,466 - Group for method getAllAccountInfo was offaccount
+ 2018-05-01 23:03:18,481 - Request mapping: getAllAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:03:18,481 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:getAllAccountInfo
+ 2018-05-01 23:03:18,483 - Group for method addOffAccountInfo was offaccount
+ 2018-05-01 23:03:18,484 - Request mapping: addOffAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:03:18,485 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:addOffAccountInfo
+ 2018-05-01 23:03:18,487 - Group for method getAllOffAccountInfo was offaccount
+ 2018-05-01 23:03:18,488 - Request mapping: getAllOffAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:03:18,489 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:getAllOffAccountInfo
+ 2018-05-01 23:03:18,490 - Group for method updateOffAccountPass was offaccount
+ 2018-05-01 23:03:18,491 - Request mapping: updateOffAccountPass belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:03:18,492 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateOffAccountPass
+ 2018-05-01 23:03:18,494 - Group for method updateAccountPercent was offaccount
+ 2018-05-01 23:03:18,495 - Request mapping: updateAccountPercent belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:03:18,496 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateAccountPercent
+ 2018-05-01 23:03:18,498 - Group for method updateAccountState was offaccount
+ 2018-05-01 23:03:18,499 - Request mapping: updateAccountState belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:03:18,500 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateAccountState
+ 2018-05-01 23:03:18,502 - Group for method addSubAccountInfo was subaccount
+ 2018-05-01 23:03:18,504 - Request mapping: addSubAccountInfo belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 23:03:18,505 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:addSubAccountInfo
+ 2018-05-01 23:03:18,506 - Group for method getAllSubAccountInfo was subaccount
+ 2018-05-01 23:03:18,508 - Request mapping: getAllSubAccountInfo belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 23:03:18,509 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:getAllSubAccountInfo
+ 2018-05-01 23:03:18,511 - Group for method updateSubAccountPass was subaccount
+ 2018-05-01 23:03:18,512 - Request mapping: updateSubAccountPass belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 23:03:18,513 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:updateSubAccountPass
+ 2018-05-01 23:03:18,515 - Group for method updateSubAccountState was subaccount
+ 2018-05-01 23:03:18,517 - Request mapping: updateSubAccountState belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 23:03:18,518 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:updateSubAccountState
+ 2018-05-01 23:03:18,520 - Group for method getTradeInfo was trade
+ 2018-05-01 23:03:18,522 - Request mapping: getTradeInfo belongs to groups: [[ResourceGroup{groupName='trade', position=0}]] 
+ 2018-05-01 23:03:18,523 - Adding resource to group:ResourceGroup{groupName='trade', position=0} with description:鍑哄叆閲戞椤规帴鍙? for handler method:getTradeInfo
+ 2018-05-01 23:03:18,525 - Excluding method as it contains the excluded annotation: interface com.mangofactory.swagger.annotations.ApiIgnore
+ 2018-05-01 23:03:18,526 - Excluding method as it contains the excluded annotation: interface com.mangofactory.swagger.annotations.ApiIgnore
+ 2018-05-01 23:03:18,762 - Created resource listing Path: /user/order Description: order Position: 0
+ 2018-05-01 23:03:18,768 - Created resource listing Path: /user/subaccount Description: subaccount Position: 0
+ 2018-05-01 23:03:18,770 - Created resource listing Path: /user/initservice Description: initservice Position: 0
+ 2018-05-01 23:03:18,771 - Created resource listing Path: /user/report Description: report Position: 0
+ 2018-05-01 23:03:18,772 - Created resource listing Path: /user/offaccount Description: offaccount Position: 0
+ 2018-05-01 23:03:18,773 - Created resource listing Path: /user/trade Description: trade Position: 0
+ 2018-05-01 23:03:18,774 - Created resource listing Path: /user/account Description: account Position: 0
+ 2018-05-01 23:03:18,776 - Created resource listing Path: /user/lottery Description: lottery Position: 0
+ 2018-05-01 23:03:23,052 - 读取API接口：Tue May 01 23:03:23 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-01 23:03:25,614 - Added a resource listing with (8) api resources: 
+ 2018-05-01 23:03:25,615 -   玩家帐号信息接口 at location: /api-docs/user/account
+ 2018-05-01 23:03:25,616 -   初始化信息接口 at location: /api-docs/user/initservice
+ 2018-05-01 23:03:25,617 -   游戏信息接口 at location: /api-docs/user/lottery
+ 2018-05-01 23:03:25,618 -   代理帐号信息接口 at location: /api-docs/user/offaccount
+ 2018-05-01 23:03:25,619 -   投注信息接口 at location: /api-docs/user/order
+ 2018-05-01 23:03:25,620 -   报表信息接口 at location: /api-docs/user/report
+ 2018-05-01 23:03:25,620 -   代理的子帐号信息接口 at location: /api-docs/user/subaccount
+ 2018-05-01 23:03:25,621 -   鍑哄叆閲戞椤规帴鍙? at location: /api-docs/user/trade
+ 2018-05-01 23:03:25,634 - Root WebApplicationContext: initialization completed in 42017 ms
+ 2018-05-01 23:03:25,727 - FrameworkServlet 'niuniu': initialization started
+ 2018-05-01 23:03:25,739 - Refreshing WebApplicationContext for namespace 'niuniu-servlet': startup date [Tue May 01 23:03:25 CST 2018]; parent: Root WebApplicationContext
+ 2018-05-01 23:03:25,743 - Loading XML bean definitions from class path resource [spring-mvc.xml]
+ 2018-05-01 23:03:26,682 - Mapped URL path [/*.html] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+ 2018-05-01 23:03:26,702 - Mapped URL path [/*.json] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+ 2018-05-01 23:03:26,724 - Mapped URL path [/swagger/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+ 2018-05-01 23:03:26,766 - Skipping SwaggerSpringMvcPlugin initialization already initialized!
+ 2018-05-01 23:03:26,768 - FrameworkServlet 'niuniu': initialization completed in 1040 ms
+ 2018-05-01 23:06:16,272 - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+ 2018-05-01 23:06:16,415 - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+ 2018-05-01 23:06:24,081 - 读取API接口：Tue May 01 23:06:24 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-01 23:06:24,317 - 读取API接口：Tue May 01 23:06:24 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-01 23:08:29,108 - 读取API接口：Tue May 01 23:08:29 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-01 23:10:33,963 - 读取API接口：Tue May 01 23:10:33 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-01 23:12:39,721 - 读取API接口：Tue May 01 23:12:39 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-01 23:14:52,159 - 读取API接口：Tue May 01 23:14:52 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-01 23:17:23,152 - Root WebApplicationContext: initialization started
+ 2018-05-01 23:17:23,513 - Refreshing Root WebApplicationContext: startup date [Tue May 01 23:17:23 CST 2018]; root of context hierarchy
+ 2018-05-01 23:17:23,735 - Loading XML bean definitions from class path resource [spring-config.xml]
+ 2018-05-01 23:17:26,491 - Loading XML bean definitions from class path resource [spring-timeTask.xml]
+ 2018-05-01 23:17:30,789 - Loading properties file from class path resource [log4j.properties]
+ 2018-05-01 23:17:30,792 - Loading properties file from class path resource [jdbc.properties]
+ 2018-05-01 23:17:30,796 - Loading properties file from class path resource [rest-config.properties]
+ 2018-05-01 23:17:31,681 - MLog clients using log4j logging.
+ 2018-05-01 23:17:31,864 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+ 2018-05-01 23:17:38,568 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 100, acquireRetryAttempts -> 300, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge0ys9v7uhd0u1ynro8x|36e8ac52, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge0ys9v7uhd0u1ynro8x|36e8ac52, idleConnectionTestPeriod -> 1200, initialPoolSize -> 50, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/niuniu?useUnicode=true&amp;characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 600, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 80, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 7, numHelperThreads -> 5, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+ 2018-05-01 23:17:41,456 - Trying to find Dozer configuration file: dozer.properties
+ 2018-05-01 23:17:41,478 - Dozer configuration file not found: dozer.properties.  Using defaults for all Dozer global properties.
+ 2018-05-01 23:17:41,486 - Initializing Dozer. Version: 5.4.0, Thread Name: localhost-startStop-1
+ 2018-05-01 23:17:41,494 - Dozer JMX MBean [org.dozer.jmx:type=DozerStatisticsController] auto registered with the Platform MBean Server
+ 2018-05-01 23:17:41,498 - Dozer JMX MBean [org.dozer.jmx:type=DozerAdminController] auto registered with the Platform MBean Server
+ 2018-05-01 23:17:41,509 - Initializing a new instance of dozer bean mapper.
+ 2018-05-01 23:17:43,920 - Mapped "{[/account/getAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.AccountResult com.lottery.api.controller.AccountInfoController.getAccountInfo(com.lottery.api.dto.LoginParamVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,922 - Mapped "{[/account/getAccountSimInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccountSimResult com.lottery.api.controller.AccountInfoController.getAccountSimpleInfo(com.lottery.api.dto.LoginParamVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,923 - Mapped "{[/account/getAccountDemoInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccountResult com.lottery.api.controller.AccountInfoController.getAccountDemoInfo(com.lottery.api.dto.DemoInfoVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,925 - Mapped "{[/account/addAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.addAccountInfo(com.lottery.api.dto.PlayAccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,926 - Mapped "{[/account/updateAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.updateAccountInfo(com.lottery.api.dto.UpdateAccountVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,927 - Mapped "{[/account/getRemarkInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RemarkResult com.lottery.api.controller.AccountInfoController.getAllAccountInfo() throws java.lang.Exception
+ 2018-05-01 23:17:43,928 - Mapped "{[/account/lotteryMessage],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.getLotteryMessage(com.lottery.api.dto.NoticeTypeVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,930 - Mapped "{[/account/lotteryHisMessage],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.NoticeResult com.lottery.api.controller.AccountInfoController.getLotteryHisMessage(com.lottery.api.dto.NoticeHisTypeVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,931 - Mapped "{[/account/userRechargeResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userRechargeResult(com.lottery.api.dto.UserRechargeResVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,932 - Mapped "{[/account/userCashCancel],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashCancel(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,933 - Mapped "{[/account/userExit],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userExit(com.lottery.api.dto.AccountRecordVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,934 - Mapped "{[/account/userRecharge],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.UserRechargeResult com.lottery.api.controller.AccountInfoController.userRecharge(com.lottery.api.dto.UserRechargeVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,936 - Mapped "{[/account/userCashApply],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashApply(com.lottery.api.dto.UserCashVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,937 - Mapped "{[/account/userCashAudit],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashAudit(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,938 - Mapped "{[/account/userCashdo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashdo(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,939 - Mapped "{[/account/bankCashList],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.BankCashResult com.lottery.api.controller.AccountInfoController.bankCashList() throws java.lang.Exception
+ 2018-05-01 23:17:43,940 - Mapped "{[/account/userOutResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userOutResult() throws java.lang.Exception
+ 2018-05-01 23:17:43,949 - Mapped "{[/order/addLotteryOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.LotteryOrderController.addLotteryOrder(com.lottery.api.dto.OrderParamVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,951 - Mapped "{[/order/getOrderAmount],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RoomAmountResult com.lottery.api.controller.LotteryOrderController.getOrderAmount(com.lottery.api.dto.RoomAmountVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,952 - Mapped "{[/order/getCurTermOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameOrderListResult com.lottery.api.controller.LotteryOrderController.getCurTermOrder(com.lottery.api.dto.CurResultParamVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,953 - Mapped "{[/order/getLotteryGameNoid],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryNoidResult com.lottery.api.controller.LotteryOrderController.getLotteryGameNoid(com.lottery.api.dto.RoomOrderVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,954 - Mapped "{[/order/getHisOrderAmount],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OrderAmountResult com.lottery.api.controller.LotteryOrderController.getHisOrderAmount(com.lottery.api.dto.ResultAmountVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,955 - Mapped "{[/order/getOrderAmountDetail],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RoomOrderDetaiResult com.lottery.api.controller.LotteryOrderController.getOrderAmountDetail(com.lottery.api.dto.RoomAmountVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,957 - Mapped "{[/order/getLotteryGameDetail],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryGameDetailResult com.lottery.api.controller.LotteryOrderController.getLotteryGameDetail(com.lottery.api.dto.LotteryGameDetailVO) throws java.lang.Exception
+ 2018-05-01 23:17:43,958 - Mapped "{[/order/getOrderItem],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameOrderGrListResult com.lottery.api.controller.LotteryOrderController.getOrderItem(com.lottery.api.dto.RoomOrderVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,959 - Mapped "{[/order/getHisOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OrderListResult com.lottery.api.controller.LotteryOrderController.getHisOrder(com.lottery.api.dto.ResultParamVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,965 - Mapped "{[/report/getRoomQueryDate],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RoomListResult com.lottery.api.controller.LotteryReportController.getRoomQueryDate(com.lottery.api.dto.RoomParamVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,966 - Mapped "{[/report/getAgencyWinReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AgencyWinReportResult com.lottery.api.controller.LotteryReportController.getAgencyWinReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,968 - Mapped "{[/report/getAccWinReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccWinReportResult com.lottery.api.controller.LotteryReportController.getAccWinReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,970 - Mapped "{[/report/getAccTradeReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.OrderListResult com.lottery.api.controller.LotteryReportController.getAccTradeReport(com.lottery.api.dto.PlayTradeVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,971 - Mapped "{[/report/getPlayerInoutReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InoutAccReportResult com.lottery.api.controller.LotteryReportController.getPlayerInoutReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,972 - Mapped "{[/report/getProInoutReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InoutAccReportResult com.lottery.api.controller.LotteryReportController.getProInoutReport(com.lottery.api.dto.ProWinReVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,983 - Mapped "{[/lottery/getLotteryGame],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameResult com.lottery.api.controller.LotteryRoundController.getLotteryGame() throws java.lang.Exception
+ 2018-05-01 23:17:43,986 - Mapped "{[/lottery/getLotteryGameItem],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameItemResult com.lottery.api.controller.LotteryRoundController.getLotteryGameItem(com.lottery.api.dto.GameVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,988 - Mapped "{[/lottery/getLotteryTermResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameCurResult com.lottery.api.controller.LotteryRoundController.getLotteryTermResult(com.lottery.api.dto.GameCurVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,989 - Mapped "{[/lottery/getLotteryGameRoom],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameRoomResult com.lottery.api.controller.LotteryRoundController.getLotteryGameRoom(com.lottery.api.dto.GameLobbyVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,990 - Mapped "{[/lottery/getLotteryResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.ResultListResult com.lottery.api.controller.LotteryRoundController.getLotteryResult(com.lottery.api.dto.ResultParamVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,991 - Mapped "{[/lottery/getLotteryCurResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotterySidResult com.lottery.api.controller.LotteryRoundController.getLotteryCurResult(com.lottery.api.dto.GameLobbyVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,992 - Mapped "{[/lottery/getLotteryGameResults],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryGameResult com.lottery.api.controller.LotteryRoundController.getLotteryGameResults(com.lottery.api.dto.GameCurVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,996 - Mapped "{[/initService/updatePassword],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.LotteryServiceControl.updatePassword(com.lottery.api.dto.PasswordInfoVo) throws java.lang.Exception
+ 2018-05-01 23:17:43,997 - Mapped "{[/initService/initData],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InitInfoResult com.lottery.api.controller.LotteryServiceControl.getInitInfo() throws java.lang.Exception
+ 2018-05-01 23:17:44,003 - Mapped "{[/offAccount/getAllAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OffAccountListResult com.lottery.api.controller.OffAccountInfoController.getAllAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:17:44,004 - Mapped "{[/offAccount/addOffAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.addOffAccountInfo(com.lottery.api.dto.OffAccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:17:44,006 - Mapped "{[/offAccount/getAllOffAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OffAccountListResult com.lottery.api.controller.OffAccountInfoController.getAllOffAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:17:44,007 - Mapped "{[/offAccount/updateOffAccountPass],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateOffAccountPass(com.lottery.api.dto.UpdatePlayPassVo) throws java.lang.Exception
+ 2018-05-01 23:17:44,008 - Mapped "{[/offAccount/updateAccountPercent],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateAccountPercent(com.lottery.api.dto.UpdateAccountPerVo) throws java.lang.Exception
+ 2018-05-01 23:17:44,009 - Mapped "{[/offAccount/updateAccountState],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateAccountState(com.lottery.api.dto.UpdateAccountStateVo) throws java.lang.Exception
+ 2018-05-01 23:17:44,014 - Mapped "{[/subAccount/addSubAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.addSubAccountInfo(com.lottery.api.dto.SubAccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:17:44,015 - Mapped "{[/subAccount/getAllSubAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.SubAccountListResult com.lottery.api.controller.SubAccountInfoController.getAllSubAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:17:44,017 - Mapped "{[/subAccount/updateSubAccountPass],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.updateSubAccountPass(com.lottery.api.dto.UpdatePlayPassVo) throws java.lang.Exception
+ 2018-05-01 23:17:44,018 - Mapped "{[/subAccount/updateSubAccountState],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.updateSubAccountState(com.lottery.api.dto.UpdateAccountStateVo) throws java.lang.Exception
+ 2018-05-01 23:17:44,020 - Mapped "{[/trade/getTradeInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.TradeListResult com.lottery.api.controller.TradeInfoController.getTradeInfo(com.lottery.api.dto.TradeInfoVo) throws java.lang.Exception
+ 2018-05-01 23:17:44,049 - Mapped "{[/api-docs/{swaggerGroup}/{apiDeclaration}],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<com.mangofactory.swagger.models.dto.ApiListing> com.mangofactory.swagger.controllers.DefaultSwaggerController.getApiListing(java.lang.String,java.lang.String)
+ 2018-05-01 23:17:44,051 - Mapped "{[/api-docs],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<com.mangofactory.swagger.models.dto.ResourceListing> com.mangofactory.swagger.controllers.DefaultSwaggerController.getResourceListing(java.lang.String)
+ 2018-05-01 23:17:46,645 - Using default implementation for ThreadExecutor
+ 2018-05-01 23:17:46,791 - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2018-05-01 23:17:46,793 - Quartz Scheduler v.2.2.1 created.
+ 2018-05-01 23:17:46,798 - RAMJobStore initialized.
+ 2018-05-01 23:17:46,803 - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2018-05-01 23:17:46,803 - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+ 2018-05-01 23:17:46,804 - Quartz scheduler version: 2.2.1
+ 2018-05-01 23:17:46,813 - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@64ad81d2
+ 2018-05-01 23:17:47,400 - Initializing ExecutorService 
+ 2018-05-01 23:17:47,470 - Initializing ExecutorService  'scheduler'
+ 2018-05-01 23:17:50,169 - HV000001: Hibernate Validator 5.1.2.Final
+ 2018-05-01 23:17:51,257 - Detected @ExceptionHandler methods in controllerValidationHandler
+ 2018-05-01 23:17:51,925 - Starting beans in phase 2147483647
+ 2018-05-01 23:17:51,926 - Starting Quartz Scheduler now
+ 2018-05-01 23:17:51,927 - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+ 2018-05-01 23:17:51,941 - Context refreshed
+ 2018-05-01 23:17:51,944 - Found custom SwaggerSpringMvcPlugins
+ 2018-05-01 23:17:51,945 - initializing plugin bean customImplementation
+ 2018-05-01 23:17:52,021 - Scanning for api listing references
+ 2018-05-01 23:17:52,039 - Group for method getAccountInfo was account
+ 2018-05-01 23:17:52,056 - Request mapping: getAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,057 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountInfo
+ 2018-05-01 23:17:52,059 - Group for method getAccountSimpleInfo was account
+ 2018-05-01 23:17:52,062 - Request mapping: getAccountSimpleInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,062 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountSimpleInfo
+ 2018-05-01 23:17:52,064 - Group for method getAccountDemoInfo was account
+ 2018-05-01 23:17:52,067 - Request mapping: getAccountDemoInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,067 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountDemoInfo
+ 2018-05-01 23:17:52,070 - Group for method addAccountInfo was account
+ 2018-05-01 23:17:52,100 - Request mapping: addAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,100 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:addAccountInfo
+ 2018-05-01 23:17:52,102 - Group for method updateAccountInfo was account
+ 2018-05-01 23:17:52,104 - Request mapping: updateAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,104 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:updateAccountInfo
+ 2018-05-01 23:17:52,106 - Group for method getAllAccountInfo was account
+ 2018-05-01 23:17:52,108 - Request mapping: getAllAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,109 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAllAccountInfo
+ 2018-05-01 23:17:52,110 - Group for method getLotteryMessage was account
+ 2018-05-01 23:17:52,112 - Request mapping: getLotteryMessage belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,113 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getLotteryMessage
+ 2018-05-01 23:17:52,124 - Group for method getLotteryHisMessage was account
+ 2018-05-01 23:17:52,126 - Request mapping: getLotteryHisMessage belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,127 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getLotteryHisMessage
+ 2018-05-01 23:17:52,129 - Group for method userRechargeResult was account
+ 2018-05-01 23:17:52,131 - Request mapping: userRechargeResult belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,131 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userRechargeResult
+ 2018-05-01 23:17:52,133 - Group for method userCashCancel was account
+ 2018-05-01 23:17:52,137 - Request mapping: userCashCancel belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,137 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashCancel
+ 2018-05-01 23:17:52,139 - Group for method userExit was account
+ 2018-05-01 23:17:52,143 - Request mapping: userExit belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,236 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userExit
+ 2018-05-01 23:17:52,238 - Group for method userRecharge was account
+ 2018-05-01 23:17:52,239 - Request mapping: userRecharge belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,240 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userRecharge
+ 2018-05-01 23:17:52,242 - Group for method userCashApply was account
+ 2018-05-01 23:17:52,243 - Request mapping: userCashApply belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,244 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashApply
+ 2018-05-01 23:17:52,245 - Group for method userCashAudit was account
+ 2018-05-01 23:17:52,247 - Request mapping: userCashAudit belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,248 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashAudit
+ 2018-05-01 23:17:52,250 - Group for method userCashdo was account
+ 2018-05-01 23:17:52,262 - Request mapping: userCashdo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,262 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashdo
+ 2018-05-01 23:17:52,265 - Group for method bankCashList was account
+ 2018-05-01 23:17:52,270 - Request mapping: bankCashList belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,271 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:bankCashList
+ 2018-05-01 23:17:52,273 - Group for method userOutResult was account
+ 2018-05-01 23:17:52,275 - Request mapping: userOutResult belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:17:52,275 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userOutResult
+ 2018-05-01 23:17:52,283 - Group for method addLotteryOrder was order
+ 2018-05-01 23:17:52,292 - Request mapping: addLotteryOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:17:52,293 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:addLotteryOrder
+ 2018-05-01 23:17:52,295 - Group for method getOrderAmount was order
+ 2018-05-01 23:17:52,297 - Request mapping: getOrderAmount belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:17:52,298 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderAmount
+ 2018-05-01 23:17:52,302 - Group for method getCurTermOrder was order
+ 2018-05-01 23:17:52,303 - Request mapping: getCurTermOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:17:52,304 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getCurTermOrder
+ 2018-05-01 23:17:52,306 - Group for method getLotteryGameNoid was order
+ 2018-05-01 23:17:52,308 - Request mapping: getLotteryGameNoid belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:17:52,309 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getLotteryGameNoid
+ 2018-05-01 23:17:52,310 - Group for method getHisOrderAmount was order
+ 2018-05-01 23:17:52,316 - Request mapping: getHisOrderAmount belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:17:52,317 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getHisOrderAmount
+ 2018-05-01 23:17:52,319 - Group for method getOrderAmountDetail was order
+ 2018-05-01 23:17:52,329 - Request mapping: getOrderAmountDetail belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:17:52,330 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderAmountDetail
+ 2018-05-01 23:17:52,332 - Group for method getLotteryGameDetail was order
+ 2018-05-01 23:17:52,334 - Request mapping: getLotteryGameDetail belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:17:52,334 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getLotteryGameDetail
+ 2018-05-01 23:17:52,360 - Group for method getOrderItem was order
+ 2018-05-01 23:17:52,366 - Request mapping: getOrderItem belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:17:52,372 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderItem
+ 2018-05-01 23:17:52,379 - Group for method getHisOrder was order
+ 2018-05-01 23:17:52,380 - Request mapping: getHisOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:17:52,381 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getHisOrder
+ 2018-05-01 23:17:52,385 - Group for method getRoomQueryDate was report
+ 2018-05-01 23:17:52,389 - Request mapping: getRoomQueryDate belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:17:52,390 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getRoomQueryDate
+ 2018-05-01 23:17:52,391 - Group for method getAgencyWinReport was report
+ 2018-05-01 23:17:52,393 - Request mapping: getAgencyWinReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:17:52,394 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAgencyWinReport
+ 2018-05-01 23:17:52,396 - Group for method getAccWinReport was report
+ 2018-05-01 23:17:52,397 - Request mapping: getAccWinReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:17:52,398 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAccWinReport
+ 2018-05-01 23:17:52,400 - Group for method getAccTradeReport was report
+ 2018-05-01 23:17:52,402 - Request mapping: getAccTradeReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:17:52,403 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAccTradeReport
+ 2018-05-01 23:17:52,405 - Group for method getPlayerInoutReport was report
+ 2018-05-01 23:17:52,407 - Request mapping: getPlayerInoutReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:17:52,407 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getPlayerInoutReport
+ 2018-05-01 23:17:52,410 - Group for method getProInoutReport was report
+ 2018-05-01 23:17:52,412 - Request mapping: getProInoutReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:17:52,412 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getProInoutReport
+ 2018-05-01 23:17:52,414 - Group for method getLotteryGame was lottery
+ 2018-05-01 23:17:52,427 - Request mapping: getLotteryGame belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:17:52,428 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGame
+ 2018-05-01 23:17:52,430 - Group for method getLotteryGameItem was lottery
+ 2018-05-01 23:17:52,432 - Request mapping: getLotteryGameItem belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:17:52,432 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameItem
+ 2018-05-01 23:17:52,451 - Group for method getLotteryTermResult was lottery
+ 2018-05-01 23:17:52,453 - Request mapping: getLotteryTermResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:17:52,453 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryTermResult
+ 2018-05-01 23:17:52,458 - Group for method getLotteryGameRoom was lottery
+ 2018-05-01 23:17:52,460 - Request mapping: getLotteryGameRoom belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:17:52,460 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameRoom
+ 2018-05-01 23:17:52,462 - Group for method getLotteryResult was lottery
+ 2018-05-01 23:17:52,464 - Request mapping: getLotteryResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:17:52,464 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryResult
+ 2018-05-01 23:17:52,466 - Group for method getLotteryCurResult was lottery
+ 2018-05-01 23:17:52,467 - Request mapping: getLotteryCurResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:17:52,468 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryCurResult
+ 2018-05-01 23:17:52,470 - Group for method getLotteryGameResults was lottery
+ 2018-05-01 23:17:52,494 - Request mapping: getLotteryGameResults belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:17:52,495 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameResults
+ 2018-05-01 23:17:52,497 - Group for method updatePassword was initservice
+ 2018-05-01 23:17:52,499 - Request mapping: updatePassword belongs to groups: [[ResourceGroup{groupName='initservice', position=0}]] 
+ 2018-05-01 23:17:52,500 - Adding resource to group:ResourceGroup{groupName='initservice', position=0} with description:初始化信息接口 for handler method:updatePassword
+ 2018-05-01 23:17:52,501 - Group for method getInitInfo was initservice
+ 2018-05-01 23:17:52,503 - Request mapping: getInitInfo belongs to groups: [[ResourceGroup{groupName='initservice', position=0}]] 
+ 2018-05-01 23:17:52,503 - Adding resource to group:ResourceGroup{groupName='initservice', position=0} with description:初始化信息接口 for handler method:getInitInfo
+ 2018-05-01 23:17:52,505 - Group for method getAllAccountInfo was offaccount
+ 2018-05-01 23:17:52,507 - Request mapping: getAllAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:17:52,507 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:getAllAccountInfo
+ 2018-05-01 23:17:52,508 - Group for method addOffAccountInfo was offaccount
+ 2018-05-01 23:17:52,510 - Request mapping: addOffAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:17:52,510 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:addOffAccountInfo
+ 2018-05-01 23:17:52,531 - Group for method getAllOffAccountInfo was offaccount
+ 2018-05-01 23:17:52,541 - Request mapping: getAllOffAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:17:52,542 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:getAllOffAccountInfo
+ 2018-05-01 23:17:52,543 - Group for method updateOffAccountPass was offaccount
+ 2018-05-01 23:17:52,545 - Request mapping: updateOffAccountPass belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:17:52,545 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateOffAccountPass
+ 2018-05-01 23:17:52,547 - Group for method updateAccountPercent was offaccount
+ 2018-05-01 23:17:52,548 - Request mapping: updateAccountPercent belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:17:52,548 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateAccountPercent
+ 2018-05-01 23:17:52,550 - Group for method updateAccountState was offaccount
+ 2018-05-01 23:17:52,551 - Request mapping: updateAccountState belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:17:52,552 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateAccountState
+ 2018-05-01 23:17:52,553 - Group for method addSubAccountInfo was subaccount
+ 2018-05-01 23:17:52,555 - Request mapping: addSubAccountInfo belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 23:17:52,555 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:addSubAccountInfo
+ 2018-05-01 23:17:52,556 - Group for method getAllSubAccountInfo was subaccount
+ 2018-05-01 23:17:52,558 - Request mapping: getAllSubAccountInfo belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 23:17:52,558 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:getAllSubAccountInfo
+ 2018-05-01 23:17:52,560 - Group for method updateSubAccountPass was subaccount
+ 2018-05-01 23:17:52,561 - Request mapping: updateSubAccountPass belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 23:17:52,561 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:updateSubAccountPass
+ 2018-05-01 23:17:52,563 - Group for method updateSubAccountState was subaccount
+ 2018-05-01 23:17:52,565 - Request mapping: updateSubAccountState belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 23:17:52,566 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:updateSubAccountState
+ 2018-05-01 23:17:52,567 - Group for method getTradeInfo was trade
+ 2018-05-01 23:17:52,569 - Request mapping: getTradeInfo belongs to groups: [[ResourceGroup{groupName='trade', position=0}]] 
+ 2018-05-01 23:17:52,569 - Adding resource to group:ResourceGroup{groupName='trade', position=0} with description:鍑哄叆閲戞椤规帴鍙? for handler method:getTradeInfo
+ 2018-05-01 23:17:52,571 - Excluding method as it contains the excluded annotation: interface com.mangofactory.swagger.annotations.ApiIgnore
+ 2018-05-01 23:17:52,572 - Excluding method as it contains the excluded annotation: interface com.mangofactory.swagger.annotations.ApiIgnore
+ 2018-05-01 23:17:52,654 - Created resource listing Path: /user/order Description: order Position: 0
+ 2018-05-01 23:17:52,656 - Created resource listing Path: /user/subaccount Description: subaccount Position: 0
+ 2018-05-01 23:17:52,657 - Created resource listing Path: /user/initservice Description: initservice Position: 0
+ 2018-05-01 23:17:52,658 - Created resource listing Path: /user/report Description: report Position: 0
+ 2018-05-01 23:17:52,659 - Created resource listing Path: /user/offaccount Description: offaccount Position: 0
+ 2018-05-01 23:17:52,660 - Created resource listing Path: /user/trade Description: trade Position: 0
+ 2018-05-01 23:17:52,662 - Created resource listing Path: /user/account Description: account Position: 0
+ 2018-05-01 23:17:52,663 - Created resource listing Path: /user/lottery Description: lottery Position: 0
+ 2018-05-01 23:17:58,998 - Added a resource listing with (8) api resources: 
+ 2018-05-01 23:17:58,999 -   玩家帐号信息接口 at location: /api-docs/user/account
+ 2018-05-01 23:17:58,999 -   初始化信息接口 at location: /api-docs/user/initservice
+ 2018-05-01 23:17:59,000 -   游戏信息接口 at location: /api-docs/user/lottery
+ 2018-05-01 23:17:59,000 -   代理帐号信息接口 at location: /api-docs/user/offaccount
+ 2018-05-01 23:17:59,001 -   投注信息接口 at location: /api-docs/user/order
+ 2018-05-01 23:17:59,001 -   报表信息接口 at location: /api-docs/user/report
+ 2018-05-01 23:17:59,002 -   代理的子帐号信息接口 at location: /api-docs/user/subaccount
+ 2018-05-01 23:17:59,002 -   鍑哄叆閲戞椤规帴鍙? at location: /api-docs/user/trade
+ 2018-05-01 23:17:59,014 - Root WebApplicationContext: initialization completed in 35860 ms
+ 2018-05-01 23:17:59,087 - FrameworkServlet 'niuniu': initialization started
+ 2018-05-01 23:17:59,098 - Refreshing WebApplicationContext for namespace 'niuniu-servlet': startup date [Tue May 01 23:17:59 CST 2018]; parent: Root WebApplicationContext
+ 2018-05-01 23:17:59,102 - Loading XML bean definitions from class path resource [spring-mvc.xml]
+ 2018-05-01 23:17:59,771 - Mapped URL path [/*.html] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+ 2018-05-01 23:17:59,788 - Mapped URL path [/*.json] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+ 2018-05-01 23:17:59,812 - Mapped URL path [/swagger/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+ 2018-05-01 23:17:59,853 - Skipping SwaggerSpringMvcPlugin initialization already initialized!
+ 2018-05-01 23:17:59,855 - FrameworkServlet 'niuniu': initialization completed in 767 ms
+ 2018-05-01 23:18:03,381 - 读取API接口：Tue May 01 23:18:03 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-01 23:20:15,523 - Loading XML bean definitions from class path resource [org/springframework/jdbc/support/sql-error-codes.xml]
+ 2018-05-01 23:20:15,679 - SQLErrorCodes loaded: [DB2, Derby, H2, HSQL, Informix, MS-SQL, MySQL, Oracle, PostgreSQL, Sybase]
+ 2018-05-01 23:20:20,031 - 读取API接口：Tue May 01 23:20:20 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-01 23:20:20,463 - 读取API接口：Tue May 01 23:20:20 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-01 23:23:05,410 - Root WebApplicationContext: initialization started
+ 2018-05-01 23:23:06,032 - Refreshing Root WebApplicationContext: startup date [Tue May 01 23:23:06 CST 2018]; root of context hierarchy
+ 2018-05-01 23:23:06,348 - Loading XML bean definitions from class path resource [spring-config.xml]
+ 2018-05-01 23:23:10,724 - Loading XML bean definitions from class path resource [spring-timeTask.xml]
+ 2018-05-01 23:23:14,492 - Loading properties file from class path resource [log4j.properties]
+ 2018-05-01 23:23:14,494 - Loading properties file from class path resource [jdbc.properties]
+ 2018-05-01 23:23:14,501 - Loading properties file from class path resource [rest-config.properties]
+ 2018-05-01 23:23:15,605 - MLog clients using log4j logging.
+ 2018-05-01 23:23:15,873 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+ 2018-05-01 23:23:22,606 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 10, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge0ys9v7uoqga1klhhhk|699323fc, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge0ys9v7uoqga1klhhhk|699323fc, idleConnectionTestPeriod -> 120, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/niuniu?useUnicode=true&amp;characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 600, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 80, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 7, numHelperThreads -> 5, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+ 2018-05-01 23:23:25,539 - Trying to find Dozer configuration file: dozer.properties
+ 2018-05-01 23:23:25,573 - Dozer configuration file not found: dozer.properties.  Using defaults for all Dozer global properties.
+ 2018-05-01 23:23:25,586 - Initializing Dozer. Version: 5.4.0, Thread Name: localhost-startStop-1
+ 2018-05-01 23:23:25,598 - Dozer JMX MBean [org.dozer.jmx:type=DozerStatisticsController] auto registered with the Platform MBean Server
+ 2018-05-01 23:23:25,604 - Dozer JMX MBean [org.dozer.jmx:type=DozerAdminController] auto registered with the Platform MBean Server
+ 2018-05-01 23:23:25,623 - Initializing a new instance of dozer bean mapper.
+ 2018-05-01 23:23:29,236 - Mapped "{[/account/userExit],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userExit(com.lottery.api.dto.AccountRecordVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,238 - Mapped "{[/account/userRecharge],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.UserRechargeResult com.lottery.api.controller.AccountInfoController.userRecharge(com.lottery.api.dto.UserRechargeVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,239 - Mapped "{[/account/userCashApply],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashApply(com.lottery.api.dto.UserCashVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,241 - Mapped "{[/account/userCashAudit],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashAudit(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,242 - Mapped "{[/account/userCashdo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashdo(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,243 - Mapped "{[/account/bankCashList],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.BankCashResult com.lottery.api.controller.AccountInfoController.bankCashList() throws java.lang.Exception
+ 2018-05-01 23:23:29,244 - Mapped "{[/account/userOutResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userOutResult() throws java.lang.Exception
+ 2018-05-01 23:23:29,245 - Mapped "{[/account/getAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.AccountResult com.lottery.api.controller.AccountInfoController.getAccountInfo(com.lottery.api.dto.LoginParamVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,246 - Mapped "{[/account/getAccountSimInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccountSimResult com.lottery.api.controller.AccountInfoController.getAccountSimpleInfo(com.lottery.api.dto.LoginParamVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,248 - Mapped "{[/account/getAccountDemoInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccountResult com.lottery.api.controller.AccountInfoController.getAccountDemoInfo(com.lottery.api.dto.DemoInfoVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,250 - Mapped "{[/account/addAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.addAccountInfo(com.lottery.api.dto.PlayAccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,252 - Mapped "{[/account/updateAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.updateAccountInfo(com.lottery.api.dto.UpdateAccountVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,255 - Mapped "{[/account/getRemarkInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RemarkResult com.lottery.api.controller.AccountInfoController.getAllAccountInfo() throws java.lang.Exception
+ 2018-05-01 23:23:29,257 - Mapped "{[/account/lotteryMessage],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.getLotteryMessage(com.lottery.api.dto.NoticeTypeVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,259 - Mapped "{[/account/lotteryHisMessage],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.NoticeResult com.lottery.api.controller.AccountInfoController.getLotteryHisMessage(com.lottery.api.dto.NoticeHisTypeVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,261 - Mapped "{[/account/userRechargeResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userRechargeResult(com.lottery.api.dto.UserRechargeResVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,264 - Mapped "{[/account/userCashCancel],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashCancel(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,275 - Mapped "{[/order/getOrderItem],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameOrderGrListResult com.lottery.api.controller.LotteryOrderController.getOrderItem(com.lottery.api.dto.RoomOrderVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,277 - Mapped "{[/order/getHisOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OrderListResult com.lottery.api.controller.LotteryOrderController.getHisOrder(com.lottery.api.dto.ResultParamVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,279 - Mapped "{[/order/addLotteryOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.LotteryOrderController.addLotteryOrder(com.lottery.api.dto.OrderParamVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,281 - Mapped "{[/order/getOrderAmount],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RoomAmountResult com.lottery.api.controller.LotteryOrderController.getOrderAmount(com.lottery.api.dto.RoomAmountVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,282 - Mapped "{[/order/getCurTermOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameOrderListResult com.lottery.api.controller.LotteryOrderController.getCurTermOrder(com.lottery.api.dto.CurResultParamVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,284 - Mapped "{[/order/getLotteryGameNoid],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryNoidResult com.lottery.api.controller.LotteryOrderController.getLotteryGameNoid(com.lottery.api.dto.RoomOrderVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,286 - Mapped "{[/order/getHisOrderAmount],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OrderAmountResult com.lottery.api.controller.LotteryOrderController.getHisOrderAmount(com.lottery.api.dto.ResultAmountVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,288 - Mapped "{[/order/getOrderAmountDetail],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RoomOrderDetaiResult com.lottery.api.controller.LotteryOrderController.getOrderAmountDetail(com.lottery.api.dto.RoomAmountVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,290 - Mapped "{[/order/getLotteryGameDetail],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryGameDetailResult com.lottery.api.controller.LotteryOrderController.getLotteryGameDetail(com.lottery.api.dto.LotteryGameDetailVO) throws java.lang.Exception
+ 2018-05-01 23:23:29,299 - Mapped "{[/report/getRoomQueryDate],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RoomListResult com.lottery.api.controller.LotteryReportController.getRoomQueryDate(com.lottery.api.dto.RoomParamVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,300 - Mapped "{[/report/getAgencyWinReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AgencyWinReportResult com.lottery.api.controller.LotteryReportController.getAgencyWinReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,302 - Mapped "{[/report/getAccWinReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccWinReportResult com.lottery.api.controller.LotteryReportController.getAccWinReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,304 - Mapped "{[/report/getAccTradeReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.OrderListResult com.lottery.api.controller.LotteryReportController.getAccTradeReport(com.lottery.api.dto.PlayTradeVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,305 - Mapped "{[/report/getPlayerInoutReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InoutAccReportResult com.lottery.api.controller.LotteryReportController.getPlayerInoutReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,307 - Mapped "{[/report/getProInoutReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InoutAccReportResult com.lottery.api.controller.LotteryReportController.getProInoutReport(com.lottery.api.dto.ProWinReVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,316 - Mapped "{[/lottery/getLotteryGame],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameResult com.lottery.api.controller.LotteryRoundController.getLotteryGame() throws java.lang.Exception
+ 2018-05-01 23:23:29,318 - Mapped "{[/lottery/getLotteryGameItem],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameItemResult com.lottery.api.controller.LotteryRoundController.getLotteryGameItem(com.lottery.api.dto.GameVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,319 - Mapped "{[/lottery/getLotteryTermResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameCurResult com.lottery.api.controller.LotteryRoundController.getLotteryTermResult(com.lottery.api.dto.GameCurVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,321 - Mapped "{[/lottery/getLotteryGameRoom],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameRoomResult com.lottery.api.controller.LotteryRoundController.getLotteryGameRoom(com.lottery.api.dto.GameLobbyVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,322 - Mapped "{[/lottery/getLotteryResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.ResultListResult com.lottery.api.controller.LotteryRoundController.getLotteryResult(com.lottery.api.dto.ResultParamVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,324 - Mapped "{[/lottery/getLotteryCurResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotterySidResult com.lottery.api.controller.LotteryRoundController.getLotteryCurResult(com.lottery.api.dto.GameLobbyVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,325 - Mapped "{[/lottery/getLotteryGameResults],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryGameResult com.lottery.api.controller.LotteryRoundController.getLotteryGameResults(com.lottery.api.dto.GameCurVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,329 - Mapped "{[/initService/initData],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InitInfoResult com.lottery.api.controller.LotteryServiceControl.getInitInfo() throws java.lang.Exception
+ 2018-05-01 23:23:29,331 - Mapped "{[/initService/updatePassword],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.LotteryServiceControl.updatePassword(com.lottery.api.dto.PasswordInfoVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,341 - Mapped "{[/offAccount/getAllAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OffAccountListResult com.lottery.api.controller.OffAccountInfoController.getAllAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,343 - Mapped "{[/offAccount/addOffAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.addOffAccountInfo(com.lottery.api.dto.OffAccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,344 - Mapped "{[/offAccount/getAllOffAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OffAccountListResult com.lottery.api.controller.OffAccountInfoController.getAllOffAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,346 - Mapped "{[/offAccount/updateOffAccountPass],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateOffAccountPass(com.lottery.api.dto.UpdatePlayPassVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,363 - Mapped "{[/offAccount/updateAccountPercent],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateAccountPercent(com.lottery.api.dto.UpdateAccountPerVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,376 - Mapped "{[/offAccount/updateAccountState],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateAccountState(com.lottery.api.dto.UpdateAccountStateVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,383 - Mapped "{[/subAccount/addSubAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.addSubAccountInfo(com.lottery.api.dto.SubAccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,385 - Mapped "{[/subAccount/getAllSubAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.SubAccountListResult com.lottery.api.controller.SubAccountInfoController.getAllSubAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,387 - Mapped "{[/subAccount/updateSubAccountPass],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.updateSubAccountPass(com.lottery.api.dto.UpdatePlayPassVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,388 - Mapped "{[/subAccount/updateSubAccountState],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.updateSubAccountState(com.lottery.api.dto.UpdateAccountStateVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,396 - Mapped "{[/trade/getTradeInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.TradeListResult com.lottery.api.controller.TradeInfoController.getTradeInfo(com.lottery.api.dto.TradeInfoVo) throws java.lang.Exception
+ 2018-05-01 23:23:29,435 - Mapped "{[/api-docs/{swaggerGroup}/{apiDeclaration}],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<com.mangofactory.swagger.models.dto.ApiListing> com.mangofactory.swagger.controllers.DefaultSwaggerController.getApiListing(java.lang.String,java.lang.String)
+ 2018-05-01 23:23:29,440 - Mapped "{[/api-docs],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<com.mangofactory.swagger.models.dto.ResourceListing> com.mangofactory.swagger.controllers.DefaultSwaggerController.getResourceListing(java.lang.String)
+ 2018-05-01 23:23:32,231 - Using default implementation for ThreadExecutor
+ 2018-05-01 23:23:32,376 - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2018-05-01 23:23:32,379 - Quartz Scheduler v.2.2.1 created.
+ 2018-05-01 23:23:32,385 - RAMJobStore initialized.
+ 2018-05-01 23:23:32,390 - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2018-05-01 23:23:32,391 - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+ 2018-05-01 23:23:32,392 - Quartz scheduler version: 2.2.1
+ 2018-05-01 23:23:32,401 - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@37505d7
+ 2018-05-01 23:23:32,980 - Initializing ExecutorService 
+ 2018-05-01 23:23:33,044 - Initializing ExecutorService  'scheduler'
+ 2018-05-01 23:23:35,221 - HV000001: Hibernate Validator 5.1.2.Final
+ 2018-05-01 23:23:36,078 - Detected @ExceptionHandler methods in controllerValidationHandler
+ 2018-05-01 23:23:36,680 - Starting beans in phase 2147483647
+ 2018-05-01 23:23:36,681 - Starting Quartz Scheduler now
+ 2018-05-01 23:23:36,682 - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+ 2018-05-01 23:23:36,689 - Context refreshed
+ 2018-05-01 23:23:36,692 - Found custom SwaggerSpringMvcPlugins
+ 2018-05-01 23:23:36,693 - initializing plugin bean customImplementation
+ 2018-05-01 23:23:36,747 - Scanning for api listing references
+ 2018-05-01 23:23:36,772 - Group for method userExit was account
+ 2018-05-01 23:23:36,787 - Request mapping: userExit belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,788 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userExit
+ 2018-05-01 23:23:36,799 - Group for method userRecharge was account
+ 2018-05-01 23:23:36,801 - Request mapping: userRecharge belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,802 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userRecharge
+ 2018-05-01 23:23:36,804 - Group for method userCashApply was account
+ 2018-05-01 23:23:36,806 - Request mapping: userCashApply belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,807 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashApply
+ 2018-05-01 23:23:36,809 - Group for method userCashAudit was account
+ 2018-05-01 23:23:36,811 - Request mapping: userCashAudit belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,811 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashAudit
+ 2018-05-01 23:23:36,815 - Group for method userCashdo was account
+ 2018-05-01 23:23:36,817 - Request mapping: userCashdo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,818 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashdo
+ 2018-05-01 23:23:36,820 - Group for method bankCashList was account
+ 2018-05-01 23:23:36,824 - Request mapping: bankCashList belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,825 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:bankCashList
+ 2018-05-01 23:23:36,827 - Group for method userOutResult was account
+ 2018-05-01 23:23:36,828 - Request mapping: userOutResult belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,829 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userOutResult
+ 2018-05-01 23:23:36,831 - Group for method getAccountInfo was account
+ 2018-05-01 23:23:36,833 - Request mapping: getAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,833 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountInfo
+ 2018-05-01 23:23:36,835 - Group for method getAccountSimpleInfo was account
+ 2018-05-01 23:23:36,837 - Request mapping: getAccountSimpleInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,838 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountSimpleInfo
+ 2018-05-01 23:23:36,840 - Group for method getAccountDemoInfo was account
+ 2018-05-01 23:23:36,843 - Request mapping: getAccountDemoInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,853 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountDemoInfo
+ 2018-05-01 23:23:36,855 - Group for method addAccountInfo was account
+ 2018-05-01 23:23:36,856 - Request mapping: addAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,857 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:addAccountInfo
+ 2018-05-01 23:23:36,859 - Group for method updateAccountInfo was account
+ 2018-05-01 23:23:36,861 - Request mapping: updateAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,861 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:updateAccountInfo
+ 2018-05-01 23:23:36,863 - Group for method getAllAccountInfo was account
+ 2018-05-01 23:23:36,865 - Request mapping: getAllAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,866 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAllAccountInfo
+ 2018-05-01 23:23:36,868 - Group for method getLotteryMessage was account
+ 2018-05-01 23:23:36,870 - Request mapping: getLotteryMessage belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,870 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getLotteryMessage
+ 2018-05-01 23:23:36,872 - Group for method getLotteryHisMessage was account
+ 2018-05-01 23:23:36,874 - Request mapping: getLotteryHisMessage belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,874 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getLotteryHisMessage
+ 2018-05-01 23:23:36,876 - Group for method userRechargeResult was account
+ 2018-05-01 23:23:36,878 - Request mapping: userRechargeResult belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,879 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userRechargeResult
+ 2018-05-01 23:23:36,881 - Group for method userCashCancel was account
+ 2018-05-01 23:23:36,882 - Request mapping: userCashCancel belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-05-01 23:23:36,883 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashCancel
+ 2018-05-01 23:23:36,886 - Group for method getOrderItem was order
+ 2018-05-01 23:23:36,888 - Request mapping: getOrderItem belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:23:36,888 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderItem
+ 2018-05-01 23:23:36,890 - Group for method getHisOrder was order
+ 2018-05-01 23:23:36,892 - Request mapping: getHisOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:23:36,893 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getHisOrder
+ 2018-05-01 23:23:36,895 - Group for method addLotteryOrder was order
+ 2018-05-01 23:23:36,897 - Request mapping: addLotteryOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:23:36,897 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:addLotteryOrder
+ 2018-05-01 23:23:36,900 - Group for method getOrderAmount was order
+ 2018-05-01 23:23:36,902 - Request mapping: getOrderAmount belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:23:36,903 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderAmount
+ 2018-05-01 23:23:36,905 - Group for method getCurTermOrder was order
+ 2018-05-01 23:23:36,910 - Request mapping: getCurTermOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:23:36,912 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getCurTermOrder
+ 2018-05-01 23:23:36,913 - Group for method getLotteryGameNoid was order
+ 2018-05-01 23:23:36,918 - Request mapping: getLotteryGameNoid belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:23:36,918 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getLotteryGameNoid
+ 2018-05-01 23:23:36,920 - Group for method getHisOrderAmount was order
+ 2018-05-01 23:23:36,922 - Request mapping: getHisOrderAmount belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:23:36,923 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getHisOrderAmount
+ 2018-05-01 23:23:36,925 - Group for method getOrderAmountDetail was order
+ 2018-05-01 23:23:36,926 - Request mapping: getOrderAmountDetail belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:23:36,927 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderAmountDetail
+ 2018-05-01 23:23:36,932 - Group for method getLotteryGameDetail was order
+ 2018-05-01 23:23:36,936 - Request mapping: getLotteryGameDetail belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-05-01 23:23:36,936 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getLotteryGameDetail
+ 2018-05-01 23:23:36,938 - Group for method getRoomQueryDate was report
+ 2018-05-01 23:23:36,941 - Request mapping: getRoomQueryDate belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:23:36,942 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getRoomQueryDate
+ 2018-05-01 23:23:36,943 - Group for method getAgencyWinReport was report
+ 2018-05-01 23:23:36,945 - Request mapping: getAgencyWinReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:23:36,946 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAgencyWinReport
+ 2018-05-01 23:23:36,949 - Group for method getAccWinReport was report
+ 2018-05-01 23:23:36,951 - Request mapping: getAccWinReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:23:36,952 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAccWinReport
+ 2018-05-01 23:23:36,953 - Group for method getAccTradeReport was report
+ 2018-05-01 23:23:36,955 - Request mapping: getAccTradeReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:23:36,956 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAccTradeReport
+ 2018-05-01 23:23:36,957 - Group for method getPlayerInoutReport was report
+ 2018-05-01 23:23:36,967 - Request mapping: getPlayerInoutReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:23:36,968 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getPlayerInoutReport
+ 2018-05-01 23:23:36,970 - Group for method getProInoutReport was report
+ 2018-05-01 23:23:36,972 - Request mapping: getProInoutReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-05-01 23:23:36,972 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getProInoutReport
+ 2018-05-01 23:23:36,974 - Group for method getLotteryGame was lottery
+ 2018-05-01 23:23:36,975 - Request mapping: getLotteryGame belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:23:36,988 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGame
+ 2018-05-01 23:23:36,990 - Group for method getLotteryGameItem was lottery
+ 2018-05-01 23:23:36,991 - Request mapping: getLotteryGameItem belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:23:36,995 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameItem
+ 2018-05-01 23:23:36,997 - Group for method getLotteryTermResult was lottery
+ 2018-05-01 23:23:36,999 - Request mapping: getLotteryTermResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:23:36,999 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryTermResult
+ 2018-05-01 23:23:37,001 - Group for method getLotteryGameRoom was lottery
+ 2018-05-01 23:23:37,002 - Request mapping: getLotteryGameRoom belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:23:37,003 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameRoom
+ 2018-05-01 23:23:37,005 - Group for method getLotteryResult was lottery
+ 2018-05-01 23:23:37,006 - Request mapping: getLotteryResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:23:37,007 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryResult
+ 2018-05-01 23:23:37,008 - Group for method getLotteryCurResult was lottery
+ 2018-05-01 23:23:37,010 - Request mapping: getLotteryCurResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:23:37,012 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryCurResult
+ 2018-05-01 23:23:37,014 - Group for method getLotteryGameResults was lottery
+ 2018-05-01 23:23:37,015 - Request mapping: getLotteryGameResults belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-05-01 23:23:37,016 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameResults
+ 2018-05-01 23:23:37,018 - Group for method getInitInfo was initservice
+ 2018-05-01 23:23:37,020 - Request mapping: getInitInfo belongs to groups: [[ResourceGroup{groupName='initservice', position=0}]] 
+ 2018-05-01 23:23:37,020 - Adding resource to group:ResourceGroup{groupName='initservice', position=0} with description:初始化信息接口 for handler method:getInitInfo
+ 2018-05-01 23:23:37,022 - Group for method updatePassword was initservice
+ 2018-05-01 23:23:37,024 - Request mapping: updatePassword belongs to groups: [[ResourceGroup{groupName='initservice', position=0}]] 
+ 2018-05-01 23:23:37,025 - Adding resource to group:ResourceGroup{groupName='initservice', position=0} with description:初始化信息接口 for handler method:updatePassword
+ 2018-05-01 23:23:37,027 - Group for method getAllAccountInfo was offaccount
+ 2018-05-01 23:23:37,029 - Request mapping: getAllAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:23:37,030 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:getAllAccountInfo
+ 2018-05-01 23:23:37,032 - Group for method addOffAccountInfo was offaccount
+ 2018-05-01 23:23:37,034 - Request mapping: addOffAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:23:37,035 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:addOffAccountInfo
+ 2018-05-01 23:23:37,037 - Group for method getAllOffAccountInfo was offaccount
+ 2018-05-01 23:23:37,039 - Request mapping: getAllOffAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:23:37,039 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:getAllOffAccountInfo
+ 2018-05-01 23:23:37,042 - Group for method updateOffAccountPass was offaccount
+ 2018-05-01 23:23:37,044 - Request mapping: updateOffAccountPass belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:23:37,045 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateOffAccountPass
+ 2018-05-01 23:23:37,046 - Group for method updateAccountPercent was offaccount
+ 2018-05-01 23:23:37,048 - Request mapping: updateAccountPercent belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:23:37,048 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateAccountPercent
+ 2018-05-01 23:23:37,050 - Group for method updateAccountState was offaccount
+ 2018-05-01 23:23:37,051 - Request mapping: updateAccountState belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-05-01 23:23:37,052 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateAccountState
+ 2018-05-01 23:23:37,053 - Group for method addSubAccountInfo was subaccount
+ 2018-05-01 23:23:37,054 - Request mapping: addSubAccountInfo belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 23:23:37,055 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:addSubAccountInfo
+ 2018-05-01 23:23:37,056 - Group for method getAllSubAccountInfo was subaccount
+ 2018-05-01 23:23:37,058 - Request mapping: getAllSubAccountInfo belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 23:23:37,058 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:getAllSubAccountInfo
+ 2018-05-01 23:23:37,060 - Group for method updateSubAccountPass was subaccount
+ 2018-05-01 23:23:37,061 - Request mapping: updateSubAccountPass belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 23:23:37,062 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:updateSubAccountPass
+ 2018-05-01 23:23:37,063 - Group for method updateSubAccountState was subaccount
+ 2018-05-01 23:23:37,065 - Request mapping: updateSubAccountState belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-05-01 23:23:37,066 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:updateSubAccountState
+ 2018-05-01 23:23:37,068 - Group for method getTradeInfo was trade
+ 2018-05-01 23:23:37,069 - Request mapping: getTradeInfo belongs to groups: [[ResourceGroup{groupName='trade', position=0}]] 
+ 2018-05-01 23:23:37,070 - Adding resource to group:ResourceGroup{groupName='trade', position=0} with description:鍑哄叆閲戞椤规帴鍙? for handler method:getTradeInfo
+ 2018-05-01 23:23:37,071 - Excluding method as it contains the excluded annotation: interface com.mangofactory.swagger.annotations.ApiIgnore
+ 2018-05-01 23:23:37,072 - Excluding method as it contains the excluded annotation: interface com.mangofactory.swagger.annotations.ApiIgnore
+ 2018-05-01 23:23:37,133 - Created resource listing Path: /user/order Description: order Position: 0
+ 2018-05-01 23:23:37,135 - Created resource listing Path: /user/subaccount Description: subaccount Position: 0
+ 2018-05-01 23:23:37,136 - Created resource listing Path: /user/initservice Description: initservice Position: 0
+ 2018-05-01 23:23:37,137 - Created resource listing Path: /user/report Description: report Position: 0
+ 2018-05-01 23:23:37,138 - Created resource listing Path: /user/offaccount Description: offaccount Position: 0
+ 2018-05-01 23:23:37,139 - Created resource listing Path: /user/trade Description: trade Position: 0
+ 2018-05-01 23:23:37,141 - Created resource listing Path: /user/account Description: account Position: 0
+ 2018-05-01 23:23:37,142 - Created resource listing Path: /user/lottery Description: lottery Position: 0
+ 2018-05-01 23:23:42,102 - 读取API接口：Tue May 01 23:23:42 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-01 23:23:42,793 - 读取API接口：Tue May 01 23:23:42 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-01 23:23:43,622 - Added a resource listing with (8) api resources: 
+ 2018-05-01 23:23:43,623 -   玩家帐号信息接口 at location: /api-docs/user/account
+ 2018-05-01 23:23:43,624 -   初始化信息接口 at location: /api-docs/user/initservice
+ 2018-05-01 23:23:43,625 -   游戏信息接口 at location: /api-docs/user/lottery
+ 2018-05-01 23:23:43,625 -   代理帐号信息接口 at location: /api-docs/user/offaccount
+ 2018-05-01 23:23:43,627 -   投注信息接口 at location: /api-docs/user/order
+ 2018-05-01 23:23:43,628 -   报表信息接口 at location: /api-docs/user/report
+ 2018-05-01 23:23:43,628 -   代理的子帐号信息接口 at location: /api-docs/user/subaccount
+ 2018-05-01 23:23:43,629 -   鍑哄叆閲戞椤规帴鍙? at location: /api-docs/user/trade
+ 2018-05-01 23:23:43,642 - Root WebApplicationContext: initialization completed in 38228 ms
+ 2018-05-01 23:23:43,716 - FrameworkServlet 'niuniu': initialization started
+ 2018-05-01 23:23:43,729 - Refreshing WebApplicationContext for namespace 'niuniu-servlet': startup date [Tue May 01 23:23:43 CST 2018]; parent: Root WebApplicationContext
+ 2018-05-01 23:23:43,734 - Loading XML bean definitions from class path resource [spring-mvc.xml]
+ 2018-05-01 23:23:44,472 - Mapped URL path [/*.html] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+ 2018-05-01 23:23:44,491 - Mapped URL path [/*.json] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+ 2018-05-01 23:23:44,528 - Mapped URL path [/swagger/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+ 2018-05-01 23:23:44,572 - Skipping SwaggerSpringMvcPlugin initialization already initialized!
+ 2018-05-01 23:23:44,574 - FrameworkServlet 'niuniu': initialization completed in 858 ms
+ 2018-05-01 23:30:32,945 - 读取API接口：Tue May 01 23:30:32 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 

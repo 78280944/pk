@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.orm.dao.LotteryItemMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.LotteryItem">
+    <id column="ITEMID" jdbcType="INTEGER" property="itemid" />
+    <result column="LOTTERYTYPE" jdbcType="VARCHAR" property="lotterytype" />
+    <result column="ITEMNO" jdbcType="VARCHAR" property="itemno" />
+    <result column="WINITEM" jdbcType="VARCHAR" property="winitem" />
+    <result column="DRAWITEM" jdbcType="VARCHAR" property="drawitem" />
+    <result column="ITEMTYPE" jdbcType="VARCHAR" property="itemtype" />
+    <result column="ITEMGROUP" jdbcType="VARCHAR" property="itemgroup" />
+    <result column="ITEMSCALE" jdbcType="DOUBLE" property="itemscale" />
+    <result column="ItemNameCN" jdbcType="VARCHAR" property="itemnamecn" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ITEMID, LOTTERYTYPE, ITEMNO, WINITEM, DRAWITEM, ITEMTYPE, ITEMGROUP, ITEMSCALE, ItemNameCN
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lottery_item
+    where ITEMID = #{itemid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lottery_item
+    where ITEMID = #{itemid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.LotteryItem">
+    <selectKey keyProperty="itemid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_item (LOTTERYTYPE, ITEMNO, WINITEM, 
+      DRAWITEM, ITEMTYPE, ITEMGROUP, 
+      ITEMSCALE, ItemNameCN)
+    values (#{lotterytype,jdbcType=VARCHAR}, #{itemno,jdbcType=VARCHAR}, #{winitem,jdbcType=VARCHAR}, 
+      #{drawitem,jdbcType=VARCHAR}, #{itemtype,jdbcType=VARCHAR}, #{itemgroup,jdbcType=VARCHAR}, 
+      #{itemscale,jdbcType=DOUBLE}, #{itemnamecn,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.LotteryItem">
+    <selectKey keyProperty="itemid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lotterytype != null">
+        LOTTERYTYPE,
+      </if>
+      <if test="itemno != null">
+        ITEMNO,
+      </if>
+      <if test="winitem != null">
+        WINITEM,
+      </if>
+      <if test="drawitem != null">
+        DRAWITEM,
+      </if>
+      <if test="itemtype != null">
+        ITEMTYPE,
+      </if>
+      <if test="itemgroup != null">
+        ITEMGROUP,
+      </if>
+      <if test="itemscale != null">
+        ITEMSCALE,
+      </if>
+      <if test="itemnamecn != null">
+        ItemNameCN,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lotterytype != null">
+        #{lotterytype,jdbcType=VARCHAR},
+      </if>
+      <if test="itemno != null">
+        #{itemno,jdbcType=VARCHAR},
+      </if>
+      <if test="winitem != null">
+        #{winitem,jdbcType=VARCHAR},
+      </if>
+      <if test="drawitem != null">
+        #{drawitem,jdbcType=VARCHAR},
+      </if>
+      <if test="itemtype != null">
+        #{itemtype,jdbcType=VARCHAR},
+      </if>
+      <if test="itemgroup != null">
+        #{itemgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="itemscale != null">
+        #{itemscale,jdbcType=DOUBLE},
+      </if>
+      <if test="itemnamecn != null">
+        #{itemnamecn,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.LotteryItem">
+    update lottery_item
+    <set>
+      <if test="lotterytype != null">
+        LOTTERYTYPE = #{lotterytype,jdbcType=VARCHAR},
+      </if>
+      <if test="itemno != null">
+        ITEMNO = #{itemno,jdbcType=VARCHAR},
+      </if>
+      <if test="winitem != null">
+        WINITEM = #{winitem,jdbcType=VARCHAR},
+      </if>
+      <if test="drawitem != null">
+        DRAWITEM = #{drawitem,jdbcType=VARCHAR},
+      </if>
+      <if test="itemtype != null">
+        ITEMTYPE = #{itemtype,jdbcType=VARCHAR},
+      </if>
+      <if test="itemgroup != null">
+        ITEMGROUP = #{itemgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="itemscale != null">
+        ITEMSCALE = #{itemscale,jdbcType=DOUBLE},
+      </if>
+      <if test="itemnamecn != null">
+        ItemNameCN = #{itemnamecn,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ITEMID = #{itemid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryItem">
+    update lottery_item
+    set LOTTERYTYPE = #{lotterytype,jdbcType=VARCHAR},
+      ITEMNO = #{itemno,jdbcType=VARCHAR},
+      WINITEM = #{winitem,jdbcType=VARCHAR},
+      DRAWITEM = #{drawitem,jdbcType=VARCHAR},
+      ITEMTYPE = #{itemtype,jdbcType=VARCHAR},
+      ITEMGROUP = #{itemgroup,jdbcType=VARCHAR},
+      ITEMSCALE = #{itemscale,jdbcType=DOUBLE},
+      ItemNameCN = #{itemnamecn,jdbcType=VARCHAR}
+    where ITEMID = #{itemid,jdbcType=INTEGER}
+  </update>
+</mapper>

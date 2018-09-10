@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.BankCashMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.BankCash" >
+    <id column="bcid" property="bcid" jdbcType="INTEGER" />
+    <result column="bankid" property="bankid" jdbcType="VARCHAR" />
+    <result column="bankname" property="bankname" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    bcid, bankid, bankname
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bank_cash
+    where bcid = #{bcid,jdbcType=INTEGER}
+  </select>
+  <select id="selectBankCash" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from bank_cash where length(bcid)=5
+ 
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bank_cash
+    where bcid = #{bcid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.BankCash" >
+    <selectKey resultType="java.lang.Integer" keyProperty="bcid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into bank_cash (bankid, bankname)
+    values (#{bankid,jdbcType=VARCHAR}, #{bankname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.BankCash" >
+    <selectKey resultType="java.lang.Integer" keyProperty="bcid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into bank_cash
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bankid != null" >
+        bankid,
+      </if>
+      <if test="bankname != null" >
+        bankname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bankid != null" >
+        #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        #{bankname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.BankCash" >
+    update bank_cash
+    <set >
+      <if test="bankid != null" >
+        bankid = #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        bankname = #{bankname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where bcid = #{bcid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.BankCash" >
+    update bank_cash
+    set bankid = #{bankid,jdbcType=VARCHAR},
+      bankname = #{bankname,jdbcType=VARCHAR}
+    where bcid = #{bcid,jdbcType=INTEGER}
+  </update>
+</mapper>

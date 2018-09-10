@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.SysRoomMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.SysRoom" >
+    <id column="SRID" property="srid" jdbcType="INTEGER" />
+    <result column="GAMETYPE" property="gametype" jdbcType="VARCHAR" />
+    <result column="GAMENAME" property="gamename" jdbcType="VARCHAR" />
+    <result column="ROOM" property="room" jdbcType="INTEGER" />
+    <result column="COUNT" property="count" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SRID, GAMETYPE, GAMENAME, ROOM, COUNT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_room
+    where SRID = #{srid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByRoom" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_room
+    where SRID = 1001 or SRID = 1002
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_room
+    where SRID = #{srid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.SysRoom" >
+    <selectKey resultType="java.lang.Integer" keyProperty="srid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_room (GAMETYPE, GAMENAME, ROOM, 
+      COUNT)
+    values (#{gametype,jdbcType=VARCHAR}, #{gamename,jdbcType=VARCHAR}, #{room,jdbcType=INTEGER}, 
+      #{count,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.SysRoom" >
+    <selectKey resultType="java.lang.Integer" keyProperty="srid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_room
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gametype != null" >
+        GAMETYPE,
+      </if>
+      <if test="gamename != null" >
+        GAMENAME,
+      </if>
+      <if test="room != null" >
+        ROOM,
+      </if>
+      <if test="count != null" >
+        COUNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gametype != null" >
+        #{gametype,jdbcType=VARCHAR},
+      </if>
+      <if test="gamename != null" >
+        #{gamename,jdbcType=VARCHAR},
+      </if>
+      <if test="room != null" >
+        #{room,jdbcType=INTEGER},
+      </if>
+      <if test="count != null" >
+        #{count,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.SysRoom" >
+    update sys_room
+    <set >
+      <if test="gametype != null" >
+        GAMETYPE = #{gametype,jdbcType=VARCHAR},
+      </if>
+      <if test="gamename != null" >
+        GAMENAME = #{gamename,jdbcType=VARCHAR},
+      </if>
+      <if test="room != null" >
+        ROOM = #{room,jdbcType=INTEGER},
+      </if>
+      <if test="count != null" >
+        COUNT = #{count,jdbcType=INTEGER},
+      </if>
+    </set>
+    where SRID = #{srid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.SysRoom" >
+    update sys_room
+    set GAMETYPE = #{gametype,jdbcType=VARCHAR},
+      GAMENAME = #{gamename,jdbcType=VARCHAR},
+      ROOM = #{room,jdbcType=INTEGER},
+      COUNT = #{count,jdbcType=INTEGER}
+    where SRID = #{srid,jdbcType=INTEGER}
+  </update>
+</mapper>

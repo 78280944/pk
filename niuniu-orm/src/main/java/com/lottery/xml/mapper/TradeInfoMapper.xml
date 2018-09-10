@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.orm.dao.TradeInfoMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.TradeInfo">
+    <id column="TRADEID" jdbcType="INTEGER" property="tradeid" />
+    <result column="ACCOUNTID" jdbcType="INTEGER" property="accountid" />
+    <result column="TRADETYPE" jdbcType="VARCHAR" property="tradetype" />
+    <result column="RELATIVEID" jdbcType="INTEGER" property="relativeid" />
+    <result column="RELATIVETYPE" jdbcType="VARCHAR" property="relativetype" />
+    <result column="TRADEAMOUNT" jdbcType="DOUBLE" property="tradeamount" />
+    <result column="BUDGETAMOUNT" jdbcType="DOUBLE" property="budgetamount" />
+    <result column="ACCOUNTAMOUNT" jdbcType="DECIMAL" property="accountamount" />
+    <result column="INPUTTIME" jdbcType="TIMESTAMP" property="inputtime" />
+    <result column="REMARK" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    TRADEID, ACCOUNTID, TRADETYPE, RELATIVEID, RELATIVETYPE, TRADEAMOUNT, BUDGETAMOUNT, 
+    ACCOUNTAMOUNT, INPUTTIME, REMARK
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from trade_info
+    where TRADEID = #{tradeid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from trade_info
+    where TRADEID = #{tradeid,jdbcType=INTEGER}
+  </delete>
+  
+   <delete id="deleteByPlayer" parameterType="java.lang.Integer">
+    delete from trade_info
+    where ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </delete> 
+  
+  <insert id="insert" parameterType="com.lottery.orm.bo.TradeInfo">
+    <selectKey keyProperty="tradeid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into trade_info (ACCOUNTID, TRADETYPE, RELATIVEID, 
+      RELATIVETYPE, TRADEAMOUNT, BUDGETAMOUNT, 
+      ACCOUNTAMOUNT, INPUTTIME, REMARK
+      )
+    values (#{accountid,jdbcType=INTEGER}, #{tradetype,jdbcType=VARCHAR}, #{relativeid,jdbcType=INTEGER}, 
+      #{relativetype,jdbcType=VARCHAR}, #{tradeamount,jdbcType=DOUBLE}, #{budgetamount,jdbcType=DOUBLE}, 
+      #{accountamount,jdbcType=DECIMAL}, #{inputtime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.TradeInfo">
+    <selectKey keyProperty="tradeid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into trade_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="accountid != null">
+        ACCOUNTID,
+      </if>
+      <if test="tradetype != null">
+        TRADETYPE,
+      </if>
+      <if test="relativeid != null">
+        RELATIVEID,
+      </if>
+      <if test="relativetype != null">
+        RELATIVETYPE,
+      </if>
+      <if test="tradeamount != null">
+        TRADEAMOUNT,
+      </if>
+      <if test="budgetamount != null">
+        BUDGETAMOUNT,
+      </if>
+      <if test="accountamount != null">
+        ACCOUNTAMOUNT,
+      </if>
+      <if test="inputtime != null">
+        INPUTTIME,
+      </if>
+      <if test="remark != null">
+        REMARK,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="accountid != null">
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="tradetype != null">
+        #{tradetype,jdbcType=VARCHAR},
+      </if>
+      <if test="relativeid != null">
+        #{relativeid,jdbcType=INTEGER},
+      </if>
+      <if test="relativetype != null">
+        #{relativetype,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeamount != null">
+        #{tradeamount,jdbcType=DOUBLE},
+      </if>
+      <if test="budgetamount != null">
+        #{budgetamount,jdbcType=DOUBLE},
+      </if>
+      <if test="accountamount != null">
+        #{accountamount,jdbcType=DECIMAL},
+      </if>
+      <if test="inputtime != null">
+        #{inputtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.TradeInfo">
+    update trade_info
+    <set>
+      <if test="accountid != null">
+        ACCOUNTID = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="tradetype != null">
+        TRADETYPE = #{tradetype,jdbcType=VARCHAR},
+      </if>
+      <if test="relativeid != null">
+        RELATIVEID = #{relativeid,jdbcType=INTEGER},
+      </if>
+      <if test="relativetype != null">
+        RELATIVETYPE = #{relativetype,jdbcType=VARCHAR},
+      </if>
+      <if test="tradeamount != null">
+        TRADEAMOUNT = #{tradeamount,jdbcType=DOUBLE},
+      </if>
+      <if test="budgetamount != null">
+        BUDGETAMOUNT = #{budgetamount,jdbcType=DOUBLE},
+      </if>
+      <if test="accountamount != null">
+        ACCOUNTAMOUNT = #{accountamount,jdbcType=DECIMAL},
+      </if>
+      <if test="inputtime != null">
+        INPUTTIME = #{inputtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where TRADEID = #{tradeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.TradeInfo">
+    update trade_info
+    set ACCOUNTID = #{accountid,jdbcType=INTEGER},
+      TRADETYPE = #{tradetype,jdbcType=VARCHAR},
+      RELATIVEID = #{relativeid,jdbcType=INTEGER},
+      RELATIVETYPE = #{relativetype,jdbcType=VARCHAR},
+      TRADEAMOUNT = #{tradeamount,jdbcType=DOUBLE},
+      BUDGETAMOUNT = #{budgetamount,jdbcType=DOUBLE},
+      ACCOUNTAMOUNT = #{accountamount,jdbcType=DECIMAL},
+      INPUTTIME = #{inputtime,jdbcType=TIMESTAMP},
+      REMARK = #{remark,jdbcType=VARCHAR}
+    where TRADEID = #{tradeid,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectByTrade" resultMap="BaseResultMap">  
+    select 
+    <include refid="Base_Column_List" />
+    from trade_info 
+    where relativetype = #{relativetype,jdbcType=VARCHAR} and (inputtime between #{starttime,jdbcType=TIMESTAMP} and #{overtime,jdbcType=TIMESTAMP})
+    order by inputtime desc 
+	<if test="beginrow != null and pageSize !=null">
+	limit #{beginrow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+  
+</mapper>

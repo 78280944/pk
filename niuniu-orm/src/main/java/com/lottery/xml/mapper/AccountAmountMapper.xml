@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.orm.dao.AccountAmountMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.AccountAmount">
+    <id column="AAID" jdbcType="INTEGER" property="aaid" />
+    <id column="ACCOUNTID" jdbcType="INTEGER" property="accountid" />
+    <id column="LOTTERYTERM" jdbcType="VARCHAR" property="lotteryterm" />
+    <id column="SID" jdbcType="INTEGER" property="sid" />
+    <result column="LOSS" jdbcType="DECIMAL" property="loss" />
+    <result column="EARNS" jdbcType="DECIMAL" property="earns" />
+    <result column="GAINS" jdbcType="DECIMAL" property="gains" />
+    <result column="CFEE" jdbcType="DECIMAL" property="cfee" />
+    <result column="PROFITS" jdbcType="DECIMAL" property="profits" />
+    <result column="starttime" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="overtime" jdbcType="TIMESTAMP" property="overtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    AAID, ACCOUNTID, LOTTERYTERM, SID, LOSS, EARNS, GAINS, CFEE, PROFITS, starttime, 
+    overtime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.lottery.orm.bo.AccountAmountKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from account_amount
+    where AAID = #{aaid,jdbcType=INTEGER}
+      and ACCOUNTID = #{accountid,jdbcType=INTEGER}
+      and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+      and SID = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPlayer" parameterType="java.lang.Integer">
+    delete from account_amount
+    where ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByPrimaryKey" parameterType="com.lottery.orm.bo.AccountAmountKey">
+    delete from account_amount
+    where AAID = #{aaid,jdbcType=INTEGER}
+      and ACCOUNTID = #{accountid,jdbcType=INTEGER}
+      and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+      and SID = #{sid,jdbcType=INTEGER}
+  </delete> 
+  
+  <insert id="insert" parameterType="com.lottery.orm.bo.AccountAmount">
+    <selectKey keyProperty="aaid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into account_amount (ACCOUNTID, LOTTERYTERM, SID, 
+      LOSS, EARNS, GAINS, 
+      CFEE, PROFITS, starttime, 
+      overtime)
+    values (#{accountid,jdbcType=INTEGER}, #{lotteryterm,jdbcType=VARCHAR}, #{sid,jdbcType=INTEGER}, 
+      #{loss,jdbcType=DECIMAL}, #{earns,jdbcType=DECIMAL}, #{gains,jdbcType=DECIMAL}, 
+      #{cfee,jdbcType=DECIMAL}, #{profits,jdbcType=DECIMAL}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{overtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.AccountAmount">
+    <selectKey keyProperty="aaid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into account_amount
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="accountid != null">
+        ACCOUNTID,
+      </if>
+      <if test="lotteryterm != null">
+        LOTTERYTERM,
+      </if>
+      <if test="sid != null">
+        SID,
+      </if>
+      <if test="loss != null">
+        LOSS,
+      </if>
+      <if test="earns != null">
+        EARNS,
+      </if>
+      <if test="gains != null">
+        GAINS,
+      </if>
+      <if test="cfee != null">
+        CFEE,
+      </if>
+      <if test="profits != null">
+        PROFITS,
+      </if>
+      <if test="starttime != null">
+        starttime,
+      </if>
+      <if test="overtime != null">
+        overtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="accountid != null">
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="lotteryterm != null">
+        #{lotteryterm,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="loss != null">
+        #{loss,jdbcType=DECIMAL},
+      </if>
+      <if test="earns != null">
+        #{earns,jdbcType=DECIMAL},
+      </if>
+      <if test="gains != null">
+        #{gains,jdbcType=DECIMAL},
+      </if>
+      <if test="cfee != null">
+        #{cfee,jdbcType=DECIMAL},
+      </if>
+      <if test="profits != null">
+        #{profits,jdbcType=DECIMAL},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overtime != null">
+        #{overtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.AccountAmount">
+    update account_amount
+    <set>
+      <if test="loss != null">
+        LOSS = #{loss,jdbcType=DECIMAL},
+      </if>
+      <if test="earns != null">
+        EARNS = #{earns,jdbcType=DECIMAL},
+      </if>
+      <if test="gains != null">
+        GAINS = #{gains,jdbcType=DECIMAL},
+      </if>
+      <if test="cfee != null">
+        CFEE = #{cfee,jdbcType=DECIMAL},
+      </if>
+      <if test="profits != null">
+        PROFITS = #{profits,jdbcType=DECIMAL},
+      </if>
+      <if test="starttime != null">
+        starttime = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overtime != null">
+        overtime = #{overtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where AAID = #{aaid,jdbcType=INTEGER}
+      and ACCOUNTID = #{accountid,jdbcType=INTEGER}
+      and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+      and SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.AccountAmount">
+    update account_amount
+    set LOSS = #{loss,jdbcType=DECIMAL},
+      EARNS = #{earns,jdbcType=DECIMAL},
+      GAINS = #{gains,jdbcType=DECIMAL},
+      CFEE = #{cfee,jdbcType=DECIMAL},
+      PROFITS = #{profits,jdbcType=DECIMAL},
+      starttime = #{starttime,jdbcType=TIMESTAMP},
+      overtime = #{overtime,jdbcType=TIMESTAMP}
+    where AAID = #{aaid,jdbcType=INTEGER}
+      and ACCOUNTID = #{accountid,jdbcType=INTEGER}
+      and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+      and SID = #{sid,jdbcType=INTEGER}
+  </update>
+  
+  <resultMap id="ProAccAmountMap" type="com.lottery.orm.dto.ProAccAmountDto">
+    <id column="AAID" jdbcType="INTEGER" property="aaid" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="SUPUSERNAME" jdbcType="VARCHAR" property="supusername" />
+    <result column="PERCENTAGE" jdbcType="DOUBLE" property="percentage" />
+    <result column="LOSS" jdbcType="DECIMAL" property="loss" />
+    <result column="EARNS" jdbcType="DECIMAL" property="earns" />
+    <result column="GAINS" jdbcType="DECIMAL" property="gains" />
+    <result column="CFEE" jdbcType="DECIMAL" property="cfee" />
+    <result column="PROFITS" jdbcType="DECIMAL" property="profits" />
+  </resultMap>
+  
+  <resultMap id="AccAmountMap" type="com.lottery.orm.dto.AccAmountDto">
+    <id column="AAID" jdbcType="INTEGER" property="aaid" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="SUPUSERNAME" jdbcType="VARCHAR" property="supusername" />
+    <result column="LOSS" jdbcType="DECIMAL" property="loss" />
+    <result column="EARNS" jdbcType="DECIMAL" property="earns" />
+    <result column="GAINS" jdbcType="DECIMAL" property="gains" />
+  </resultMap>
+   
+   <select id="selectProWinReport" resultMap="ProAccAmountMap">
+    SELECT 
+    b.aaid,a.username,getSupUserName(a.supuserid) AS supusername,a.percentage,SUM(b.loss) AS loss,SUM(b.earns) AS earns,
+    SUM(b.gains) AS gains,SUM(b.cfee) AS cfee,SUM(b.profits) AS profits 
+    FROM account_info a,account_amount b 
+    WHERE
+	a.accountid=b.accountid and a.level = #{level,jdbcType=VARCHAR} and a.offtype = #{offtype,jdbcType=VARCHAR}
+	AND 
+	(b.starttime BETWEEN #{startTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP}) 
+	AND
+    (FIND_IN_SET(a.accountid, 
+	   (SELECT GROUP_CONCAT(LEVEL SEPARATOR ',') FROM (
+	      SELECT @Ids := (SELECT GROUP_CONCAT(c.accountid SEPARATOR ',') FROM account_info c WHERE FIND_IN_SET(supuserid, @Ids) ) LEVEL
+	      FROM account_info d
+	      JOIN (SELECT @Ids := #{accountid,jdbcType=INTEGER}) temp1
+	      WHERE FIND_IN_SET(d.supuserid, @Ids)
+	   ) temp2 )) OR a.accountid = #{accountid,jdbcType=INTEGER}) 
+	   group by a.accountid order by a.accountid desc
+     <if test="beginRow != null and pageSize !=null">
+	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+   
+  <select id="selectProWinReportBytime" resultMap="ProAccAmountMap">
+    SELECT 
+    b.aaid,a.username,getSupUserName(a.supuserid) AS supusername,b.loss,b.earns,b.gains 
+    FROM account_info a,account_amount b 
+    WHERE
+	a.accountid=b.accountid and a.level = #{level,jdbcType=VARCHAR} and a.offtype = '1'
+	AND 
+	b.lotteryterm  = getLotteryTerm(#{time,jdbcType=VARCHAR}) 
+	AND
+    FIND_IN_SET(a.accountid, 
+	   (SELECT GROUP_CONCAT(LEVEL SEPARATOR ',') FROM (
+	      SELECT @Ids := (SELECT GROUP_CONCAT(c.accountid SEPARATOR ',') FROM account_info c WHERE FIND_IN_SET(supuserid, @Ids) ) LEVEL
+	      FROM account_info d
+	      JOIN (SELECT @Ids := #{accountid,jdbcType=INTEGER}) temp1
+	      WHERE FIND_IN_SET(d.supuserid, @Ids)
+	   ) temp2 )) order by a.accountid desc
+     <if test="beginRow != null and pageSize !=null">
+	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+  
+   <select id="selectAccWinReport" resultMap="AccAmountMap">
+    SELECT 
+    b.aaid,a.username,getSupUserName(a.supuserid) AS supusername,sum(b.loss) as loss,sum(b.earns) as earns, sum(b.gains) as gains 
+    FROM account_info a,account_amount b 
+    WHERE
+	a.accountid=b.accountid and a.level = '9' and offtype = '3'
+	AND 
+	(b.starttime BETWEEN #{startTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP}) 
+	AND a.supuserid IN(select accountid FROM account_info n WHERE  (n.accountid = #{accountid,jdbcType=INTEGER}  and n.level = #{level,jdbcType=VARCHAR}) 
+	OR (n.offtype = #{offtype,jdbcType=VARCHAR} and n.level =  #{level,jdbcType=VARCHAR}
+	AND FIND_IN_SET(n.accountid, 
+	   (SELECT GROUP_CONCAT(LEVEL SEPARATOR ',') FROM (
+	      SELECT @Ids := (SELECT GROUP_CONCAT(c.accountid SEPARATOR ',') FROM account_info c WHERE FIND_IN_SET(supuserid, @Ids) ) LEVEL
+	      FROM account_info d
+	      JOIN (SELECT @Ids := #{accountid,jdbcType=INTEGER}) temp1
+	      WHERE FIND_IN_SET(d.supuserid, @Ids)
+	   ) temp2 )))) group by a.accountid order by a.accountid desc
+     <if test="beginRow != null and pageSize !=null">
+	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+   
+  <select id="selectAccWinReportBytime" resultMap="AccAmountMap">
+    SELECT 
+    b.aaid,a.username,getSupUserName(a.supuserid) AS supusername,b.loss,b.earns,b.gains 
+    FROM account_info a,account_amount b 
+    WHERE
+	a.accountid=b.accountid and a.level = '9' and offtype = '3'
+	AND 
+	b.lotteryterm  = getLotteryTerm(#{time,jdbcType=VARCHAR}) 
+	AND
+    FIND_IN_SET(a.accountid, 
+	   (SELECT GROUP_CONCAT(LEVEL SEPARATOR ',') FROM (
+	      SELECT @Ids := (SELECT GROUP_CONCAT(c.accountid SEPARATOR ',') FROM account_info c WHERE FIND_IN_SET(supuserid, @Ids) ) LEVEL
+	      FROM account_info d
+	      JOIN (SELECT @Ids := #{accountid,jdbcType=INTEGER}) temp1
+	      WHERE FIND_IN_SET(d.supuserid, @Ids)
+	   ) temp2 )) order by a.accountid desc
+     <if test="beginRow != null and pageSize !=null">
+	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+   
+</mapper>

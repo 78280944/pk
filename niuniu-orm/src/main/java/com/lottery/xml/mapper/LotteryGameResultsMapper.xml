@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.orm.dao.LotteryGameResultsMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.LotteryGameResults">
+    <id column="LGRSID" jdbcType="INTEGER" property="lgrsid" />
+    <id column="LOTTERYTERM" jdbcType="VARCHAR" property="lotteryterm" />
+    <id column="TYPE" jdbcType="VARCHAR" property="type" />
+    <id column="SID" jdbcType="INTEGER" property="sid" />
+    <result column="NOID" jdbcType="INTEGER" property="noid" />
+    <result column="ORDERS" jdbcType="VARCHAR" property="orders" />
+    <result column="RESULTS" jdbcType="VARCHAR" property="results" />
+    <result column="SCOUNT" jdbcType="INTEGER" property="scount" />
+    <result column="FIRST" jdbcType="VARCHAR" property="first" />
+    <result column="SECOND" jdbcType="VARCHAR" property="second" />
+    <result column="THIRD" jdbcType="VARCHAR" property="third" />
+    <result column="RESULTNO" jdbcType="VARCHAR" property="resultno" />
+    <result column="RESULTVALUE" jdbcType="VARCHAR" property="resultvalue" />
+    <result column="ASCC" jdbcType="INTEGER" property="ascc" />
+    <result column="RATIO" jdbcType="DOUBLE" property="ratio" />
+  </resultMap>
+  
+  <resultMap id="BaseSidResultMap" type="com.lottery.orm.dto.LotteryResultDto">
+    <id column="LGRSID" jdbcType="INTEGER" property="lgrsid" />
+    <id column="LOTTERYTERM" jdbcType="VARCHAR" property="lotteryterm" />
+    <id column="SID" jdbcType="INTEGER" property="sid" />
+    <result column="NOID" jdbcType="INTEGER" property="noid" />
+    <result column="RESULTS" jdbcType="VARCHAR" property="results" />
+    <result column="RESULTNO" jdbcType="VARCHAR" property="resultno" />
+    <result column="RESULTVALUE" jdbcType="VARCHAR" property="resultvalue" />
+    <result column="ASCC" jdbcType="INTEGER" property="ascc" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    LGRSID, LOTTERYTERM,TYPE, SID, NOID, ORDERS, RESULTS, SCOUNT, FIRST, SECOND, THIRD, RESULTNO, 
+    RESULTVALUE, ASCC, RATIO
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryGameResultsKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lottery_game_results
+    where LGRSID = #{lgrsid,jdbcType=INTEGER}
+      and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+      and SID = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryGameResultsKey">
+    delete from lottery_game_results
+    where LGRSID = #{lgrsid,jdbcType=INTEGER}
+      and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+      and SID = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.LotteryGameResults">
+    <selectKey keyProperty="lgrsid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_game_results (LOTTERYTERM,TYPE, SID, NOID, 
+      ORDERS, RESULTS, SCOUNT, 
+      FIRST, SECOND, THIRD, 
+      RESULTNO, RESULTVALUE, ASCC, 
+      RATIO)
+    values (#{lotteryterm,jdbcType=VARCHAR}, #{type,jdbcType=VARCHAR},#{sid,jdbcType=INTEGER}, #{noid,jdbcType=INTEGER}, 
+      #{orders,jdbcType=VARCHAR}, #{results,jdbcType=VARCHAR}, #{scount,jdbcType=INTEGER}, 
+      #{first,jdbcType=VARCHAR}, #{second,jdbcType=VARCHAR}, #{third,jdbcType=VARCHAR}, 
+      #{resultno,jdbcType=VARCHAR}, #{resultvalue,jdbcType=VARCHAR}, #{ascc,jdbcType=INTEGER}, 
+      #{ratio,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.LotteryGameResults">
+    <selectKey keyProperty="lgrsid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_game_results
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lotteryterm != null">
+        LOTTERYTERM,
+      </if>
+      <if test="type != null">
+        TYPE,
+      </if>
+      <if test="sid != null">
+        SID,
+      </if>
+      <if test="noid != null">
+        NOID,
+      </if>
+      <if test="orders != null">
+        ORDERS,
+      </if>
+      <if test="results != null">
+        RESULTS,
+      </if>
+      <if test="scount != null">
+        SCOUNT,
+      </if>
+      <if test="first != null">
+        FIRST,
+      </if>
+      <if test="second != null">
+        SECOND,
+      </if>
+      <if test="third != null">
+        THIRD,
+      </if>
+      <if test="resultno != null">
+        RESULTNO,
+      </if>
+      <if test="resultvalue != null">
+        RESULTVALUE,
+      </if>
+      <if test="ascc != null">
+        ASCC,
+      </if>
+      <if test="ratio != null">
+        RATIO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lotteryterm != null">
+        #{lotteryterm,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="noid != null">
+        #{noid,jdbcType=INTEGER},
+      </if>
+      <if test="orders != null">
+        #{orders,jdbcType=VARCHAR},
+      </if>
+      <if test="results != null">
+        #{results,jdbcType=VARCHAR},
+      </if>
+      <if test="scount != null">
+        #{scount,jdbcType=INTEGER},
+      </if>
+      <if test="first != null">
+        #{first,jdbcType=VARCHAR},
+      </if>
+      <if test="second != null">
+        #{second,jdbcType=VARCHAR},
+      </if>
+      <if test="third != null">
+        #{third,jdbcType=VARCHAR},
+      </if>
+      <if test="resultno != null">
+        #{resultno,jdbcType=VARCHAR},
+      </if>
+      <if test="resultvalue != null">
+        #{resultvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="ascc != null">
+        #{ascc,jdbcType=INTEGER},
+      </if>
+      <if test="ratio != null">
+        #{ratio,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.LotteryGameResults">
+    update lottery_game_results
+    <set>
+      <if test="noid != null">
+        NOID = #{noid,jdbcType=INTEGER},
+      </if>
+      <if test="orders != null">
+        ORDERS = #{orders,jdbcType=VARCHAR},
+      </if>
+      <if test="results != null">
+        RESULTS = #{results,jdbcType=VARCHAR},
+      </if>
+      <if test="scount != null">
+        SCOUNT = #{scount,jdbcType=INTEGER},
+      </if>
+      <if test="first != null">
+        FIRST = #{first,jdbcType=VARCHAR},
+      </if>
+      <if test="second != null">
+        SECOND = #{second,jdbcType=VARCHAR},
+      </if>
+      <if test="third != null">
+        THIRD = #{third,jdbcType=VARCHAR},
+      </if>
+      <if test="resultno != null">
+        RESULTNO = #{resultno,jdbcType=VARCHAR},
+      </if>
+      <if test="resultvalue != null">
+        RESULTVALUE = #{resultvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="ascc != null">
+        ASCC = #{ascc,jdbcType=INTEGER},
+      </if>
+      <if test="ratio != null">
+        RATIO = #{ratio,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where LGRSID = #{lgrsid,jdbcType=INTEGER}
+      and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+      and SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryGameResults">
+    update lottery_game_results
+    set NOID = #{noid,jdbcType=INTEGER},
+      ORDERS = #{orders,jdbcType=VARCHAR},
+      RESULTS = #{results,jdbcType=VARCHAR},
+      SCOUNT = #{scount,jdbcType=INTEGER},
+      FIRST = #{first,jdbcType=VARCHAR},
+      SECOND = #{second,jdbcType=VARCHAR},
+      THIRD = #{third,jdbcType=VARCHAR},
+      RESULTNO = #{resultno,jdbcType=VARCHAR},
+      RESULTVALUE = #{resultvalue,jdbcType=VARCHAR},
+      ASCC = #{ascc,jdbcType=INTEGER},
+      RATIO = #{ratio,jdbcType=DOUBLE}
+    where LGRSID = #{lgrsid,jdbcType=INTEGER}
+      and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+      and SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateOrders" parameterType="com.lottery.orm.bo.LotteryGameResults">
+    UPDATE lottery_game_results 
+    SET ascc = (@i:=@i+1) WHERE LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR} AND SID = #{sid,jdbcType=INTEGER}
+    ORDER BY resultno,getCompare(results) DESC,scount DESC,FIRST DESC,SECOND DESC,third DESC,(SELECT @i=0)
+  </update>
+
+  <select id="selectGameResults" parameterType="com.lottery.orm.bo.LotteryGameResults" resultMap="BaseResultMap">
+    select 
+    type, LGRSID, LOTTERYTERM, SID, NOID, ORDERS, RESULTS, SCOUNT, RESULTNO, RESULTVALUE, ASCC, RATIO
+    from lottery_game_results a
+    where
+    a.LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+    and a.SID = #{sid,jdbcType=INTEGER}
+    order by resultno,getCompare(results) DESC,scount DESC,FIRST DESC,SECOND DESC,third DESC,noid ASC
+  </select>
+  
+  <select id="selectGameOrder" parameterType="com.lottery.orm.bo.LotteryGameResults" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from lottery_game_results a
+    where
+    a.LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+    and a.SID = #{sid,jdbcType=INTEGER}
+    ORDER BY resultno,getCompare(results) DESC,scount DESC,FIRST DESC,SECOND DESC,third DESC,
+  </select>
+  
+  <insert id="insertBatch" parameterType="com.lottery.orm.bo.LotteryGame">
+    <selectKey keyProperty="lgrsid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_game_results (LOTTERYTERM, TYPE,SID, NOID, ORDERS)
+    SELECT a.gameterm AS lotteryterm,a.gametype as type,a.sid AS sid,b.noid AS noid,b.orders AS orders 
+    FROM lottery_game a,LOTTERY_GAME_PARAM b WHERE a.sid=b.sid
+    and a.sid = #{sid,jdbcType=INTEGER}
+  </insert>
+  
+  <select id="selectSidGameResult" parameterType="com.lottery.orm.bo.LotteryGameResults" resultMap="BaseSidResultMap">
+    SELECT a.lgrsid,a.sid,a.lotteryterm,a.noid,a.results,a.resultno,a.resultvalue,a.ascc 
+    FROM lottery_game_results a
+    where
+    a.LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+    and a.SID = #{sid,jdbcType=INTEGER}
+    ORDER BY resultno,getCompare(results) DESC,scount DESC,FIRST DESC,SECOND DESC,third DESC,noid
+  </select>
+  
+</mapper>

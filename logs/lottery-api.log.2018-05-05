@@ -1,0 +1,1030 @@
+2018-05-05 00:00:08,448 - Job DEFAULT.outResultTaskJob threw an unhandled Exception: 
+ org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'getCashResult' on target class [class com.lottery.orm.service.LotteryTaskService$$EnhancerByCGLIB$$3fb0b4dc] failed; nested exception is java.net.SocketException: Software caused connection abort: recv failed
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:327)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:111)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: java.net.SocketException: Software caused connection abort: recv failed
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:152)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:160)
+	at org.apache.http.impl.io.SocketInputBuffer.fillBuffer(SocketInputBuffer.java:84)
+	at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:273)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57)
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:261)
+	at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:283)
+	at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:259)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.receiveResponseHeader(ManagedClientConnectionImpl.java:209)
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:272)
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:124)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:686)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:488)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:884)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.lottery.orm.service.LotteryTaskService.getCashResult(LotteryTaskService.java:1646)
+	at com.lottery.orm.service.LotteryTaskService$$FastClassByCGLIB$$273c436.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:713)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:262)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:646)
+	at com.lottery.orm.service.LotteryTaskService$$EnhancerByCGLIB$$3fb0b4dc.getCashResult(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:318)
+	... 3 more
+2018-05-05 00:00:08,452 - Job (DEFAULT.outResultTaskJob threw an exception.
+ org.quartz.SchedulerException: Job threw an unhandled exception. [See nested exception: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'getCashResult' on target class [class com.lottery.orm.service.LotteryTaskService$$EnhancerByCGLIB$$3fb0b4dc] failed; nested exception is java.net.SocketException: Software caused connection abort: recv failed]
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:213)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'getCashResult' on target class [class com.lottery.orm.service.LotteryTaskService$$EnhancerByCGLIB$$3fb0b4dc] failed; nested exception is java.net.SocketException: Software caused connection abort: recv failed
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:327)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:111)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	... 1 more
+Caused by: java.net.SocketException: Software caused connection abort: recv failed
+	at java.net.SocketInputStream.socketRead0(Native Method)
+	at java.net.SocketInputStream.read(SocketInputStream.java:152)
+	at java.net.SocketInputStream.read(SocketInputStream.java:122)
+	at org.apache.http.impl.io.AbstractSessionInputBuffer.fillBuffer(AbstractSessionInputBuffer.java:160)
+	at org.apache.http.impl.io.SocketInputBuffer.fillBuffer(SocketInputBuffer.java:84)
+	at org.apache.http.impl.io.AbstractSessionInputBuffer.readLine(AbstractSessionInputBuffer.java:273)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:140)
+	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:57)
+	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:261)
+	at org.apache.http.impl.AbstractHttpClientConnection.receiveResponseHeader(AbstractHttpClientConnection.java:283)
+	at org.apache.http.impl.conn.DefaultClientConnection.receiveResponseHeader(DefaultClientConnection.java:259)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.receiveResponseHeader(ManagedClientConnectionImpl.java:209)
+	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:272)
+	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:124)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryExecute(DefaultRequestDirector.java:686)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:488)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:884)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.lottery.orm.service.LotteryTaskService.getCashResult(LotteryTaskService.java:1646)
+	at com.lottery.orm.service.LotteryTaskService$$FastClassByCGLIB$$273c436.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:713)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:262)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:646)
+	at com.lottery.orm.service.LotteryTaskService$$EnhancerByCGLIB$$3fb0b4dc.getCashResult(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:318)
+	... 3 more
+2018-05-05 00:00:08,532 - 读取API接口：Sat May 05 00:00:08 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 00:00:56,368 - Job DEFAULT.outResultTaskJob threw an unhandled Exception: 
+ org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'getCashResult' on target class [class com.lottery.orm.service.LotteryTaskService$$EnhancerByCGLIB$$3fb0b4dc] failed; nested exception is java.net.ConnectException: Connection timed out: connect
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:327)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:111)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:120)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:179)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:328)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:612)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:447)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:884)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.lottery.orm.service.LotteryTaskService.getCashResult(LotteryTaskService.java:1646)
+	at com.lottery.orm.service.LotteryTaskService$$FastClassByCGLIB$$273c436.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:713)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:262)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:646)
+	at com.lottery.orm.service.LotteryTaskService$$EnhancerByCGLIB$$3fb0b4dc.getCashResult(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:318)
+	... 3 more
+2018-05-05 00:00:56,408 - Job (DEFAULT.outResultTaskJob threw an exception.
+ org.quartz.SchedulerException: Job threw an unhandled exception. [See nested exception: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'getCashResult' on target class [class com.lottery.orm.service.LotteryTaskService$$EnhancerByCGLIB$$3fb0b4dc] failed; nested exception is java.net.ConnectException: Connection timed out: connect]
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:213)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: org.springframework.scheduling.quartz.JobMethodInvocationFailedException: Invocation of method 'getCashResult' on target class [class com.lottery.orm.service.LotteryTaskService$$EnhancerByCGLIB$$3fb0b4dc] failed; nested exception is java.net.ConnectException: Connection timed out: connect
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:327)
+	at org.springframework.scheduling.quartz.QuartzJobBean.execute(QuartzJobBean.java:111)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	... 1 more
+Caused by: java.net.ConnectException: Connection timed out: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at org.apache.http.conn.scheme.PlainSocketFactory.connectSocket(PlainSocketFactory.java:120)
+	at org.apache.http.impl.conn.DefaultClientConnectionOperator.openConnection(DefaultClientConnectionOperator.java:179)
+	at org.apache.http.impl.conn.ManagedClientConnectionImpl.open(ManagedClientConnectionImpl.java:328)
+	at org.apache.http.impl.client.DefaultRequestDirector.tryConnect(DefaultRequestDirector.java:612)
+	at org.apache.http.impl.client.DefaultRequestDirector.execute(DefaultRequestDirector.java:447)
+	at org.apache.http.impl.client.AbstractHttpClient.doExecute(AbstractHttpClient.java:884)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:82)
+	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:107)
+	at com.lottery.orm.service.LotteryTaskService.getCashResult(LotteryTaskService.java:1646)
+	at com.lottery.orm.service.LotteryTaskService$$FastClassByCGLIB$$273c436.invoke(<generated>)
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:204)
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:713)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:157)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:98)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:262)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:95)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:646)
+	at com.lottery.orm.service.LotteryTaskService$$EnhancerByCGLIB$$3fb0b4dc.getCashResult(<generated>)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.springframework.util.MethodInvoker.invoke(MethodInvoker.java:273)
+	at org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean$MethodInvokingJob.executeInternal(MethodInvokingJobDetailFactoryBean.java:318)
+	... 3 more
+2018-05-05 00:00:56,460 - 读取API接口：Sat May 05 00:00:56 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 00:09:39,481 - 读取API接口：Sat May 05 00:09:39 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 00:17:09,532 - 读取API接口：Sat May 05 00:17:09 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 00:28:00,370 - 读取API接口：Sat May 05 00:28:00 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 00:28:00,610 - 读取API接口：Sat May 05 00:28:00 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 00:35:49,572 - 读取API接口：Sat May 05 00:35:49 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 00:35:49,842 - 读取API接口：Sat May 05 00:35:49 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 00:36:05,346 - 读取API接口：Sat May 05 00:36:05 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 00:36:30,878 - 读取API接口：Sat May 05 00:36:30 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 00:36:31,415 - 读取API接口：Sat May 05 00:36:31 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 00:45:12,112 - 读取API接口：Sat May 05 00:45:12 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 00:45:12,292 - 读取API接口：Sat May 05 00:45:12 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 00:53:38,169 - 读取API接口：Sat May 05 00:53:38 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 00:53:38,300 - 读取API接口：Sat May 05 00:53:38 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 01:01:41,204 - 读取API接口：Sat May 05 01:01:41 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 01:02:01,796 - 读取API接口：Sat May 05 01:02:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 01:10:44,109 - 读取API接口：Sat May 05 01:10:44 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 01:10:47,590 - 读取API接口：Sat May 05 01:10:47 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 01:18:47,805 - 读取API接口：Sat May 05 01:18:47 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 01:18:48,555 - 读取API接口：Sat May 05 01:18:48 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 01:26:51,942 - 读取API接口：Sat May 05 01:26:51 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 01:34:48,079 - 读取API接口：Sat May 05 01:34:48 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 01:42:46,788 - 读取API接口：Sat May 05 01:42:46 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 01:50:59,400 - 读取API接口：Sat May 05 01:50:59 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 01:59:14,443 - 读取API接口：Sat May 05 01:59:14 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 01:59:34,615 - 读取API接口：Sat May 05 01:59:34 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 02:07:45,550 - 读取API接口：Sat May 05 02:07:45 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 02:16:38,642 - 读取API接口：Sat May 05 02:16:38 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 02:24:08,290 - 读取API接口：Sat May 05 02:24:08 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 02:24:09,664 - 读取API接口：Sat May 05 02:24:09 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 02:32:17,269 - 读取API接口：Sat May 05 02:32:17 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 02:32:19,045 - 读取API接口：Sat May 05 02:32:19 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 02:40:54,306 - 读取API接口：Sat May 05 02:40:54 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 02:40:54,656 - 读取API接口：Sat May 05 02:40:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 02:49:16,563 - 读取API接口：Sat May 05 02:49:16 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 02:49:18,484 - 读取API接口：Sat May 05 02:49:18 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 02:56:48,717 - 读取API接口：Sat May 05 02:56:48 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 02:56:49,658 - 读取API接口：Sat May 05 02:56:49 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 03:04:52,535 - 读取API接口：Sat May 05 03:04:52 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 03:04:54,437 - 读取API接口：Sat May 05 03:04:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 03:13:27,070 - 读取API接口：Sat May 05 03:13:27 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 03:13:27,290 - 读取API接口：Sat May 05 03:13:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 03:20:52,515 - 读取API接口：Sat May 05 03:20:52 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 03:20:55,836 - 读取API接口：Sat May 05 03:20:55 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 03:28:28,480 - 读取API接口：Sat May 05 03:28:28 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 03:28:28,960 - 读取API接口：Sat May 05 03:28:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 03:36:00,985 - 读取API接口：Sat May 05 03:36:00 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 03:36:03,546 - 读取API接口：Sat May 05 03:36:03 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 03:43:54,955 - 读取API接口：Sat May 05 03:43:54 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 03:43:57,366 - 读取API接口：Sat May 05 03:43:57 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 03:52:11,986 - 读取API接口：Sat May 05 03:52:11 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 03:52:13,949 - 读取API接口：Sat May 05 03:52:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:00:18,053 - 读取API接口：Sat May 05 04:00:18 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 04:00:20,549 - 读取API接口：Sat May 05 04:00:20 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:08:25,243 - 读取API接口：Sat May 05 04:08:25 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 04:08:28,324 - 读取API接口：Sat May 05 04:08:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:16:12,644 - 读取API接口：Sat May 05 04:16:12 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:16:15,215 - 读取API接口：Sat May 05 04:16:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:16:26,085 - 读取API接口：Sat May 05 04:16:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:16:39,066 - 读取API接口：Sat May 05 04:16:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:16:52,077 - 读取API接口：Sat May 05 04:16:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:17:00,086 - 读取API接口：Sat May 05 04:17:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:17:13,069 - 读取API接口：Sat May 05 04:17:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:17:26,092 - 读取API接口：Sat May 05 04:17:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:17:39,095 - 读取API接口：Sat May 05 04:17:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:17:52,094 - 读取API接口：Sat May 05 04:17:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:18:01,836 - 读取API接口：Sat May 05 04:18:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:18:13,084 - 读取API接口：Sat May 05 04:18:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:18:26,084 - 读取API接口：Sat May 05 04:18:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:18:41,085 - 读取API接口：Sat May 05 04:18:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:18:52,107 - 读取API接口：Sat May 05 04:18:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:19:00,072 - 读取API接口：Sat May 05 04:19:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:19:15,083 - 读取API接口：Sat May 05 04:19:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:19:26,077 - 读取API接口：Sat May 05 04:19:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:19:39,088 - 读取API接口：Sat May 05 04:19:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:19:54,072 - 读取API接口：Sat May 05 04:19:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:20:00,074 - 读取API接口：Sat May 05 04:20:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:20:13,087 - 读取API接口：Sat May 05 04:20:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:20:28,090 - 读取API接口：Sat May 05 04:20:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:20:39,312 - 读取API接口：Sat May 05 04:20:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:20:52,075 - 读取API接口：Sat May 05 04:20:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:21:00,096 - 读取API接口：Sat May 05 04:21:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:21:13,078 - 读取API接口：Sat May 05 04:21:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:21:26,081 - 读取API接口：Sat May 05 04:21:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:21:39,082 - 读取API接口：Sat May 05 04:21:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:21:52,085 - 读取API接口：Sat May 05 04:21:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:22:00,076 - 读取API接口：Sat May 05 04:22:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:22:15,090 - 读取API接口：Sat May 05 04:22:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:22:26,091 - 读取API接口：Sat May 05 04:22:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:22:39,084 - 读取API接口：Sat May 05 04:22:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:22:54,081 - 读取API接口：Sat May 05 04:22:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:23:00,086 - 读取API接口：Sat May 05 04:23:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:23:13,077 - 读取API接口：Sat May 05 04:23:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:23:26,098 - 读取API接口：Sat May 05 04:23:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:23:39,089 - 读取API接口：Sat May 05 04:23:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:23:52,094 - 读取API接口：Sat May 05 04:23:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:24:02,082 - 读取API接口：Sat May 05 04:24:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:24:13,075 - 读取API接口：Sat May 05 04:24:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:24:26,073 - 读取API接口：Sat May 05 04:24:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:24:39,074 - 读取API接口：Sat May 05 04:24:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:24:52,085 - 读取API接口：Sat May 05 04:24:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:25:00,080 - 读取API接口：Sat May 05 04:25:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:25:15,095 - 读取API接口：Sat May 05 04:25:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:25:26,067 - 读取API接口：Sat May 05 04:25:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:25:39,100 - 读取API接口：Sat May 05 04:25:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:25:52,071 - 读取API接口：Sat May 05 04:25:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:26:00,072 - 读取API接口：Sat May 05 04:26:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:26:13,089 - 读取API接口：Sat May 05 04:26:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:26:28,100 - 读取API接口：Sat May 05 04:26:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:26:39,082 - 读取API接口：Sat May 05 04:26:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:26:52,073 - 读取API接口：Sat May 05 04:26:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:27:01,837 - 读取API接口：Sat May 05 04:27:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:27:13,150 - 读取API接口：Sat May 05 04:27:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:27:26,071 - 读取API接口：Sat May 05 04:27:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:27:39,084 - 读取API接口：Sat May 05 04:27:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:27:52,087 - 读取API接口：Sat May 05 04:27:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:28:00,088 - 读取API接口：Sat May 05 04:28:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:28:13,091 - 读取API接口：Sat May 05 04:28:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:28:26,085 - 读取API接口：Sat May 05 04:28:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:28:39,076 - 读取API接口：Sat May 05 04:28:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:28:54,088 - 读取API接口：Sat May 05 04:28:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:29:00,090 - 读取API接口：Sat May 05 04:29:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:29:13,071 - 读取API接口：Sat May 05 04:29:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:29:26,074 - 读取API接口：Sat May 05 04:29:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:29:39,087 - 读取API接口：Sat May 05 04:29:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:29:52,088 - 读取API接口：Sat May 05 04:29:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:30:02,079 - 读取API接口：Sat May 05 04:30:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:30:13,082 - 读取API接口：Sat May 05 04:30:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:30:26,085 - 读取API接口：Sat May 05 04:30:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:30:41,082 - 读取API接口：Sat May 05 04:30:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:30:52,088 - 读取API接口：Sat May 05 04:30:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:31:00,089 - 读取API接口：Sat May 05 04:31:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:31:13,100 - 读取API接口：Sat May 05 04:31:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:31:26,095 - 读取API接口：Sat May 05 04:31:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:31:39,075 - 读取API接口：Sat May 05 04:31:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:31:54,086 - 读取API接口：Sat May 05 04:31:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:32:00,088 - 读取API接口：Sat May 05 04:32:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:32:13,086 - 读取API接口：Sat May 05 04:32:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:32:28,100 - 读取API接口：Sat May 05 04:32:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:32:39,102 - 读取API接口：Sat May 05 04:32:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:32:52,085 - 读取API接口：Sat May 05 04:32:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:33:03,839 - 读取API接口：Sat May 05 04:33:03 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:33:13,073 - 读取API接口：Sat May 05 04:33:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:33:26,084 - 读取API接口：Sat May 05 04:33:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:33:41,085 - 读取API接口：Sat May 05 04:33:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:33:52,087 - 读取API接口：Sat May 05 04:33:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:34:00,078 - 读取API接口：Sat May 05 04:34:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:34:15,085 - 读取API接口：Sat May 05 04:34:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:34:26,078 - 读取API接口：Sat May 05 04:34:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:34:39,071 - 读取API接口：Sat May 05 04:34:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:34:52,082 - 读取API接口：Sat May 05 04:34:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:35:00,083 - 读取API接口：Sat May 05 04:35:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:35:13,104 - 读取API接口：Sat May 05 04:35:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:35:28,098 - 读取API接口：Sat May 05 04:35:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:35:39,090 - 读取API接口：Sat May 05 04:35:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:35:52,072 - 读取API接口：Sat May 05 04:35:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:36:00,085 - 读取API接口：Sat May 05 04:36:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:36:13,077 - 读取API接口：Sat May 05 04:36:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:36:26,071 - 读取API接口：Sat May 05 04:36:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:36:41,072 - 读取API接口：Sat May 05 04:36:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:36:52,076 - 读取API接口：Sat May 05 04:36:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:37:00,077 - 读取API接口：Sat May 05 04:37:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:37:13,090 - 读取API接口：Sat May 05 04:37:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:37:26,107 - 读取API接口：Sat May 05 04:37:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:37:39,118 - 读取API接口：Sat May 05 04:37:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:37:52,099 - 读取API接口：Sat May 05 04:37:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:38:00,090 - 读取API接口：Sat May 05 04:38:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:38:13,101 - 读取API接口：Sat May 05 04:38:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:38:26,081 - 读取API接口：Sat May 05 04:38:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:38:39,078 - 读取API接口：Sat May 05 04:38:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:38:52,089 - 读取API接口：Sat May 05 04:38:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:39:00,100 - 读取API接口：Sat May 05 04:39:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:39:13,149 - 读取API接口：Sat May 05 04:39:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:39:26,089 - 读取API接口：Sat May 05 04:39:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:39:41,102 - 读取API接口：Sat May 05 04:39:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:39:52,083 - 读取API接口：Sat May 05 04:39:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:40:00,084 - 读取API接口：Sat May 05 04:40:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:40:15,181 - 读取API接口：Sat May 05 04:40:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:40:26,089 - 读取API接口：Sat May 05 04:40:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:40:39,100 - 读取API接口：Sat May 05 04:40:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:40:54,119 - 读取API接口：Sat May 05 04:40:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:41:00,081 - 读取API接口：Sat May 05 04:41:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:41:13,082 - 读取API接口：Sat May 05 04:41:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:41:26,095 - 读取API接口：Sat May 05 04:41:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:41:39,088 - 读取API接口：Sat May 05 04:41:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:41:52,089 - 读取API接口：Sat May 05 04:41:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:42:03,805 - 读取API接口：Sat May 05 04:42:03 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:42:13,090 - 读取API接口：Sat May 05 04:42:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:42:26,083 - 读取API接口：Sat May 05 04:42:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:42:39,094 - 读取API接口：Sat May 05 04:42:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:42:52,108 - 读取API接口：Sat May 05 04:42:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:43:00,094 - 读取API接口：Sat May 05 04:43:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:43:15,195 - 读取API接口：Sat May 05 04:43:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:43:26,081 - 读取API接口：Sat May 05 04:43:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:43:39,084 - 读取API接口：Sat May 05 04:43:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:43:52,095 - 读取API接口：Sat May 05 04:43:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:44:00,086 - 读取API接口：Sat May 05 04:44:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:44:13,073 - 读取API接口：Sat May 05 04:44:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:44:28,090 - 读取API接口：Sat May 05 04:44:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:44:39,072 - 读取API接口：Sat May 05 04:44:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:44:52,073 - 读取API接口：Sat May 05 04:44:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:45:02,435 - 读取API接口：Sat May 05 04:45:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:45:13,146 - 读取API接口：Sat May 05 04:45:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:45:26,075 - 读取API接口：Sat May 05 04:45:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:45:39,086 - 读取API接口：Sat May 05 04:45:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:45:52,077 - 读取API接口：Sat May 05 04:45:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:46:00,088 - 读取API接口：Sat May 05 04:46:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:46:13,089 - 读取API接口：Sat May 05 04:46:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:46:26,081 - 读取API接口：Sat May 05 04:46:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:46:39,096 - 读取API接口：Sat May 05 04:46:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:46:54,089 - 读取API接口：Sat May 05 04:46:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:47:00,071 - 读取API接口：Sat May 05 04:47:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:47:13,086 - 读取API接口：Sat May 05 04:47:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:47:26,084 - 读取API接口：Sat May 05 04:47:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:47:39,091 - 读取API接口：Sat May 05 04:47:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:47:52,084 - 读取API接口：Sat May 05 04:47:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:48:02,485 - 读取API接口：Sat May 05 04:48:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:48:13,080 - 读取API接口：Sat May 05 04:48:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:48:26,072 - 读取API接口：Sat May 05 04:48:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:48:41,114 - 读取API接口：Sat May 05 04:48:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:48:52,090 - 读取API接口：Sat May 05 04:48:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:49:00,071 - 读取API接口：Sat May 05 04:49:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:49:15,072 - 读取API接口：Sat May 05 04:49:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:49:26,094 - 读取API接口：Sat May 05 04:49:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:49:39,085 - 读取API接口：Sat May 05 04:49:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:49:54,110 - 读取API接口：Sat May 05 04:49:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:50:00,094 - 读取API接口：Sat May 05 04:50:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:50:13,077 - 读取API接口：Sat May 05 04:50:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:50:28,088 - 读取API接口：Sat May 05 04:50:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:50:39,082 - 读取API接口：Sat May 05 04:50:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:50:52,083 - 读取API接口：Sat May 05 04:50:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:51:00,076 - 读取API接口：Sat May 05 04:51:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:51:13,160 - 读取API接口：Sat May 05 04:51:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:51:26,091 - 读取API接口：Sat May 05 04:51:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:51:41,082 - 读取API接口：Sat May 05 04:51:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:51:52,074 - 读取API接口：Sat May 05 04:51:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:52:00,087 - 读取API接口：Sat May 05 04:52:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:52:15,110 - 读取API接口：Sat May 05 04:52:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:52:26,080 - 读取API接口：Sat May 05 04:52:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:52:39,077 - 读取API接口：Sat May 05 04:52:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:52:52,078 - 读取API接口：Sat May 05 04:52:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:53:00,089 - 读取API接口：Sat May 05 04:53:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:53:13,090 - 读取API接口：Sat May 05 04:53:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:53:28,109 - 读取API接口：Sat May 05 04:53:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:53:39,071 - 读取API接口：Sat May 05 04:53:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:53:52,082 - 读取API接口：Sat May 05 04:53:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:54:00,083 - 读取API接口：Sat May 05 04:54:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:54:13,117 - 读取API接口：Sat May 05 04:54:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:54:26,080 - 读取API接口：Sat May 05 04:54:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:54:41,081 - 读取API接口：Sat May 05 04:54:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:54:52,083 - 读取API接口：Sat May 05 04:54:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:55:00,094 - 读取API接口：Sat May 05 04:55:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:55:13,093 - 读取API接口：Sat May 05 04:55:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:55:26,086 - 读取API接口：Sat May 05 04:55:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:55:39,087 - 读取API接口：Sat May 05 04:55:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:55:54,088 - 读取API接口：Sat May 05 04:55:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:56:00,100 - 读取API接口：Sat May 05 04:56:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:56:13,091 - 读取API接口：Sat May 05 04:56:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:56:26,090 - 读取API接口：Sat May 05 04:56:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:56:39,082 - 读取API接口：Sat May 05 04:56:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:56:52,089 - 读取API接口：Sat May 05 04:56:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:57:02,092 - 读取API接口：Sat May 05 04:57:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:57:13,093 - 读取API接口：Sat May 05 04:57:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:57:26,088 - 读取API接口：Sat May 05 04:57:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:57:39,109 - 读取API接口：Sat May 05 04:57:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:57:52,090 - 读取API接口：Sat May 05 04:57:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:58:00,081 - 读取API接口：Sat May 05 04:58:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:58:13,092 - 读取API接口：Sat May 05 04:58:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:58:26,091 - 读取API接口：Sat May 05 04:58:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:58:39,074 - 读取API接口：Sat May 05 04:58:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:58:52,085 - 读取API接口：Sat May 05 04:58:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:59:00,087 - 读取API接口：Sat May 05 04:59:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:59:13,090 - 读取API接口：Sat May 05 04:59:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:59:28,071 - 读取API接口：Sat May 05 04:59:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:59:39,085 - 读取API接口：Sat May 05 04:59:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 04:59:52,076 - 读取API接口：Sat May 05 04:59:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:00:06,136 - 读取API接口：Sat May 05 05:00:06 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:00:13,258 - 读取API接口：Sat May 05 05:00:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:00:27,573 - 读取API接口：Sat May 05 05:00:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:00:41,764 - 读取API接口：Sat May 05 05:00:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:00:52,213 - 读取API接口：Sat May 05 05:00:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:01:00,857 - 读取API接口：Sat May 05 05:01:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:01:15,331 - 读取API接口：Sat May 05 05:01:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:01:27,011 - 读取API接口：Sat May 05 05:01:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:01:40,164 - 读取API接口：Sat May 05 05:01:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:01:54,415 - 读取API接口：Sat May 05 05:01:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:02:00,357 - 读取API接口：Sat May 05 05:02:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:02:13,300 - 读取API接口：Sat May 05 05:02:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:02:30,148 - 读取API接口：Sat May 05 05:02:30 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:02:41,223 - 读取API接口：Sat May 05 05:02:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:02:52,494 - 读取API接口：Sat May 05 05:02:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:03:00,405 - 读取API接口：Sat May 05 05:03:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:03:13,267 - 读取API接口：Sat May 05 05:03:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:03:27,933 - 读取API接口：Sat May 05 05:03:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:03:43,125 - 读取API接口：Sat May 05 05:03:43 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:03:52,237 - 读取API接口：Sat May 05 05:03:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:04:01,289 - 读取API接口：Sat May 05 05:04:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:04:13,402 - 读取API接口：Sat May 05 05:04:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:04:26,961 - 读取API接口：Sat May 05 05:04:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:04:40,202 - 读取API接口：Sat May 05 05:04:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:04:54,343 - 读取API接口：Sat May 05 05:04:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:05:02,156 - 读取API接口：Sat May 05 05:05:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:05:13,339 - 读取API接口：Sat May 05 05:05:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:05:27,652 - 读取API接口：Sat May 05 05:05:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:05:40,274 - 读取API接口：Sat May 05 05:05:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:05:52,266 - 读取API接口：Sat May 05 05:05:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:06:04,388 - 读取API接口：Sat May 05 05:06:04 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:06:14,385 - 读取API接口：Sat May 05 05:06:14 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:06:28,007 - 读取API接口：Sat May 05 05:06:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:06:41,619 - 读取API接口：Sat May 05 05:06:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:06:52,306 - 读取API接口：Sat May 05 05:06:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:07:00,537 - 读取API接口：Sat May 05 05:07:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:07:15,278 - 读取API接口：Sat May 05 05:07:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:07:26,680 - 读取API接口：Sat May 05 05:07:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:07:41,543 - 读取API接口：Sat May 05 05:07:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:07:54,252 - 读取API接口：Sat May 05 05:07:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:08:00,208 - 读取API接口：Sat May 05 05:08:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:08:13,359 - 读取API接口：Sat May 05 05:08:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:08:29,074 - 读取API接口：Sat May 05 05:08:29 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:08:40,310 - 读取API接口：Sat May 05 05:08:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:08:52,563 - 读取API接口：Sat May 05 05:08:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:09:06,595 - 读取API接口：Sat May 05 05:09:06 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:09:13,239 - 读取API接口：Sat May 05 05:09:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:09:27,697 - 读取API接口：Sat May 05 05:09:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:09:40,783 - 读取API接口：Sat May 05 05:09:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:09:53,421 - 读取API接口：Sat May 05 05:09:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:10:01,449 - 读取API接口：Sat May 05 05:10:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:10:15,344 - 读取API接口：Sat May 05 05:10:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:10:26,515 - 读取API接口：Sat May 05 05:10:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:10:41,225 - 读取API接口：Sat May 05 05:10:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:10:52,257 - 读取API接口：Sat May 05 05:10:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:11:01,881 - 读取API接口：Sat May 05 05:11:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:11:13,430 - 读取API接口：Sat May 05 05:11:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:11:29,330 - 读取API接口：Sat May 05 05:11:29 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:11:41,403 - 读取API接口：Sat May 05 05:11:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:11:52,306 - 读取API接口：Sat May 05 05:11:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:12:01,367 - 读取API接口：Sat May 05 05:12:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:12:13,593 - 读取API接口：Sat May 05 05:12:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:12:27,413 - 读取API接口：Sat May 05 05:12:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:12:42,469 - 读取API接口：Sat May 05 05:12:42 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:12:52,296 - 读取API接口：Sat May 05 05:12:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:13:01,150 - 读取API接口：Sat May 05 05:13:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:13:13,284 - 读取API接口：Sat May 05 05:13:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:13:27,288 - 读取API接口：Sat May 05 05:13:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:13:41,694 - 读取API接口：Sat May 05 05:13:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:13:54,339 - 读取API接口：Sat May 05 05:13:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:14:01,204 - 读取API接口：Sat May 05 05:14:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:14:13,419 - 读取API接口：Sat May 05 05:14:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:14:28,076 - 读取API接口：Sat May 05 05:14:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:14:40,562 - 读取API接口：Sat May 05 05:14:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:14:52,342 - 读取API接口：Sat May 05 05:14:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:15:03,228 - 读取API接口：Sat May 05 05:15:03 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:15:13,383 - 读取API接口：Sat May 05 05:15:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:15:29,211 - 读取API接口：Sat May 05 05:15:29 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:15:41,037 - 读取API接口：Sat May 05 05:15:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:15:53,018 - 读取API接口：Sat May 05 05:15:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:16:01,525 - 读取API接口：Sat May 05 05:16:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:16:13,296 - 读取API接口：Sat May 05 05:16:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:16:27,915 - 读取API接口：Sat May 05 05:16:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:16:39,666 - 读取API接口：Sat May 05 05:16:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:16:52,328 - 读取API接口：Sat May 05 05:16:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:17:00,981 - 读取API接口：Sat May 05 05:17:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:17:13,435 - 读取API接口：Sat May 05 05:17:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:17:30,067 - 读取API接口：Sat May 05 05:17:30 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:17:41,700 - 读取API接口：Sat May 05 05:17:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:17:52,411 - 读取API接口：Sat May 05 05:17:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:18:03,877 - 读取API接口：Sat May 05 05:18:03 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:18:13,292 - 读取API接口：Sat May 05 05:18:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:18:27,444 - 读取API接口：Sat May 05 05:18:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:18:42,600 - 读取API接口：Sat May 05 05:18:42 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:18:52,705 - 读取API接口：Sat May 05 05:18:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:19:01,401 - 读取API接口：Sat May 05 05:19:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:19:15,336 - 读取API接口：Sat May 05 05:19:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:19:27,481 - 读取API接口：Sat May 05 05:19:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:19:41,213 - 读取API接口：Sat May 05 05:19:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:19:54,339 - 读取API接口：Sat May 05 05:19:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:20:01,134 - 读取API接口：Sat May 05 05:20:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:20:13,370 - 读取API接口：Sat May 05 05:20:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:20:28,686 - 读取API接口：Sat May 05 05:20:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:20:41,536 - 读取API接口：Sat May 05 05:20:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:20:52,437 - 读取API接口：Sat May 05 05:20:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:21:02,473 - 读取API接口：Sat May 05 05:21:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:21:13,277 - 读取API接口：Sat May 05 05:21:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:21:27,841 - 读取API接口：Sat May 05 05:21:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:21:43,079 - 读取API接口：Sat May 05 05:21:43 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:21:52,339 - 读取API接口：Sat May 05 05:21:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:22:01,883 - 读取API接口：Sat May 05 05:22:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:22:13,280 - 读取API接口：Sat May 05 05:22:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:22:27,491 - 读取API接口：Sat May 05 05:22:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:22:39,934 - 读取API接口：Sat May 05 05:22:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:22:52,382 - 读取API接口：Sat May 05 05:22:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:23:01,588 - 读取API接口：Sat May 05 05:23:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:23:13,351 - 读取API接口：Sat May 05 05:23:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:23:27,595 - 读取API接口：Sat May 05 05:23:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:23:39,723 - 读取API接口：Sat May 05 05:23:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:23:52,391 - 读取API接口：Sat May 05 05:23:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:24:03,595 - 读取API接口：Sat May 05 05:24:03 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:24:13,261 - 读取API接口：Sat May 05 05:24:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:24:26,357 - 读取API接口：Sat May 05 05:24:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:24:39,757 - 读取API接口：Sat May 05 05:24:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:24:52,285 - 读取API接口：Sat May 05 05:24:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:25:01,247 - 读取API接口：Sat May 05 05:25:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:25:15,324 - 读取API接口：Sat May 05 05:25:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:25:26,750 - 读取API接口：Sat May 05 05:25:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:25:41,387 - 读取API接口：Sat May 05 05:25:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:25:54,856 - 读取API接口：Sat May 05 05:25:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:26:01,459 - 读取API接口：Sat May 05 05:26:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:26:13,340 - 读取API接口：Sat May 05 05:26:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:26:26,491 - 读取API接口：Sat May 05 05:26:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:26:41,519 - 读取API接口：Sat May 05 05:26:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:26:53,022 - 读取API接口：Sat May 05 05:26:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:27:03,819 - 读取API接口：Sat May 05 05:27:03 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:27:13,331 - 读取API接口：Sat May 05 05:27:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:27:26,394 - 读取API接口：Sat May 05 05:27:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:27:39,969 - 读取API接口：Sat May 05 05:27:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:27:52,371 - 读取API接口：Sat May 05 05:27:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:28:00,474 - 读取API接口：Sat May 05 05:28:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:28:13,316 - 读取API接口：Sat May 05 05:28:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:28:26,438 - 读取API接口：Sat May 05 05:28:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:28:39,889 - 读取API接口：Sat May 05 05:28:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:28:52,767 - 读取API接口：Sat May 05 05:28:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:29:00,088 - 读取API接口：Sat May 05 05:29:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:29:13,767 - 读取API接口：Sat May 05 05:29:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:29:28,570 - 读取API接口：Sat May 05 05:29:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:29:40,179 - 读取API接口：Sat May 05 05:29:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:29:52,344 - 读取API接口：Sat May 05 05:29:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:30:02,916 - 读取API接口：Sat May 05 05:30:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:30:13,167 - 读取API接口：Sat May 05 05:30:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:30:27,004 - 读取API接口：Sat May 05 05:30:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:30:41,628 - 读取API接口：Sat May 05 05:30:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:30:52,544 - 读取API接口：Sat May 05 05:30:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:31:01,896 - 读取API接口：Sat May 05 05:31:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:31:13,267 - 读取API接口：Sat May 05 05:31:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:31:27,800 - 读取API接口：Sat May 05 05:31:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:31:40,457 - 读取API接口：Sat May 05 05:31:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:31:54,288 - 读取API接口：Sat May 05 05:31:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:32:01,591 - 读取API接口：Sat May 05 05:32:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:32:13,291 - 读取API接口：Sat May 05 05:32:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:32:26,447 - 读取API接口：Sat May 05 05:32:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:32:41,148 - 读取API接口：Sat May 05 05:32:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:32:52,409 - 读取API接口：Sat May 05 05:32:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:33:01,992 - 读取API接口：Sat May 05 05:33:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:33:13,184 - 读取API接口：Sat May 05 05:33:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:33:27,096 - 读取API接口：Sat May 05 05:33:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:33:43,501 - 读取API接口：Sat May 05 05:33:43 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:33:53,218 - 读取API接口：Sat May 05 05:33:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:34:01,780 - 读取API接口：Sat May 05 05:34:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:34:16,134 - 读取API接口：Sat May 05 05:34:16 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:34:27,314 - 读取API接口：Sat May 05 05:34:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:34:41,506 - 读取API接口：Sat May 05 05:34:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:34:54,253 - 读取API接口：Sat May 05 05:34:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:35:01,459 - 读取API接口：Sat May 05 05:35:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:35:13,341 - 读取API接口：Sat May 05 05:35:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:35:28,902 - 读取API接口：Sat May 05 05:35:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:35:39,974 - 读取API接口：Sat May 05 05:35:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:35:52,456 - 读取API接口：Sat May 05 05:35:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:36:04,542 - 读取API接口：Sat May 05 05:36:04 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:36:13,563 - 读取API接口：Sat May 05 05:36:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:36:28,390 - 读取API接口：Sat May 05 05:36:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:36:40,322 - 读取API接口：Sat May 05 05:36:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:36:52,383 - 读取API接口：Sat May 05 05:36:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:37:01,493 - 读取API接口：Sat May 05 05:37:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:37:15,302 - 读取API接口：Sat May 05 05:37:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:37:28,303 - 读取API接口：Sat May 05 05:37:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:37:42,549 - 读取API接口：Sat May 05 05:37:42 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:37:54,145 - 读取API接口：Sat May 05 05:37:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:38:01,399 - 读取API接口：Sat May 05 05:38:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:38:13,636 - 读取API接口：Sat May 05 05:38:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:38:28,998 - 读取API接口：Sat May 05 05:38:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:38:41,997 - 读取API接口：Sat May 05 05:38:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:38:52,831 - 读取API接口：Sat May 05 05:38:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:39:02,955 - 读取API接口：Sat May 05 05:39:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:39:13,149 - 读取API接口：Sat May 05 05:39:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:39:27,026 - 读取API接口：Sat May 05 05:39:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:39:41,970 - 读取API接口：Sat May 05 05:39:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:39:52,674 - 读取API接口：Sat May 05 05:39:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:40:00,597 - 读取API接口：Sat May 05 05:40:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:40:13,337 - 读取API接口：Sat May 05 05:40:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:40:26,301 - 读取API接口：Sat May 05 05:40:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:40:40,889 - 读取API接口：Sat May 05 05:40:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:40:54,642 - 读取API接口：Sat May 05 05:40:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:41:02,066 - 读取API接口：Sat May 05 05:41:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:41:13,352 - 读取API接口：Sat May 05 05:41:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:41:28,258 - 读取API接口：Sat May 05 05:41:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:41:40,547 - 读取API接口：Sat May 05 05:41:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:41:52,548 - 读取API接口：Sat May 05 05:41:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:42:11,991 - 读取API接口：Sat May 05 05:42:11 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:42:17,606 - 读取API接口：Sat May 05 05:42:17 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:42:26,377 - 读取API接口：Sat May 05 05:42:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:42:42,996 - 读取API接口：Sat May 05 05:42:42 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:42:53,499 - 读取API接口：Sat May 05 05:42:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:43:02,321 - 读取API接口：Sat May 05 05:43:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:43:15,657 - 读取API接口：Sat May 05 05:43:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:43:26,340 - 读取API接口：Sat May 05 05:43:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:43:41,617 - 读取API接口：Sat May 05 05:43:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:43:55,521 - 读取API接口：Sat May 05 05:43:55 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:44:02,168 - 读取API接口：Sat May 05 05:44:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:44:13,293 - 读取API接口：Sat May 05 05:44:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:44:26,349 - 读取API接口：Sat May 05 05:44:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:44:39,570 - 读取API接口：Sat May 05 05:44:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:44:53,947 - 读取API接口：Sat May 05 05:44:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:45:04,251 - 读取API接口：Sat May 05 05:45:04 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:45:13,794 - 读取API接口：Sat May 05 05:45:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:45:26,388 - 读取API接口：Sat May 05 05:45:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:45:41,966 - 读取API接口：Sat May 05 05:45:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:45:52,543 - 读取API接口：Sat May 05 05:45:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:46:00,259 - 读取API接口：Sat May 05 05:46:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:46:13,266 - 读取API接口：Sat May 05 05:46:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:46:27,089 - 读取API接口：Sat May 05 05:46:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:46:39,812 - 读取API接口：Sat May 05 05:46:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:46:53,532 - 读取API接口：Sat May 05 05:46:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:47:00,827 - 读取API接口：Sat May 05 05:47:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:47:13,332 - 读取API接口：Sat May 05 05:47:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:47:28,323 - 读取API接口：Sat May 05 05:47:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:47:39,789 - 读取API接口：Sat May 05 05:47:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:47:53,538 - 读取API接口：Sat May 05 05:47:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:48:02,946 - 读取API接口：Sat May 05 05:48:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:48:14,386 - 读取API接口：Sat May 05 05:48:14 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:48:26,382 - 读取API接口：Sat May 05 05:48:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:48:41,767 - 读取API接口：Sat May 05 05:48:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:48:53,282 - 读取API接口：Sat May 05 05:48:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:49:02,624 - 读取API接口：Sat May 05 05:49:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:49:17,463 - 读取API接口：Sat May 05 05:49:17 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:49:26,275 - 读取API接口：Sat May 05 05:49:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:49:40,643 - 读取API接口：Sat May 05 05:49:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:49:52,597 - 读取API接口：Sat May 05 05:49:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:50:00,990 - 读取API接口：Sat May 05 05:50:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:50:13,666 - 读取API接口：Sat May 05 05:50:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:50:28,256 - 读取API接口：Sat May 05 05:50:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:50:40,479 - 读取API接口：Sat May 05 05:50:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:50:54,081 - 读取API接口：Sat May 05 05:50:54 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:51:04,738 - 读取API接口：Sat May 05 05:51:04 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:51:13,329 - 读取API接口：Sat May 05 05:51:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:51:26,274 - 读取API接口：Sat May 05 05:51:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:51:44,480 - 读取API接口：Sat May 05 05:51:44 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:51:53,654 - 读取API接口：Sat May 05 05:51:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:52:00,455 - 读取API接口：Sat May 05 05:52:00 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:52:13,282 - 读取API接口：Sat May 05 05:52:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:52:26,223 - 读取API接口：Sat May 05 05:52:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:52:41,311 - 读取API接口：Sat May 05 05:52:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:52:53,791 - 读取API接口：Sat May 05 05:52:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:53:01,557 - 读取API接口：Sat May 05 05:53:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:53:13,430 - 读取API接口：Sat May 05 05:53:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:53:27,703 - 读取API接口：Sat May 05 05:53:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:53:41,934 - 读取API接口：Sat May 05 05:53:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:53:53,353 - 读取API接口：Sat May 05 05:53:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:54:02,233 - 读取API接口：Sat May 05 05:54:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:54:13,383 - 读取API接口：Sat May 05 05:54:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:54:26,334 - 读取API接口：Sat May 05 05:54:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:54:40,582 - 读取API接口：Sat May 05 05:54:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:54:56,020 - 读取API接口：Sat May 05 05:54:56 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:55:01,475 - 读取API接口：Sat May 05 05:55:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:55:13,626 - 读取API接口：Sat May 05 05:55:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:55:26,519 - 读取API接口：Sat May 05 05:55:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:55:39,572 - 读取API接口：Sat May 05 05:55:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:55:52,865 - 读取API接口：Sat May 05 05:55:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:56:03,613 - 读取API接口：Sat May 05 05:56:03 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:56:13,285 - 读取API接口：Sat May 05 05:56:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:56:26,353 - 读取API接口：Sat May 05 05:56:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:56:40,197 - 读取API接口：Sat May 05 05:56:40 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:56:52,598 - 读取API接口：Sat May 05 05:56:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:57:02,730 - 读取API接口：Sat May 05 05:57:02 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:57:13,892 - 读取API接口：Sat May 05 05:57:13 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:57:26,143 - 读取API接口：Sat May 05 05:57:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:57:39,564 - 读取API接口：Sat May 05 05:57:39 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:57:53,570 - 读取API接口：Sat May 05 05:57:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:58:01,902 - 读取API接口：Sat May 05 05:58:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:58:14,490 - 读取API接口：Sat May 05 05:58:14 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:58:28,281 - 读取API接口：Sat May 05 05:58:28 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:58:41,556 - 读取API接口：Sat May 05 05:58:41 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:58:52,517 - 读取API接口：Sat May 05 05:58:52 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:59:01,849 - 读取API接口：Sat May 05 05:59:01 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:59:14,502 - 读取API接口：Sat May 05 05:59:14 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:59:26,245 - 读取API接口：Sat May 05 05:59:26 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:59:42,071 - 读取API接口：Sat May 05 05:59:42 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 05:59:53,417 - 读取API接口：Sat May 05 05:59:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 09:00:01,146 - 读取API接口：Sat May 05 09:00:01 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:00:03,638 - 读取API接口：Sat May 05 09:00:03 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:03,708 - 读取API接口：Sat May 05 09:00:03 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:03,788 - 读取API接口：Sat May 05 09:00:03 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:11,079 - 读取API接口：Sat May 05 09:00:11 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:12,100 - 读取API接口：Sat May 05 09:00:12 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:13,070 - 读取API接口：Sat May 05 09:00:13 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:00:13,151 - 读取API接口：Sat May 05 09:00:13 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:22,130 - 读取API接口：Sat May 05 09:00:22 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:24,071 - 读取API接口：Sat May 05 09:00:24 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:26,082 - 读取API接口：Sat May 05 09:00:26 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:26,152 - 读取API接口：Sat May 05 09:00:26 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:00:33,087 - 读取API接口：Sat May 05 09:00:33 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:36,088 - 读取API接口：Sat May 05 09:00:36 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:39,089 - 读取API接口：Sat May 05 09:00:39 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:39,209 - 读取API接口：Sat May 05 09:00:39 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:00:44,100 - 读取API接口：Sat May 05 09:00:44 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:48,083 - 读取API接口：Sat May 05 09:00:48 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:52,074 - 读取API接口：Sat May 05 09:00:52 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:00:52,144 - 读取API接口：Sat May 05 09:00:52 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:00:55,087 - 读取API接口：Sat May 05 09:00:55 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:00,098 - 读取API接口：Sat May 05 09:01:00 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:01:00,168 - 读取API接口：Sat May 05 09:01:00 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:00,258 - 读取API接口：Sat May 05 09:01:00 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:00,338 - 读取API接口：Sat May 05 09:01:00 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:13,099 - 读取API接口：Sat May 05 09:01:13 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:13,200 - 读取API接口：Sat May 05 09:01:13 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:13,290 - 读取API接口：Sat May 05 09:01:13 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:01:13,380 - 读取API接口：Sat May 05 09:01:13 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:22,091 - 读取API接口：Sat May 05 09:01:22 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:24,072 - 读取API接口：Sat May 05 09:01:24 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:26,073 - 读取API接口：Sat May 05 09:01:26 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:01:26,143 - 读取API接口：Sat May 05 09:01:26 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:33,074 - 读取API接口：Sat May 05 09:01:33 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:36,089 - 读取API接口：Sat May 05 09:01:36 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:39,086 - 读取API接口：Sat May 05 09:01:39 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:01:39,166 - 读取API接口：Sat May 05 09:01:39 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:46,127 - 读取API接口：Sat May 05 09:01:46 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:48,099 - 读取API接口：Sat May 05 09:01:48 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:52,080 - 读取API接口：Sat May 05 09:01:52 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:01:52,150 - 读取API接口：Sat May 05 09:01:52 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:01:55,071 - 读取API接口：Sat May 05 09:01:55 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:00,072 - 读取API接口：Sat May 05 09:02:00 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:02:00,162 - 读取API接口：Sat May 05 09:02:00 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:00,242 - 读取API接口：Sat May 05 09:02:00 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:00,322 - 读取API接口：Sat May 05 09:02:00 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:11,083 - 读取API接口：Sat May 05 09:02:11 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:12,096 - 读取API接口：Sat May 05 09:02:12 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:13,087 - 读取API接口：Sat May 05 09:02:13 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:02:13,159 - 读取API接口：Sat May 05 09:02:13 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:22,077 - 读取API接口：Sat May 05 09:02:22 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:24,078 - 读取API接口：Sat May 05 09:02:24 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:26,079 - 读取API接口：Sat May 05 09:02:26 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:26,159 - 读取API接口：Sat May 05 09:02:26 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:02:33,072 - 读取API接口：Sat May 05 09:02:33 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:36,087 - 读取API接口：Sat May 05 09:02:36 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:39,078 - 读取API接口：Sat May 05 09:02:39 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:02:39,158 - 读取API接口：Sat May 05 09:02:39 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:44,107 - 读取API接口：Sat May 05 09:02:44 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:48,123 - 读取API接口：Sat May 05 09:02:48 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:52,110 - 读取API接口：Sat May 05 09:02:52 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:02:52,200 - 读取API接口：Sat May 05 09:02:52 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:02:55,168 - 读取API接口：Sat May 05 09:02:55 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:00,105 - 读取API接口：Sat May 05 09:03:00 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:03:02,246 - 读取API接口：Sat May 05 09:03:02 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:02,346 - 读取API接口：Sat May 05 09:03:02 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:02,786 - 读取API接口：Sat May 05 09:03:02 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:11,079 - 读取API接口：Sat May 05 09:03:11 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:12,130 - 读取API接口：Sat May 05 09:03:12 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:13,081 - 读取API接口：Sat May 05 09:03:13 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:03:13,171 - 读取API接口：Sat May 05 09:03:13 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:22,082 - 读取API接口：Sat May 05 09:03:22 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:24,093 - 读取API接口：Sat May 05 09:03:24 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:26,084 - 读取API接口：Sat May 05 09:03:26 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:03:26,164 - 读取API接口：Sat May 05 09:03:26 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:33,085 - 读取API接口：Sat May 05 09:03:33 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:36,086 - 读取API接口：Sat May 05 09:03:36 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:39,087 - 读取API接口：Sat May 05 09:03:39 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:39,177 - 读取API接口：Sat May 05 09:03:39 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:03:44,108 - 读取API接口：Sat May 05 09:03:44 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:48,089 - 读取API接口：Sat May 05 09:03:48 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:52,092 - 读取API接口：Sat May 05 09:03:52 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:03:52,172 - 读取API接口：Sat May 05 09:03:52 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:03:57,115 - 读取API接口：Sat May 05 09:03:57 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:00,109 - 读取API接口：Sat May 05 09:04:00 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:00,199 - 读取API接口：Sat May 05 09:04:00 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:00,289 - 读取API接口：Sat May 05 09:04:00 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:00,429 - 读取API接口：Sat May 05 09:04:00 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:04:11,110 - 读取API接口：Sat May 05 09:04:11 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:12,070 - 读取API接口：Sat May 05 09:04:12 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:13,092 - 读取API接口：Sat May 05 09:04:13 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:13,173 - 读取API接口：Sat May 05 09:04:13 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:04:22,090 - 读取API接口：Sat May 05 09:04:22 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:24,091 - 读取API接口：Sat May 05 09:04:24 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:26,172 - 读取API接口：Sat May 05 09:04:26 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:26,262 - 读取API接口：Sat May 05 09:04:26 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:04:33,107 - 读取API接口：Sat May 05 09:04:33 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:36,138 - 读取API接口：Sat May 05 09:04:36 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:39,079 - 读取API接口：Sat May 05 09:04:39 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:04:39,179 - 读取API接口：Sat May 05 09:04:39 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:44,132 - 读取API接口：Sat May 05 09:04:44 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:48,133 - 读取API接口：Sat May 05 09:04:48 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:52,086 - 读取API接口：Sat May 05 09:04:52 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:04:52,176 - 读取API接口：Sat May 05 09:04:52 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:04:55,087 - 读取API接口：Sat May 05 09:04:55 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:00,082 - 读取API接口：Sat May 05 09:05:00 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:00,172 - 读取API接口：Sat May 05 09:05:00 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:00,262 - 读取API接口：Sat May 05 09:05:00 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:00,542 - 读取API接口：Sat May 05 09:05:00 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:05:11,091 - 读取API接口：Sat May 05 09:05:11 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:12,081 - 读取API接口：Sat May 05 09:05:12 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:13,082 - 读取API接口：Sat May 05 09:05:13 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:05:13,173 - 读取API接口：Sat May 05 09:05:13 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:22,084 - 读取API接口：Sat May 05 09:05:22 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:24,085 - 读取API接口：Sat May 05 09:05:24 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:26,096 - 读取API接口：Sat May 05 09:05:26 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:05:26,176 - 读取API接口：Sat May 05 09:05:26 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:33,106 - 读取API接口：Sat May 05 09:05:33 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:36,082 - 读取API接口：Sat May 05 09:05:36 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:39,095 - 读取API接口：Sat May 05 09:05:39 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:05:39,205 - 读取API接口：Sat May 05 09:05:39 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:44,096 - 读取API接口：Sat May 05 09:05:44 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:48,097 - 读取API接口：Sat May 05 09:05:48 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:52,089 - 读取API接口：Sat May 05 09:05:52 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:05:52,179 - 读取API接口：Sat May 05 09:05:52 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:05:55,080 - 读取API接口：Sat May 05 09:05:55 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:02,482 - 读取API接口：Sat May 05 09:06:02 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:02,562 - 读取API接口：Sat May 05 09:06:02 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:06:02,632 - 读取API接口：Sat May 05 09:06:02 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:02,712 - 读取API接口：Sat May 05 09:06:02 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:11,089 - 读取API接口：Sat May 05 09:06:11 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:12,100 - 读取API接口：Sat May 05 09:06:12 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:13,070 - 读取API接口：Sat May 05 09:06:13 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:13,151 - 读取API接口：Sat May 05 09:06:13 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:06:24,085 - 读取API接口：Sat May 05 09:06:24 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:24,306 - 读取API接口：Sat May 05 09:06:24 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:26,087 - 读取API接口：Sat May 05 09:06:26 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:06:26,167 - 读取API接口：Sat May 05 09:06:26 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:33,088 - 读取API接口：Sat May 05 09:06:33 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:36,092 - 读取API接口：Sat May 05 09:06:36 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:39,075 - 读取API接口：Sat May 05 09:06:39 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:06:39,145 - 读取API接口：Sat May 05 09:06:39 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:44,076 - 读取API接口：Sat May 05 09:06:44 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:48,117 - 读取API接口：Sat May 05 09:06:48 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:52,088 - 读取API接口：Sat May 05 09:06:52 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:06:52,168 - 读取API接口：Sat May 05 09:06:52 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:06:55,089 - 读取API接口：Sat May 05 09:06:55 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:00,110 - 读取API接口：Sat May 05 09:07:00 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:07:00,180 - 读取API接口：Sat May 05 09:07:00 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:00,270 - 读取API接口：Sat May 05 09:07:00 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:00,340 - 读取API接口：Sat May 05 09:07:00 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:11,081 - 读取API接口：Sat May 05 09:07:11 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:12,072 - 读取API接口：Sat May 05 09:07:12 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:13,083 - 读取API接口：Sat May 05 09:07:13 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:13,170 - 读取API接口：Sat May 05 09:07:13 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:07:22,071 - 读取API接口：Sat May 05 09:07:22 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:24,072 - 读取API接口：Sat May 05 09:07:24 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:28,193 - 读取API接口：Sat May 05 09:07:28 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:28,274 - 读取API接口：Sat May 05 09:07:28 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:07:33,075 - 读取API接口：Sat May 05 09:07:33 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:36,096 - 读取API接口：Sat May 05 09:07:36 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:39,086 - 读取API接口：Sat May 05 09:07:39 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:39,166 - 读取API接口：Sat May 05 09:07:39 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:07:44,087 - 读取API接口：Sat May 05 09:07:44 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:48,078 - 读取API接口：Sat May 05 09:07:48 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:52,089 - 读取API接口：Sat May 05 09:07:52 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:07:52,149 - 读取API接口：Sat May 05 09:07:52 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:15:48,907 - 读取API接口：Sat May 05 09:15:48 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:15:49,267 - 读取API接口：Sat May 05 09:15:49 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:15:49,337 - 读取API接口：Sat May 05 09:15:49 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:15:49,427 - 读取API接口：Sat May 05 09:15:49 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:15:49,497 - 读取API接口：Sat May 05 09:15:49 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:15:51,338 - 读取API接口：Sat May 05 09:15:51 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:23:22,488 - 读取API接口：Sat May 05 09:23:22 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:23:22,778 - 读取API接口：Sat May 05 09:23:22 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:23:22,848 - 读取API接口：Sat May 05 09:23:22 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:31:36,802 - 读取API接口：Sat May 05 09:31:36 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:31:36,923 - 读取API接口：Sat May 05 09:31:36 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:31:39,514 - 读取API接口：Sat May 05 09:31:39 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 09:39:44,535 - 读取API接口：Sat May 05 09:39:44 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:39:45,095 - 读取API接口：Sat May 05 09:39:45 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:39:45,185 - 读取API接口：Sat May 05 09:39:45 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 09:48:10,064 - 读取API接口：Sat May 05 09:48:10 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 09:48:11,226 - 读取API接口：Sat May 05 09:48:11 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 09:56:41,663 - 读取API接口：Sat May 05 09:56:41 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 10:04:39,269 - 读取API接口：Sat May 05 10:04:39 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 10:04:42,930 - 读取API接口：Sat May 05 10:04:42 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 10:15:01,233 - 读取API接口：Sat May 05 10:15:01 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 10:23:22,386 - 读取API接口：Sat May 05 10:23:22 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 10:32:00,513 - 读取API接口：Sat May 05 10:32:00 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 10:40:20,677 - 读取API接口：Sat May 05 10:40:20 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 10:48:41,642 - 读取API接口：Sat May 05 10:48:41 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 10:56:21,831 - 读取API接口：Sat May 05 10:56:21 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 10:56:41,613 - 读取API接口：Sat May 05 10:56:41 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 11:05:28,991 - 读取API接口：Sat May 05 11:05:28 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 11:14:29,551 - 读取API接口：Sat May 05 11:14:29 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 11:22:13,710 - 读取API接口：Sat May 05 11:22:13 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 11:22:41,123 - 读取API接口：Sat May 05 11:22:41 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 11:30:21,708 - 读取API接口：Sat May 05 11:30:21 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 11:37:46,066 - 读取API接口：Sat May 05 11:37:46 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 11:45:54,138 - 读取API接口：Sat May 05 11:45:54 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 11:46:18,084 - 读取API接口：Sat May 05 11:46:18 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 11:55:35,198 - 读取API接口：Sat May 05 11:55:35 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 12:03:26,268 - 读取API接口：Sat May 05 12:03:26 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 12:10:53,742 - 读取API接口：Sat May 05 12:10:53 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 12:19:04,876 - 读取API接口：Sat May 05 12:19:04 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 12:27:24,641 - 读取API接口：Sat May 05 12:27:24 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 12:36:10,887 - 读取API接口：Sat May 05 12:36:10 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 12:44:17,739 - 读取API接口：Sat May 05 12:44:17 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 12:44:37,601 - 读取API接口：Sat May 05 12:44:37 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 12:52:25,754 - 读取API接口：Sat May 05 12:52:25 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 13:00:20,435 - 读取API接口：Sat May 05 13:00:20 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 13:08:35,482 - 读取API接口：Sat May 05 13:08:35 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 13:08:54,756 - 读取API接口：Sat May 05 13:08:54 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 13:17:28,114 - 读取API接口：Sat May 05 13:17:28 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 13:25:23,150 - 读取API接口：Sat May 05 13:25:23 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 13:33:20,534 - 读取API接口：Sat May 05 13:33:20 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 13:40:52,393 - 读取API接口：Sat May 05 13:40:52 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 13:41:16,093 - 读取API接口：Sat May 05 13:41:16 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 13:50:19,925 - 读取API接口：Sat May 05 13:50:19 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 13:58:38,915 - 读取API接口：Sat May 05 13:58:38 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 14:09:43,636 - 读取API接口：Sat May 05 14:09:43 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 14:10:11,707 - 读取API接口：Sat May 05 14:10:11 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 14:10:40,312 - 读取API接口：Sat May 05 14:10:40 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 14:10:40,412 - 读取API接口：Sat May 05 14:10:40 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 14:20:44,387 - 读取API接口：Sat May 05 14:20:44 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 14:21:07,006 - 读取API接口：Sat May 05 14:21:07 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 14:29:25,931 - 读取API接口：Sat May 05 14:29:25 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 14:29:50,720 - 读取API接口：Sat May 05 14:29:50 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 14:29:53,661 - 读取API接口：Sat May 05 14:29:53 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 14:37:52,876 - 读取API接口：Sat May 05 14:37:52 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 14:46:14,664 - 读取API接口：Sat May 05 14:46:14 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 14:54:12,372 - 读取API接口：Sat May 05 14:54:12 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 15:02:11,382 - 读取API接口：Sat May 05 15:02:11 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 15:10:37,589 - 读取API接口：Sat May 05 15:10:37 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 15:19:06,441 - 读取API接口：Sat May 05 15:19:06 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 15:19:30,347 - 读取API接口：Sat May 05 15:19:30 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 15:27:45,432 - 读取API接口：Sat May 05 15:27:45 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 15:27:45,728 - 读取API接口：Sat May 05 15:27:45 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 15:35:18,147 - 读取API接口：Sat May 05 15:35:18 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 15:43:38,377 - 读取API接口：Sat May 05 15:43:38 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 15:52:30,242 - 读取API接口：Sat May 05 15:52:30 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 16:02:42,557 - 读取API接口：Sat May 05 16:02:42 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 16:03:10,499 - 读取API接口：Sat May 05 16:03:10 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 16:11:37,704 - 读取API接口：Sat May 05 16:11:37 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 16:19:58,611 - 读取API接口：Sat May 05 16:19:58 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 16:20:33,908 - 读取API接口：Sat May 05 16:20:33 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 16:21:06,816 - 读取API接口：Sat May 05 16:21:06 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 16:21:41,253 - 读取API接口：Sat May 05 16:21:41 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 16:30:30,367 - 读取API接口：Sat May 05 16:30:30 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 16:39:09,028 - 读取API接口：Sat May 05 16:39:09 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 16:47:35,910 - 读取API接口：Sat May 05 16:47:35 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 16:56:28,880 - 读取API接口：Sat May 05 16:56:28 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 17:05:09,019 - 读取API接口：Sat May 05 17:05:09 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 17:05:30,680 - 读取API接口：Sat May 05 17:05:30 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 17:14:19,290 - 读取API接口：Sat May 05 17:14:19 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 17:14:33,991 - 读取API接口：Sat May 05 17:14:33 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 17:23:15,293 - 读取API接口：Sat May 05 17:23:15 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 17:31:08,381 - 读取API接口：Sat May 05 17:31:08 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 17:39:34,420 - 读取API接口：Sat May 05 17:39:34 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 17:48:12,587 - 读取API接口：Sat May 05 17:48:12 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 17:48:50,104 - 读取API接口：Sat May 05 17:48:50 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 17:57:03,098 - 读取API接口：Sat May 05 17:57:03 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 18:06:05,556 - 读取API接口：Sat May 05 18:06:05 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 18:06:59,701 - 读取API接口：Sat May 05 18:06:59 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 18:16:35,670 - 读取API接口：Sat May 05 18:16:35 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 18:17:01,992 - 读取API接口：Sat May 05 18:17:01 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 18:25:47,358 - 读取API接口：Sat May 05 18:25:47 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 18:34:26,176 - 读取API接口：Sat May 05 18:34:26 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 18:42:42,794 - 读取API接口：Sat May 05 18:42:42 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-05-05 18:42:58,809 - 读取API接口：Sat May 05 18:42:58 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-05-05 18:43:23,638 - 读取API接口：Sat May 05 18:43:23 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-05-05 18:55:27,142 - 读取API接口：Sat May 05 18:55:27 CST 2018,游戏类型：2002,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=mlaft&rows=20&format=json&extend=true
+ 2018-05-05 18:56:04,332 - 读取API接口：Sat May 05 18:56:04 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 2018-05-05 19:05:34,640 - 读取API接口：Sat May 05 19:05:34 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-05-05 19:05:53,544 - 读取API接口：Sat May 05 19:05:53 CST 2018,游戏类型：1004,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=xjssc&rows=20&format=json&extend=true
+ 

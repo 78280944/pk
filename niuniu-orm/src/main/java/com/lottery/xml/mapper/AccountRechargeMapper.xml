@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.orm.dao.AccountRechargeMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.AccountRecharge">
+    <id column="arid" jdbcType="INTEGER" property="arid" />
+    <result column="accountid" jdbcType="INTEGER" property="accountid" />
+    <result column="BANKID" jdbcType="VARCHAR" property="bankid" />
+    <result column="BANKNAME" jdbcType="VARCHAR" property="bankname" />
+    <result column="BANKACCOUNT" jdbcType="VARCHAR" property="bankaccount" />
+    <result column="BANKADDRESS" jdbcType="VARCHAR" property="bankaddress" />
+    <result column="bankno" jdbcType="VARCHAR" property="bankno" />
+    <result column="bankloproname" jdbcType="VARCHAR" property="bankloproname" />
+    <result column="banklocityname" jdbcType="VARCHAR" property="banklocityname" />
+    <result column="phoneno" jdbcType="VARCHAR" property="phoneno" />
+    <result column="RELATIVETYPE" jdbcType="VARCHAR" property="relativetype" />
+    <result column="requestno" jdbcType="VARCHAR" property="requestno" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="transid" jdbcType="VARCHAR" property="transid" />
+    <result column="merno" jdbcType="VARCHAR" property="merno" />
+    <result column="productid" jdbcType="VARCHAR" property="productid" />
+    <result column="orderdate" jdbcType="VARCHAR" property="orderdate" />
+    <result column="orderno" jdbcType="VARCHAR" property="orderno" />
+    <result column="payno" jdbcType="VARCHAR" property="payno" />
+    <result column="transamt" jdbcType="INTEGER" property="transamt" />
+    <result column="returnurl" jdbcType="VARCHAR" property="returnurl" />
+    <result column="notifyurl" jdbcType="VARCHAR" property="notifyurl" />
+    <result column="commodityname" jdbcType="VARCHAR" property="commodityname" />
+    <result column="mweburl" jdbcType="VARCHAR" property="mweburl" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="extendfield" jdbcType="VARCHAR" property="extendfield" />
+    <result column="respcode" jdbcType="VARCHAR" property="respcode" />
+    <result column="respdesc" jdbcType="VARCHAR" property="respdesc" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="fee" jdbcType="DOUBLE" property="fee" />
+    <result column="donatamt" jdbcType="DOUBLE" property="donatamt" />
+    <result column="payamt" jdbcType="DOUBLE" property="payamt" />
+    <result column="accountamount" jdbcType="DECIMAL" property="accountamount" />
+    <result column="orderstate" jdbcType="VARCHAR" property="orderstate" />
+    <result column="orderip" jdbcType="VARCHAR" property="orderip" />
+    <result column="opuserid" jdbcType="VARCHAR" property="opuserid" />
+    <result column="opusertime" jdbcType="TIMESTAMP" property="opusertime" />
+    <result column="upuserid" jdbcType="VARCHAR" property="upuserid" />
+    <result column="upusertime" jdbcType="TIMESTAMP" property="upusertime" />
+    <result column="upstate" jdbcType="VARCHAR" property="upstate" />
+    <result column="inputtime" jdbcType="TIMESTAMP" property="inputtime" />
+  </resultMap>
+  <resultMap id="TradeResultMap" type="com.lottery.orm.dto.TradeInfoDto">
+    <result column="tradeamount" jdbcType="INTEGER" property="tradeamount" />
+    <result column="tradetime" jdbcType="TIMESTAMP" property="tradetime" />
+    <result column="orderstate" jdbcType="VARCHAR" property="orderstate" />
+    </resultMap>
+  <sql id="Base_Column_List">
+    arid, accountid, BANKID, BANKNAME, BANKACCOUNT, BANKADDRESS, bankno, bankloproname, 
+    banklocityname, phoneno, RELATIVETYPE, requestno, version, transid, merno, productid, 
+    orderdate, orderno, payno, transamt, returnurl, notifyurl, commodityname, mweburl, 
+    remark, extendfield, respcode, respdesc, signature, fee, donatamt, payamt, accountamount, 
+    orderstate, orderip, opuserid, opusertime, upuserid, upusertime, upstate, inputtime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from account_recharge
+    where arid = #{arid,jdbcType=INTEGER}
+  </select>
+   <select id="selectByTrade" resultMap="TradeResultMap">
+    select a.transamt as tradeamount,a.inputtime as tradetime,a.orderstate as orderstate
+    from account_recharge a
+    where a.accountid = #{accountid,jdbcType=INTEGER} and a.relativetype = #{relativetype,jdbcType=VARCHAR} and (a.inputtime BETWEEN #{starttime,jdbcType=TIMESTAMP} and #{overtime,jdbcType=TIMESTAMP}) 
+    ORDER BY a.inputtime DESC
+    <if test="beginRow != null and pageSize !=null">
+	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+  <select id="selectByOutResult" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from account_recharge
+    where (requestno!=null or requestno!='') and orderstate ='03' order by inputtime asc;
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from account_recharge
+    where arid = #{arid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.AccountRecharge">
+    <selectKey keyProperty="arid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into account_recharge (accountid, BANKID, BANKNAME, 
+      BANKACCOUNT, BANKADDRESS, bankno, 
+      bankloproname, banklocityname, phoneno, 
+      RELATIVETYPE, requestno, version, 
+      transid, merno, productid, 
+      orderdate, orderno, payno, 
+      transamt, returnurl, notifyurl, 
+      commodityname, mweburl, remark, 
+      extendfield, respcode, respdesc, 
+      signature, fee, donatamt, 
+      payamt, accountamount, orderstate, 
+      orderip, opuserid, opusertime, 
+      upuserid, upusertime, upstate, 
+      inputtime)
+    values (#{accountid,jdbcType=INTEGER}, #{bankid,jdbcType=VARCHAR}, #{bankname,jdbcType=VARCHAR}, 
+      #{bankaccount,jdbcType=VARCHAR}, #{bankaddress,jdbcType=VARCHAR}, #{bankno,jdbcType=VARCHAR}, 
+      #{bankloproname,jdbcType=VARCHAR}, #{banklocityname,jdbcType=VARCHAR}, #{phoneno,jdbcType=VARCHAR}, 
+      #{relativetype,jdbcType=VARCHAR}, #{requestno,jdbcType=VARCHAR}, #{version,jdbcType=VARCHAR}, 
+      #{transid,jdbcType=VARCHAR}, #{merno,jdbcType=VARCHAR}, #{productid,jdbcType=VARCHAR}, 
+      #{orderdate,jdbcType=VARCHAR}, #{orderno,jdbcType=VARCHAR}, #{payno,jdbcType=VARCHAR}, 
+      #{transamt,jdbcType=INTEGER}, #{returnurl,jdbcType=VARCHAR}, #{notifyurl,jdbcType=VARCHAR}, 
+      #{commodityname,jdbcType=VARCHAR}, #{mweburl,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{extendfield,jdbcType=VARCHAR}, #{respcode,jdbcType=VARCHAR}, #{respdesc,jdbcType=VARCHAR}, 
+      #{signature,jdbcType=VARCHAR}, #{fee,jdbcType=DOUBLE}, #{donatamt,jdbcType=DOUBLE}, 
+      #{payamt,jdbcType=DOUBLE}, #{accountamount,jdbcType=DECIMAL}, #{orderstate,jdbcType=VARCHAR}, 
+      #{orderip,jdbcType=VARCHAR}, #{opuserid,jdbcType=VARCHAR}, #{opusertime,jdbcType=TIMESTAMP}, 
+      #{upuserid,jdbcType=VARCHAR}, #{upusertime,jdbcType=TIMESTAMP}, #{upstate,jdbcType=VARCHAR}, 
+      #{inputtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.AccountRecharge">
+    <selectKey keyProperty="arid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into account_recharge
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="accountid != null">
+        accountid,
+      </if>
+      <if test="bankid != null">
+        BANKID,
+      </if>
+      <if test="bankname != null">
+        BANKNAME,
+      </if>
+      <if test="bankaccount != null">
+        BANKACCOUNT,
+      </if>
+      <if test="bankaddress != null">
+        BANKADDRESS,
+      </if>
+      <if test="bankno != null">
+        bankno,
+      </if>
+      <if test="bankloproname != null">
+        bankloproname,
+      </if>
+      <if test="banklocityname != null">
+        banklocityname,
+      </if>
+      <if test="phoneno != null">
+        phoneno,
+      </if>
+      <if test="relativetype != null">
+        RELATIVETYPE,
+      </if>
+      <if test="requestno != null">
+        requestno,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="transid != null">
+        transid,
+      </if>
+      <if test="merno != null">
+        merno,
+      </if>
+      <if test="productid != null">
+        productid,
+      </if>
+      <if test="orderdate != null">
+        orderdate,
+      </if>
+      <if test="orderno != null">
+        orderno,
+      </if>
+      <if test="payno != null">
+        payno,
+      </if>
+      <if test="transamt != null">
+        transamt,
+      </if>
+      <if test="returnurl != null">
+        returnurl,
+      </if>
+      <if test="notifyurl != null">
+        notifyurl,
+      </if>
+      <if test="commodityname != null">
+        commodityname,
+      </if>
+      <if test="mweburl != null">
+        mweburl,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="extendfield != null">
+        extendfield,
+      </if>
+      <if test="respcode != null">
+        respcode,
+      </if>
+      <if test="respdesc != null">
+        respdesc,
+      </if>
+      <if test="signature != null">
+        signature,
+      </if>
+      <if test="fee != null">
+        fee,
+      </if>
+      <if test="donatamt != null">
+        donatamt,
+      </if>
+      <if test="payamt != null">
+        payamt,
+      </if>
+      <if test="accountamount != null">
+        accountamount,
+      </if>
+      <if test="orderstate != null">
+        orderstate,
+      </if>
+      <if test="orderip != null">
+        orderip,
+      </if>
+      <if test="opuserid != null">
+        opuserid,
+      </if>
+      <if test="opusertime != null">
+        opusertime,
+      </if>
+      <if test="upuserid != null">
+        upuserid,
+      </if>
+      <if test="upusertime != null">
+        upusertime,
+      </if>
+      <if test="upstate != null">
+        upstate,
+      </if>
+      <if test="inputtime != null">
+        inputtime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="accountid != null">
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="bankid != null">
+        #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null">
+        #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccount != null">
+        #{bankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaddress != null">
+        #{bankaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="bankno != null">
+        #{bankno,jdbcType=VARCHAR},
+      </if>
+      <if test="bankloproname != null">
+        #{bankloproname,jdbcType=VARCHAR},
+      </if>
+      <if test="banklocityname != null">
+        #{banklocityname,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneno != null">
+        #{phoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="relativetype != null">
+        #{relativetype,jdbcType=VARCHAR},
+      </if>
+      <if test="requestno != null">
+        #{requestno,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="transid != null">
+        #{transid,jdbcType=VARCHAR},
+      </if>
+      <if test="merno != null">
+        #{merno,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null">
+        #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdate != null">
+        #{orderdate,jdbcType=VARCHAR},
+      </if>
+      <if test="orderno != null">
+        #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="payno != null">
+        #{payno,jdbcType=VARCHAR},
+      </if>
+      <if test="transamt != null">
+        #{transamt,jdbcType=INTEGER},
+      </if>
+      <if test="returnurl != null">
+        #{returnurl,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyurl != null">
+        #{notifyurl,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityname != null">
+        #{commodityname,jdbcType=VARCHAR},
+      </if>
+      <if test="mweburl != null">
+        #{mweburl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="extendfield != null">
+        #{extendfield,jdbcType=VARCHAR},
+      </if>
+      <if test="respcode != null">
+        #{respcode,jdbcType=VARCHAR},
+      </if>
+      <if test="respdesc != null">
+        #{respdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="fee != null">
+        #{fee,jdbcType=DOUBLE},
+      </if>
+      <if test="donatamt != null">
+        #{donatamt,jdbcType=DOUBLE},
+      </if>
+      <if test="payamt != null">
+        #{payamt,jdbcType=DOUBLE},
+      </if>
+      <if test="accountamount != null">
+        #{accountamount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderstate != null">
+        #{orderstate,jdbcType=VARCHAR},
+      </if>
+      <if test="orderip != null">
+        #{orderip,jdbcType=VARCHAR},
+      </if>
+      <if test="opuserid != null">
+        #{opuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="opusertime != null">
+        #{opusertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upuserid != null">
+        #{upuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="upusertime != null">
+        #{upusertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upstate != null">
+        #{upstate,jdbcType=VARCHAR},
+      </if>
+      <if test="inputtime != null">
+        #{inputtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.AccountRecharge">
+    update account_recharge
+    <set>
+      <if test="accountid != null">
+        accountid = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="bankid != null">
+        BANKID = #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null">
+        BANKNAME = #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccount != null">
+        BANKACCOUNT = #{bankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaddress != null">
+        BANKADDRESS = #{bankaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="bankno != null">
+        bankno = #{bankno,jdbcType=VARCHAR},
+      </if>
+      <if test="bankloproname != null">
+        bankloproname = #{bankloproname,jdbcType=VARCHAR},
+      </if>
+      <if test="banklocityname != null">
+        banklocityname = #{banklocityname,jdbcType=VARCHAR},
+      </if>
+      <if test="phoneno != null">
+        phoneno = #{phoneno,jdbcType=VARCHAR},
+      </if>
+      <if test="relativetype != null">
+        RELATIVETYPE = #{relativetype,jdbcType=VARCHAR},
+      </if>
+      <if test="requestno != null">
+        requestno = #{requestno,jdbcType=VARCHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="transid != null">
+        transid = #{transid,jdbcType=VARCHAR},
+      </if>
+      <if test="merno != null">
+        merno = #{merno,jdbcType=VARCHAR},
+      </if>
+      <if test="productid != null">
+        productid = #{productid,jdbcType=VARCHAR},
+      </if>
+      <if test="orderdate != null">
+        orderdate = #{orderdate,jdbcType=VARCHAR},
+      </if>
+      <if test="orderno != null">
+        orderno = #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="payno != null">
+        payno = #{payno,jdbcType=VARCHAR},
+      </if>
+      <if test="transamt != null">
+        transamt = #{transamt,jdbcType=INTEGER},
+      </if>
+      <if test="returnurl != null">
+        returnurl = #{returnurl,jdbcType=VARCHAR},
+      </if>
+      <if test="notifyurl != null">
+        notifyurl = #{notifyurl,jdbcType=VARCHAR},
+      </if>
+      <if test="commodityname != null">
+        commodityname = #{commodityname,jdbcType=VARCHAR},
+      </if>
+      <if test="mweburl != null">
+        mweburl = #{mweburl,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="extendfield != null">
+        extendfield = #{extendfield,jdbcType=VARCHAR},
+      </if>
+      <if test="respcode != null">
+        respcode = #{respcode,jdbcType=VARCHAR},
+      </if>
+      <if test="respdesc != null">
+        respdesc = #{respdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="signature != null">
+        signature = #{signature,jdbcType=VARCHAR},
+      </if>
+      <if test="fee != null">
+        fee = #{fee,jdbcType=DOUBLE},
+      </if>
+      <if test="donatamt != null">
+        donatamt = #{donatamt,jdbcType=DOUBLE},
+      </if>
+      <if test="payamt != null">
+        payamt = #{payamt,jdbcType=DOUBLE},
+      </if>
+      <if test="accountamount != null">
+        accountamount = #{accountamount,jdbcType=DECIMAL},
+      </if>
+      <if test="orderstate != null">
+        orderstate = #{orderstate,jdbcType=VARCHAR},
+      </if>
+      <if test="orderip != null">
+        orderip = #{orderip,jdbcType=VARCHAR},
+      </if>
+      <if test="opuserid != null">
+        opuserid = #{opuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="opusertime != null">
+        opusertime = #{opusertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upuserid != null">
+        upuserid = #{upuserid,jdbcType=VARCHAR},
+      </if>
+      <if test="upusertime != null">
+        upusertime = #{upusertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="upstate != null">
+        upstate = #{upstate,jdbcType=VARCHAR},
+      </if>
+      <if test="inputtime != null">
+        inputtime = #{inputtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where arid = #{arid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.AccountRecharge">
+    update account_recharge
+    set accountid = #{accountid,jdbcType=INTEGER},
+      BANKID = #{bankid,jdbcType=VARCHAR},
+      BANKNAME = #{bankname,jdbcType=VARCHAR},
+      BANKACCOUNT = #{bankaccount,jdbcType=VARCHAR},
+      BANKADDRESS = #{bankaddress,jdbcType=VARCHAR},
+      bankno = #{bankno,jdbcType=VARCHAR},
+      bankloproname = #{bankloproname,jdbcType=VARCHAR},
+      banklocityname = #{banklocityname,jdbcType=VARCHAR},
+      phoneno = #{phoneno,jdbcType=VARCHAR},
+      RELATIVETYPE = #{relativetype,jdbcType=VARCHAR},
+      requestno = #{requestno,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      transid = #{transid,jdbcType=VARCHAR},
+      merno = #{merno,jdbcType=VARCHAR},
+      productid = #{productid,jdbcType=VARCHAR},
+      orderdate = #{orderdate,jdbcType=VARCHAR},
+      orderno = #{orderno,jdbcType=VARCHAR},
+      payno = #{payno,jdbcType=VARCHAR},
+      transamt = #{transamt,jdbcType=INTEGER},
+      returnurl = #{returnurl,jdbcType=VARCHAR},
+      notifyurl = #{notifyurl,jdbcType=VARCHAR},
+      commodityname = #{commodityname,jdbcType=VARCHAR},
+      mweburl = #{mweburl,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      extendfield = #{extendfield,jdbcType=VARCHAR},
+      respcode = #{respcode,jdbcType=VARCHAR},
+      respdesc = #{respdesc,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=VARCHAR},
+      fee = #{fee,jdbcType=DOUBLE},
+      donatamt = #{donatamt,jdbcType=DOUBLE},
+      payamt = #{payamt,jdbcType=DOUBLE},
+      accountamount = #{accountamount,jdbcType=DECIMAL},
+      orderstate = #{orderstate,jdbcType=VARCHAR},
+      orderip = #{orderip,jdbcType=VARCHAR},
+      opuserid = #{opuserid,jdbcType=VARCHAR},
+      opusertime = #{opusertime,jdbcType=TIMESTAMP},
+      upuserid = #{upuserid,jdbcType=VARCHAR},
+      upusertime = #{upusertime,jdbcType=TIMESTAMP},
+      upstate = #{upstate,jdbcType=VARCHAR},
+      inputtime = #{inputtime,jdbcType=TIMESTAMP}
+    where arid = #{arid,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByRechargeMessage" parameterType="com.lottery.orm.bo.AccountRecharge">
+    update account_recharge
+    set 
+      payno = #{payno,jdbcType=VARCHAR},
+      transamt = #{transamt,jdbcType=INTEGER},
+      respcode = #{respcode,jdbcType=VARCHAR},
+      respdesc = #{respdesc,jdbcType=VARCHAR},
+      fee = #{fee,jdbcType=DOUBLE},
+      donatamt = #{donatamt,jdbcType=DOUBLE},
+      payamt = #{payamt,jdbcType=DOUBLE},
+      accountamount = #{accountamount,jdbcType=DECIMAL},
+      orderstate = #{orderstate,jdbcType=VARCHAR},
+      upusertime = #{upusertime,jdbcType=TIMESTAMP}
+    where orderno = #{orderno,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="updateByRechargeCashReady" parameterType="com.lottery.orm.bo.AccountRecharge">
+   update account_recharge
+    set 
+      requestno = #{requestno,jdbcType=VARCHAR},
+      version = #{version,jdbcType=VARCHAR},
+      transid = #{transid,jdbcType=VARCHAR},
+      merno = #{merno,jdbcType=VARCHAR},
+      productid = #{productid,jdbcType=VARCHAR},
+      orderdate = #{orderdate,jdbcType=VARCHAR},
+      orderno = #{orderno,jdbcType=VARCHAR},
+      payno = #{payno,jdbcType=VARCHAR},
+      respcode = #{respcode,jdbcType=VARCHAR},
+      respdesc = #{respdesc,jdbcType=VARCHAR},
+      opuserid = #{opuserid,jdbcType=VARCHAR},
+      opusertime = #{opusertime,jdbcType=VARCHAR},
+      signature = #{signature,jdbcType=VARCHAR}     
+    where arid = #{arid,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByRechargeCashResult" parameterType="com.lottery.orm.bo.AccountRecharge">
+    update account_recharge
+    set 
+      orderstate = #{orderstate,jdbcType=VARCHAR},
+      respcode = #{respcode,jdbcType=VARCHAR},
+      respdesc = #{respdesc,jdbcType=VARCHAR}
+    where orderno = #{orderno,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectByTime" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from account_recharge
+    where orderdate = #{orderdate,jdbcType=VARCHAR} and relativetype = #{relativetype,jdbcType=VARCHAR} and accountid=#{accountid,jdbcType=INTEGER} and orderstate='01'
+  </select>
+  
+  <select id="selectByOrderNo" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from account_recharge
+    where orderno = #{orderno,jdbcType=VARCHAR} and relativetype = #{relativetype,jdbcType=VARCHAR} and accountid=#{accountid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByOrderNoReturn" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from account_recharge
+    where orderno = #{orderno,jdbcType=VARCHAR} and relativetype = #{relativetype,jdbcType=VARCHAR}
+  </select>
+</mapper>

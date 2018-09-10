@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.orm.dao.LotteryRoundItemMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.LotteryRoundItem">
+    <id column="ROUNDID" jdbcType="INTEGER" property="roundid" />
+    <id column="ITEMNO" jdbcType="VARCHAR" property="itemno" />
+    <result column="ITEMSCALE" jdbcType="DOUBLE" property="itemscale" />
+    <result column="UPDATETIME" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ROUNDID, ITEMNO, ITEMSCALE, UPDATETIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryRoundItemKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lottery_round_item
+    where ROUNDID = #{roundid,jdbcType=INTEGER}
+      and ITEMNO = #{itemno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryRoundItemKey">
+    delete from lottery_round_item
+    where ROUNDID = #{roundid,jdbcType=INTEGER}
+      and ITEMNO = #{itemno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.LotteryRoundItem">
+    insert into lottery_round_item (ROUNDID, ITEMNO, ITEMSCALE, 
+      UPDATETIME)
+    values (#{roundid,jdbcType=INTEGER}, #{itemno,jdbcType=VARCHAR}, #{itemscale,jdbcType=DOUBLE}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.LotteryRoundItem">
+    insert into lottery_round_item
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roundid != null">
+        ROUNDID,
+      </if>
+      <if test="itemno != null">
+        ITEMNO,
+      </if>
+      <if test="itemscale != null">
+        ITEMSCALE,
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roundid != null">
+        #{roundid,jdbcType=INTEGER},
+      </if>
+      <if test="itemno != null">
+        #{itemno,jdbcType=VARCHAR},
+      </if>
+      <if test="itemscale != null">
+        #{itemscale,jdbcType=DOUBLE},
+      </if>
+      <if test="updatetime != null">
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.LotteryRoundItem">
+    update lottery_round_item
+    <set>
+      <if test="itemscale != null">
+        ITEMSCALE = #{itemscale,jdbcType=DOUBLE},
+      </if>
+      <if test="updatetime != null">
+        UPDATETIME = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ROUNDID = #{roundid,jdbcType=INTEGER}
+      and ITEMNO = #{itemno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryRoundItem">
+    update lottery_round_item
+    set ITEMSCALE = #{itemscale,jdbcType=DOUBLE},
+      UPDATETIME = #{updatetime,jdbcType=TIMESTAMP}
+    where ROUNDID = #{roundid,jdbcType=INTEGER}
+      and ITEMNO = #{itemno,jdbcType=VARCHAR}
+  </update>
+</mapper>

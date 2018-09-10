@@ -1,0 +1,23 @@
+2018-03-15 00:08:19,050 - Thu Mar 15 00:08:19 CST 2018sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E106</ret_code><ret_msg>58.247.208.90未在白名单之中</ret_msg></root>
+ 2018-03-15 00:08:57,993 - Thu Mar 15 00:08:57 CST 2018sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E106</ret_code><ret_msg>58.247.208.90未在白名单之中</ret_msg></root>
+ 2018-03-15 00:58:21,218 - Thu Mar 15 00:58:21 CST 2018sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E106</ret_code><ret_msg>58.247.208.90未在白名单之中</ret_msg></root>
+ 2018-03-15 10:25:14,377 - Thu Mar 15 10:25:14 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E106</ret_code><ret_msg>223.167.247.173未在白名单之中</ret_msg></root>
+ 2018-03-15 10:31:31,338 - Thu Mar 15 10:31:31 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E509</ret_code><ret_msg>付款明细 第1行 单号20180314150858重复！</ret_msg></root>
+ 2018-03-15 10:35:17,222 - Thu Mar 15 10:35:17 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E501</ret_code><ret_msg>付款明细 第1行 数据格式不正确 请检查！</ret_msg></root>
+ 2018-03-15 10:36:05,523 - Thu Mar 15 10:36:05 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E509</ret_code><ret_msg>付款明细 第1行 单号20180314150858重复！</ret_msg></root>
+ 2018-03-15 10:45:30,183 - Thu Mar 15 10:45:30 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E509</ret_code><ret_msg>付款明细 第1行 单号20180314150858重复！</ret_msg></root>
+ 2018-03-15 10:47:41,070 - Thu Mar 15 10:47:41 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E501</ret_code><ret_msg>付款明细 第1行 数据格式不正确 请检查！</ret_msg></root>
+ 2018-03-15 10:48:17,550 - Thu Mar 15 10:48:17 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E509</ret_code><ret_msg>付款明细 第1行 单号20180314150858重复！</ret_msg></root>
+ 2018-03-15 10:48:48,519 - Thu Mar 15 10:48:48 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E106</ret_code><ret_msg>223.167.247.173未在白名单之中</ret_msg></root>
+ 2018-03-15 10:54:51,513 - Thu Mar 15 10:54:51 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E106</ret_code><ret_msg>223.167.247.173未在白名单之中</ret_msg></root>
+ 2018-03-15 11:26:52,553 - Thu Mar 15 11:26:52 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E501</ret_code><ret_msg>付款明细 第1行 数据格式不正确 请检查！</ret_msg></root>
+ 2018-03-15 11:28:11,115 - Thu Mar 15 11:28:11 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E501</ret_code><ret_msg>付款明细 第1行 数据格式不正确 请检查！</ret_msg></root>
+ 2018-03-15 11:29:12,393 - Thu Mar 15 11:29:12 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>0000</ret_code><ret_msg>执行成功</ret_msg></root>
+ 2018-03-15 12:02:01,481 - Thu Mar 15 12:02:01 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>0000</ret_code><ret_msg>执行成功</ret_msg></root>
+ 2018-03-15 12:03:01,296 - Thu Mar 15 12:03:01 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E509</ret_code><ret_msg>付款明细 第1行 单号20180314150860重复！</ret_msg></root>
+ 2018-03-15 12:03:18,821 - Thu Mar 15 12:03:18 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E109</ret_code><ret_msg>余额不足</ret_msg></root>
+ 2018-03-15 12:03:40,944 - Thu Mar 15 12:03:40 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E509</ret_code><ret_msg>付款明细 第1行 单号20180314150861重复！</ret_msg></root>
+ 2018-03-15 12:03:58,094 - Thu Mar 15 12:03:58 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E702</ret_code><ret_msg>付款明细第1行,付款金额每笔不能小于100.00</ret_msg></root>
+ 2018-03-15 18:51:29,133 - Thu Mar 15 18:51:29 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E106</ret_code><ret_msg>58.247.210.148未在白名单之中</ret_msg></root>
+ 2018-03-15 19:04:13,561 - Thu Mar 15 19:04:13 CST 2018,sucess:<?xml version="1.0" encoding="utf-8"?><root><ret_code>E106</ret_code><ret_msg>58.247.210.148未在白名单之中</ret_msg></root>
+ 

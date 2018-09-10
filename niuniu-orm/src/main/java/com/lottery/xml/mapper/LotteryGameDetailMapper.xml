@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.LotteryGameDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.LotteryGameDetail" >
+    <id column="lgdid" property="lgdid" jdbcType="INTEGER" />
+    <result column="lgmid" property="lgmid" jdbcType="INTEGER" />
+    <result column="accountid" property="accountid" jdbcType="INTEGER" />
+    <result column="trademoney" property="trademoney" jdbcType="DECIMAL" />
+    <result column="noid" property="noid" jdbcType="INTEGER" />
+    <result column="raccountid" property="raccountid" jdbcType="INTEGER" />
+    <result column="rnoid" property="rnoid" jdbcType="INTEGER" />
+    <result column="rresult" property="rresult" jdbcType="VARCHAR" />
+  </resultMap>
+    <resultMap id="BaseDetailMap" type="com.lottery.orm.dto.LotteryGameDetailDto" >
+    <result column="lgmid" property="lgmid" jdbcType="INTEGER" />
+    <result column="rnoid" property="rnoid" jdbcType="INTEGER" />
+    <result column="rresult" property="rresult" jdbcType="VARCHAR" />
+    <result column="trademoney" property="trademoney" jdbcType="DECIMAL" />
+  </resultMap>
+  
+  <sql id="Base_Column_List" >
+    lgdid, lgmid, accountid, trademoney, noid, raccountid, rnoid, rresult
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lottery_game_detail
+    where lgdid = #{lgdid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByGameDetail" resultMap="BaseDetailMap" parameterType="java.lang.Integer" >
+      SELECT  lgmid,rnoid,rresult,SUM(trademoney) AS trademoney 
+      FROM lottery_game_detail 
+      WHERE lgmid=#{lgmid,jdbcType=INTEGER} GROUP BY rnoid ORDER BY lgdid
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lottery_game_detail
+    where lgdid = #{lgdid,jdbcType=INTEGER}
+  </delete>
+  
+  <delete id="deletePlayer" parameterType="java.lang.Integer" >
+    delete from lottery_game_detail
+    where accountid = #{accountid,jdbcType=INTEGER}
+  </delete>
+  
+  <insert id="insert" parameterType="com.lottery.orm.bo.LotteryGameDetail" >
+    <selectKey resultType="java.lang.Integer" keyProperty="lgdid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_game_detail (lgmid, accountid, trademoney, 
+      noid, raccountid, rnoid, 
+      rresult)
+    values (#{lgmid,jdbcType=INTEGER}, #{accountid,jdbcType=INTEGER}, #{trademoney,jdbcType=DECIMAL}, 
+      #{noid,jdbcType=INTEGER}, #{raccountid,jdbcType=INTEGER}, #{rnoid,jdbcType=INTEGER}, 
+      #{rresult,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.LotteryGameDetail" >
+    <selectKey resultType="java.lang.Integer" keyProperty="lgdid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_game_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lgmid != null" >
+        lgmid,
+      </if>
+      <if test="accountid != null" >
+        accountid,
+      </if>
+      <if test="trademoney != null" >
+        trademoney,
+      </if>
+      <if test="noid != null" >
+        noid,
+      </if>
+      <if test="raccountid != null" >
+        raccountid,
+      </if>
+      <if test="rnoid != null" >
+        rnoid,
+      </if>
+      <if test="rresult != null" >
+        rresult,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lgmid != null" >
+        #{lgmid,jdbcType=INTEGER},
+      </if>
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="trademoney != null" >
+        #{trademoney,jdbcType=DECIMAL},
+      </if>
+      <if test="noid != null" >
+        #{noid,jdbcType=INTEGER},
+      </if>
+      <if test="raccountid != null" >
+        #{raccountid,jdbcType=INTEGER},
+      </if>
+      <if test="rnoid != null" >
+        #{rnoid,jdbcType=INTEGER},
+      </if>
+      <if test="rresult != null" >
+        #{rresult,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.LotteryGameDetail" >
+    update lottery_game_detail
+    <set >
+      <if test="lgmid != null" >
+        lgmid = #{lgmid,jdbcType=INTEGER},
+      </if>
+      <if test="accountid != null" >
+        accountid = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="trademoney != null" >
+        trademoney = #{trademoney,jdbcType=DECIMAL},
+      </if>
+      <if test="noid != null" >
+        noid = #{noid,jdbcType=INTEGER},
+      </if>
+      <if test="raccountid != null" >
+        raccountid = #{raccountid,jdbcType=INTEGER},
+      </if>
+      <if test="rnoid != null" >
+        rnoid = #{rnoid,jdbcType=INTEGER},
+      </if>
+      <if test="rresult != null" >
+        rresult = #{rresult,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where lgdid = #{lgdid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryGameDetail" >
+    update lottery_game_detail
+    set lgmid = #{lgmid,jdbcType=INTEGER},
+      accountid = #{accountid,jdbcType=INTEGER},
+      trademoney = #{trademoney,jdbcType=DECIMAL},
+      noid = #{noid,jdbcType=INTEGER},
+      raccountid = #{raccountid,jdbcType=INTEGER},
+      rnoid = #{rnoid,jdbcType=INTEGER},
+      rresult = #{rresult,jdbcType=VARCHAR}
+    where lgdid = #{lgdid,jdbcType=INTEGER}
+  </update>
+</mapper>

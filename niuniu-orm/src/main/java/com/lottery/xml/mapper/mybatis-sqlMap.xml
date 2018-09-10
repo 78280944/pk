@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC  
+    "-//mybatis.org//DTD Config 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.lottery.orm.bo.ApiUser" alias="ApiUser" />
+		<typeAlias type="com.lottery.orm.bo.AccountInfo" alias="AccountInfo" />
+		<typeAlias type="com.lottery.orm.bo.TradeInfo" alias="TradeInfo" />
+		<typeAlias type="com.lottery.orm.bo.LotteryItem" alias="LotteryItem" />
+		<typeAlias type="com.lottery.orm.bo.LotteryOrder" alias="LotteryOrder" />
+		<typeAlias type="com.lottery.orm.bo.LotteryOrderDetail" alias="LotteryOrderDetail" />
+		<typeAlias type="com.lottery.orm.bo.LotteryRound" alias="LotteryRound" />
+		<typeAlias type="com.lottery.orm.dto.WinningReportDto" alias="WinningReportDto" />
+		<typeAlias type="com.lottery.orm.dto.TradeReportDto" alias="TradeReportDto" />
+		<typeAlias type="com.lottery.orm.dto.InoutReportDto" alias="InoutReportDto" />
+		<typeAlias type="com.lottery.orm.bo.OffAccountInfo" alias="OffAccountInfo" />
+		<typeAlias type="com.lottery.orm.bo.AccountDetail" alias="AccountDetail" />
+		<typeAlias type="com.lottery.orm.bo.LotteryRoundItem" alias="LotteryRoundItem" />
+		<typeAlias type="com.lottery.orm.bo.ScheduleJob" alias="ScheduleJob" />
+		<typeAlias type="com.lottery.orm.bo.NoticeInfo" alias="NoticeInfo" />
+		<typeAlias type="com.lottery.orm.bo.LotteryOrderResult" alias="LotteryOrderResult" />
+		<typeAlias type="com.lottery.orm.bo.TSTimeTask" alias="TSTimeTask" />
+		<typeAlias type="com.lottery.orm.bo.LotteryService" alias="LotteryService" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/lottery/xml/mapper/ApiUserMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/AccountInfoMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/TradeInfoMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/LotteryItemMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/LotteryOrderMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/LotteryOrderDetailMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/LotteryRoundMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/LotteryReportMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/OffAccountInfoMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/AccountDetailMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/CustomLotteryMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/LotteryRoundItemMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/ScheduleJobMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/NoticeInfoMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/LotteryOrderResultMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/TSTimeTaskMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/LotteryServiceMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/LotteryRoomDetailMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/LotteryGameOrderMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/LotteryGameRoundMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/AccountRecordMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/AccountAmountMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/LotteryGameMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/SysLimitMapper.xml" />
+		<mapper resource="com/lottery/xml/mapper/LotteryRoomMapper.xml" />
+        <mapper resource="com/lottery/xml/mapper/LotteryGameResultsMapper.xml" />
+        <mapper resource="com/lottery/xml/mapper/SysComMapper.xml" />
+        <mapper resource="com/lottery/xml/mapper/LotteryOrderRecordMapper.xml" />
+        <mapper resource="com/lottery/xml/mapper/LotteryGameDetailMapper.xml" />
+        <mapper resource="com/lottery/xml/mapper/SysBeneMapper.xml" />
+        <mapper resource="com/lottery/xml/mapper/SysFeeMapper.xml" />
+        <mapper resource="com/lottery/xml/mapper/AccountRechargeMapper.xml" />
+        <mapper resource="com/lottery/xml/mapper/BankCashMapper.xml" />
+        <mapper resource="com/lottery/xml/mapper/SysRoomMapper.xml" />
+        <mapper resource="com/lottery/xml/mapper/LotteryAddAccountMapper.xml" />
+        <mapper resource="com/lottery/xml/mapper/SysOrderMapper.xml" />
+	</mappers>
+</configuration>

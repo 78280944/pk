@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.orm.dao.OffAccountInfoMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.OffAccountInfo">
+    <id column="Userid" jdbcType="INTEGER" property="userid" />
+    <result column="UserName" jdbcType="VARCHAR" property="username" />
+    <result column="AuserName" jdbcType="VARCHAR" property="ausername" />
+    <result column="Password" jdbcType="VARCHAR" property="password" />
+    <result column="Limited" jdbcType="DOUBLE" property="limited" />
+    <result column="Ratio" jdbcType="DOUBLE" property="ratio" />
+    <result column="Percentage" jdbcType="DOUBLE" property="percentage" />
+    <result column="Query" jdbcType="VARCHAR" property="query" />
+    <result column="Manage" jdbcType="VARCHAR" property="manage" />
+    <result column="IP" jdbcType="VARCHAR" property="ip" />
+    <result column="InputDate" jdbcType="TIMESTAMP" property="inputdate" />
+    <result column="UpdateIP" jdbcType="VARCHAR" property="updateip" />
+    <result column="UpdateDate" jdbcType="TIMESTAMP" property="updatedate" />
+    <result column="State" jdbcType="CHAR" property="state" />
+    <result column="SupUserName" jdbcType="VARCHAR" property="supusername" />
+    <result column="Level" jdbcType="VARCHAR" property="level" />
+    <result column="OffType" jdbcType="CHAR" property="offtype" />
+    <result column="RiskAmount" jdbcType="VARCHAR" property="riskamount" />
+    <result column="Attribute2" jdbcType="VARCHAR" property="attribute2" />
+  </resultMap>
+  
+  <resultMap id="OffAccountMap" type="com.lottery.orm.dto.OffsAccountDto" >
+    <id column="ACCOUNTID" property="accountid" jdbcType="INTEGER" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="AUSERNAME" property="ausername" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="SUPUSERNAME" property="supusername" jdbcType="VARCHAR" />
+    <result column="USERMONEY" property="usermoney" jdbcType="DECIMAL" />
+    <result column="PERCENTAGE" property="percentage" jdbcType="DOUBLE" />
+    <result column="STATE" property="state" jdbcType="CHAR" />
+    <result column="SUPUSERID" property="supuserid" jdbcType="INTEGER" />
+    <result column="LEVEL" property="level" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="SubAccountMap" type="com.lottery.orm.dto.SubsAccountDto" >
+    <id column="ACCOUNTID" property="accountid" jdbcType="INTEGER" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="AUSERNAME" property="ausername" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="CHAR" />
+    <result column="SUPUSERID" property="supuserid" jdbcType="INTEGER" />
+    <result column="LEVEL" property="level" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <select id="selectOffSupuserId" parameterType="com.lottery.orm.dto.OffsAccountDto" resultMap="OffAccountMap">  
+    select 
+    a.accountid,a.username,a.password,a.ausername,getSupUsername(a.supuserid) AS supusername,a.usermoney,a.percentage,a.state,a.supuserid,a.level
+    FROM account_info a 
+    where supuserid = #{supuserid,jdbcType=INTEGER} and offtype = #{offtype,jdbcType=VARCHAR}
+    <if test="beginrow != null and pageSize !=null">
+	limit #{beginrow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+  
+  <select id="selectAccSupuserId" parameterType="com.lottery.orm.dto.OffsAccountDto" resultMap="OffAccountMap">  
+    select 
+    a.accountid,a.username,a.password,a.ausername,getSupUsername(a.supuserid) AS supusername,a.usermoney,a.percentage,a.state,a.supuserid,a.level
+    FROM account_info a 
+    where supuserid = #{supuserid,jdbcType=INTEGER} and offtype = '3' and level='9'
+    <if test="beginrow != null and pageSize !=null">
+	limit #{beginrow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+  
+  <select id="selectSubSupuserId" parameterType="com.lottery.orm.dto.SubsAccountDto" resultMap="SubAccountMap">  
+    select 
+    a.accountid,a.username,a.ausername,a.password,a.state,a.supuserid,a.level 
+    FROM account_info a 
+    where supuserid = #{supuserid,jdbcType=INTEGER} and offtype = #{offtype,jdbcType=VARCHAR}
+    <if test="beginrow != null and pageSize !=null">
+	limit #{beginrow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+  
+  <sql id="Base_Column_List">
+    Userid, UserName, AuserName, Password, Limited, Ratio, Percentage, Query, Manage, 
+    IP, InputDate, UpdateIP, UpdateDate, State, SupUserName, Level, OffType, RiskAmount, 
+    Attribute2
+  </sql>
+  
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from offaccount_info
+    where Userid = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from offaccount_info
+    where Userid = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.OffAccountInfo">
+    <selectKey keyProperty="userid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into offaccount_info (UserName, AuserName, Password, 
+      Limited, Ratio, Percentage, 
+      Query, Manage, IP, 
+      InputDate, UpdateIP, UpdateDate, 
+      State, SupUserName, Level, 
+      OffType, RiskAmount, Attribute2
+      )
+    values (#{username,jdbcType=VARCHAR}, #{ausername,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{limited,jdbcType=DOUBLE}, #{ratio,jdbcType=DOUBLE}, #{percentage,jdbcType=DOUBLE}, 
+      #{query,jdbcType=VARCHAR}, #{manage,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{inputdate,jdbcType=TIMESTAMP}, #{updateip,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=CHAR}, #{supusername,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, 
+      #{offtype,jdbcType=CHAR}, #{riskamount,jdbcType=VARCHAR}, #{attribute2,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.OffAccountInfo">
+    <selectKey keyProperty="userid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into offaccount_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        UserName,
+      </if>
+      <if test="ausername != null">
+        AuserName,
+      </if>
+      <if test="password != null">
+        Password,
+      </if>
+      <if test="limited != null">
+        Limited,
+      </if>
+      <if test="ratio != null">
+        Ratio,
+      </if>
+      <if test="percentage != null">
+        Percentage,
+      </if>
+      <if test="query != null">
+        Query,
+      </if>
+      <if test="manage != null">
+        Manage,
+      </if>
+      <if test="ip != null">
+        IP,
+      </if>
+      <if test="inputdate != null">
+        InputDate,
+      </if>
+      <if test="updateip != null">
+        UpdateIP,
+      </if>
+      <if test="updatedate != null">
+        UpdateDate,
+      </if>
+      <if test="state != null">
+        State,
+      </if>
+      <if test="supusername != null">
+        SupUserName,
+      </if>
+      <if test="level != null">
+        Level,
+      </if>
+      <if test="offtype != null">
+        OffType,
+      </if>
+      <if test="riskamount != null">
+        RiskAmount,
+      </if>
+      <if test="attribute2 != null">
+        Attribute2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="ausername != null">
+        #{ausername,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="limited != null">
+        #{limited,jdbcType=DOUBLE},
+      </if>
+      <if test="ratio != null">
+        #{ratio,jdbcType=DOUBLE},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=DOUBLE},
+      </if>
+      <if test="query != null">
+        #{query,jdbcType=VARCHAR},
+      </if>
+      <if test="manage != null">
+        #{manage,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="inputdate != null">
+        #{inputdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateip != null">
+        #{updateip,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="supusername != null">
+        #{supusername,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="offtype != null">
+        #{offtype,jdbcType=CHAR},
+      </if>
+      <if test="riskamount != null">
+        #{riskamount,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null">
+        #{attribute2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.OffAccountInfo">
+    update offaccount_info
+    <set>
+      <if test="username != null">
+        UserName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="ausername != null">
+        AuserName = #{ausername,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        Password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="limited != null">
+        Limited = #{limited,jdbcType=DOUBLE},
+      </if>
+      <if test="ratio != null">
+        Ratio = #{ratio,jdbcType=DOUBLE},
+      </if>
+      <if test="percentage != null">
+        Percentage = #{percentage,jdbcType=DOUBLE},
+      </if>
+      <if test="query != null">
+        Query = #{query,jdbcType=VARCHAR},
+      </if>
+      <if test="manage != null">
+        Manage = #{manage,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        IP = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="inputdate != null">
+        InputDate = #{inputdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateip != null">
+        UpdateIP = #{updateip,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null">
+        UpdateDate = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        State = #{state,jdbcType=CHAR},
+      </if>
+      <if test="supusername != null">
+        SupUserName = #{supusername,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        Level = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="offtype != null">
+        OffType = #{offtype,jdbcType=CHAR},
+      </if>
+      <if test="riskamount != null">
+        RiskAmount = #{riskamount,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null">
+        Attribute2 = #{attribute2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Userid = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.OffAccountInfo">
+    update offaccount_info
+    set UserName = #{username,jdbcType=VARCHAR},
+      AuserName = #{ausername,jdbcType=VARCHAR},
+      Password = #{password,jdbcType=VARCHAR},
+      Limited = #{limited,jdbcType=DOUBLE},
+      Ratio = #{ratio,jdbcType=DOUBLE},
+      Percentage = #{percentage,jdbcType=DOUBLE},
+      Query = #{query,jdbcType=VARCHAR},
+      Manage = #{manage,jdbcType=VARCHAR},
+      IP = #{ip,jdbcType=VARCHAR},
+      InputDate = #{inputdate,jdbcType=TIMESTAMP},
+      UpdateIP = #{updateip,jdbcType=VARCHAR},
+      UpdateDate = #{updatedate,jdbcType=TIMESTAMP},
+      State = #{state,jdbcType=CHAR},
+      SupUserName = #{supusername,jdbcType=VARCHAR},
+      Level = #{level,jdbcType=VARCHAR},
+      OffType = #{offtype,jdbcType=CHAR},
+      RiskAmount = #{riskamount,jdbcType=VARCHAR},
+      Attribute2 = #{attribute2,jdbcType=VARCHAR}
+    where Userid = #{userid,jdbcType=INTEGER}
+  </update>
+
+  <update id="updateOffAccountState" parameterType="com.lottery.orm.bo.OffAccountInfo">
+    update offaccount_info
+    set State = #{state,jdbcType=CHAR}
+    <![CDATA[where FIND_IN_SET(username, 
+	   (SELECT GROUP_CONCAT(Level SEPARATOR ',') FROM (
+	      SELECT @Ids := (SELECT GROUP_CONCAT(username SEPARATOR ',') FROM offaccount_info WHERE FIND_IN_SET(supusername, @Ids) ) Level
+	      FROM offaccount_info
+	      JOIN (SELECT @Ids := #{supusername,jdbcType=VARCHAR}) temp1
+	      WHERE FIND_IN_SET(supusername, @Ids)
+	   ) temp2 )
+	)]]>
+  </update>
+
+  <select id="selectByLogin" parameterType="com.lottery.orm.bo.OffAccountInfo" resultMap="BaseResultMap">  
+    select 
+    <include refid="Base_Column_List" />
+    from offaccount_info
+    where username = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+  </select>
+  <select id="selectBySupusername" resultMap="BaseResultMap">  
+    select 
+    <include refid="Base_Column_List" />
+    from offaccount_info
+    where supusername = #{supusername,jdbcType=VARCHAR} and offtype = #{offtype,jdbcType=VARCHAR}
+	<if test="beginrow != null and pageSize !=null">
+	limit #{beginrow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+  
+  <select id="selectBySupuserAndRatio" resultMap="BaseResultMap">  
+    select 
+    <include refid="Base_Column_List" />
+    from offaccount_info
+    where supusername = #{supusername,jdbcType=VARCHAR} and offtype = #{offtype,jdbcType=VARCHAR} order by ratio desc
+  </select>
+  
+  <select id="selectBySupuserAndPer" resultMap="BaseResultMap">  
+    select 
+    <include refid="Base_Column_List" />
+    from offaccount_info
+    where supusername = #{supusername,jdbcType=VARCHAR} and offtype = #{offtype,jdbcType=VARCHAR} order by percentage desc
+  </select>  
+  
+  <select id="selectByUsername" parameterType="java.lang.String" resultMap="BaseResultMap">  
+    select 
+    <include refid="Base_Column_List" />
+    from offaccount_info
+    where username = #{username,jdbcType=VARCHAR}
+  </select>
+  <select id="selectByUserAndId" parameterType="com.lottery.orm.bo.OffAccountInfo" resultMap="BaseResultMap">  
+    select 
+    <include refid="Base_Column_List" />
+    from offaccount_info
+    where username = #{username,jdbcType=VARCHAR} and userid != #{userid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByUseridAndType" resultMap="BaseResultMap">  
+    select 
+    <include refid="Base_Column_List" />
+    from offaccount_info
+    where Userid = #{userid,jdbcType=INTEGER} and OffType = #{offtype,jdbcType=VARCHAR}
+  </select>
+ 
+</mapper>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd
+	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd"
+	default-lazy-init="false">
+
+
+	<!-- 定时任务配置 scheduler 方式 注解 暂时不支持动态更新 -->
+	<context:component-scan base-package="com.lottery.api.timer" />
+	<task:executor id="executor" pool-size="200" />
+	<task:scheduler id="scheduler" pool-size="40" />
+	<!-- <task:annotation-driven executor="executor" scheduler="scheduler" /> -->
+		
+	<bean id="lotteryCQTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="lotteryTaskService" />
+		<property name="targetMethod" value="getCQSSCLotteryResult" />
+		<property name="concurrent" value="false" />
+	</bean>
+	<bean id="lotteryTJTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="lotteryTaskService" />
+		<property name="targetMethod" value="getTJSSCLotteryResult" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="lotteryHLJTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="lotteryTaskService" />
+		<property name="targetMethod" value="getHLJSSCLotteryResult" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="lotteryYNTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="lotteryTaskService" />
+		<property name="targetMethod" value="getYNSSCLotteryResult" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="lotteryXJTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="lotteryTaskService" />
+		<property name="targetMethod" value="getXJSSCLotteryResult" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="lotteryBJSCTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="lotteryTaskService" />
+		<property name="targetMethod" value="getBJSCLotteryResult" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="lotteryXYFTTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="lotteryTaskService" />
+		<property name="targetMethod" value="getXYFTLotteryResult" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	
+	<bean id="outResultTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="lotteryTaskService" />
+		<property name="targetMethod" value="getCashResult" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="deletePlayerTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="lotteryTaskService" />
+		<property name="targetMethod" value="LotteryPlayerDelete" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="closeCQTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="lotteryTaskService" />
+		<property name="targetMethod" value="closeCQLottery" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	
+	<bean id="closeTJTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="lotteryTaskService" />
+		<property name="targetMethod" value="closeTJLottery" />
+		<property name="concurrent" value="false" />
+	</bean>
+
+	<bean id="closeGDTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="lotteryTaskService" />
+		<property name="targetMethod" value="closeGDLottery" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="openCQCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="lotteryCQTaskJob" />
+		<property name="cronExpression" value="0/13 * 9-2 * * ?" />
+	</bean>
+	
+	<bean id="openTJCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="lotteryTJTaskJob" />
+		<property name="cronExpression" value="0/13 * * * * ?" />
+	</bean>
+	
+	<bean id="openHLJCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="lotteryHLJTaskJob" />
+		<property name="cronExpression" value="0/11 * 9-23 * * ?" />
+	</bean>
+	
+	
+	<bean id="openXJCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="lotteryXJTaskJob" />
+		<property name="cronExpression" value="0/13 * 10-3 * * ?" />
+	</bean>
+	
+	<bean id="openYNCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="lotteryYNTaskJob" />
+		<property name="cronExpression" value="0/12 * 9-22 * * ?" />
+	</bean>
+	
+	<bean id="openBJSCCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="lotteryBJSCTaskJob" />
+		<property name="cronExpression" value="0/13 * 9-0 * * ?" />
+	</bean>
+	
+	<bean id="openXYFTCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="lotteryXYFTTaskJob" />
+		<property name="cronExpression" value="0/13 * 13-5 * * ?" />
+	</bean>
+	
+	
+     <bean id="deletePlayerCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="deletePlayerTaskJob" />
+		<property name="cronExpression" value="0 0 5 * * ?" />
+	</bean>
+	
+	<bean id="closeCQCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="closeCQTaskJob" />
+		<property name="cronExpression" value="0/30 * * * * ?" />
+	</bean>
+	
+	<bean id="closeTJCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="closeTJTaskJob" />
+		<property name="cronExpression" value="0/30 * * * * ?" />
+	</bean>
+	
+	
+	<bean id="closeGDCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="closeGDTaskJob" />
+		<property name="cronExpression" value="0/30 * * * * ?" />
+	</bean>
+	
+	<bean id="outResultCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="outResultTaskJob" />
+		<property name="cronExpression" value="0 0/3 * * * ?" />
+	</bean>
+	
+	
+	<!-- 定时任务调度器 -->
+	<bean id="schedulerFactory" lazy-init="false" autowire="no" 
+		class="com.lottery.api.timer.DataBaseSchedulerFactoryBean">
+		<property name="dataSource"><null/></property>
+		<property name="triggers">
+			<list>
+<!-- 				<ref bean="openCQCronTrigger" />
+				<ref bean="openHLJCronTrigger" /> -->
+<!-- 				<ref bean="openTJCronTrigger" /> -->
+<!-- 				<ref bean="openYNCronTrigger" />
+				<ref bean="openXJCronTrigger" />
+				<ref bean="openBJSCCronTrigger" />
+				<ref bean="openXYFTCronTrigger" /> -->
+		<!-- 		<ref bean="openValueCronTrigger" /> -->
+<!-- 		        <ref bean="deletePlayerCronTrigger" />
+		        <ref bean="outResultCronTrigger" />  -->
+		        
+				<!-- <ref bean="openTJCronTrigger" />
+				<ref bean="openGDCronTrigger" />
+				<ref bean="closeTJCronTrigger" />
+				<ref bean="closeGDCronTrigger" /> -->
+			</list>
+		</property>
+	</bean>
+
+</beans>

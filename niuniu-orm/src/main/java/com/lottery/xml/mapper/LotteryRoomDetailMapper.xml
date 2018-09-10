@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.LotteryRoomDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.LotteryRoomDetail" >
+    <result column="LTDID" property="ltdid" jdbcType="INTEGER" />
+    <result column="RMID" property="rmid" jdbcType="INTEGER" />
+    <result column="SID" property="sid" jdbcType="INTEGER" />
+    <result column="LOTTERYTERM" property="lotteryterm" jdbcType="VARCHAR" />
+    <result column="GAMESTARTTIME" property="gamestarttime" jdbcType="TIMESTAMP" />
+    <result column="GAMEOVERTIME" property="gameovertime" jdbcType="TIMESTAMP" />
+    <result column="NO1" property="no1" jdbcType="VARCHAR" />
+    <result column="NO2" property="no2" jdbcType="VARCHAR" />
+    <result column="NO3" property="no3" jdbcType="VARCHAR" />
+    <result column="NO4" property="no4" jdbcType="VARCHAR" />
+    <result column="NO5" property="no5" jdbcType="VARCHAR" />
+    <result column="NO6" property="no6" jdbcType="VARCHAR" />
+    <result column="NO7" property="no7" jdbcType="VARCHAR" />
+    <result column="NO8" property="no8" jdbcType="VARCHAR" />
+    <result column="NO9" property="no9" jdbcType="VARCHAR" />
+    <result column="NO10" property="no10" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  <resultMap id="RoomResultMap" type="com.lottery.orm.dto.QueryRoomDateDto" >
+    <result column="LOTTERYTERM" property="lotteryterm" jdbcType="VARCHAR" />
+    <result column="NO1" property="no1" jdbcType="VARCHAR" />
+    <result column="NO2" property="no2" jdbcType="VARCHAR" />
+    <result column="NO3" property="no3" jdbcType="VARCHAR" />
+    <result column="NO4" property="no4" jdbcType="VARCHAR" />
+    <result column="NO5" property="no5" jdbcType="VARCHAR" />
+    <result column="NO6" property="no6" jdbcType="VARCHAR" />
+    <result column="NO7" property="no7" jdbcType="VARCHAR" />
+    <result column="NO8" property="no8" jdbcType="VARCHAR" />
+    <result column="NO9" property="no9" jdbcType="VARCHAR" />
+    <result column="NO10" property="no10" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <insert id="insert" parameterType="com.lottery.orm.bo.LotteryRoomDetail" >
+    <selectKey resultType="java.lang.Integer" keyProperty="ltdid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_room_detail (RMID, SID, LOTTERYTERM, 
+      GAMESTARTTIME, GAMEOVERTIME, NO1, 
+      NO2, NO3, NO4, NO5, 
+      NO6, NO7, NO8, NO9, 
+      NO10)
+    values (#{rmid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER}, #{lotteryterm,jdbcType=VARCHAR}, 
+      #{gamestarttime,jdbcType=TIMESTAMP}, #{gameovertime,jdbcType=TIMESTAMP}, #{no1,jdbcType=VARCHAR}, 
+      #{no2,jdbcType=VARCHAR}, #{no3,jdbcType=VARCHAR}, #{no4,jdbcType=VARCHAR}, #{no5,jdbcType=VARCHAR}, 
+      #{no6,jdbcType=VARCHAR}, #{no7,jdbcType=VARCHAR}, #{no8,jdbcType=VARCHAR}, #{no9,jdbcType=VARCHAR}, 
+      #{no10,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.LotteryRoomDetail" >
+    <selectKey resultType="java.lang.Integer" keyProperty="ltdid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_room_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rmid != null" >
+        RMID,
+      </if>
+      <if test="sid != null" >
+        SID,
+      </if>
+      <if test="lotteryterm != null" >
+        LOTTERYTERM,
+      </if>
+      <if test="gamestarttime != null" >
+        GAMESTARTTIME,
+      </if>
+      <if test="gameovertime != null" >
+        GAMEOVERTIME,
+      </if>
+      <if test="no1 != null" >
+        NO1,
+      </if>
+      <if test="no2 != null" >
+        NO2,
+      </if>
+      <if test="no3 != null" >
+        NO3,
+      </if>
+      <if test="no4 != null" >
+        NO4,
+      </if>
+      <if test="no5 != null" >
+        NO5,
+      </if>
+      <if test="no6 != null" >
+        NO6,
+      </if>
+      <if test="no7 != null" >
+        NO7,
+      </if>
+      <if test="no8 != null" >
+        NO8,
+      </if>
+      <if test="no9 != null" >
+        NO9,
+      </if>
+      <if test="no10 != null" >
+        NO10,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rmid != null" >
+        #{rmid,jdbcType=INTEGER},
+      </if>
+      <if test="sid != null" >
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="lotteryterm != null" >
+        #{lotteryterm,jdbcType=VARCHAR},
+      </if>
+      <if test="gamestarttime != null" >
+        #{gamestarttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gameovertime != null" >
+        #{gameovertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="no1 != null" >
+        #{no1,jdbcType=VARCHAR},
+      </if>
+      <if test="no2 != null" >
+        #{no2,jdbcType=VARCHAR},
+      </if>
+      <if test="no3 != null" >
+        #{no3,jdbcType=VARCHAR},
+      </if>
+      <if test="no4 != null" >
+        #{no4,jdbcType=VARCHAR},
+      </if>
+      <if test="no5 != null" >
+        #{no5,jdbcType=VARCHAR},
+      </if>
+      <if test="no6 != null" >
+        #{no6,jdbcType=VARCHAR},
+      </if>
+      <if test="no7 != null" >
+        #{no7,jdbcType=VARCHAR},
+      </if>
+      <if test="no8 != null" >
+        #{no8,jdbcType=VARCHAR},
+      </if>
+      <if test="no9 != null" >
+        #{no9,jdbcType=VARCHAR},
+      </if>
+      <if test="no10 != null" >
+        #{no10,jdbcType=VARCHAR},
+      </if>
+    
+    </trim>
+  </insert>
+  
+  <select id="selectRoomDetail" resultMap="RoomResultMap">
+    select o.ltdid,o.LOTTERYTERM, o.NO1, 
+      o.NO2, o.NO3, o.NO4, o.NO5, 
+      o.NO6, o.NO7, o.NO8, o.NO9, 
+      o.NO10
+    from LOTTERY_ROOM_DETAIL o 
+    where (o.GAMESTARTTIME between #{startTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP})
+	and o.sid = #{sid,jdbcType=INTEGER} order by o.gamestarttime desc
+	<if test="beginRow != null and pageSize !=null">
+	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+  
+  <select id="selectRoomDetailByTime" resultMap="RoomResultMap">
+    select o.ltdid,o.LOTTERYTERM, o.NO1, 
+      o.NO2, o.NO3, o.NO4, o.NO5, 
+      o.NO6, o.NO7, o.NO8, o.NO9, 
+      o.NO10
+    from LOTTERY_ROOM_DETAIL o 
+    where o.sid = #{sid,jdbcType=INTEGER}
+	and o.lotteryterm  = getLotteryTerm(#{time,jdbcType=VARCHAR}) order by o.opentim desc
+	<if test="beginRow != null and pageSize !=null">
+	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+  
+</mapper>

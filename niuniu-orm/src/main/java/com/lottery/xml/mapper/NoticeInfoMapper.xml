@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.NoticeInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.NoticeInfo" >
+    <id column="Noticeid" property="noticeid" jdbcType="INTEGER" />
+    <result column="Title" property="title" jdbcType="VARCHAR" />
+    <result column="Notice" property="notice" jdbcType="VARCHAR" />
+    <result column="Stype" property="stype" jdbcType="CHAR" />
+    <result column="UpdateIP" property="updateip" jdbcType="VARCHAR" />
+    <result column="UpdateDate" property="updatedate" jdbcType="TIMESTAMP" />
+    <result column="State" property="state" jdbcType="CHAR" />
+    <result column="SupUserName" property="supusername" jdbcType="VARCHAR" />
+    <result column="OffType" property="offtype" jdbcType="CHAR" />
+    <result column="Attribute1" property="attribute1" jdbcType="VARCHAR" />
+    <result column="Attribute2" property="attribute2" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    Noticeid, Title, Notice, Stype, UpdateIP, UpdateDate, State, SupUserName, OffType, 
+    Attribute1, Attribute2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from notice_info
+    where Noticeid = #{noticeid,jdbcType=INTEGER}
+  </select>
+  
+    <select id="selectByNotice" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from notice_info
+    where offtype = #{offtype,jdbcType=VARCHAR} ORDER BY updatedate DESC LIMIT 1
+  </select>
+  
+  <select id="selectByHisNotice" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from notice_info
+    where offtype = #{offtype,jdbcType=VARCHAR} ORDER BY updatedate DESC 
+    <if test="beginRow != null and pageSize !=null">
+	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from notice_info
+    where Noticeid = #{noticeid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.NoticeInfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="noticeid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into notice_info (Title, Notice, Stype, 
+      UpdateIP, UpdateDate, State, 
+      SupUserName, OffType, Attribute1, 
+      Attribute2)
+    values (#{title,jdbcType=VARCHAR}, #{notice,jdbcType=VARCHAR}, #{stype,jdbcType=CHAR}, 
+      #{updateip,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP}, #{state,jdbcType=CHAR}, 
+      #{supusername,jdbcType=VARCHAR}, #{offtype,jdbcType=CHAR}, #{attribute1,jdbcType=VARCHAR}, 
+      #{attribute2,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.NoticeInfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="noticeid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into notice_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="title != null" >
+        Title,
+      </if>
+      <if test="notice != null" >
+        Notice,
+      </if>
+      <if test="stype != null" >
+        Stype,
+      </if>
+      <if test="updateip != null" >
+        UpdateIP,
+      </if>
+      <if test="updatedate != null" >
+        UpdateDate,
+      </if>
+      <if test="state != null" >
+        State,
+      </if>
+      <if test="supusername != null" >
+        SupUserName,
+      </if>
+      <if test="offtype != null" >
+        OffType,
+      </if>
+      <if test="attribute1 != null" >
+        Attribute1,
+      </if>
+      <if test="attribute2 != null" >
+        Attribute2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="notice != null" >
+        #{notice,jdbcType=VARCHAR},
+      </if>
+      <if test="stype != null" >
+        #{stype,jdbcType=CHAR},
+      </if>
+      <if test="updateip != null" >
+        #{updateip,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="supusername != null" >
+        #{supusername,jdbcType=VARCHAR},
+      </if>
+      <if test="offtype != null" >
+        #{offtype,jdbcType=CHAR},
+      </if>
+      <if test="attribute1 != null" >
+        #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null" >
+        #{attribute2,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.NoticeInfo" >
+    update notice_info
+    <set >
+      <if test="title != null" >
+        Title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="notice != null" >
+        Notice = #{notice,jdbcType=VARCHAR},
+      </if>
+      <if test="stype != null" >
+        Stype = #{stype,jdbcType=CHAR},
+      </if>
+      <if test="updateip != null" >
+        UpdateIP = #{updateip,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        UpdateDate = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        State = #{state,jdbcType=CHAR},
+      </if>
+      <if test="supusername != null" >
+        SupUserName = #{supusername,jdbcType=VARCHAR},
+      </if>
+      <if test="offtype != null" >
+        OffType = #{offtype,jdbcType=CHAR},
+      </if>
+      <if test="attribute1 != null" >
+        Attribute1 = #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null" >
+        Attribute2 = #{attribute2,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Noticeid = #{noticeid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.NoticeInfo" >
+    update notice_info
+    set Title = #{title,jdbcType=VARCHAR},
+      Notice = #{notice,jdbcType=VARCHAR},
+      Stype = #{stype,jdbcType=CHAR},
+      UpdateIP = #{updateip,jdbcType=VARCHAR},
+      UpdateDate = #{updatedate,jdbcType=TIMESTAMP},
+      State = #{state,jdbcType=CHAR},
+      SupUserName = #{supusername,jdbcType=VARCHAR},
+      OffType = #{offtype,jdbcType=CHAR},
+      Attribute1 = #{attribute1,jdbcType=VARCHAR},
+      Attribute2 = #{attribute2,jdbcType=VARCHAR}
+    where Noticeid = #{noticeid,jdbcType=INTEGER}
+  </update>
+</mapper>

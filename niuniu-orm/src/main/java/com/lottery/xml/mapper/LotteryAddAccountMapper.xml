@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.LotteryAddAccountMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.LotteryAddAccount" >
+    <id column="laaid" property="laaid" jdbcType="INTEGER" />
+    <result column="accountid" property="accountid" jdbcType="INTEGER" />
+    <result column="username" property="username" jdbcType="VARCHAR" />
+    <result column="state" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    laaid, accountid, username, state
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lottery_add_account
+    where laaid = #{laaid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByOffAccount" resultMap="BaseResultMap" >
+    select 
+    b.accountid,b.username
+    from lottery_add_account a left join account_info b
+    on a.accountid = b.supuserid
+    where a.accountid!=1 and b.usermoney>=5000 and b.offtype='3'
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lottery_add_account
+    where laaid = #{laaid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.LotteryAddAccount" >
+    <selectKey resultType="java.lang.Integer" keyProperty="laaid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_add_account (accountid, username, state
+      )
+    values (#{accountid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.LotteryAddAccount" >
+    <selectKey resultType="java.lang.Integer" keyProperty="laaid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_add_account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        accountid,
+      </if>
+      <if test="username != null" >
+        username,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.LotteryAddAccount" >
+    update lottery_add_account
+    <set >
+      <if test="accountid != null" >
+        accountid = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where laaid = #{laaid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryAddAccount" >
+    update lottery_add_account
+    set accountid = #{accountid,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      state = #{state,jdbcType=VARCHAR}
+    where laaid = #{laaid,jdbcType=INTEGER}
+  </update>
+</mapper>

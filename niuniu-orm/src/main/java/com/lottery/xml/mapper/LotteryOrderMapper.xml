@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.orm.dao.LotteryOrderMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.LotteryOrder">
+    <id column="ORDERID" jdbcType="INTEGER" property="orderid" />
+    <result column="ROUNDID" jdbcType="INTEGER" property="roundid" />
+    <result column="ACCOUNTID" jdbcType="INTEGER" property="accountid" />
+    <result column="ORDERAMOUNT" jdbcType="DOUBLE" property="orderamount" />
+    <result column="COMMISIONAMOUNT" jdbcType="DOUBLE" property="commisionamount" />
+    <result column="ORDERTIME" jdbcType="TIMESTAMP" property="ordertime" />
+    <result column="PRIZEAMOUNT" jdbcType="DOUBLE" property="prizeamount" />
+    <result column="ACTUALAMOUNT" jdbcType="DOUBLE" property="actualamount" />
+    <result column="RETURNAMOUNT" jdbcType="DOUBLE" property="returnamount" />
+    <result column="AGENCYRETURN" jdbcType="DOUBLE" property="agencyreturn" />
+    <result column="SYSTEMAMOUNT" jdbcType="DOUBLE" property="systemamount" />
+    <result column="PRIZETIME" jdbcType="TIMESTAMP" property="prizetime" />
+    <result column="ACCOUNTAMOUNT" jdbcType="DECIMAL" property="accountamount" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ORDERID, ROUNDID, ACCOUNTID, ORDERAMOUNT, COMMISIONAMOUNT, ORDERTIME, PRIZEAMOUNT, 
+    ACTUALAMOUNT, RETURNAMOUNT, AGENCYRETURN, SYSTEMAMOUNT, PRIZETIME, ACCOUNTAMOUNT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lottery_order
+    where ORDERID = #{orderid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lottery_order
+    where ORDERID = #{orderid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.LotteryOrder">
+    <selectKey keyProperty="orderid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_order (ROUNDID, ACCOUNTID, ORDERAMOUNT, 
+      COMMISIONAMOUNT, ORDERTIME, PRIZEAMOUNT, 
+      ACTUALAMOUNT, RETURNAMOUNT, AGENCYRETURN, 
+      SYSTEMAMOUNT, PRIZETIME, ACCOUNTAMOUNT
+      )
+    values (#{roundid,jdbcType=INTEGER}, #{accountid,jdbcType=INTEGER}, #{orderamount,jdbcType=DOUBLE}, 
+      #{commisionamount,jdbcType=DOUBLE}, #{ordertime,jdbcType=TIMESTAMP}, #{prizeamount,jdbcType=DOUBLE}, 
+      #{actualamount,jdbcType=DOUBLE}, #{returnamount,jdbcType=DOUBLE}, #{agencyreturn,jdbcType=DOUBLE}, 
+      #{systemamount,jdbcType=DOUBLE}, #{prizetime,jdbcType=TIMESTAMP}, #{accountamount,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.LotteryOrder">
+    <selectKey keyProperty="orderid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_order
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roundid != null">
+        ROUNDID,
+      </if>
+      <if test="accountid != null">
+        ACCOUNTID,
+      </if>
+      <if test="orderamount != null">
+        ORDERAMOUNT,
+      </if>
+      <if test="commisionamount != null">
+        COMMISIONAMOUNT,
+      </if>
+      <if test="ordertime != null">
+        ORDERTIME,
+      </if>
+      <if test="prizeamount != null">
+        PRIZEAMOUNT,
+      </if>
+      <if test="actualamount != null">
+        ACTUALAMOUNT,
+      </if>
+      <if test="returnamount != null">
+        RETURNAMOUNT,
+      </if>
+      <if test="agencyreturn != null">
+        AGENCYRETURN,
+      </if>
+      <if test="systemamount != null">
+        SYSTEMAMOUNT,
+      </if>
+      <if test="prizetime != null">
+        PRIZETIME,
+      </if>
+      <if test="accountamount != null">
+        ACCOUNTAMOUNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roundid != null">
+        #{roundid,jdbcType=INTEGER},
+      </if>
+      <if test="accountid != null">
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="orderamount != null">
+        #{orderamount,jdbcType=DOUBLE},
+      </if>
+      <if test="commisionamount != null">
+        #{commisionamount,jdbcType=DOUBLE},
+      </if>
+      <if test="ordertime != null">
+        #{ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prizeamount != null">
+        #{prizeamount,jdbcType=DOUBLE},
+      </if>
+      <if test="actualamount != null">
+        #{actualamount,jdbcType=DOUBLE},
+      </if>
+      <if test="returnamount != null">
+        #{returnamount,jdbcType=DOUBLE},
+      </if>
+      <if test="agencyreturn != null">
+        #{agencyreturn,jdbcType=DOUBLE},
+      </if>
+      <if test="systemamount != null">
+        #{systemamount,jdbcType=DOUBLE},
+      </if>
+      <if test="prizetime != null">
+        #{prizetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountamount != null">
+        #{accountamount,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.LotteryOrder">
+    update lottery_order
+    <set>
+      <if test="roundid != null">
+        ROUNDID = #{roundid,jdbcType=INTEGER},
+      </if>
+      <if test="accountid != null">
+        ACCOUNTID = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="orderamount != null">
+        ORDERAMOUNT = #{orderamount,jdbcType=DOUBLE},
+      </if>
+      <if test="commisionamount != null">
+        COMMISIONAMOUNT = #{commisionamount,jdbcType=DOUBLE},
+      </if>
+      <if test="ordertime != null">
+        ORDERTIME = #{ordertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prizeamount != null">
+        PRIZEAMOUNT = #{prizeamount,jdbcType=DOUBLE},
+      </if>
+      <if test="actualamount != null">
+        ACTUALAMOUNT = #{actualamount,jdbcType=DOUBLE},
+      </if>
+      <if test="returnamount != null">
+        RETURNAMOUNT = #{returnamount,jdbcType=DOUBLE},
+      </if>
+      <if test="agencyreturn != null">
+        AGENCYRETURN = #{agencyreturn,jdbcType=DOUBLE},
+      </if>
+      <if test="systemamount != null">
+        SYSTEMAMOUNT = #{systemamount,jdbcType=DOUBLE},
+      </if>
+      <if test="prizetime != null">
+        PRIZETIME = #{prizetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accountamount != null">
+        ACCOUNTAMOUNT = #{accountamount,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where ORDERID = #{orderid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryOrder">
+    update lottery_order
+    set ROUNDID = #{roundid,jdbcType=INTEGER},
+      ACCOUNTID = #{accountid,jdbcType=INTEGER},
+      ORDERAMOUNT = #{orderamount,jdbcType=DOUBLE},
+      COMMISIONAMOUNT = #{commisionamount,jdbcType=DOUBLE},
+      ORDERTIME = #{ordertime,jdbcType=TIMESTAMP},
+      PRIZEAMOUNT = #{prizeamount,jdbcType=DOUBLE},
+      ACTUALAMOUNT = #{actualamount,jdbcType=DOUBLE},
+      RETURNAMOUNT = #{returnamount,jdbcType=DOUBLE},
+      AGENCYRETURN = #{agencyreturn,jdbcType=DOUBLE},
+      SYSTEMAMOUNT = #{systemamount,jdbcType=DOUBLE},
+      PRIZETIME = #{prizetime,jdbcType=TIMESTAMP},
+      ACCOUNTAMOUNT = #{accountamount,jdbcType=DECIMAL}
+    where ORDERID = #{orderid,jdbcType=INTEGER}
+  </update>
+</mapper>

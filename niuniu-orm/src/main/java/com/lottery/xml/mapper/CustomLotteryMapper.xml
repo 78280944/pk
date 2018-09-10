@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.orm.dao.CustomLotteryMapper">
+	<resultMap id="DetailSumInfo" type="java.util.Map">
+		<result column="ITEMGROUP" property="ItemGroup" jdbcType="VARCHAR"/>
+		<result column="DETAILAMOUNT" property="Amount" jdbcType="VARCHAR"/>
+	</resultMap>
+	<resultMap id="AccountDetailMap" type="com.lottery.orm.bo.AccountDetail" >
+    <id column="Accountid" property="accountid" jdbcType="INTEGER" />
+    <result column="UserID" property="userid" jdbcType="INTEGER" />
+    <result column="UserName" property="username" jdbcType="VARCHAR" />
+    <result column="Limited" property="limited" jdbcType="DOUBLE" />
+    <result column="Ratio" property="ratio" jdbcType="DOUBLE" />
+    <result column="Percentage" property="percentage" jdbcType="DOUBLE" />
+    <result column="State" property="state" jdbcType="CHAR" />
+    <result column="SupUserName" property="supusername" jdbcType="VARCHAR" />
+    <result column="Level" property="level" jdbcType="VARCHAR" />
+    <result column="OffType" property="offtype" jdbcType="CHAR" />
+    <result column="Money" property="money" jdbcType="DECIMAL" />
+    <result column="Attribute1" property="attribute1" jdbcType="VARCHAR" />
+    <result column="Attribute2" property="attribute2" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="LotteryItemMap" type="com.lottery.orm.bo.LotteryItem">
+    <id column="ITEMID" jdbcType="INTEGER" property="itemid" />
+    <result column="LOTTERYTYPE" jdbcType="VARCHAR" property="lotterytype" />
+    <result column="ITEMNO" jdbcType="VARCHAR" property="itemno" />
+    <result column="WINITEM" jdbcType="VARCHAR" property="winitem" />
+    <result column="DRAWITEM" jdbcType="VARCHAR" property="drawitem" />
+    <result column="ITEMTYPE" jdbcType="VARCHAR" property="itemtype" />
+    <result column="ITEMGROUP" jdbcType="VARCHAR" property="itemgroup" />
+    <result column="ITEMSCALE" jdbcType="DOUBLE" property="itemscale" />
+    <result column="ItemNameCN" jdbcType="VARCHAR" property="itemnamecn" />
+  </resultMap>
+  <resultMap id="LotteryOrderMap" type="com.lottery.orm.bo.LotteryOrder">  
+    <id column="ORDERID" jdbcType="INTEGER" property="orderid" />
+    <result column="ROUNDID" jdbcType="INTEGER" property="roundid" />
+    <result column="ACCOUNTID" jdbcType="INTEGER" property="accountid" />
+    <result column="ORDERAMOUNT" jdbcType="DOUBLE" property="orderamount" />
+    <result column="COMMISIONAMOUNT" jdbcType="DOUBLE" property="commisionamount" />
+    <result column="ORDERTIME" jdbcType="TIMESTAMP" property="ordertime" />
+    <result column="PRIZEAMOUNT" jdbcType="DOUBLE" property="prizeamount" />
+    <result column="ACTUALAMOUNT" jdbcType="DOUBLE" property="actualamount" />
+    <result column="PRIZETIME" jdbcType="TIMESTAMP" property="prizetime" />
+    <result column="ACCOUNTAMOUNT" jdbcType="DECIMAL" property="accountamount" />
+	<collection property="orderDetailList" ofType="com.lottery.orm.bo.LotteryOrderDetail" column="ORDERID">  
+		<id column="ORDERID" jdbcType="INTEGER" property="orderid" />
+		<id column="ITEMNO" jdbcType="VARCHAR" property="itemno" />
+		<result column="ITEMSCALE" jdbcType="DOUBLE" property="itemscale" />
+		<result column="ITEMBONUS" jdbcType="DOUBLE" property="itembonus" />
+		<result column="DETAILAMOUNT" jdbcType="DOUBLE" property="detailamount" />
+		<result column="PRIZEAMOUNT" jdbcType="DOUBLE" property="prizeamount" />
+		<result column="ACTUALAMOUNT" jdbcType="DOUBLE" property="actualamount" />
+		<result column="RETURNAMOUNT" jdbcType="DOUBLE" property="returnamount" />
+	</collection>
+    </resultMap>
+	<resultMap id="LotteryRoundMap" type="com.lottery.orm.bo.LotteryRound">
+    <id column="ROUNDID" jdbcType="INTEGER" property="roundid" />
+    <result column="LOTTERYTYPE" jdbcType="VARCHAR" property="lotterytype" />
+    <result column="LOTTERYTERM" jdbcType="VARCHAR" property="lotteryterm" />
+    <result column="RESULTSTR" jdbcType="VARCHAR" property="resultstr" />
+    <result column="STARTTIME" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="ENDTIME" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="ROUNDSTATUS" jdbcType="VARCHAR" property="roundstatus" />
+    <result column="OPENTIME" jdbcType="TIMESTAMP" property="opentime" />
+    <result column="CLOSETIME" jdbcType="TIMESTAMP" property="closetime" />
+    <result column="ORIGINRESULT" jdbcType="VARCHAR" property="originresult" />
+    <result column="ACTUALOPENTIME" jdbcType="TIMESTAMP" property="actualopentime" />
+    <result column="ACTUALCLOSETIME" jdbcType="TIMESTAMP" property="actualclosetime" />
+	<collection property="roundItemList" ofType="com.lottery.orm.bo.LotteryRoundItem" column="ROUNDID">  
+		<id column="ROUNDID" jdbcType="INTEGER" property="roundid" />
+	    <id column="ITEMNO" jdbcType="VARCHAR" property="itemno" />
+	    <result column="ITEMSCALE" jdbcType="DOUBLE" property="itemscale" />
+	    <result column="UPDATETIME" jdbcType="TIMESTAMP" property="updatetime" />
+	</collection>
+  </resultMap>
+	
+	<!--<select id="selectRoundByStatus" resultMap="LotteryRoundMap">
+    select * 
+    from lottery_round
+    where lotteryType = #{lotteryType,jdbcType=VARCHAR} and roundStatus = #{roundStatus,jdbcType=VARCHAR}
+	</select>-->
+	
+	<select id="selectCurrentRoundId" resultType="java.lang.Integer">
+    select roundId
+    from lottery_round r
+    where r.lotteryType = #{lotteryType,jdbcType=VARCHAR} and r.roundStatus in ('Open', 'Close') 
+	 order by starttime desc limit 0,1
+	</select>
+	
+	<select id="selectRoundByRoundId" resultMap="LotteryRoundMap">
+    select r.*,i.*
+    from lottery_round r,lottery_round_item i
+    where r.roundId=i.roundId and r.roundId = #{roundId,jdbcType=INTEGER}
+	</select>
+  
+	<select id="selectOrderForCheck" resultMap="DetailSumInfo">
+	select sum(d.DETAILAMOUNT) as DETAILAMOUNT,i.ITEMGROUP 
+	from lottery_item i,lottery_order_detail d, lottery_order o 
+	where i.ITEMNO = d.ITEMNO and d.ORDERID = o.ORDERID and o.ROUNDID = #{roundId,jdbcType=INTEGER} and o.accountId = #{accountId,jdbcType=INTEGER} 
+	group by i.ITEMGROUP
+	</select>
+	
+	<select id="selectAccountBySupUserName" statementType="CALLABLE" resultMap="AccountDetailMap">
+	{call GetParentAccount(#{supUserName,mode=IN,jdbcType=VARCHAR})}
+	</select>
+	
+	<select id="selectItemByLottery" resultMap="LotteryItemMap">
+    select * 
+    from lottery_item
+    where LOTTERYTYPE = #{lotteryType,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectOrderByRoundId" resultMap="LotteryOrderMap">
+    select o.*,d.* 
+    from lottery_order o, lottery_order_detail d
+    where o.orderId=d.orderId and o.roundId = #{roundId,jdbcType=INTEGER}
+	 order by ordertime
+  </select>
+  
+  <select id="selectOrderByOrderId" resultMap="LotteryOrderMap">
+    select o.*,d.* 
+    from lottery_order o, lottery_order_detail d
+    where o.orderId=d.orderId and o.orderId = #{orderId,jdbcType=INTEGER}
+	 order by ordertime
+  </select>
+  
+  <select id="selectRoundByTypeAndTerm" resultType="LotteryRound">
+    select * 
+    from lottery_round 
+    where lotteryType = #{lotteryType,jdbcType=VARCHAR} and lotteryTerm = #{lotteryTerm,jdbcType=VARCHAR} 
+  </select>
+	<select id="selectByHistoryRound" resultType="LotteryRound">
+    select *
+    from lottery_round r
+    where r.lotteryType = #{lotteryType,jdbcType=VARCHAR} and r.roundStatus = #{roundStatus,jdbcType=VARCHAR} 
+	 order by starttime desc
+	<if test="beginRow != null and pageSize !=null">
+	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+  
+  <select id="selectRoundByTime" resultType="LotteryRound">
+    select * 
+    from lottery_round 
+    where Date(CLOSETIME) <![CDATA[<=]]> #{closeTime,jdbcType=TIMESTAMP} and ROUNDSTATUS = 'Open' and lotteryType = #{lotteryType,jdbcType=VARCHAR}
+	 order by starttime desc
+  </select>
+
+</mapper>

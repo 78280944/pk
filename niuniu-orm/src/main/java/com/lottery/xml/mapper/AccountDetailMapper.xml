@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.orm.dao.AccountDetailMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.AccountDetail">
+    <id column="ACCOUNTID" jdbcType="INTEGER" property="accountid" />
+    <result column="USERID" jdbcType="INTEGER" property="userid" />
+    <result column="USERNAME" jdbcType="VARCHAR" property="username" />
+    <result column="LIMITED" jdbcType="DOUBLE" property="limited" />
+    <result column="RATIO" jdbcType="DOUBLE" property="ratio" />
+    <result column="PERCENTAGE" jdbcType="DOUBLE" property="percentage" />
+    <result column="STATE" jdbcType="CHAR" property="state" />
+    <result column="SUPUSERNAME" jdbcType="VARCHAR" property="supusername" />
+    <result column="LEVEL" jdbcType="VARCHAR" property="level" />
+    <result column="OFFTYPE" jdbcType="CHAR" property="offtype" />
+    <result column="MONEY" jdbcType="DECIMAL" property="money" />
+    <result column="ATTRIBUTE1" jdbcType="VARCHAR" property="attribute1" />
+    <result column="ATTRIBUTE2" jdbcType="VARCHAR" property="attribute2" />
+    <result column="BUDGET" jdbcType="DOUBLE" property="budget" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ACCOUNTID, USERID, USERNAME, LIMITED, RATIO, PERCENTAGE, STATE, SUPUSERNAME, LEVEL, 
+    OFFTYPE, MONEY, ATTRIBUTE1, ATTRIBUTE2, BUDGET
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from account_detail
+    where ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from account_detail
+    where ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.AccountDetail">
+    <selectKey keyProperty="accountid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into account_detail (USERID, USERNAME, LIMITED, 
+      RATIO, PERCENTAGE, STATE, 
+      SUPUSERNAME, LEVEL, OFFTYPE, 
+      MONEY, ATTRIBUTE1, ATTRIBUTE2, 
+      BUDGET)
+    values (#{userid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{limited,jdbcType=DOUBLE}, 
+      #{ratio,jdbcType=DOUBLE}, #{percentage,jdbcType=DOUBLE}, #{state,jdbcType=CHAR}, 
+      #{supusername,jdbcType=VARCHAR}, #{level,jdbcType=VARCHAR}, #{offtype,jdbcType=CHAR}, 
+      #{money,jdbcType=DECIMAL}, #{attribute1,jdbcType=VARCHAR}, #{attribute2,jdbcType=VARCHAR}, 
+      #{budget,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.AccountDetail">
+    <selectKey keyProperty="accountid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into account_detail
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        USERID,
+      </if>
+      <if test="username != null">
+        USERNAME,
+      </if>
+      <if test="limited != null">
+        LIMITED,
+      </if>
+      <if test="ratio != null">
+        RATIO,
+      </if>
+      <if test="percentage != null">
+        PERCENTAGE,
+      </if>
+      <if test="state != null">
+        STATE,
+      </if>
+      <if test="supusername != null">
+        SUPUSERNAME,
+      </if>
+      <if test="level != null">
+        LEVEL,
+      </if>
+      <if test="offtype != null">
+        OFFTYPE,
+      </if>
+      <if test="money != null">
+        MONEY,
+      </if>
+      <if test="attribute1 != null">
+        ATTRIBUTE1,
+      </if>
+      <if test="attribute2 != null">
+        ATTRIBUTE2,
+      </if>
+      <if test="budget != null">
+        BUDGET,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="limited != null">
+        #{limited,jdbcType=DOUBLE},
+      </if>
+      <if test="ratio != null">
+        #{ratio,jdbcType=DOUBLE},
+      </if>
+      <if test="percentage != null">
+        #{percentage,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="supusername != null">
+        #{supusername,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="offtype != null">
+        #{offtype,jdbcType=CHAR},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="attribute1 != null">
+        #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null">
+        #{attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="budget != null">
+        #{budget,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.AccountDetail">
+    update account_detail
+    <set>
+      <if test="userid != null">
+        USERID = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="limited != null">
+        LIMITED = #{limited,jdbcType=DOUBLE},
+      </if>
+      <if test="ratio != null">
+        RATIO = #{ratio,jdbcType=DOUBLE},
+      </if>
+      <if test="percentage != null">
+        PERCENTAGE = #{percentage,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null">
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="supusername != null">
+        SUPUSERNAME = #{supusername,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        LEVEL = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="offtype != null">
+        OFFTYPE = #{offtype,jdbcType=CHAR},
+      </if>
+      <if test="money != null">
+        MONEY = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="attribute1 != null">
+        ATTRIBUTE1 = #{attribute1,jdbcType=VARCHAR},
+      </if>
+      <if test="attribute2 != null">
+        ATTRIBUTE2 = #{attribute2,jdbcType=VARCHAR},
+      </if>
+      <if test="budget != null">
+        BUDGET = #{budget,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.AccountDetail">
+    update account_detail
+    set USERID = #{userid,jdbcType=INTEGER},
+      USERNAME = #{username,jdbcType=VARCHAR},
+      LIMITED = #{limited,jdbcType=DOUBLE},
+      RATIO = #{ratio,jdbcType=DOUBLE},
+      PERCENTAGE = #{percentage,jdbcType=DOUBLE},
+      STATE = #{state,jdbcType=CHAR},
+      SUPUSERNAME = #{supusername,jdbcType=VARCHAR},
+      LEVEL = #{level,jdbcType=VARCHAR},
+      OFFTYPE = #{offtype,jdbcType=CHAR},
+      MONEY = #{money,jdbcType=DECIMAL},
+      ATTRIBUTE1 = #{attribute1,jdbcType=VARCHAR},
+      ATTRIBUTE2 = #{attribute2,jdbcType=VARCHAR},
+      BUDGET = #{budget,jdbcType=DOUBLE}
+    where ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateByUserId" parameterType="com.lottery.orm.bo.AccountDetail">
+    update account_detail
+    set UserName = #{username,jdbcType=VARCHAR},
+      Ratio = #{ratio,jdbcType=DOUBLE},
+      Percentage = #{percentage,jdbcType=DOUBLE},
+      State = #{state,jdbcType=CHAR},
+      SupUserName = #{supusername,jdbcType=VARCHAR},
+      Level = #{level,jdbcType=VARCHAR},
+      OffType = #{offtype,jdbcType=CHAR}
+    where Userid = #{userid,jdbcType=INTEGER} and OffType = #{offtype,jdbcType=VARCHAR}
+  </update>
+
+  <update id="updateAccountDetailState" parameterType="com.lottery.orm.bo.AccountDetail">
+    update account_detail
+    set State = #{state,jdbcType=CHAR}
+   	<![CDATA[where FIND_IN_SET(username, 
+	   (SELECT GROUP_CONCAT(Level SEPARATOR ',') FROM (
+	      SELECT @Ids := (SELECT GROUP_CONCAT(username SEPARATOR ',') FROM account_detail WHERE FIND_IN_SET(supusername, @Ids) ) Level
+	      FROM account_detail
+	      JOIN (SELECT @Ids := #{supusername,jdbcType=VARCHAR}) temp1
+	      WHERE FIND_IN_SET(supusername, @Ids)
+	   ) temp2 )
+	)]]>
+  </update>  
+  
+  <select id="selectByUserId" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from account_detail
+    where Userid = #{userid,jdbcType=INTEGER} and OffType = #{offtype,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.AccountRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.AccountRecord" >
+    <id column="RECORDID" property="recordid" jdbcType="VARCHAR" />
+    <result column="ACCOUNTID" property="accountid" jdbcType="INTEGER" />
+    <result column="INPUTTIME" property="inputtime" jdbcType="TIMESTAMP" />
+    <result column="IP" property="ip" jdbcType="VARCHAR" />
+    <result column="OUTTIME" property="outtime" jdbcType="TIMESTAMP" />
+    <result column="LEVEL" property="level" jdbcType="VARCHAR" />
+    <result column="OFFTYPE" property="offtype" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    RECORDID, ACCOUNTID, INPUTTIME, IP, OUTTIME, LEVEL, OFFTYPE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from account_record
+    where RECORDID = #{recordid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from account_record
+    where RECORDID = #{recordid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.AccountRecord" >
+    insert into account_record (RECORDID,ACCOUNTID, INPUTTIME, IP, 
+      OUTTIME, LEVEL, OFFTYPE
+      )
+    values (#{recordid,jdbcType=VARCHAR},#{accountid,jdbcType=INTEGER}, #{inputtime,jdbcType=TIMESTAMP}, #{ip,jdbcType=VARCHAR}, 
+      #{outtime,jdbcType=TIMESTAMP}, #{level,jdbcType=VARCHAR}, #{offtype,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.AccountRecord" >
+    <selectKey resultType="java.lang.String" keyProperty="recordid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into account_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        ACCOUNTID,
+      </if>
+      <if test="inputtime != null" >
+        INPUTTIME,
+      </if>
+      <if test="ip != null" >
+        IP,
+      </if>
+      <if test="outtime != null" >
+        OUTTIME,
+      </if>
+      <if test="level != null" >
+        LEVEL,
+      </if>
+      <if test="offtype != null" >
+        OFFTYPE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="inputtime != null" >
+        #{inputtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="outtime != null" >
+        #{outtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="offtype != null" >
+        #{offtype,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.AccountRecord" >
+    update account_record
+    <set >
+      <if test="accountid != null" >
+        ACCOUNTID = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="inputtime != null" >
+        INPUTTIME = #{inputtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="ip != null" >
+        IP = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="outtime != null" >
+        OUTTIME = #{outtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="level != null" >
+        LEVEL = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="offtype != null" >
+        OFFTYPE = #{offtype,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where RECORDID = #{recordid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.AccountRecord" >
+    update account_record
+    set ACCOUNTID = #{accountid,jdbcType=INTEGER},
+      INPUTTIME = #{inputtime,jdbcType=TIMESTAMP},
+      IP = #{ip,jdbcType=VARCHAR},
+      OUTTIME = #{outtime,jdbcType=TIMESTAMP},
+      LEVEL = #{level,jdbcType=VARCHAR},
+      OFFTYPE = #{offtype,jdbcType=VARCHAR}
+    where RECORDID = #{recordid,jdbcType=VARCHAR}
+  </update>
+</mapper>

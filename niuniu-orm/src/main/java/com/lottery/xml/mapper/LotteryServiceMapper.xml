@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.LotteryServiceMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.LotteryService" >
+    <id column="SID" property="sid" jdbcType="INTEGER" />
+    <result column="LOGINSERVICE" property="loginservice" jdbcType="VARCHAR" />
+    <result column="REGISTERSERCICE" property="registersercice" jdbcType="VARCHAR" />
+    <result column="ADDEDSERVICE" property="addedservice" jdbcType="VARCHAR" />
+    <result column="PLAYSERVICE" property="playservice" jdbcType="VARCHAR" />
+    <result column="AREMARKSERCIE" property="aremarksercie" jdbcType="VARCHAR" />
+    <result column="DREMARKSERCIE" property="dremarksercie" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SID, LOGINSERVICE, REGISTERSERCICE, ADDEDSERVICE, PLAYSERVICE, AREMARKSERCIE, DREMARKSERCIE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    SELECT sid,IF(LOGINSERVICE='true','1','0') AS LOGINSERVICE, IF(REGISTERSERCICE='true','1','0') AS REGISTERSERCICE, 
+    IF(ADDEDSERVICE='true','1','0') AS ADDEDSERVICE,IF(PLAYSERVICE='true','1','0') AS PLAYSERVICE,
+    IF(AREMARKSERCIE='true','1','0') AS AREMARKSERCIE,IF(DREMARKSERCIE='true','1','0') AS DREMARKSERCIE
+    FROM lottery_service 
+    where SID = #{sid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lottery_service
+    where SID = #{sid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.LotteryService" >
+    <selectKey resultType="java.lang.Integer" keyProperty="sid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_service (LOGINSERVICE, REGISTERSERCICE, ADDEDSERVICE, 
+      PLAYSERVICE, AREMARKSERCIE, DREMARKSERCIE
+      )
+    values (#{loginservice,jdbcType=VARCHAR}, #{registersercice,jdbcType=VARCHAR}, #{addedservice,jdbcType=VARCHAR}, 
+      #{playservice,jdbcType=VARCHAR}, #{aremarksercie,jdbcType=VARCHAR}, #{dremarksercie,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.LotteryService" >
+    <selectKey resultType="java.lang.Integer" keyProperty="sid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_service
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="loginservice != null" >
+        LOGINSERVICE,
+      </if>
+      <if test="registersercice != null" >
+        REGISTERSERCICE,
+      </if>
+      <if test="addedservice != null" >
+        ADDEDSERVICE,
+      </if>
+      <if test="playservice != null" >
+        PLAYSERVICE,
+      </if>
+      <if test="aremarksercie != null" >
+        AREMARKSERCIE,
+      </if>
+      <if test="dremarksercie != null" >
+        DREMARKSERCIE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="loginservice != null" >
+        #{loginservice,jdbcType=VARCHAR},
+      </if>
+      <if test="registersercice != null" >
+        #{registersercice,jdbcType=VARCHAR},
+      </if>
+      <if test="addedservice != null" >
+        #{addedservice,jdbcType=VARCHAR},
+      </if>
+      <if test="playservice != null" >
+        #{playservice,jdbcType=VARCHAR},
+      </if>
+      <if test="aremarksercie != null" >
+        #{aremarksercie,jdbcType=VARCHAR},
+      </if>
+      <if test="dremarksercie != null" >
+        #{dremarksercie,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.LotteryService" >
+    update lottery_service
+    <set >
+      <if test="loginservice != null" >
+        LOGINSERVICE = #{loginservice,jdbcType=VARCHAR},
+      </if>
+      <if test="registersercice != null" >
+        REGISTERSERCICE = #{registersercice,jdbcType=VARCHAR},
+      </if>
+      <if test="addedservice != null" >
+        ADDEDSERVICE = #{addedservice,jdbcType=VARCHAR},
+      </if>
+      <if test="playservice != null" >
+        PLAYSERVICE = #{playservice,jdbcType=VARCHAR},
+      </if>
+      <if test="aremarksercie != null" >
+        AREMARKSERCIE = #{aremarksercie,jdbcType=VARCHAR},
+      </if>
+      <if test="dremarksercie != null" >
+        DREMARKSERCIE = #{dremarksercie,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryService" >
+    update lottery_service
+    set LOGINSERVICE = #{loginservice,jdbcType=VARCHAR},
+      REGISTERSERCICE = #{registersercice,jdbcType=VARCHAR},
+      ADDEDSERVICE = #{addedservice,jdbcType=VARCHAR},
+      PLAYSERVICE = #{playservice,jdbcType=VARCHAR},
+      AREMARKSERCIE = #{aremarksercie,jdbcType=VARCHAR},
+      DREMARKSERCIE = #{dremarksercie,jdbcType=VARCHAR}
+    where SID = #{sid,jdbcType=INTEGER}
+  </update>
+</mapper>

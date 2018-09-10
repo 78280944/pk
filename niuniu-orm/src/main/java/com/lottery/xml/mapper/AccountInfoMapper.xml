@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.AccountInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.AccountInfo" >
+    <id column="ACCOUNTID" property="accountid" jdbcType="INTEGER" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="AUSERNAME" property="ausername" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="LIMITED" property="limited" jdbcType="DOUBLE" />
+    <result column="RATIO" property="ratio" jdbcType="DOUBLE" />
+    <result column="IP" property="ip" jdbcType="VARCHAR" />
+    <result column="INPUTDATE" property="inputdate" jdbcType="TIMESTAMP" />
+    <result column="UPDATEIP" property="updateip" jdbcType="VARCHAR" />
+    <result column="UPDATEDATE" property="updatedate" jdbcType="TIMESTAMP" />
+    <result column="STATE" property="state" jdbcType="CHAR" />
+    <result column="SUPUSERID" property="supuserid" jdbcType="INTEGER" />
+    <result column="LEVEL" property="level" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+    <result column="WEBCHAT" property="webchat" jdbcType="VARCHAR" />
+    <result column="USERMONEY" property="usermoney" jdbcType="DECIMAL" />
+    <result column="OFFTYPE" property="offtype" jdbcType="VARCHAR" />
+    <result column="PERCENTAGE" property="percentage" jdbcType="DOUBLE" />
+    <result column="QUERY" property="query" jdbcType="VARCHAR" />
+    <result column="BUDGET" property="budget" jdbcType="VARCHAR" />
+    <result column="CODE" property="code" jdbcType="VARCHAR" />
+    <result column="SFCODE" property="sfcode" jdbcType="VARCHAR" />
+    <result column="BANKID" property="bankid" jdbcType="VARCHAR" />
+    <result column="BANKNAME" property="bankname" jdbcType="VARCHAR" />
+    <result column="BANKADDRESS" property="bankaddress" jdbcType="VARCHAR" />
+    <result column="BANKACCOUNT" property="bankaccount" jdbcType="VARCHAR" />
+    <result column="BANKNO" property="bankno" jdbcType="VARCHAR" />
+    <result column="BANKLOPRONAME" property="bankloproname" jdbcType="VARCHAR" />
+    <result column="BANKLOCITYNAME" property="banklocityname" jdbcType="VARCHAR" />
+    <result column="PHONENO" property="phoneno" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ACCOUNTID, USERNAME, AUSERNAME, PASSWORD, LIMITED, RATIO, IP, INPUTDATE, UPDATEIP, UPDATEDATE, 
+    STATE, SUPUSERID, LEVEL, PHONE, WEBCHAT, USERMONEY, OFFTYPE, PERCENTAGE, QUERY, BUDGET, 
+    CODE, SFCODE, BANKID, BANKNAME, BANKADDRESS, BANKACCOUNT,BANKNO,BANKLOPRONAME,BANKLOCITYNAME,PHONENO
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from account_info
+    where ACCOUNTID = #{accountid,jdbcType=INTEGER} 
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from account_info
+    where ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.AccountInfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="accountid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into account_info (USERNAME, AUSERNAME, PASSWORD, 
+      LIMITED, RATIO, IP, INPUTDATE, 
+      UPDATEIP, UPDATEDATE, STATE, 
+      SUPUSERID, LEVEL, PHONE, 
+      WEBCHAT, USERMONEY, OFFTYPE, 
+      PERCENTAGE, QUERY, BUDGET, 
+      CODE, SFCODE, BANKID, 
+      BANKNAME, BANKADDRESS, BANKACCOUNT,BANKNO,BANKLOPRONAME,BANKLOCITYNAME,PHONENO
+      )
+    values (#{username,jdbcType=VARCHAR}, #{ausername,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{limited,jdbcType=DOUBLE}, #{ratio,jdbcType=DOUBLE}, #{ip,jdbcType=VARCHAR}, #{inputdate,jdbcType=TIMESTAMP}, 
+      #{updateip,jdbcType=VARCHAR}, #{updatedate,jdbcType=TIMESTAMP}, #{state,jdbcType=CHAR}, 
+      #{supuserid,jdbcType=INTEGER}, #{level,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{webchat,jdbcType=VARCHAR}, #{usermoney,jdbcType=DECIMAL}, #{offtype,jdbcType=VARCHAR}, 
+      #{percentage,jdbcType=DOUBLE}, #{query,jdbcType=VARCHAR}, #{budget,jdbcType=VARCHAR}, 
+      #{code,jdbcType=VARCHAR}, #{sfcode,jdbcType=VARCHAR}, #{bankid,jdbcType=VARCHAR}, 
+      #{bankname,jdbcType=VARCHAR}, #{bankaddress,jdbcType=VARCHAR}, #{bankaccount,jdbcType=VARCHAR},
+      #{bankno,jdbcType=VARCHAR},#{bankloproname,jdbcType=VARCHAR},#{banklocityname,jdbcType=VARCHAR},
+      #{phoneno,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.AccountInfo" >
+    <selectKey resultType="java.lang.Integer" keyProperty="accountid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into account_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="ausername != null" >
+        AUSERNAME,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="limited != null" >
+        LIMITED,
+      </if>
+      <if test="ratio != null" >
+        RATIO,
+      </if>
+      <if test="ip != null" >
+        IP,
+      </if>
+      <if test="inputdate != null" >
+        INPUTDATE,
+      </if>
+      <if test="updateip != null" >
+        UPDATEIP,
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="supuserid != null" >
+        SUPUSERID,
+      </if>
+      <if test="level != null" >
+        LEVEL,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+      <if test="webchat != null" >
+        WEBCHAT,
+      </if>
+      <if test="usermoney != null" >
+        USERMONEY,
+      </if>
+      <if test="offtype != null" >
+        OFFTYPE,
+      </if>
+      <if test="percentage != null" >
+        PERCENTAGE,
+      </if>
+      <if test="query != null" >
+        QUERY,
+      </if>
+      <if test="budget != null" >
+        BUDGET,
+      </if>
+      <if test="code != null" >
+        CODE,
+      </if>
+      <if test="sfcode != null" >
+        SFCODE,
+      </if>
+      <if test="bankid != null" >
+        BANKID,
+      </if>
+      <if test="bankname != null" >
+        BANKNAME,
+      </if>
+      <if test="bankaddress != null" >
+        BANKADDRESS,
+      </if>
+      <if test="bankaccount != null" >
+        BANKACCOUNT,
+      </if>
+            <if test="bankno != null" >
+        BANKNO,
+      </if>
+            <if test="bankloproname != null" >
+        BANKLOPRONAME,
+      </if>
+            <if test="banklocityname != null" >
+        BANKLOCITYNAME,
+      </if>
+            <if test="phoneno != null" >
+        PHONENO,
+      </if>
+    </trim>
+   
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="ausername != null" >
+        #{ausername,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="limited != null" >
+        #{limited,jdbcType=DOUBLE},
+      </if>
+      <if test="ratio != null" >
+        #{ratio,jdbcType=DOUBLE},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="inputdate != null" >
+        #{inputdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateip != null" >
+        #{updateip,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="supuserid != null" >
+        #{supuserid,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="webchat != null" >
+        #{webchat,jdbcType=VARCHAR},
+      </if>
+      <if test="usermoney != null" >
+        #{usermoney,jdbcType=DECIMAL},
+      </if>
+      <if test="offtype != null" >
+        #{offtype,jdbcType=VARCHAR},
+      </if>
+      <if test="percentage != null" >
+        #{percentage,jdbcType=DOUBLE},
+      </if>
+      <if test="query != null" >
+        #{query,jdbcType=VARCHAR},
+      </if>
+      <if test="budget != null" >
+        #{budget,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="sfcode != null" >
+        #{sfcode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankid != null" >
+        #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaddress != null" >
+        #{bankaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccount != null" >
+        #{bankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bankno != null" >
+        #{bankno,jdbcType=VARCHAR},
+      </if>
+        <if test="bankloproname != null" >
+        #{bankloproname,jdbcType=VARCHAR},
+      </if>
+        <if test="banklocityname != null" >
+        #{banklocityname,jdbcType=VARCHAR},
+      </if>
+        <if test="phoneno != null" >
+        #{phoneno,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.AccountInfo" >
+    update account_info
+    <set >
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="ausername != null" >
+        AUSERNAME = #{ausername,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PASSWORD = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="limited != null" >
+        LIMITED = #{limited,jdbcType=DOUBLE},
+      </if>
+      <if test="ratio != null" >
+        RATIO = #{ratio,jdbcType=DOUBLE},
+      </if>
+      <if test="ip != null" >
+        IP = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="inputdate != null" >
+        INPUTDATE = #{inputdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateip != null" >
+        UPDATEIP = #{updateip,jdbcType=VARCHAR},
+      </if>
+      <if test="updatedate != null" >
+        UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=CHAR},
+      </if>
+      <if test="supuserid != null" >
+        SUPUSERID = #{supuserid,jdbcType=INTEGER},
+      </if>
+      <if test="level != null" >
+        LEVEL = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="webchat != null" >
+        WEBCHAT = #{webchat,jdbcType=VARCHAR},
+      </if>
+      <if test="usermoney != null" >
+        USERMONEY = #{usermoney,jdbcType=DECIMAL},
+      </if>
+      <if test="offtype != null" >
+        OFFTYPE = #{offtype,jdbcType=VARCHAR},
+      </if>
+      <if test="percentage != null" >
+        PERCENTAGE = #{percentage,jdbcType=DOUBLE},
+      </if>
+      <if test="query != null" >
+        QUERY = #{query,jdbcType=VARCHAR},
+      </if>
+      <if test="budget != null" >
+        BUDGET = #{budget,jdbcType=VARCHAR},
+      </if>
+      <if test="code != null" >
+        CODE = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="sfcode != null" >
+        SFCODE = #{sfcode,jdbcType=VARCHAR},
+      </if>
+      <if test="bankid != null" >
+        BANKID = #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        BANKNAME = #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaddress != null" >
+        BANKADDRESS = #{bankaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccount != null" >
+        BANKACCOUNT = #{bankaccount,jdbcType=VARCHAR},
+      </if>
+      
+      <if test="bankno != null" >
+       BANKNO =  #{bankno,jdbcType=VARCHAR},
+      </if>
+        <if test="bankloproname != null" >
+       BANKLOPRONAME = #{bankloproname,jdbcType=VARCHAR},
+      </if>
+        <if test="banklocityname != null" >
+       BANKLOCITYNAME = #{banklocityname,jdbcType=VARCHAR},
+      </if>
+        <if test="phoneno != null" >
+       PHONENO = #{phoneno,jdbcType=VARCHAR},
+       </if>
+    </set>
+    where ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateOffPercentage" >
+   UPDATE account_info a SET percentage = percentage - percentage*(#{percentage,jdbcType=DOUBLE}) WHERE a.offtype = '1' AND 
+     FIND_IN_SET(a.accountid, 
+	   (SELECT GROUP_CONCAT(LEVEL SEPARATOR ',') FROM (
+	      SELECT @Ids := (SELECT GROUP_CONCAT(c.accountid SEPARATOR ',') FROM account_info c WHERE FIND_IN_SET(supuserid, @Ids) ) LEVEL
+	      FROM account_info d
+	      JOIN (SELECT @Ids := #{accountid,jdbcType=INTEGER}) temp1
+	      WHERE FIND_IN_SET(d.supuserid, @Ids)
+	   ) temp2 )) 
+  </update>
+  
+  
+  <update id="updateOffState" >
+   UPDATE account_info a SET state = (#{state,jdbcType=VARCHAR}),percentage = 0.0 WHERE (a.offtype = '1' or a.offtype = '2') AND 
+     FIND_IN_SET(a.accountid, 
+	   (SELECT GROUP_CONCAT(LEVEL SEPARATOR ',') FROM (
+	      SELECT @Ids := (SELECT GROUP_CONCAT(c.accountid SEPARATOR ',') FROM account_info c WHERE FIND_IN_SET(supuserid, @Ids) ) LEVEL
+	      FROM account_info d
+	      JOIN (SELECT @Ids := #{accountid,jdbcType=INTEGER}) temp1
+	      WHERE FIND_IN_SET(d.supuserid, @Ids)
+	   ) temp2 )) 
+  </update>
+  
+  
+  <update id="updateResultAccountMount" >
+  update account_info a
+  set  USERMONEY = a.USERMONEY + (#{usermoney,jdbcType=DECIMAL})
+  where ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.AccountInfo" >
+    update account_info
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      AUSERNAME = #{ausername,jdbcType=VARCHAR},
+      PASSWORD = #{password,jdbcType=VARCHAR},
+      LIMITED = #{limited,jdbcType=DOUBLE},
+      RATIO = #{ratio,jdbcType=DOUBLE},
+      IP = #{ip,jdbcType=VARCHAR},
+      INPUTDATE = #{inputdate,jdbcType=TIMESTAMP},
+      UPDATEIP = #{updateip,jdbcType=VARCHAR},
+      UPDATEDATE = #{updatedate,jdbcType=TIMESTAMP},
+      STATE = #{state,jdbcType=CHAR},
+      SUPUSERID = #{supuserid,jdbcType=INTEGER},
+      LEVEL = #{level,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR},
+      WEBCHAT = #{webchat,jdbcType=VARCHAR},
+      USERMONEY = #{usermoney,jdbcType=DECIMAL},
+      OFFTYPE = #{offtype,jdbcType=VARCHAR},
+      PERCENTAGE = #{percentage,jdbcType=DOUBLE},
+      QUERY = #{query,jdbcType=VARCHAR},
+      BUDGET = #{budget,jdbcType=VARCHAR},
+      CODE = #{code,jdbcType=VARCHAR},
+      SFCODE = #{sfcode,jdbcType=VARCHAR},
+      BANKID = #{bankid,jdbcType=VARCHAR},
+      BANKNAME = #{bankname,jdbcType=VARCHAR},
+      BANKADDRESS = #{bankaddress,jdbcType=VARCHAR},
+      BANKACCOUNT = #{bankaccount,jdbcType=VARCHAR},
+      BANKNO =  #{bankno,jdbcType=VARCHAR},
+      BANKLOPRONAME = #{bankloproname,jdbcType=VARCHAR},
+      BANKLOCITYNAME = #{banklocityname,jdbcType=VARCHAR},
+      PHONENO = #{phoneno,jdbcType=VARCHAR}
+    where ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectByUsername" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from account_info
+    where USERNAME = #{username,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByCode" parameterType="com.lottery.orm.bo.AccountInfo" resultMap="BaseResultMap">  
+    select 
+    <include refid="Base_Column_List" />
+    from account_info
+    where code = #{code,jdbcType=VARCHAR} and level != #{level,jdbcType=VARCHAR} and offtype = #{offtype,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByUserAndSfcode" parameterType="com.lottery.orm.bo.AccountInfo" resultMap="BaseResultMap">  
+    select 
+    <include refid="Base_Column_List" />
+    from account_info
+    where username = #{username,jdbcType=VARCHAR} and sfcode = #{sfcode,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByLogin" parameterType="com.lottery.orm.bo.AccountInfo" resultMap="BaseResultMap">  
+    select 
+    <include refid="Base_Column_List" />
+    from account_info
+    where username = #{username,jdbcType=VARCHAR} and password = #{password,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByCodeNo" resultMap="BaseResultMap">  
+    select 
+    <include refid="Base_Column_List" />
+    from account_info
+    where code = #{code,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByCodeCount" resultMap="BaseResultMap">  
+    select 
+    count(*) as limited
+    from account_info a
+    where a.supuserid = (select b.accountid from lottery_add_account b where b.accountid = #{accountid,jdbcType=INTEGER} )
+
+  </select>
+  
+   <select id="selectByLoginPlayer" parameterType="com.lottery.orm.bo.AccountInfo" resultMap="BaseResultMap">  
+    select 
+    <include refid="Base_Column_List" />
+    from account_info
+    where accountid = #{accountid,jdbcType=INTEGER} and password = #{password,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectAgencyInfo" parameterType="java.lang.Integer" resultMap="BaseResultMap">  
+	SELECT T2.accountid, T2.username,T2.level,T2.offtype,T2.PERCENTAGE,T2.usermoney
+	FROM ( 
+	<![CDATA[
+	    SELECT 
+	        @r AS _id, 
+	        (SELECT @r := supuserid FROM account_info WHERE accountid = _id) AS parent_id, 
+	        @l := @l + 1 AS lvl 
+	    FROM 
+	        (SELECT @r := #{accountid,jdbcType=INTEGER}, @l := 0) vars, 
+	        account_info h 
+	    WHERE @r <> 0) T1 
+	JOIN account_info T2 
+	ON T1._id = T2.accountid WHERE accountid <>#{accountid,jdbcType=INTEGER}]]>
+	ORDER BY T1.lvl ASC   
+  </select>
+  
+</mapper>

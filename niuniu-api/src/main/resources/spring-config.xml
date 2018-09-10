@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="
+          http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+          http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+          http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+          http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+          http://www.springframework.org/schema/mvc
+          http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+	<!-- 扫描注解Bean -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.lottery.*" >
+		<!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/> -->
+	</context:component-scan>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+	</bean>
+	
+	
+	<bean id="PropertiesConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:log4j.properties</value>
+				<value>classpath:jdbc.properties</value>
+				<value>classpath:rest-config.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="${jdbc.driverClassName}" />
+		<property name="jdbcUrl" value="${jdbc.url}" />
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+		<property name="initialPoolSize" value="${db.initialPoolSize}"></property>
+		<property name="minPoolSize" value="${db.minPoolSize}"></property>
+		<property name="maxPoolSize" value="${db.maxPoolSize}"></property>
+		<property name="maxIdleTime" value="${db.maxIdleTime}"></property>
+		<property name="acquireIncrement" value="${db.acquireIncrement}"></property>
+		<property name="idleConnectionTestPeriod" value="${db.idleConnectionTestPeriod}"></property>
+		<property name="acquireRetryAttempts" value="${db.acquireRetryAttempts}"></property>
+		<property name="breakAfterAcquireFailure" value="${db.breakAfterAcquireFailure}"></property>
+		<property name="maxStatements" value="${db.maxStatements}"></property>
+		<property name="maxStatementsPerConnection" value="${db.maxStatementsPerConnection}"></property>
+		<property name="testConnectionOnCheckout" value="${db.testConnectionOnCheckout}"></property>
+		<property name="numHelperThreads" value="${db.numHelperThreads}"></property>		
+		
+	</bean>
+    <bean class="org.dozer.DozerBeanMapper" />
+	<!-- SqlSessionFactory -->
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:com/lottery/xml/mapper/mybatis-sqlMap.xml" />
+	</bean>
+
+	<!-- Mybatis sql session -->
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean>
+
+	<!-- Mybatis mapper scanner, scans for java mapper -->
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.lottery.orm.dao" />
+		<property name="sqlSessionTemplateBeanName" value="sqlSession" />
+	</bean>
+	
+	
+	<!-- (事务管理)transaction manager, use JtaTransactionManager for global tx -->
+    <bean id="transactionManager"
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	 <!-- 配置事务异常封装 -->
+  	<bean id="persistenceExceptionTranslationPostProcessor" 
+       class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+       
+    <bean id="springUtils" class="com.lottery.orm.util.SpringUtils" />
+	<!-- <bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean" /> -->
+	
+	
+	<bean class="com.mangofactory.swagger.configuration.SpringSwaggerConfig" />
+	<bean class="com.lottery.api.swagger.CustomJavaPluginConfig"/>
+	<bean id="responseInterceptor" class="com.lottery.api.filter.ResponseInterceptor" />
+	<mvc:interceptors>
+       <mvc:interceptor>
+		   <mvc:mapping path="/**" />
+		   <mvc:exclude-mapping path="/swagger/**/*" />
+		   <mvc:exclude-mapping path="/api-docs/**/*" />
+		   <mvc:exclude-mapping path="/api-docs" />
+		   <mvc:exclude-mapping path="/account/**"/>
+		   <mvc:exclude-mapping path="/account/getAccountInfo" />
+		   <mvc:exclude-mapping path="/account/getRemarkInfo" />
+		   <mvc:exclude-mapping path="/initService/initData"/>
+		   <mvc:exclude-mapping path="/initService/updatePassword"/>
+		   <mvc:exclude-mapping path="/account/addAccountInfo"/>
+		   <mvc:exclude-mapping path="/account/addAccountInfo"/>
+		   <mvc:exclude-mapping path="/account/userExit"/>
+		   <mvc:exclude-mapping path="/trade/getTradeInfo"/>
+		   <mvc:exclude-mapping path="/offAccount/**"/>
+		   <mvc:exclude-mapping path="/subAccount/**"/>
+		   <mvc:exclude-mapping path="/lottery/**"/>
+		   <mvc:exclude-mapping path="/order/**"/>
+		   <mvc:exclude-mapping path="/report/**"/>
+		   <mvc:exclude-mapping path="/rule.html" />
+		   <mvc:exclude-mapping path="/logo.png" />
+		   <ref bean="responseInterceptor"/>
+	  </mvc:interceptor>
+    </mvc:interceptors>
+</beans>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.LotteryOrderRecordMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.LotteryOrderRecord" >
+    <id column="LORID" property="lorid" jdbcType="INTEGER" />
+    <result column="LOTTERYTERM" property="lotteryterm" jdbcType="VARCHAR" />
+    <result column="SID" property="sid" jdbcType="INTEGER" />
+    <result column="FIRSTVALUE" property="firstvalue" jdbcType="VARCHAR" />
+    <result column="SECONDVALUE" property="secondvalue" jdbcType="VARCHAR" />
+    <result column="FIRSTTIME" property="firsttime" jdbcType="TIMESTAMP" />
+    <result column="FOVERTIME" property="fovertime" jdbcType="TIMESTAMP" />
+    <result column="SECONDTIME" property="secondtime" jdbcType="TIMESTAMP" />
+    <result column="SOVERTIME" property="sovertime" jdbcType="TIMESTAMP" />
+    <result column="ACCOUNDIDS" property="accoundids" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    LORID, LOTTERYTERM, SID, FIRSTVALUE, SECONDVALUE, FIRSTTIME, FOVERTIME, SECONDTIME, 
+    SOVERTIME, ACCOUNDIDS
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from lottery_order_record
+    where LORID = #{lorid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByKeyValue" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from lottery_order_record
+    where SID = #{sid,jdbcType=INTEGER} and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+  </select>
+  
+   <select id="selectValueList" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from lottery_order_record
+    where firstvalue ='0' order by opentime desc
+  </select>
+  
+   <select id="selectValueByLottery" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from lottery_order_record
+    where firstvalue ='0' and sid= #{sid,jdbcType=INTEGER} and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from lottery_order_record
+    where LORID = #{lorid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.LotteryOrderRecord" >
+    <selectKey resultType="java.lang.Integer" keyProperty="lorid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_order_record (LOTTERYTERM, SID, FIRSTVALUE, 
+      SECONDVALUE, FIRSTTIME, FOVERTIME, 
+      SECONDTIME, SOVERTIME, ACCOUNDIDS
+      )
+    values (#{lotteryterm,jdbcType=VARCHAR}, #{sid,jdbcType=INTEGER}, #{firstvalue,jdbcType=VARCHAR}, 
+      #{secondvalue,jdbcType=VARCHAR}, #{firsttime,jdbcType=TIMESTAMP}, #{fovertime,jdbcType=TIMESTAMP}, 
+      #{secondtime,jdbcType=TIMESTAMP}, #{sovertime,jdbcType=TIMESTAMP}, #{accoundids,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.LotteryOrderRecord" >
+    <selectKey resultType="java.lang.Integer" keyProperty="lorid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_order_record
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="lotteryterm != null" >
+        LOTTERYTERM,
+      </if>
+      <if test="sid != null" >
+        SID,
+      </if>
+      <if test="firstvalue != null" >
+        FIRSTVALUE,
+      </if>
+      <if test="secondvalue != null" >
+        SECONDVALUE,
+      </if>
+      <if test="firsttime != null" >
+        FIRSTTIME,
+      </if>
+      <if test="fovertime != null" >
+        FOVERTIME,
+      </if>
+      <if test="secondtime != null" >
+        SECONDTIME,
+      </if>
+      <if test="sovertime != null" >
+        SOVERTIME,
+      </if>
+      <if test="accoundids != null" >
+        ACCOUNDIDS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="lotteryterm != null" >
+        #{lotteryterm,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null" >
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="firstvalue != null" >
+        #{firstvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="secondvalue != null" >
+        #{secondvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="firsttime != null" >
+        #{firsttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fovertime != null" >
+        #{fovertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="secondtime != null" >
+        #{secondtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sovertime != null" >
+        #{sovertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accoundids != null" >
+        #{accoundids,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.LotteryOrderRecord" >
+    update lottery_order_record
+    <set >
+      <if test="lotteryterm != null" >
+        LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null" >
+        SID = #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="firstvalue != null" >
+        FIRSTVALUE = #{firstvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="secondvalue != null" >
+        SECONDVALUE = #{secondvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="firsttime != null" >
+        FIRSTTIME = #{firsttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fovertime != null" >
+        FOVERTIME = #{fovertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="secondtime != null" >
+        SECONDTIME = #{secondtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sovertime != null" >
+        SOVERTIME = #{sovertime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="accoundids != null" >
+        ACCOUNDIDS = #{accoundids,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where LORID = #{lorid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryOrderRecord" >
+    update lottery_order_record
+    set LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR},
+      SID = #{sid,jdbcType=INTEGER},
+      FIRSTVALUE = #{firstvalue,jdbcType=VARCHAR},
+      SECONDVALUE = #{secondvalue,jdbcType=VARCHAR},
+      FIRSTTIME = #{firsttime,jdbcType=TIMESTAMP},
+      FOVERTIME = #{fovertime,jdbcType=TIMESTAMP},
+      SECONDTIME = #{secondtime,jdbcType=TIMESTAMP},
+      SOVERTIME = #{sovertime,jdbcType=TIMESTAMP},
+      ACCOUNDIDS = #{accoundids,jdbcType=VARCHAR}
+    where LORID = #{lorid,jdbcType=INTEGER}
+  </update>
+</mapper>

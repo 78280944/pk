@@ -1,0 +1,796 @@
+2018-06-17 09:41:55,121 - Root WebApplicationContext: initialization started
+ 2018-06-17 09:41:55,558 - Refreshing Root WebApplicationContext: startup date [Sun Jun 17 09:41:55 CST 2018]; root of context hierarchy
+ 2018-06-17 09:41:55,780 - Loading XML bean definitions from class path resource [spring-config.xml]
+ 2018-06-17 09:42:00,145 - Loading XML bean definitions from class path resource [spring-timeTask.xml]
+ 2018-06-17 09:42:03,170 - Loading properties file from class path resource [log4j.properties]
+ 2018-06-17 09:42:03,191 - Loading properties file from class path resource [jdbc.properties]
+ 2018-06-17 09:42:03,195 - Loading properties file from class path resource [rest-config.properties]
+ 2018-06-17 09:42:04,197 - MLog clients using log4j logging.
+ 2018-06-17 09:42:04,433 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+ 2018-06-17 09:42:10,214 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 10, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 2saju89w35xnq61v51irl|42b20962, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 2saju89w35xnq61v51irl|42b20962, idleConnectionTestPeriod -> 120, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/niuniu?useUnicode=true&amp;characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 600, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 80, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 7, numHelperThreads -> 5, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+ 2018-06-17 09:42:30,097 - com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@2ba42999 -- APPARENT DEADLOCK!!! Creating emergency threads for unassigned pending tasks!
+ 2018-06-17 09:42:30,105 - com.mchange.v2.async.ThreadPoolAsynchronousRunner$DeadlockDetector@2ba42999 -- APPARENT DEADLOCK!!! Complete Status: 
+	Managed Threads: 5
+	Active Threads: 5
+	Active Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@488432a9 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#3)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@5f1a1a70 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@2abddfd7 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@17b2b22d (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#4)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@54cfb482 (com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0)
+	Pending Tasks: 
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@1053ee4e
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@76424b41
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@7a5ad50e
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@6159c8e3
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@4d93e103
+Pool thread stack traces:
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#3,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#4,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#2,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#1,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+	Thread[com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread-#0,5,main]
+		java.lang.Thread.sleep(Native Method)
+		com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1805)
+		com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+
+
+ 2018-06-17 09:43:10,144 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@2abddfd7 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+ com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.GeneratedConstructorAccessor31.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1038)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:339)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2247)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2280)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2079)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:794)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.GeneratedConstructorAccessor28.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:399)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:325)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:214)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:298)
+	... 19 more
+2018-06-17 09:43:10,168 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@54cfb482 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+ com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.GeneratedConstructorAccessor31.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1038)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:339)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2247)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2280)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2079)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:794)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.GeneratedConstructorAccessor28.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:399)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:325)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:214)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:298)
+	... 19 more
+2018-06-17 09:43:10,177 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@488432a9 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+ com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.GeneratedConstructorAccessor31.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1038)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:339)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2247)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2280)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2079)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:794)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.GeneratedConstructorAccessor28.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:399)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:325)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:214)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:298)
+	... 19 more
+2018-06-17 09:43:10,179 - Could not get a databaseId from dataSource
+ java.sql.SQLException: Connections could not be acquired from the underlying database!
+	at com.mchange.v2.sql.SqlUtils.toSQLException(SqlUtils.java:106)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:529)
+	at com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource.getConnection(AbstractPoolBackedDataSource.java:128)
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseProductName(VendorDatabaseIdProvider.java:76)
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseName(VendorDatabaseIdProvider.java:61)
+	at org.apache.ibatis.mapping.VendorDatabaseIdProvider.getDatabaseId(VendorDatabaseIdProvider.java:49)
+	at org.mybatis.spring.SqlSessionFactoryBean.buildSqlSessionFactory(SqlSessionFactoryBean.java:445)
+	at org.mybatis.spring.SqlSessionFactoryBean.afterPropertiesSet(SqlSessionFactoryBean.java:336)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1612)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1549)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:539)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:320)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:107)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveConstructorArguments(ConstructorResolver.java:627)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:148)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1114)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1017)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:504)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveReference(BeanDefinitionValueResolver.java:320)
+	at org.springframework.beans.factory.support.BeanDefinitionValueResolver.resolveValueIfNecessary(BeanDefinitionValueResolver.java:107)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.applyPropertyValues(AbstractAutowireCapableBeanFactory.java:1456)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1197)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getTypeForFactoryBean(AbstractBeanFactory.java:1420)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.getTypeForFactoryBean(AbstractAutowireCapableBeanFactory.java:788)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.isTypeMatch(AbstractBeanFactory.java:543)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doGetBeanNamesForType(DefaultListableBeanFactory.java:384)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.getBeanNamesForType(DefaultListableBeanFactory.java:361)
+	at org.springframework.beans.factory.BeanFactoryUtils.beanNamesForTypeIncludingAncestors(BeanFactoryUtils.java:187)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:999)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:957)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:855)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:480)
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:87)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:289)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1185)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:537)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:475)
+	at org.springframework.beans.factory.support.AbstractBeanFactory$1.getObject(AbstractBeanFactory.java:304)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:228)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:300)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:195)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:700)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:760)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:482)
+	at org.springframework.web.context.ContextLoader.configureAndRefreshWebApplicationContext(ContextLoader.java:381)
+	at org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:293)
+	at org.springframework.web.context.ContextLoaderListener.contextInitialized(ContextLoaderListener.java:106)
+	at org.apache.catalina.core.StandardContext.listenerStart(StandardContext.java:5077)
+	at org.apache.catalina.core.StandardContext.startInternal(StandardContext.java:5591)
+	at org.apache.catalina.util.LifecycleBase.start(LifecycleBase.java:150)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1574)
+	at org.apache.catalina.core.ContainerBase$StartChild.call(ContainerBase.java:1564)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:262)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1145)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:615)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.mchange.v2.resourcepool.CannotAcquireResourceException: A ResourcePool could not acquire a resource from its primary factory or source.
+	at com.mchange.v2.resourcepool.BasicResourcePool.awaitAvailable(BasicResourcePool.java:1319)
+	at com.mchange.v2.resourcepool.BasicResourcePool.prelimCheckoutResource(BasicResourcePool.java:557)
+	at com.mchange.v2.resourcepool.BasicResourcePool.checkoutResource(BasicResourcePool.java:477)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool.checkoutPooledConnection(C3P0PooledConnectionPool.java:525)
+	... 69 more
+2018-06-17 09:43:10,210 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@5f1a1a70 -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+ com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.GeneratedConstructorAccessor31.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1038)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:339)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2247)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2280)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2079)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:794)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.GeneratedConstructorAccessor28.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:399)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:325)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:214)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:298)
+	... 19 more
+2018-06-17 09:43:10,183 - com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask@17b2b22d -- Acquisition Attempt Failed!!! Clearing pending acquires. While trying to acquire a needed new resource, we failed to succeed more than the maximum number of allowed acquisition attempts (30). Last acquisition attempt exception: 
+ com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.GeneratedConstructorAccessor31.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1038)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:339)
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2247)
+	at com.mysql.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:2280)
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2079)
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:794)
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:44)
+	at sun.reflect.GeneratedConstructorAccessor28.newInstance(Unknown Source)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:526)
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:400)
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:399)
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:325)
+	at com.mchange.v2.c3p0.DriverManagerDataSource.getConnection(DriverManagerDataSource.java:134)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:182)
+	at com.mchange.v2.c3p0.WrapperConnectionPoolDataSource.getPooledConnection(WrapperConnectionPoolDataSource.java:171)
+	at com.mchange.v2.c3p0.impl.C3P0PooledConnectionPool$1PooledConnectionResourcePoolManager.acquireResource(C3P0PooledConnectionPool.java:137)
+	at com.mchange.v2.resourcepool.BasicResourcePool.doAcquire(BasicResourcePool.java:1014)
+	at com.mchange.v2.resourcepool.BasicResourcePool.access$800(BasicResourcePool.java:32)
+	at com.mchange.v2.resourcepool.BasicResourcePool$AcquireTask.run(BasicResourcePool.java:1810)
+	at com.mchange.v2.async.ThreadPoolAsynchronousRunner$PoolThread.run(ThreadPoolAsynchronousRunner.java:547)
+Caused by: java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(DualStackPlainSocketImpl.java:79)
+	at java.net.AbstractPlainSocketImpl.doConnect(AbstractPlainSocketImpl.java:339)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(AbstractPlainSocketImpl.java:200)
+	at java.net.AbstractPlainSocketImpl.connect(AbstractPlainSocketImpl.java:182)
+	at java.net.PlainSocketImpl.connect(PlainSocketImpl.java:172)
+	at java.net.SocksSocketImpl.connect(SocksSocketImpl.java:392)
+	at java.net.Socket.connect(Socket.java:579)
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:214)
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:298)
+	... 19 more
+2018-06-17 09:43:11,114 - Trying to find Dozer configuration file: dozer.properties
+ 2018-06-17 09:43:11,203 - Dozer configuration file not found: dozer.properties.  Using defaults for all Dozer global properties.
+ 2018-06-17 09:43:11,233 - Initializing Dozer. Version: 5.4.0, Thread Name: localhost-startStop-1
+ 2018-06-17 09:43:11,241 - Dozer JMX MBean [org.dozer.jmx:type=DozerStatisticsController] auto registered with the Platform MBean Server
+ 2018-06-17 09:43:11,246 - Dozer JMX MBean [org.dozer.jmx:type=DozerAdminController] auto registered with the Platform MBean Server
+ 2018-06-17 09:43:11,284 - Initializing a new instance of dozer bean mapper.
+ 2018-06-17 09:43:14,323 - Mapped "{[/account/userExit],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userExit(com.lottery.api.dto.AccountRecordVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,324 - Mapped "{[/account/userRecharge],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.UserRechargeResult com.lottery.api.controller.AccountInfoController.userRecharge(com.lottery.api.dto.UserRechargeVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,326 - Mapped "{[/account/userCashApply],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashApply(com.lottery.api.dto.UserCashVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,328 - Mapped "{[/account/userCashAudit],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashAudit(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,330 - Mapped "{[/account/userCashdo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashdo(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,331 - Mapped "{[/account/bankCashList],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.BankCashResult com.lottery.api.controller.AccountInfoController.bankCashList() throws java.lang.Exception
+ 2018-06-17 09:43:14,333 - Mapped "{[/account/userOutResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userOutResult() throws java.lang.Exception
+ 2018-06-17 09:43:14,335 - Mapped "{[/account/getAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.AccountResult com.lottery.api.controller.AccountInfoController.getAccountInfo(com.lottery.api.dto.LoginParamVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,336 - Mapped "{[/account/getAccountSimInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccountSimResult com.lottery.api.controller.AccountInfoController.getAccountSimpleInfo(com.lottery.api.dto.LoginParamVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,338 - Mapped "{[/account/getAccountDemoInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccountResult com.lottery.api.controller.AccountInfoController.getAccountDemoInfo(com.lottery.api.dto.DemoInfoVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,339 - Mapped "{[/account/addAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.addAccountInfo(com.lottery.api.dto.PlayAccountInfoVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,341 - Mapped "{[/account/updateAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.updateAccountInfo(com.lottery.api.dto.UpdateAccountVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,343 - Mapped "{[/account/getRemarkInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RemarkResult com.lottery.api.controller.AccountInfoController.getAllAccountInfo() throws java.lang.Exception
+ 2018-06-17 09:43:14,344 - Mapped "{[/account/lotteryMessage],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.getLotteryMessage(com.lottery.api.dto.NoticeTypeVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,346 - Mapped "{[/account/lotteryHisMessage],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.NoticeResult com.lottery.api.controller.AccountInfoController.getLotteryHisMessage(com.lottery.api.dto.NoticeHisTypeVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,348 - Mapped "{[/account/userRechargeResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userRechargeResult(com.lottery.api.dto.UserRechargeResVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,350 - Mapped "{[/account/userCashCancel],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashCancel(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,363 - Mapped "{[/order/getCurTermOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameOrderListResult com.lottery.api.controller.LotteryOrderController.getCurTermOrder(com.lottery.api.dto.CurResultParamVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,365 - Mapped "{[/order/getLotteryGameNoid],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryNoidResult com.lottery.api.controller.LotteryOrderController.getLotteryGameNoid(com.lottery.api.dto.RoomOrderVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,366 - Mapped "{[/order/getHisOrderAmount],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OrderAmountResult com.lottery.api.controller.LotteryOrderController.getHisOrderAmount(com.lottery.api.dto.ResultAmountVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,367 - Mapped "{[/order/getOrderAmountDetail],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RoomOrderDetaiResult com.lottery.api.controller.LotteryOrderController.getOrderAmountDetail(com.lottery.api.dto.RoomAmountVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,369 - Mapped "{[/order/getLotteryGameDetail],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryGameDetailResult com.lottery.api.controller.LotteryOrderController.getLotteryGameDetail(com.lottery.api.dto.LotteryGameDetailVO) throws java.lang.Exception
+ 2018-06-17 09:43:14,371 - Mapped "{[/order/getOrderItem],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameOrderGrListResult com.lottery.api.controller.LotteryOrderController.getOrderItem(com.lottery.api.dto.RoomOrderVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,374 - Mapped "{[/order/getHisOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OrderListResult com.lottery.api.controller.LotteryOrderController.getHisOrder(com.lottery.api.dto.ResultParamVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,375 - Mapped "{[/order/addLotteryOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.LotteryOrderController.addLotteryOrder(com.lottery.api.dto.OrderParamVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,377 - Mapped "{[/order/getOrderAmount],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RoomAmountResult com.lottery.api.controller.LotteryOrderController.getOrderAmount(com.lottery.api.dto.RoomAmountVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,385 - Mapped "{[/report/getRoomQueryDate],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RoomListResult com.lottery.api.controller.LotteryReportController.getRoomQueryDate(com.lottery.api.dto.RoomParamVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,387 - Mapped "{[/report/getAgencyWinReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AgencyWinReportResult com.lottery.api.controller.LotteryReportController.getAgencyWinReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,389 - Mapped "{[/report/getAccWinReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccWinReportResult com.lottery.api.controller.LotteryReportController.getAccWinReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,390 - Mapped "{[/report/getAccTradeReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.OrderListResult com.lottery.api.controller.LotteryReportController.getAccTradeReport(com.lottery.api.dto.PlayTradeVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,392 - Mapped "{[/report/getPlayerInoutReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InoutAccReportResult com.lottery.api.controller.LotteryReportController.getPlayerInoutReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,393 - Mapped "{[/report/getProInoutReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InoutAccReportResult com.lottery.api.controller.LotteryReportController.getProInoutReport(com.lottery.api.dto.ProWinReVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,409 - Mapped "{[/lottery/getLotteryGame],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameResult com.lottery.api.controller.LotteryRoundController.getLotteryGame() throws java.lang.Exception
+ 2018-06-17 09:43:14,410 - Mapped "{[/lottery/getLotteryGameItem],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameItemResult com.lottery.api.controller.LotteryRoundController.getLotteryGameItem(com.lottery.api.dto.GameVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,412 - Mapped "{[/lottery/getLotteryTermResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameCurResult com.lottery.api.controller.LotteryRoundController.getLotteryTermResult(com.lottery.api.dto.GameCurVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,413 - Mapped "{[/lottery/getLotteryGameRoom],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameRoomResult com.lottery.api.controller.LotteryRoundController.getLotteryGameRoom(com.lottery.api.dto.GameLobbyVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,415 - Mapped "{[/lottery/getLotteryResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.ResultListResult com.lottery.api.controller.LotteryRoundController.getLotteryResult(com.lottery.api.dto.ResultParamVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,416 - Mapped "{[/lottery/getLotteryCurResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotterySidResult com.lottery.api.controller.LotteryRoundController.getLotteryCurResult(com.lottery.api.dto.GameLobbyVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,419 - Mapped "{[/lottery/getLotteryGameResults],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryGameResult com.lottery.api.controller.LotteryRoundController.getLotteryGameResults(com.lottery.api.dto.GameCurVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,423 - Mapped "{[/initService/updatePassword],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.LotteryServiceControl.updatePassword(com.lottery.api.dto.PasswordInfoVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,425 - Mapped "{[/initService/initData],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InitInfoResult com.lottery.api.controller.LotteryServiceControl.getInitInfo() throws java.lang.Exception
+ 2018-06-17 09:43:14,434 - Mapped "{[/offAccount/addOffAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.addOffAccountInfo(com.lottery.api.dto.OffAccountInfoVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,436 - Mapped "{[/offAccount/getAllOffAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OffAccountListResult com.lottery.api.controller.OffAccountInfoController.getAllOffAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,438 - Mapped "{[/offAccount/updateOffAccountPass],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateOffAccountPass(com.lottery.api.dto.UpdatePlayPassVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,440 - Mapped "{[/offAccount/updateAccountPercent],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateAccountPercent(com.lottery.api.dto.UpdateAccountPerVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,441 - Mapped "{[/offAccount/updateAccountState],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateAccountState(com.lottery.api.dto.UpdateAccountStateVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,443 - Mapped "{[/offAccount/getAllAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OffAccountListResult com.lottery.api.controller.OffAccountInfoController.getAllAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,451 - Mapped "{[/subAccount/addSubAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.addSubAccountInfo(com.lottery.api.dto.SubAccountInfoVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,453 - Mapped "{[/subAccount/getAllSubAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.SubAccountListResult com.lottery.api.controller.SubAccountInfoController.getAllSubAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,454 - Mapped "{[/subAccount/updateSubAccountPass],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.updateSubAccountPass(com.lottery.api.dto.UpdatePlayPassVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,456 - Mapped "{[/subAccount/updateSubAccountState],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.updateSubAccountState(com.lottery.api.dto.UpdateAccountStateVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,459 - Mapped "{[/trade/getTradeInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.TradeListResult com.lottery.api.controller.TradeInfoController.getTradeInfo(com.lottery.api.dto.TradeInfoVo) throws java.lang.Exception
+ 2018-06-17 09:43:14,499 - Mapped "{[/api-docs],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<com.mangofactory.swagger.models.dto.ResourceListing> com.mangofactory.swagger.controllers.DefaultSwaggerController.getResourceListing(java.lang.String)
+ 2018-06-17 09:43:14,503 - Mapped "{[/api-docs/{swaggerGroup}/{apiDeclaration}],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<com.mangofactory.swagger.models.dto.ApiListing> com.mangofactory.swagger.controllers.DefaultSwaggerController.getApiListing(java.lang.String,java.lang.String)
+ 2018-06-17 09:44:09,095 - Root WebApplicationContext: initialization started
+ 2018-06-17 09:44:09,575 - Refreshing Root WebApplicationContext: startup date [Sun Jun 17 09:44:09 CST 2018]; root of context hierarchy
+ 2018-06-17 09:44:09,855 - Loading XML bean definitions from class path resource [spring-config.xml]
+ 2018-06-17 09:44:12,803 - Loading XML bean definitions from class path resource [spring-timeTask.xml]
+ 2018-06-17 09:44:15,800 - Loading properties file from class path resource [log4j.properties]
+ 2018-06-17 09:44:15,802 - Loading properties file from class path resource [jdbc.properties]
+ 2018-06-17 09:44:15,863 - Loading properties file from class path resource [rest-config.properties]
+ 2018-06-17 09:44:16,800 - MLog clients using log4j logging.
+ 2018-06-17 09:44:17,048 - Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+ 2018-06-17 09:44:22,714 - Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 10, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 2saju89w360i1pxw78qk|734d8895, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 2saju89w360i1pxw78qk|734d8895, idleConnectionTestPeriod -> 120, initialPoolSize -> 10, jdbcUrl -> jdbc:mysql://127.0.0.1:3306/niuniu?useUnicode=true&amp;characterEncoding=UTF-8, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 600, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 80, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 7, numHelperThreads -> 5, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> true, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+ 2018-06-17 09:44:25,043 - Trying to find Dozer configuration file: dozer.properties
+ 2018-06-17 09:44:25,074 - Dozer configuration file not found: dozer.properties.  Using defaults for all Dozer global properties.
+ 2018-06-17 09:44:25,085 - Initializing Dozer. Version: 5.4.0, Thread Name: localhost-startStop-1
+ 2018-06-17 09:44:25,095 - Dozer JMX MBean [org.dozer.jmx:type=DozerStatisticsController] auto registered with the Platform MBean Server
+ 2018-06-17 09:44:25,099 - Dozer JMX MBean [org.dozer.jmx:type=DozerAdminController] auto registered with the Platform MBean Server
+ 2018-06-17 09:44:25,115 - Initializing a new instance of dozer bean mapper.
+ 2018-06-17 09:44:28,109 - Mapped "{[/account/getAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.AccountResult com.lottery.api.controller.AccountInfoController.getAccountInfo(com.lottery.api.dto.LoginParamVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,111 - Mapped "{[/account/getAccountSimInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccountSimResult com.lottery.api.controller.AccountInfoController.getAccountSimpleInfo(com.lottery.api.dto.LoginParamVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,112 - Mapped "{[/account/getAccountDemoInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccountResult com.lottery.api.controller.AccountInfoController.getAccountDemoInfo(com.lottery.api.dto.DemoInfoVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,113 - Mapped "{[/account/addAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.addAccountInfo(com.lottery.api.dto.PlayAccountInfoVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,114 - Mapped "{[/account/updateAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.updateAccountInfo(com.lottery.api.dto.UpdateAccountVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,115 - Mapped "{[/account/getRemarkInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RemarkResult com.lottery.api.controller.AccountInfoController.getAllAccountInfo() throws java.lang.Exception
+ 2018-06-17 09:44:28,116 - Mapped "{[/account/lotteryMessage],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.getLotteryMessage(com.lottery.api.dto.NoticeTypeVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,117 - Mapped "{[/account/lotteryHisMessage],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.NoticeResult com.lottery.api.controller.AccountInfoController.getLotteryHisMessage(com.lottery.api.dto.NoticeHisTypeVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,119 - Mapped "{[/account/userRechargeResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userRechargeResult(com.lottery.api.dto.UserRechargeResVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,120 - Mapped "{[/account/userCashCancel],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashCancel(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,121 - Mapped "{[/account/userExit],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userExit(com.lottery.api.dto.AccountRecordVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,122 - Mapped "{[/account/userRecharge],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.UserRechargeResult com.lottery.api.controller.AccountInfoController.userRecharge(com.lottery.api.dto.UserRechargeVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,124 - Mapped "{[/account/userCashApply],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashApply(com.lottery.api.dto.UserCashVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,125 - Mapped "{[/account/userCashAudit],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashAudit(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,126 - Mapped "{[/account/userCashdo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userCashdo(com.lottery.api.dto.CashOrderVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,127 - Mapped "{[/account/bankCashList],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.BankCashResult com.lottery.api.controller.AccountInfoController.bankCashList() throws java.lang.Exception
+ 2018-06-17 09:44:28,129 - Mapped "{[/account/userOutResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.AccountInfoController.userOutResult() throws java.lang.Exception
+ 2018-06-17 09:44:28,138 - Mapped "{[/order/addLotteryOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.LotteryOrderController.addLotteryOrder(com.lottery.api.dto.OrderParamVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,139 - Mapped "{[/order/getOrderAmount],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RoomAmountResult com.lottery.api.controller.LotteryOrderController.getOrderAmount(com.lottery.api.dto.RoomAmountVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,141 - Mapped "{[/order/getCurTermOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameOrderListResult com.lottery.api.controller.LotteryOrderController.getCurTermOrder(com.lottery.api.dto.CurResultParamVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,142 - Mapped "{[/order/getLotteryGameNoid],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryNoidResult com.lottery.api.controller.LotteryOrderController.getLotteryGameNoid(com.lottery.api.dto.RoomOrderVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,143 - Mapped "{[/order/getHisOrderAmount],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OrderAmountResult com.lottery.api.controller.LotteryOrderController.getHisOrderAmount(com.lottery.api.dto.ResultAmountVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,145 - Mapped "{[/order/getOrderAmountDetail],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RoomOrderDetaiResult com.lottery.api.controller.LotteryOrderController.getOrderAmountDetail(com.lottery.api.dto.RoomAmountVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,146 - Mapped "{[/order/getLotteryGameDetail],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryGameDetailResult com.lottery.api.controller.LotteryOrderController.getLotteryGameDetail(com.lottery.api.dto.LotteryGameDetailVO) throws java.lang.Exception
+ 2018-06-17 09:44:28,148 - Mapped "{[/order/getOrderItem],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameOrderGrListResult com.lottery.api.controller.LotteryOrderController.getOrderItem(com.lottery.api.dto.RoomOrderVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,149 - Mapped "{[/order/getHisOrder],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OrderListResult com.lottery.api.controller.LotteryOrderController.getHisOrder(com.lottery.api.dto.ResultParamVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,157 - Mapped "{[/report/getRoomQueryDate],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RoomListResult com.lottery.api.controller.LotteryReportController.getRoomQueryDate(com.lottery.api.dto.RoomParamVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,159 - Mapped "{[/report/getAgencyWinReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AgencyWinReportResult com.lottery.api.controller.LotteryReportController.getAgencyWinReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,160 - Mapped "{[/report/getAccWinReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.AccWinReportResult com.lottery.api.controller.LotteryReportController.getAccWinReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,162 - Mapped "{[/report/getAccTradeReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.OrderListResult com.lottery.api.controller.LotteryReportController.getAccTradeReport(com.lottery.api.dto.PlayTradeVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,163 - Mapped "{[/report/getPlayerInoutReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InoutAccReportResult com.lottery.api.controller.LotteryReportController.getPlayerInoutReport(com.lottery.api.dto.AgencyWinReVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,165 - Mapped "{[/report/getProInoutReport],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InoutAccReportResult com.lottery.api.controller.LotteryReportController.getProInoutReport(com.lottery.api.dto.ProWinReVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,172 - Mapped "{[/lottery/getLotteryGame],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameResult com.lottery.api.controller.LotteryRoundController.getLotteryGame() throws java.lang.Exception
+ 2018-06-17 09:44:28,173 - Mapped "{[/lottery/getLotteryGameItem],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameItemResult com.lottery.api.controller.LotteryRoundController.getLotteryGameItem(com.lottery.api.dto.GameVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,174 - Mapped "{[/lottery/getLotteryTermResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameCurResult com.lottery.api.controller.LotteryRoundController.getLotteryTermResult(com.lottery.api.dto.GameCurVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,176 - Mapped "{[/lottery/getLotteryGameRoom],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.GameRoomResult com.lottery.api.controller.LotteryRoundController.getLotteryGameRoom(com.lottery.api.dto.GameLobbyVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,177 - Mapped "{[/lottery/getLotteryResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.ResultListResult com.lottery.api.controller.LotteryRoundController.getLotteryResult(com.lottery.api.dto.ResultParamVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,179 - Mapped "{[/lottery/getLotteryCurResult],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotterySidResult com.lottery.api.controller.LotteryRoundController.getLotteryCurResult(com.lottery.api.dto.GameLobbyVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,180 - Mapped "{[/lottery/getLotteryGameResults],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.LotteryGameResult com.lottery.api.controller.LotteryRoundController.getLotteryGameResults(com.lottery.api.dto.GameCurVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,183 - Mapped "{[/initService/updatePassword],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.RestResult com.lottery.api.controller.LotteryServiceControl.updatePassword(com.lottery.api.dto.PasswordInfoVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,185 - Mapped "{[/initService/initData],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.InitInfoResult com.lottery.api.controller.LotteryServiceControl.getInitInfo() throws java.lang.Exception
+ 2018-06-17 09:44:28,192 - Mapped "{[/offAccount/getAllAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OffAccountListResult com.lottery.api.controller.OffAccountInfoController.getAllAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,194 - Mapped "{[/offAccount/addOffAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.addOffAccountInfo(com.lottery.api.dto.OffAccountInfoVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,195 - Mapped "{[/offAccount/getAllOffAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.OffAccountListResult com.lottery.api.controller.OffAccountInfoController.getAllOffAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,196 - Mapped "{[/offAccount/updateOffAccountPass],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateOffAccountPass(com.lottery.api.dto.UpdatePlayPassVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,197 - Mapped "{[/offAccount/updateAccountPercent],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateAccountPercent(com.lottery.api.dto.UpdateAccountPerVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,199 - Mapped "{[/offAccount/updateAccountState],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.OffAccountInfoController.updateAccountState(com.lottery.api.dto.UpdateAccountStateVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,206 - Mapped "{[/subAccount/addSubAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.addSubAccountInfo(com.lottery.api.dto.SubAccountInfoVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,207 - Mapped "{[/subAccount/getAllSubAccountInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.SubAccountListResult com.lottery.api.controller.SubAccountInfoController.getAllSubAccountInfo(com.lottery.api.dto.AccountInfoVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,209 - Mapped "{[/subAccount/updateSubAccountPass],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.updateSubAccountPass(com.lottery.api.dto.UpdatePlayPassVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,210 - Mapped "{[/subAccount/updateSubAccountState],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public synchronized com.lottery.orm.result.RestResult com.lottery.api.controller.SubAccountInfoController.updateSubAccountState(com.lottery.api.dto.UpdateAccountStateVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,213 - Mapped "{[/trade/getTradeInfo],methods=[POST],params=[],headers=[],consumes=[],produces=[application/json;charset=UTF-8],custom=[]}" onto public com.lottery.orm.result.TradeListResult com.lottery.api.controller.TradeInfoController.getTradeInfo(com.lottery.api.dto.TradeInfoVo) throws java.lang.Exception
+ 2018-06-17 09:44:28,243 - Mapped "{[/api-docs],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<com.mangofactory.swagger.models.dto.ResourceListing> com.mangofactory.swagger.controllers.DefaultSwaggerController.getResourceListing(java.lang.String)
+ 2018-06-17 09:44:28,247 - Mapped "{[/api-docs/{swaggerGroup}/{apiDeclaration}],methods=[GET],params=[],headers=[],consumes=[],produces=[],custom=[]}" onto public org.springframework.http.ResponseEntity<com.mangofactory.swagger.models.dto.ApiListing> com.mangofactory.swagger.controllers.DefaultSwaggerController.getApiListing(java.lang.String,java.lang.String)
+ 2018-06-17 09:44:30,505 - Using default implementation for ThreadExecutor
+ 2018-06-17 09:44:30,648 - Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+ 2018-06-17 09:44:30,652 - Quartz Scheduler v.2.2.1 created.
+ 2018-06-17 09:44:30,657 - RAMJobStore initialized.
+ 2018-06-17 09:44:30,661 - Scheduler meta-data: Quartz Scheduler (v2.2.1) 'schedulerFactory' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+ 2018-06-17 09:44:30,662 - Quartz scheduler 'schedulerFactory' initialized from an externally provided properties instance.
+ 2018-06-17 09:44:30,662 - Quartz scheduler version: 2.2.1
+ 2018-06-17 09:44:30,705 - JobFactory set to: org.springframework.scheduling.quartz.AdaptableJobFactory@4e611cb2
+ 2018-06-17 09:44:31,193 - Initializing ExecutorService 
+ 2018-06-17 09:44:31,313 - Initializing ExecutorService  'scheduler'
+ 2018-06-17 09:44:33,577 - HV000001: Hibernate Validator 5.1.2.Final
+ 2018-06-17 09:44:34,467 - Detected @ExceptionHandler methods in controllerValidationHandler
+ 2018-06-17 09:44:34,827 - Starting beans in phase 2147483647
+ 2018-06-17 09:44:34,828 - Starting Quartz Scheduler now
+ 2018-06-17 09:44:34,829 - Scheduler schedulerFactory_$_NON_CLUSTERED started.
+ 2018-06-17 09:44:34,835 - Context refreshed
+ 2018-06-17 09:44:34,838 - Found custom SwaggerSpringMvcPlugins
+ 2018-06-17 09:44:34,839 - initializing plugin bean customImplementation
+ 2018-06-17 09:44:34,871 - Scanning for api listing references
+ 2018-06-17 09:44:34,893 - Group for method getAccountInfo was account
+ 2018-06-17 09:44:34,912 - Request mapping: getAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,912 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountInfo
+ 2018-06-17 09:44:34,914 - Group for method getAccountSimpleInfo was account
+ 2018-06-17 09:44:34,917 - Request mapping: getAccountSimpleInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,918 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountSimpleInfo
+ 2018-06-17 09:44:34,920 - Group for method getAccountDemoInfo was account
+ 2018-06-17 09:44:34,922 - Request mapping: getAccountDemoInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,922 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAccountDemoInfo
+ 2018-06-17 09:44:34,924 - Group for method addAccountInfo was account
+ 2018-06-17 09:44:34,925 - Request mapping: addAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,926 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:addAccountInfo
+ 2018-06-17 09:44:34,928 - Group for method updateAccountInfo was account
+ 2018-06-17 09:44:34,930 - Request mapping: updateAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,931 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:updateAccountInfo
+ 2018-06-17 09:44:34,932 - Group for method getAllAccountInfo was account
+ 2018-06-17 09:44:34,934 - Request mapping: getAllAccountInfo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,935 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getAllAccountInfo
+ 2018-06-17 09:44:34,936 - Group for method getLotteryMessage was account
+ 2018-06-17 09:44:34,938 - Request mapping: getLotteryMessage belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,939 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getLotteryMessage
+ 2018-06-17 09:44:34,941 - Group for method getLotteryHisMessage was account
+ 2018-06-17 09:44:34,942 - Request mapping: getLotteryHisMessage belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,943 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:getLotteryHisMessage
+ 2018-06-17 09:44:34,945 - Group for method userRechargeResult was account
+ 2018-06-17 09:44:34,947 - Request mapping: userRechargeResult belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,948 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userRechargeResult
+ 2018-06-17 09:44:34,949 - Group for method userCashCancel was account
+ 2018-06-17 09:44:34,951 - Request mapping: userCashCancel belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,952 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashCancel
+ 2018-06-17 09:44:34,958 - Group for method userExit was account
+ 2018-06-17 09:44:34,961 - Request mapping: userExit belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,961 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userExit
+ 2018-06-17 09:44:34,963 - Group for method userRecharge was account
+ 2018-06-17 09:44:34,965 - Request mapping: userRecharge belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,965 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userRecharge
+ 2018-06-17 09:44:34,967 - Group for method userCashApply was account
+ 2018-06-17 09:44:34,968 - Request mapping: userCashApply belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,969 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashApply
+ 2018-06-17 09:44:34,972 - Group for method userCashAudit was account
+ 2018-06-17 09:44:34,973 - Request mapping: userCashAudit belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,974 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashAudit
+ 2018-06-17 09:44:34,975 - Group for method userCashdo was account
+ 2018-06-17 09:44:34,977 - Request mapping: userCashdo belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,977 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userCashdo
+ 2018-06-17 09:44:34,979 - Group for method bankCashList was account
+ 2018-06-17 09:44:34,981 - Request mapping: bankCashList belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,981 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:bankCashList
+ 2018-06-17 09:44:34,983 - Group for method userOutResult was account
+ 2018-06-17 09:44:34,985 - Request mapping: userOutResult belongs to groups: [[ResourceGroup{groupName='account', position=0}]] 
+ 2018-06-17 09:44:34,985 - Adding resource to group:ResourceGroup{groupName='account', position=0} with description:玩家帐号信息接口 for handler method:userOutResult
+ 2018-06-17 09:44:34,987 - Group for method addLotteryOrder was order
+ 2018-06-17 09:44:34,988 - Request mapping: addLotteryOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-06-17 09:44:34,989 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:addLotteryOrder
+ 2018-06-17 09:44:34,991 - Group for method getOrderAmount was order
+ 2018-06-17 09:44:34,993 - Request mapping: getOrderAmount belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-06-17 09:44:34,993 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderAmount
+ 2018-06-17 09:44:34,995 - Group for method getCurTermOrder was order
+ 2018-06-17 09:44:35,001 - Request mapping: getCurTermOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-06-17 09:44:35,002 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getCurTermOrder
+ 2018-06-17 09:44:35,004 - Group for method getLotteryGameNoid was order
+ 2018-06-17 09:44:35,005 - Request mapping: getLotteryGameNoid belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-06-17 09:44:35,006 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getLotteryGameNoid
+ 2018-06-17 09:44:35,007 - Group for method getHisOrderAmount was order
+ 2018-06-17 09:44:35,009 - Request mapping: getHisOrderAmount belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-06-17 09:44:35,009 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getHisOrderAmount
+ 2018-06-17 09:44:35,011 - Group for method getOrderAmountDetail was order
+ 2018-06-17 09:44:35,013 - Request mapping: getOrderAmountDetail belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-06-17 09:44:35,013 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderAmountDetail
+ 2018-06-17 09:44:35,035 - Group for method getLotteryGameDetail was order
+ 2018-06-17 09:44:35,037 - Request mapping: getLotteryGameDetail belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-06-17 09:44:35,037 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getLotteryGameDetail
+ 2018-06-17 09:44:35,039 - Group for method getOrderItem was order
+ 2018-06-17 09:44:35,041 - Request mapping: getOrderItem belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-06-17 09:44:35,042 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getOrderItem
+ 2018-06-17 09:44:35,044 - Group for method getHisOrder was order
+ 2018-06-17 09:44:35,046 - Request mapping: getHisOrder belongs to groups: [[ResourceGroup{groupName='order', position=0}]] 
+ 2018-06-17 09:44:35,047 - Adding resource to group:ResourceGroup{groupName='order', position=0} with description:投注信息接口 for handler method:getHisOrder
+ 2018-06-17 09:44:35,048 - Group for method getRoomQueryDate was report
+ 2018-06-17 09:44:35,050 - Request mapping: getRoomQueryDate belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-06-17 09:44:35,050 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getRoomQueryDate
+ 2018-06-17 09:44:35,052 - Group for method getAgencyWinReport was report
+ 2018-06-17 09:44:35,054 - Request mapping: getAgencyWinReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-06-17 09:44:35,054 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAgencyWinReport
+ 2018-06-17 09:44:35,056 - Group for method getAccWinReport was report
+ 2018-06-17 09:44:35,058 - Request mapping: getAccWinReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-06-17 09:44:35,058 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAccWinReport
+ 2018-06-17 09:44:35,060 - Group for method getAccTradeReport was report
+ 2018-06-17 09:44:35,062 - Request mapping: getAccTradeReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-06-17 09:44:35,065 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getAccTradeReport
+ 2018-06-17 09:44:35,067 - Group for method getPlayerInoutReport was report
+ 2018-06-17 09:44:35,069 - Request mapping: getPlayerInoutReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-06-17 09:44:35,069 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getPlayerInoutReport
+ 2018-06-17 09:44:35,071 - Group for method getProInoutReport was report
+ 2018-06-17 09:44:35,072 - Request mapping: getProInoutReport belongs to groups: [[ResourceGroup{groupName='report', position=0}]] 
+ 2018-06-17 09:44:35,073 - Adding resource to group:ResourceGroup{groupName='report', position=0} with description:报表信息接口 for handler method:getProInoutReport
+ 2018-06-17 09:44:35,075 - Group for method getLotteryGame was lottery
+ 2018-06-17 09:44:35,077 - Request mapping: getLotteryGame belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-06-17 09:44:35,078 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGame
+ 2018-06-17 09:44:35,079 - Group for method getLotteryGameItem was lottery
+ 2018-06-17 09:44:35,081 - Request mapping: getLotteryGameItem belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-06-17 09:44:35,082 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameItem
+ 2018-06-17 09:44:35,083 - Group for method getLotteryTermResult was lottery
+ 2018-06-17 09:44:35,084 - Request mapping: getLotteryTermResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-06-17 09:44:35,085 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryTermResult
+ 2018-06-17 09:44:35,086 - Group for method getLotteryGameRoom was lottery
+ 2018-06-17 09:44:35,088 - Request mapping: getLotteryGameRoom belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-06-17 09:44:35,088 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameRoom
+ 2018-06-17 09:44:35,090 - Group for method getLotteryResult was lottery
+ 2018-06-17 09:44:35,092 - Request mapping: getLotteryResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-06-17 09:44:35,092 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryResult
+ 2018-06-17 09:44:35,094 - Group for method getLotteryCurResult was lottery
+ 2018-06-17 09:44:35,096 - Request mapping: getLotteryCurResult belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-06-17 09:44:35,096 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryCurResult
+ 2018-06-17 09:44:35,098 - Group for method getLotteryGameResults was lottery
+ 2018-06-17 09:44:35,099 - Request mapping: getLotteryGameResults belongs to groups: [[ResourceGroup{groupName='lottery', position=0}]] 
+ 2018-06-17 09:44:35,100 - Adding resource to group:ResourceGroup{groupName='lottery', position=0} with description:游戏信息接口 for handler method:getLotteryGameResults
+ 2018-06-17 09:44:35,102 - Group for method updatePassword was initservice
+ 2018-06-17 09:44:35,104 - Request mapping: updatePassword belongs to groups: [[ResourceGroup{groupName='initservice', position=0}]] 
+ 2018-06-17 09:44:35,104 - Adding resource to group:ResourceGroup{groupName='initservice', position=0} with description:初始化信息接口 for handler method:updatePassword
+ 2018-06-17 09:44:35,106 - Group for method getInitInfo was initservice
+ 2018-06-17 09:44:35,109 - Request mapping: getInitInfo belongs to groups: [[ResourceGroup{groupName='initservice', position=0}]] 
+ 2018-06-17 09:44:35,110 - Adding resource to group:ResourceGroup{groupName='initservice', position=0} with description:初始化信息接口 for handler method:getInitInfo
+ 2018-06-17 09:44:35,112 - Group for method getAllAccountInfo was offaccount
+ 2018-06-17 09:44:35,118 - Request mapping: getAllAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-06-17 09:44:35,119 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:getAllAccountInfo
+ 2018-06-17 09:44:35,120 - Group for method addOffAccountInfo was offaccount
+ 2018-06-17 09:44:35,122 - Request mapping: addOffAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-06-17 09:44:35,123 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:addOffAccountInfo
+ 2018-06-17 09:44:35,124 - Group for method getAllOffAccountInfo was offaccount
+ 2018-06-17 09:44:35,126 - Request mapping: getAllOffAccountInfo belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-06-17 09:44:35,126 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:getAllOffAccountInfo
+ 2018-06-17 09:44:35,128 - Group for method updateOffAccountPass was offaccount
+ 2018-06-17 09:44:35,130 - Request mapping: updateOffAccountPass belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-06-17 09:44:35,130 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateOffAccountPass
+ 2018-06-17 09:44:35,135 - Group for method updateAccountPercent was offaccount
+ 2018-06-17 09:44:35,136 - Request mapping: updateAccountPercent belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-06-17 09:44:35,137 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateAccountPercent
+ 2018-06-17 09:44:35,138 - Group for method updateAccountState was offaccount
+ 2018-06-17 09:44:35,140 - Request mapping: updateAccountState belongs to groups: [[ResourceGroup{groupName='offaccount', position=0}]] 
+ 2018-06-17 09:44:35,141 - Adding resource to group:ResourceGroup{groupName='offaccount', position=0} with description:代理帐号信息接口 for handler method:updateAccountState
+ 2018-06-17 09:44:35,142 - Group for method addSubAccountInfo was subaccount
+ 2018-06-17 09:44:35,143 - Request mapping: addSubAccountInfo belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-06-17 09:44:35,145 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:addSubAccountInfo
+ 2018-06-17 09:44:35,146 - Group for method getAllSubAccountInfo was subaccount
+ 2018-06-17 09:44:35,149 - Request mapping: getAllSubAccountInfo belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-06-17 09:44:35,150 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:getAllSubAccountInfo
+ 2018-06-17 09:44:35,151 - Group for method updateSubAccountPass was subaccount
+ 2018-06-17 09:44:35,153 - Request mapping: updateSubAccountPass belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-06-17 09:44:35,154 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:updateSubAccountPass
+ 2018-06-17 09:44:35,155 - Group for method updateSubAccountState was subaccount
+ 2018-06-17 09:44:35,156 - Request mapping: updateSubAccountState belongs to groups: [[ResourceGroup{groupName='subaccount', position=0}]] 
+ 2018-06-17 09:44:35,157 - Adding resource to group:ResourceGroup{groupName='subaccount', position=0} with description:代理的子帐号信息接口 for handler method:updateSubAccountState
+ 2018-06-17 09:44:35,158 - Group for method getTradeInfo was trade
+ 2018-06-17 09:44:35,160 - Request mapping: getTradeInfo belongs to groups: [[ResourceGroup{groupName='trade', position=0}]] 
+ 2018-06-17 09:44:35,160 - Adding resource to group:ResourceGroup{groupName='trade', position=0} with description:鍑哄叆閲戞椤规帴鍙? for handler method:getTradeInfo
+ 2018-06-17 09:44:35,164 - Excluding method as it contains the excluded annotation: interface com.mangofactory.swagger.annotations.ApiIgnore
+ 2018-06-17 09:44:35,165 - Excluding method as it contains the excluded annotation: interface com.mangofactory.swagger.annotations.ApiIgnore
+ 2018-06-17 09:44:35,279 - Created resource listing Path: /user/order Description: order Position: 0
+ 2018-06-17 09:44:35,280 - Created resource listing Path: /user/subaccount Description: subaccount Position: 0
+ 2018-06-17 09:44:35,281 - Created resource listing Path: /user/initservice Description: initservice Position: 0
+ 2018-06-17 09:44:35,282 - Created resource listing Path: /user/report Description: report Position: 0
+ 2018-06-17 09:44:35,283 - Created resource listing Path: /user/offaccount Description: offaccount Position: 0
+ 2018-06-17 09:44:35,284 - Created resource listing Path: /user/trade Description: trade Position: 0
+ 2018-06-17 09:44:35,285 - Created resource listing Path: /user/account Description: account Position: 0
+ 2018-06-17 09:44:35,286 - Created resource listing Path: /user/lottery Description: lottery Position: 0
+ 2018-06-17 09:44:37,755 - 读取API接口：Sun Jun 17 09:44:37 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:44:38,093 - 读取API接口：Sun Jun 17 09:44:38 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:44:39,238 - 读取API接口：Sun Jun 17 09:44:39 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:44:39,373 - 读取API接口：Sun Jun 17 09:44:39 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:44:40,421 - Added a resource listing with (8) api resources: 
+ 2018-06-17 09:44:40,422 -   玩家帐号信息接口 at location: /api-docs/user/account
+ 2018-06-17 09:44:40,423 -   初始化信息接口 at location: /api-docs/user/initservice
+ 2018-06-17 09:44:40,423 -   游戏信息接口 at location: /api-docs/user/lottery
+ 2018-06-17 09:44:40,424 -   代理帐号信息接口 at location: /api-docs/user/offaccount
+ 2018-06-17 09:44:40,424 -   投注信息接口 at location: /api-docs/user/order
+ 2018-06-17 09:44:40,425 -   报表信息接口 at location: /api-docs/user/report
+ 2018-06-17 09:44:40,426 -   代理的子帐号信息接口 at location: /api-docs/user/subaccount
+ 2018-06-17 09:44:40,426 -   鍑哄叆閲戞椤规帴鍙? at location: /api-docs/user/trade
+ 2018-06-17 09:44:40,442 - Root WebApplicationContext: initialization completed in 31336 ms
+ 2018-06-17 09:44:40,527 - FrameworkServlet 'niuniu': initialization started
+ 2018-06-17 09:44:40,539 - Refreshing WebApplicationContext for namespace 'niuniu-servlet': startup date [Sun Jun 17 09:44:40 CST 2018]; parent: Root WebApplicationContext
+ 2018-06-17 09:44:40,543 - Loading XML bean definitions from class path resource [spring-mvc.xml]
+ 2018-06-17 09:44:41,363 - Mapped URL path [/*.html] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#0'
+ 2018-06-17 09:44:41,384 - Mapped URL path [/*.json] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#1'
+ 2018-06-17 09:44:41,411 - Mapped URL path [/swagger/**] onto handler 'org.springframework.web.servlet.resource.ResourceHttpRequestHandler#2'
+ 2018-06-17 09:44:41,455 - Skipping SwaggerSpringMvcPlugin initialization already initialized!
+ 2018-06-17 09:44:41,457 - FrameworkServlet 'niuniu': initialization completed in 929 ms
+ 2018-06-17 09:44:44,133 - 读取API接口：Sun Jun 17 09:44:44 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:44:50,347 - 读取API接口：Sun Jun 17 09:44:50 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:44:52,125 - 读取API接口：Sun Jun 17 09:44:52 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:44:52,222 - 读取API接口：Sun Jun 17 09:44:52 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:44:55,105 - 读取API接口：Sun Jun 17 09:44:55 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:45:00,325 - 读取API接口：Sun Jun 17 09:45:00 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:45:01,642 - 读取API接口：Sun Jun 17 09:45:01 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:45:01,783 - 读取API接口：Sun Jun 17 09:45:01 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:45:01,932 - 读取API接口：Sun Jun 17 09:45:01 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:45:11,141 - 读取API接口：Sun Jun 17 09:45:11 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:45:12,121 - 读取API接口：Sun Jun 17 09:45:12 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:45:13,126 - 读取API接口：Sun Jun 17 09:45:13 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:45:13,234 - 读取API接口：Sun Jun 17 09:45:13 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:45:22,099 - 读取API接口：Sun Jun 17 09:45:22 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:45:45,372 - I/O exception (java.net.SocketException) caught when processing request to {}->http://d.apiplus.net:80: Software caused connection abort: recv failed
+ 2018-06-17 09:45:45,375 - Retrying request to {}->http://d.apiplus.net:80
+ 2018-06-17 09:45:45,434 - 读取API接口：Sun Jun 17 09:45:45 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:45:45,527 - 读取API接口：Sun Jun 17 09:45:45 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:45:45,677 - 读取API接口：Sun Jun 17 09:45:45 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:45:45,789 - 读取API接口：Sun Jun 17 09:45:45 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:45:45,891 - 读取API接口：Sun Jun 17 09:45:45 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:45:47,110 - 读取API接口：Sun Jun 17 09:45:47 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:45:47,206 - 读取API接口：Sun Jun 17 09:45:47 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:45:47,314 - 读取API接口：Sun Jun 17 09:45:47 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:46:06,961 - I/O exception (java.net.SocketException) caught when processing request to {}->http://d.apiplus.net:80: Software caused connection abort: recv failed
+ 2018-06-17 09:46:06,963 - Retrying request to {}->http://d.apiplus.net:80
+ 2018-06-17 09:46:07,013 - 读取API接口：Sun Jun 17 09:46:07 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:07,106 - 读取API接口：Sun Jun 17 09:46:07 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:07,200 - 读取API接口：Sun Jun 17 09:46:07 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:07,322 - 读取API接口：Sun Jun 17 09:46:07 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:46:07,434 - 读取API接口：Sun Jun 17 09:46:07 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:07,560 - 读取API接口：Sun Jun 17 09:46:07 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:07,649 - 读取API接口：Sun Jun 17 09:46:07 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:07,766 - 读取API接口：Sun Jun 17 09:46:07 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:46:11,102 - 读取API接口：Sun Jun 17 09:46:11 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:12,122 - 读取API接口：Sun Jun 17 09:46:12 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:13,096 - 读取API接口：Sun Jun 17 09:46:13 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:46:13,189 - 读取API接口：Sun Jun 17 09:46:13 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:22,121 - 读取API接口：Sun Jun 17 09:46:22 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:24,097 - 读取API接口：Sun Jun 17 09:46:24 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:26,109 - 读取API接口：Sun Jun 17 09:46:26 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:26,215 - 读取API接口：Sun Jun 17 09:46:26 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:46:33,100 - 读取API接口：Sun Jun 17 09:46:33 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:36,114 - 读取API接口：Sun Jun 17 09:46:36 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:40,006 - 读取API接口：Sun Jun 17 09:46:40 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:46:58,984 - I/O exception (java.net.SocketException) caught when processing request to {}->http://d.apiplus.net:80: Software caused connection abort: recv failed
+ 2018-06-17 09:46:58,985 - Retrying request to {}->http://d.apiplus.net:80
+ 2018-06-17 09:46:59,044 - 读取API接口：Sun Jun 17 09:46:59 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:59,130 - 读取API接口：Sun Jun 17 09:46:59 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:46:59,226 - 读取API接口：Sun Jun 17 09:46:59 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:59,327 - 读取API接口：Sun Jun 17 09:46:59 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:59,426 - 读取API接口：Sun Jun 17 09:46:59 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:46:59,510 - 读取API接口：Sun Jun 17 09:46:59 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:00,163 - 读取API接口：Sun Jun 17 09:47:00 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:47:00,783 - 读取API接口：Sun Jun 17 09:47:00 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:02,324 - 读取API接口：Sun Jun 17 09:47:02 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:04,359 - 读取API接口：Sun Jun 17 09:47:04 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:13,314 - 读取API接口：Sun Jun 17 09:47:13 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:15,020 - 读取API接口：Sun Jun 17 09:47:15 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:17,192 - 读取API接口：Sun Jun 17 09:47:17 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:47:19,342 - 读取API接口：Sun Jun 17 09:47:19 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:22,831 - 读取API接口：Sun Jun 17 09:47:22 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:24,771 - 读取API接口：Sun Jun 17 09:47:24 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:26,111 - 读取API接口：Sun Jun 17 09:47:26 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:26,199 - 读取API接口：Sun Jun 17 09:47:26 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:47:34,227 - 读取API接口：Sun Jun 17 09:47:34 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:36,103 - 读取API接口：Sun Jun 17 09:47:36 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:39,099 - 读取API接口：Sun Jun 17 09:47:39 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:39,206 - 读取API接口：Sun Jun 17 09:47:39 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:47:44,129 - 读取API接口：Sun Jun 17 09:47:44 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:48,149 - 读取API接口：Sun Jun 17 09:47:48 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:52,211 - 读取API接口：Sun Jun 17 09:47:52 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:47:52,348 - 读取API接口：Sun Jun 17 09:47:52 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:47:58,253 - 读取API接口：Sun Jun 17 09:47:58 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:48:00,105 - 读取API接口：Sun Jun 17 09:48:00 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:48:00,197 - 读取API接口：Sun Jun 17 09:48:00 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:48:00,295 - 读取API接口：Sun Jun 17 09:48:00 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:48:00,536 - 读取API接口：Sun Jun 17 09:48:00 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:48:11,097 - 读取API接口：Sun Jun 17 09:48:11 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:48:12,151 - 读取API接口：Sun Jun 17 09:48:12 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:48:13,604 - 读取API接口：Sun Jun 17 09:48:13 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:48:13,729 - 读取API接口：Sun Jun 17 09:48:13 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:48:22,121 - 读取API接口：Sun Jun 17 09:48:22 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:48:24,185 - 读取API接口：Sun Jun 17 09:48:24 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:48:44,961 - I/O exception (java.net.SocketException) caught when processing request to {}->http://d.apiplus.net:80: Software caused connection abort: recv failed
+ 2018-06-17 09:48:44,962 - Retrying request to {}->http://d.apiplus.net:80
+ 2018-06-17 09:48:45,020 - 读取API接口：Sun Jun 17 09:48:45 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:48:45,125 - 读取API接口：Sun Jun 17 09:48:45 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:48:45,230 - 读取API接口：Sun Jun 17 09:48:45 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:48:45,321 - 读取API接口：Sun Jun 17 09:48:45 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:48:45,415 - 读取API接口：Sun Jun 17 09:48:45 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:48:45,525 - 读取API接口：Sun Jun 17 09:48:45 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:48:45,643 - 读取API接口：Sun Jun 17 09:48:45 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:06,974 - I/O exception (java.net.SocketException) caught when processing request to {}->http://d.apiplus.net:80: Software caused connection abort: recv failed
+ 2018-06-17 09:49:06,975 - Retrying request to {}->http://d.apiplus.net:80
+ 2018-06-17 09:49:07,026 - 读取API接口：Sun Jun 17 09:49:07 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:07,176 - 读取API接口：Sun Jun 17 09:49:07 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:07,298 - 读取API接口：Sun Jun 17 09:49:07 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:07,454 - 读取API接口：Sun Jun 17 09:49:07 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:49:07,549 - 读取API接口：Sun Jun 17 09:49:07 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:07,648 - 读取API接口：Sun Jun 17 09:49:07 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:26,620 - I/O exception (java.net.SocketException) caught when processing request to {}->http://d.apiplus.net:80: Software caused connection abort: recv failed
+ 2018-06-17 09:49:26,621 - Retrying request to {}->http://d.apiplus.net:80
+ 2018-06-17 09:49:26,677 - 读取API接口：Sun Jun 17 09:49:26 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:26,779 - 读取API接口：Sun Jun 17 09:49:26 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:26,918 - 读取API接口：Sun Jun 17 09:49:26 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:27,015 - 读取API接口：Sun Jun 17 09:49:27 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:49:27,123 - 读取API接口：Sun Jun 17 09:49:27 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:27,225 - 读取API接口：Sun Jun 17 09:49:27 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:27,322 - 读取API接口：Sun Jun 17 09:49:27 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:27,427 - 读取API接口：Sun Jun 17 09:49:27 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:49:33,094 - 读取API接口：Sun Jun 17 09:49:33 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:36,123 - 读取API接口：Sun Jun 17 09:49:36 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:39,099 - 读取API接口：Sun Jun 17 09:49:39 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 2018-06-17 09:49:39,221 - 读取API接口：Sun Jun 17 09:49:39 CST 2018,游戏类型：1001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=cqssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:44,103 - 读取API接口：Sun Jun 17 09:49:44 CST 2018,游戏类型：1003,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=hljssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:48,112 - 读取API接口：Sun Jun 17 09:49:48 CST 2018,游戏类型：1005,访问地址，http://d.apiplus.net/newly.do?token=4705ab78696f19d4&code=ynssc&rows=20&format=json&extend=true
+ 2018-06-17 09:49:52,168 - 读取API接口：Sun Jun 17 09:49:52 CST 2018,游戏类型：2001,访问地址，http://d.apiplus.net/newly.do?token=t6b2f958b99a6ff92k&code=bjpk10&rows=20&format=json&extend=true
+ 

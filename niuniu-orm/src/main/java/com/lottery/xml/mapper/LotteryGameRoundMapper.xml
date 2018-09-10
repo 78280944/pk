@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.orm.dao.LotteryGameRoundMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.LotteryGameRound">
+    <id column="LGRID" jdbcType="INTEGER" property="lgrid" />
+    <result column="SID" jdbcType="INTEGER" property="sid" />
+    <result column="LOTTERYTERM" jdbcType="VARCHAR" property="lotteryterm" />
+    <result column="LOTTERYRESULT" jdbcType="VARCHAR" property="lotteryresult" />
+    <result column="STARTTIME" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="OVERTIME" jdbcType="TIMESTAMP" property="overtime" />
+    <result column="OPENTIME" jdbcType="TIMESTAMP" property="opentime" />
+    <result column="CLOSETIME" jdbcType="TIMESTAMP" property="closetime" />
+    <result column="ACTOPENTIME" jdbcType="TIMESTAMP" property="actopentime" />
+    <result column="ACTCLOSETIME" jdbcType="TIMESTAMP" property="actclosetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    LGRID, SID, LOTTERYTERM, LOTTERYRESULT, STARTTIME, OVERTIME, OPENTIME, CLOSETIME, 
+    ACTOPENTIME, ACTCLOSETIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lottery_game_round
+    where LGRID = #{lgrid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lottery_game_round
+    where LGRID = #{lgrid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.LotteryGameRound">
+    <selectKey keyProperty="lgrid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_game_round (SID, LOTTERYTERM, LOTTERYRESULT, 
+      STARTTIME, OVERTIME, OPENTIME, 
+      CLOSETIME, ACTOPENTIME, ACTCLOSETIME
+      )
+    values (#{sid,jdbcType=INTEGER}, #{lotteryterm,jdbcType=VARCHAR}, #{lotteryresult,jdbcType=VARCHAR}, 
+      #{starttime,jdbcType=TIMESTAMP}, #{overtime,jdbcType=TIMESTAMP}, #{opentime,jdbcType=TIMESTAMP}, 
+      #{closetime,jdbcType=TIMESTAMP}, #{actopentime,jdbcType=TIMESTAMP}, #{actclosetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.LotteryGameRound">
+    <selectKey keyProperty="lgrid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_game_round
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        SID,
+      </if>
+      <if test="lotteryterm != null">
+        LOTTERYTERM,
+      </if>
+      <if test="lotteryresult != null">
+        LOTTERYRESULT,
+      </if>
+      <if test="starttime != null">
+        STARTTIME,
+      </if>
+      <if test="overtime != null">
+        OVERTIME,
+      </if>
+      <if test="opentime != null">
+        OPENTIME,
+      </if>
+      <if test="closetime != null">
+        CLOSETIME,
+      </if>
+      <if test="actopentime != null">
+        ACTOPENTIME,
+      </if>
+      <if test="actclosetime != null">
+        ACTCLOSETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sid != null">
+        #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="lotteryterm != null">
+        #{lotteryterm,jdbcType=VARCHAR},
+      </if>
+      <if test="lotteryresult != null">
+        #{lotteryresult,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overtime != null">
+        #{overtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opentime != null">
+        #{opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closetime != null">
+        #{closetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actopentime != null">
+        #{actopentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actclosetime != null">
+        #{actclosetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.LotteryGameRound">
+    update lottery_game_round
+    <set>
+      <if test="sid != null">
+        SID = #{sid,jdbcType=INTEGER},
+      </if>
+      <if test="lotteryterm != null">
+        LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR},
+      </if>
+      <if test="lotteryresult != null">
+        LOTTERYRESULT = #{lotteryresult,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        STARTTIME = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="overtime != null">
+        OVERTIME = #{overtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="opentime != null">
+        OPENTIME = #{opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closetime != null">
+        CLOSETIME = #{closetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actopentime != null">
+        ACTOPENTIME = #{actopentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actclosetime != null">
+        ACTCLOSETIME = #{actclosetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where LGRID = #{lgrid,jdbcType=INTEGER} 
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryGameRound">
+    update lottery_game_round
+    set SID = #{sid,jdbcType=INTEGER},
+      LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR},
+      LOTTERYRESULT = #{lotteryresult,jdbcType=VARCHAR},
+      STARTTIME = #{starttime,jdbcType=TIMESTAMP},
+      OVERTIME = #{overtime,jdbcType=TIMESTAMP},
+      OPENTIME = #{opentime,jdbcType=TIMESTAMP},
+      CLOSETIME = #{closetime,jdbcType=TIMESTAMP},
+      ACTOPENTIME = #{actopentime,jdbcType=TIMESTAMP},
+      ACTCLOSETIME = #{actclosetime,jdbcType=TIMESTAMP}
+    where LGRID = #{lgrid,jdbcType=INTEGER}
+  </update>
+ 
+  <resultMap id="ResultGameMap" type="com.lottery.orm.dto.ResultDataDto">
+    <result column="LGRID" jdbcType="INTEGER" property="lgrid" />
+    <result column="LOTTERYTERM" jdbcType="VARCHAR" property="lotteryterm" />
+    <result column="LOTTERYRESULT" jdbcType="VARCHAR" property="lotteryresult" />
+  </resultMap>
+  
+
+  
+  <select id="selectGameResultBytime" resultMap="ResultGameMap">
+    select 
+    a.lgrid,a.lotteryterm,a.lotteryresult
+    from lottery_game_round a
+    where a.sid = #{sid,jdbcType=INTEGER}
+    and
+    a.lotteryterm  = getLotteryTerm(#{time,jdbcType=VARCHAR})
+    order by opentime desc 
+   <if test="beginRow != null and pageSize !=null">
+	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+  
+    <select id="selectGameResult" resultMap="ResultGameMap">
+    select 
+    a.lgrid,a.lotteryterm,a.lotteryresult
+    from lottery_game_round a
+    where a.sid = #{sid,jdbcType=INTEGER}
+    and
+    (a.opentime BETWEEN #{startTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP}) 
+    order by lotteryterm desc 
+    <if test="beginRow != null and pageSize !=null">
+	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
+  </select>
+
+  <select id="selectLotteryGameResult" resultMap="BaseResultMap">
+    select 
+    a.lgrid,a.sid,a.lotteryterm,a.lotteryresult,a.starttime,a.overtime,a.opentime,a.closetime,a.actopentime,a.actclosetime 
+    from lottery_game_round a
+    where a.sid = #{sid,jdbcType=INTEGER} and a.lotteryterm = #{lotteryterm,jdbcType=VARCHAR} 
+  </select>
+  
+  <select id="selectLotteryOrderResult" resultMap="BaseResultMap">
+    select 
+    a.lgrid,a.sid,a.lotteryterm,a.lotteryresult,a.starttime,a.overtime,a.opentime,a.closetime,a.actopentime,a.actclosetime 
+    from lottery_game_round a
+    where a.sid = #{sid,jdbcType=INTEGER} 
+    ORDER BY opentime DESC LIMIT 0,2
+  </select>
+  
+  <select id="selectLotteryOrderPlayer" resultMap="BaseResultMap">
+    SELECT sid,opentime FROM lottery_game_round a WHERE (a.opentime BETWEEN #{startTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP})  
+  </select>
+  
+ <select id="selectLotteryPlayoridle" resultMap="BaseResultMap">
+    SELECT DISTINCT sid,lotteryterm,opentime FROM 
+    (SELECT sid,lotteryterm,opentime FROM lottery_game_round where lotteryresult is null GROUP BY sid,opentime DESC) b 
+    GROUP BY sid ASC   
+  </select>
+  
+</mapper>

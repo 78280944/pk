@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.SysBeneMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.SysBene" >
+    <id column="SBID" property="sbid" jdbcType="INTEGER" />
+    <result column="SBTYPE" property="sbtype" jdbcType="VARCHAR" />
+    <result column="AMOUNT" property="amount" jdbcType="DECIMAL" />
+    <result column="BENEFIT" property="benefit" jdbcType="DECIMAL" />
+    <result column="STATE" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SBID, SBTYPE, AMOUNT, BENEFIT, STATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_bene
+    where SBID = #{sbid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByAmount" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_bene
+    where #{amount,jdbcType=DECIMAL}>=amount  and sbtype = '02' ORDER BY amount DESC LIMIT 0,1
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_bene
+    where SBID = #{sbid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.SysBene" >
+    <selectKey resultType="java.lang.Integer" keyProperty="sbid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_bene (SBTYPE, AMOUNT, BENEFIT, 
+      STATE)
+    values (#{sbtype,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, #{benefit,jdbcType=DECIMAL}, 
+      #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.SysBene" >
+    <selectKey resultType="java.lang.Integer" keyProperty="sbid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_bene
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="sbtype != null" >
+        SBTYPE,
+      </if>
+      <if test="amount != null" >
+        AMOUNT,
+      </if>
+      <if test="benefit != null" >
+        BENEFIT,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="sbtype != null" >
+        #{sbtype,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="benefit != null" >
+        #{benefit,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.SysBene" >
+    update sys_bene
+    <set >
+      <if test="sbtype != null" >
+        SBTYPE = #{sbtype,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        AMOUNT = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="benefit != null" >
+        BENEFIT = #{benefit,jdbcType=DECIMAL},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SBID = #{sbid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.SysBene" >
+    update sys_bene
+    set SBTYPE = #{sbtype,jdbcType=VARCHAR},
+      AMOUNT = #{amount,jdbcType=DECIMAL},
+      BENEFIT = #{benefit,jdbcType=DECIMAL},
+      STATE = #{state,jdbcType=VARCHAR}
+    where SBID = #{sbid,jdbcType=INTEGER}
+  </update>
+</mapper>

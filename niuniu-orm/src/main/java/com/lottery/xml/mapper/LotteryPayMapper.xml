@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.orm.dao.LotteryPayMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.LotteryPay">
+    <id column="PAYID" jdbcType="INTEGER" property="payid" />
+    <result column="ORDERID" jdbcType="INTEGER" property="orderid" />
+    <result column="ACCOUNTID" jdbcType="INTEGER" property="accountid" />
+    <result column="PAYTYPE" jdbcType="VARCHAR" property="paytype" />
+    <result column="PAYAMOUNT" jdbcType="DOUBLE" property="payamount" />
+    <result column="PAYRATE" jdbcType="DOUBLE" property="payrate" />
+    <result column="ISPAID" jdbcType="BIT" property="ispaid" />
+    <result column="INPUTTIME" jdbcType="TIMESTAMP" property="inputtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    PAYID, ORDERID, ACCOUNTID, PAYTYPE, PAYAMOUNT, PAYRATE, ISPAID, INPUTTIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lottery_pay
+    where PAYID = #{payid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lottery_pay
+    where PAYID = #{payid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.LotteryPay">
+    <selectKey keyProperty="payid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_pay (ORDERID, ACCOUNTID, PAYTYPE, 
+      PAYAMOUNT, PAYRATE, ISPAID, 
+      INPUTTIME)
+    values (#{orderid,jdbcType=INTEGER}, #{accountid,jdbcType=INTEGER}, #{paytype,jdbcType=VARCHAR}, 
+      #{payamount,jdbcType=DOUBLE}, #{payrate,jdbcType=DOUBLE}, #{ispaid,jdbcType=BIT}, 
+      #{inputtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.LotteryPay">
+    <selectKey keyProperty="payid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_pay
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        ORDERID,
+      </if>
+      <if test="accountid != null">
+        ACCOUNTID,
+      </if>
+      <if test="paytype != null">
+        PAYTYPE,
+      </if>
+      <if test="payamount != null">
+        PAYAMOUNT,
+      </if>
+      <if test="payrate != null">
+        PAYRATE,
+      </if>
+      <if test="ispaid != null">
+        ISPAID,
+      </if>
+      <if test="inputtime != null">
+        INPUTTIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="accountid != null">
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="paytype != null">
+        #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="payamount != null">
+        #{payamount,jdbcType=DOUBLE},
+      </if>
+      <if test="payrate != null">
+        #{payrate,jdbcType=DOUBLE},
+      </if>
+      <if test="ispaid != null">
+        #{ispaid,jdbcType=BIT},
+      </if>
+      <if test="inputtime != null">
+        #{inputtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.LotteryPay">
+    update lottery_pay
+    <set>
+      <if test="orderid != null">
+        ORDERID = #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="accountid != null">
+        ACCOUNTID = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="paytype != null">
+        PAYTYPE = #{paytype,jdbcType=VARCHAR},
+      </if>
+      <if test="payamount != null">
+        PAYAMOUNT = #{payamount,jdbcType=DOUBLE},
+      </if>
+      <if test="payrate != null">
+        PAYRATE = #{payrate,jdbcType=DOUBLE},
+      </if>
+      <if test="ispaid != null">
+        ISPAID = #{ispaid,jdbcType=BIT},
+      </if>
+      <if test="inputtime != null">
+        INPUTTIME = #{inputtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where PAYID = #{payid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryPay">
+    update lottery_pay
+    set ORDERID = #{orderid,jdbcType=INTEGER},
+      ACCOUNTID = #{accountid,jdbcType=INTEGER},
+      PAYTYPE = #{paytype,jdbcType=VARCHAR},
+      PAYAMOUNT = #{payamount,jdbcType=DOUBLE},
+      PAYRATE = #{payrate,jdbcType=DOUBLE},
+      ISPAID = #{ispaid,jdbcType=BIT},
+      INPUTTIME = #{inputtime,jdbcType=TIMESTAMP}
+    where PAYID = #{payid,jdbcType=INTEGER}
+  </update>
+</mapper>

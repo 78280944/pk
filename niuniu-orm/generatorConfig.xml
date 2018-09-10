@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!-- 配置文件路径 -->
+	<properties url="file:///E:/workspace/niuniu/niuniu-orm/generatorConfig.properties" />
+
+	<!--数据库驱动包路径 -->
+	<classPathEntry location="${drive.class.path}" />
+
+	<context id="MySQLTables" targetRuntime="MyBatis3">
+
+	
+		<!--关闭注释 -->
+		<commentGenerator>
+		      <property name="suppressDate" value="true"/>
+		      <property name="suppressAllComments" value="true"/>
+		</commentGenerator>
+
+		<!--数据库连接信息 -->
+		<jdbcConnection driverClass="${jdbc.driver}"
+			connectionURL="${jdbc.url}" userId="${jdbc.username}" password="${jdbc.password}">
+		</jdbcConnection>
+
+		<!--生成的model 包路径 -->
+		<javaModelGenerator targetPackage="${model.package}"
+			targetProject="${target.project}">
+			<property name="enableSubPackages" value="ture" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!--生成xml mapper文件 路径 -->
+		<sqlMapGenerator targetPackage="${xml.mapper.package}"
+			targetProject="${target.project}">
+			<property name="enableSubPackages" value="ture" />
+		</sqlMapGenerator>
+
+		<!-- 生成的Dao接口 的包路径 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="${dao.package}" targetProject="${target.project}">
+			<property name="enableSubPackages" value="ture" />
+		</javaClientGenerator>
+		<!--对应数据库表名 -->
+		
+<!-- 		<table tableName="lottery_service" domainObjectName="LotteryService"
+	    	enableCountByExample="false"
+			enableUpdateByExample="false" 
+			enableDeleteByExample="false"
+			enableSelectByExample="false" 
+			selectByExampleQueryId="false">
+			<generatedKey column="sid" sqlStatement="MySql" identity="true"/>
+	    </table>  -->
+		
+		
+		<table tableName="sys_order" domainObjectName="SysOrder"
+	    	enableCountByExample="false"
+			enableUpdateByExample="false" 
+			enableDeleteByExample="false"
+			enableSelectByExample="false" 
+			selectByExampleQueryId="false">
+			<generatedKey column="soid" sqlStatement="MySql" identity="true"/>
+	    </table>
+
+<!-- 	    <table tableName="offaccount_info" domainObjectName="OffAccountInfo"
+	    	enableCountByExample="false"
+			enableUpdateByExample="false" 
+			enableDeleteByExample="false"
+			enableSelectByExample="false" 
+			selectByExampleQueryId="false">
+			<generatedKey column="serialno" sqlStatement="MySql" identity="true"/> 
+	    </table> -->
+	    
+<!-- 	    <table tableName="subaccount_info" domainObjectName="SubAccountInfo"
+	    	enableCountByExample="false"
+			enableUpdateByExample="false" 
+			enableDeleteByExample="false"
+			enableSelectByExample="false" 
+			selectByExampleQueryId="false">
+			<generatedKey column="serialno" sqlStatement="MySql" identity="true"/> 
+	    </table> -->
+	    
+	   <!-- <table tableName="lottery_round" domainObjectName="LotteryRound"
+	    	enableCountByExample="false"
+			enableUpdateByExample="false" 
+			enableDeleteByExample="false"
+			enableSelectByExample="false" 
+			selectByExampleQueryId="false">
+			<generatedKey column="roundid" sqlStatement="MySql" identity="true"/> 
+	    </table> -->
+	    <!-- <table tableName="lottery_order" domainObjectName="LotteryOrder"
+	    	enableCountByExample="false"
+			enableUpdateByExample="false" 
+			enableDeleteByExample="false"
+			enableSelectByExample="false" 
+			selectByExampleQueryId="false">
+			<generatedKey column="orderid" sqlStatement="MySql" identity="true"/> 
+	    </table>
+	    
+	    <table tableName="lottery_order_detail" domainObjectName="LotteryOrderDetail"
+	    	enableCountByExample="false"
+			enableUpdateByExample="false" 
+			enableDeleteByExample="false"
+			enableSelectByExample="false" 
+			selectByExampleQueryId="false">
+			 </table>
+			<table tableName="lottery_item" domainObjectName="LotteryItem"
+	    	enableCountByExample="false"
+			enableUpdateByExample="false" 
+			enableDeleteByExample="false"
+			enableSelectByExample="false" 
+			selectByExampleQueryId="false">
+			<generatedKey column="itemid" sqlStatement="MySql" identity="true"/> 
+	    </table>
+	    <table tableName="lottery_round_item" domainObjectName="LotteryRoundItem"
+	    	enableCountByExample="false"
+			enableUpdateByExample="false" 
+			enableDeleteByExample="false"
+			enableSelectByExample="false" 
+			selectByExampleQueryId="false">
+			 </table> 
+	   
+	   <table tableName="lottery_order_result" domainObjectName="LotteryOrderResult"
+	    	enableCountByExample="false"
+			enableUpdateByExample="false" 
+			enableDeleteByExample="false"
+			enableSelectByExample="false" 
+			selectByExampleQueryId="false">
+			<generatedKey column="resultid" sqlStatement="MySql" identity="true"/> 
+	    </table>
+	    <table tableName="trade_info" domainObjectName="TradeInfo"
+	    	enableCountByExample="false"
+			enableUpdateByExample="false" 
+			enableDeleteByExample="false"
+			enableSelectByExample="false" 
+			selectByExampleQueryId="false">
+			<generatedKey column="tradeid" sqlStatement="MySql" identity="true"/> 
+	    </table>-->
+<!-- 	    <table tableName="account_detail" domainObjectName="AccountDetail"
+	    	enableCountByExample="false"
+			enableUpdateByExample="false" 
+			enableDeleteByExample="false"
+			enableSelectByExample="false" 
+			selectByExampleQueryId="false">
+			<generatedKey column="accountid" sqlStatement="MySql" identity="true"/> 
+	    </table> -->
+	</context>
+</generatorConfiguration>

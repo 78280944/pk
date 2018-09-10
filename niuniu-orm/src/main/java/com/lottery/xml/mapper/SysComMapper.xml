@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.SysComMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.SysCom" >
+    <id column="SCID" property="scid" jdbcType="INTEGER" />
+    <result column="GAMETYPE" property="gametype" jdbcType="VARCHAR" />
+    <result column="GAMENAME" property="gamename" jdbcType="VARCHAR" />
+    <result column="COMMISSION" property="commission" jdbcType="DOUBLE" />
+    <result column="STATE" property="state" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SCID, GAMETYPE, GAMENAME, COMMISSION, STATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_com
+    where SCID = #{scid,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectByGameType" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_com
+    where GAMETYPE = #{gametype,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_com
+    where SCID = #{scid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.SysCom" >
+    <selectKey resultType="java.lang.Integer" keyProperty="scid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_com (GAMETYPE, GAMENAME, COMMISSION, 
+      STATE)
+    values (#{gametype,jdbcType=VARCHAR}, #{gamename,jdbcType=VARCHAR}, #{commission,jdbcType=DOUBLE}, 
+      #{state,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.SysCom" >
+    <selectKey resultType="java.lang.Integer" keyProperty="scid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_com
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="gametype != null" >
+        GAMETYPE,
+      </if>
+      <if test="gamename != null" >
+        GAMENAME,
+      </if>
+      <if test="commission != null" >
+        COMMISSION,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="gametype != null" >
+        #{gametype,jdbcType=VARCHAR},
+      </if>
+      <if test="gamename != null" >
+        #{gamename,jdbcType=VARCHAR},
+      </if>
+      <if test="commission != null" >
+        #{commission,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.SysCom" >
+    update sys_com
+    <set >
+      <if test="gametype != null" >
+        GAMETYPE = #{gametype,jdbcType=VARCHAR},
+      </if>
+      <if test="gamename != null" >
+        GAMENAME = #{gamename,jdbcType=VARCHAR},
+      </if>
+      <if test="commission != null" >
+        COMMISSION = #{commission,jdbcType=DOUBLE},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SCID = #{scid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.SysCom" >
+    update sys_com
+    set GAMETYPE = #{gametype,jdbcType=VARCHAR},
+      GAMENAME = #{gamename,jdbcType=VARCHAR},
+      COMMISSION = #{commission,jdbcType=DOUBLE},
+      STATE = #{state,jdbcType=VARCHAR}
+    where SCID = #{scid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lottery.orm.dao.LotteryRoundMapper">
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.LotteryRound">
+    <id column="ROUNDID" jdbcType="INTEGER" property="roundid" />
+    <result column="LOTTERYTYPE" jdbcType="VARCHAR" property="lotterytype" />
+    <result column="LOTTERYTERM" jdbcType="VARCHAR" property="lotteryterm" />
+    <result column="RESULTSTR" jdbcType="VARCHAR" property="resultstr" />
+    <result column="STARTTIME" jdbcType="TIMESTAMP" property="starttime" />
+    <result column="ENDTIME" jdbcType="TIMESTAMP" property="endtime" />
+    <result column="ROUNDSTATUS" jdbcType="VARCHAR" property="roundstatus" />
+    <result column="OPENTIME" jdbcType="TIMESTAMP" property="opentime" />
+    <result column="CLOSETIME" jdbcType="TIMESTAMP" property="closetime" />
+    <result column="ORIGINRESULT" jdbcType="VARCHAR" property="originresult" />
+    <result column="ACTUALOPENTIME" jdbcType="TIMESTAMP" property="actualopentime" />
+    <result column="ACTUALCLOSETIME" jdbcType="TIMESTAMP" property="actualclosetime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ROUNDID, LOTTERYTYPE, LOTTERYTERM, RESULTSTR, STARTTIME, ENDTIME, ROUNDSTATUS, OPENTIME, 
+    CLOSETIME, ORIGINRESULT, ACTUALOPENTIME, ACTUALCLOSETIME
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from lottery_round
+    where ROUNDID = #{roundid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from lottery_round
+    where ROUNDID = #{roundid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.LotteryRound">
+    <selectKey keyProperty="roundid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_round (LOTTERYTYPE, LOTTERYTERM, RESULTSTR, 
+      STARTTIME, ENDTIME, ROUNDSTATUS, 
+      OPENTIME, CLOSETIME, ORIGINRESULT, 
+      ACTUALOPENTIME, ACTUALCLOSETIME)
+    values (#{lotterytype,jdbcType=VARCHAR}, #{lotteryterm,jdbcType=VARCHAR}, #{resultstr,jdbcType=VARCHAR}, 
+      #{starttime,jdbcType=TIMESTAMP}, #{endtime,jdbcType=TIMESTAMP}, #{roundstatus,jdbcType=VARCHAR}, 
+      #{opentime,jdbcType=TIMESTAMP}, #{closetime,jdbcType=TIMESTAMP}, #{originresult,jdbcType=VARCHAR}, 
+      #{actualopentime,jdbcType=TIMESTAMP}, #{actualclosetime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.LotteryRound">
+    <selectKey keyProperty="roundid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into lottery_round
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="lotterytype != null">
+        LOTTERYTYPE,
+      </if>
+      <if test="lotteryterm != null">
+        LOTTERYTERM,
+      </if>
+      <if test="resultstr != null">
+        RESULTSTR,
+      </if>
+      <if test="starttime != null">
+        STARTTIME,
+      </if>
+      <if test="endtime != null">
+        ENDTIME,
+      </if>
+      <if test="roundstatus != null">
+        ROUNDSTATUS,
+      </if>
+      <if test="opentime != null">
+        OPENTIME,
+      </if>
+      <if test="closetime != null">
+        CLOSETIME,
+      </if>
+      <if test="originresult != null">
+        ORIGINRESULT,
+      </if>
+      <if test="actualopentime != null">
+        ACTUALOPENTIME,
+      </if>
+      <if test="actualclosetime != null">
+        ACTUALCLOSETIME,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="lotterytype != null">
+        #{lotterytype,jdbcType=VARCHAR},
+      </if>
+      <if test="lotteryterm != null">
+        #{lotteryterm,jdbcType=VARCHAR},
+      </if>
+      <if test="resultstr != null">
+        #{resultstr,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roundstatus != null">
+        #{roundstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="opentime != null">
+        #{opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closetime != null">
+        #{closetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="originresult != null">
+        #{originresult,jdbcType=VARCHAR},
+      </if>
+      <if test="actualopentime != null">
+        #{actualopentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actualclosetime != null">
+        #{actualclosetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.LotteryRound">
+    update lottery_round
+    <set>
+      <if test="lotterytype != null">
+        LOTTERYTYPE = #{lotterytype,jdbcType=VARCHAR},
+      </if>
+      <if test="lotteryterm != null">
+        LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR},
+      </if>
+      <if test="resultstr != null">
+        RESULTSTR = #{resultstr,jdbcType=VARCHAR},
+      </if>
+      <if test="starttime != null">
+        STARTTIME = #{starttime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endtime != null">
+        ENDTIME = #{endtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="roundstatus != null">
+        ROUNDSTATUS = #{roundstatus,jdbcType=VARCHAR},
+      </if>
+      <if test="opentime != null">
+        OPENTIME = #{opentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="closetime != null">
+        CLOSETIME = #{closetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="originresult != null">
+        ORIGINRESULT = #{originresult,jdbcType=VARCHAR},
+      </if>
+      <if test="actualopentime != null">
+        ACTUALOPENTIME = #{actualopentime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="actualclosetime != null">
+        ACTUALCLOSETIME = #{actualclosetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ROUNDID = #{roundid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.LotteryRound">
+    update lottery_round
+    set LOTTERYTYPE = #{lotterytype,jdbcType=VARCHAR},
+      LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR},
+      RESULTSTR = #{resultstr,jdbcType=VARCHAR},
+      STARTTIME = #{starttime,jdbcType=TIMESTAMP},
+      ENDTIME = #{endtime,jdbcType=TIMESTAMP},
+      ROUNDSTATUS = #{roundstatus,jdbcType=VARCHAR},
+      OPENTIME = #{opentime,jdbcType=TIMESTAMP},
+      CLOSETIME = #{closetime,jdbcType=TIMESTAMP},
+      ORIGINRESULT = #{originresult,jdbcType=VARCHAR},
+      ACTUALOPENTIME = #{actualopentime,jdbcType=TIMESTAMP},
+      ACTUALCLOSETIME = #{actualclosetime,jdbcType=TIMESTAMP}
+    where ROUNDID = #{roundid,jdbcType=INTEGER}
+  </update>
+</mapper>
