@@ -15,7 +15,7 @@ public class ResultParamVo extends PageParamVo {
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
 	private Date endDate;
 	
-	@ApiModelProperty(value = "游戏号", required = true)
+	@ApiModelProperty(value = "游戏号,2001", required = true)
 	private Integer sid;
 	
 	@ApiModelProperty(value = "用户号", required = true)

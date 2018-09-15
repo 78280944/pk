@@ -63,11 +63,11 @@ import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
-
+/*
 @RequestMapping(value = "/lottery", produces = { "application/json;charset=UTF-8" })
 @Api(value = "/lottery", description = "游戏信息接口")
 @Controller
-
+*/
 public class LotteryRoundController {
 	public static final Logger LOG = Logger.getLogger(LotteryRoundController.class);
 

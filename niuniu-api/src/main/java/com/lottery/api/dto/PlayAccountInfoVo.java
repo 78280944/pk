@@ -2,61 +2,29 @@ package com.lottery.api.dto;
 
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
-public class PlayAccountInfoVo extends BaseAccountInfoVo{
+public class PlayAccountInfoVo{
 	
-	   // @ApiModelProperty(value = "点数限额")
-	  //  private Double limited;
-	    @ApiModelProperty(value = "电话")
-	    private String phone; 
+	    @ApiModelProperty(value = "用户名")
+	    private String username; 
 	    
-	    @ApiModelProperty(value = "微信")
-	    private String webchat;
+	    @ApiModelProperty(value = "手机号")
+	    private String phone;
 	    
-	    @ApiModelProperty(value = "银行户名")
-	    private String bankid;
+	    @ApiModelProperty(value = "代理ID")
+	    private String supuserid;
 	    
-	    @ApiModelProperty(value = "银行名称")
-	    private String bankname;
+	    @ApiModelProperty(value = "密码")
+	    private String password;
 	    
-	    @ApiModelProperty(value = "开户行")
-	    private String bankaddress;
-	    
-	    @ApiModelProperty(value = "银行账号")
-	    private String bankaccount;
-	    
-		@ApiModelProperty(value = "银行编码，例如工商银行，1", required = true)
-	    private String bankno;
-		
-		@ApiModelProperty(value = "银行开户省份", required = true)
-	    private String bankloproname;
-		
-		@ApiModelProperty(value = "银行开户城市", required = true)
-	    private String banklocityname;
-		
-		@ApiModelProperty(value = "银行预留手机号码", required = true)
-	    private String phoneno;
-	    
-	    @ApiModelProperty(value = "邀请码")
-	    private String code;
-	    
-	    @ApiModelProperty(value = "安全码")
-	    private String sfcode;
-	        
-	    
-		public String getCode() {
-			return code;
+	    @ApiModelProperty(value = "IP")
+	    private String ip;
+
+		public String getUsername() {
+			return username;
 		}
 
-		public void setCode(String code) {
-			this.code = code;
-		}
-
-		public String getSfcode() {
-			return sfcode;
-		}
-
-		public void setSfcode(String sfcode) {
-			this.sfcode = sfcode;
+		public void setUsername(String username) {
+			this.username = username;
 		}
 
 		public String getPhone() {
@@ -67,78 +35,30 @@ public class PlayAccountInfoVo extends BaseAccountInfoVo{
 			this.phone = phone;
 		}
 
-		public String getWebchat() {
-			return webchat;
+		public String getSupuserid() {
+			return supuserid;
 		}
 
-		public void setWebchat(String webchat) {
-			this.webchat = webchat;
+		public void setSupuserid(String supuserid) {
+			this.supuserid = supuserid;
 		}
 
-		public String getBankid() {
-			return bankid;
+		public String getPassword() {
+			return password;
 		}
 
-		public void setBankid(String bankid) {
-			this.bankid = bankid;
+		public void setPassword(String password) {
+			this.password = password;
 		}
 
-		public String getBankname() {
-			return bankname;
+		public String getIp() {
+			return ip;
 		}
 
-		public void setBankname(String bankname) {
-			this.bankname = bankname;
-		}
-
-		public String getBankaddress() {
-			return bankaddress;
-		}
-
-		public void setBankaddress(String bankaddress) {
-			this.bankaddress = bankaddress;
-		}
-
-		public String getBankaccount() {
-			return bankaccount;
-		}
-
-		public void setBankaccount(String bankaccount) {
-			this.bankaccount = bankaccount;
-		}
-
-		public String getBankno() {
-			return bankno;
-		}
-
-		public void setBankno(String bankno) {
-			this.bankno = bankno;
-		}
-
-		public String getBankloproname() {
-			return bankloproname;
-		}
-
-		public void setBankloproname(String bankloproname) {
-			this.bankloproname = bankloproname;
-		}
-
-		public String getBanklocityname() {
-			return banklocityname;
-		}
-
-		public void setBanklocityname(String banklocityname) {
-			this.banklocityname = banklocityname;
-		}
-
-		public String getPhoneno() {
-			return phoneno;
-		}
-
-		public void setPhoneno(String phoneno) {
-			this.phoneno = phoneno;
+		public void setIp(String ip) {
+			this.ip = ip;
 		}
 	    
-	  
+	   
 
 }

@@ -391,15 +391,16 @@
   
   <select id="selectGameOrder" resultMap="GameOrderMap">
     select 
-    a.LGMID,a.ordertime,b.gamename,b.gamelobbyname,c.roomid,
-    a.lotteryterm,a.noid,getCodeName('IsOridle',a.playoridle) AS playoridle,
-    a.orderamount 
+    a.LGMID,b.gamename as game,a.lotteryterm,sum(a.orderamount) as orderamount,a.ordertime,a.result,a.lastamount 
     FROM
-    ((lottery_game_order a LEFT JOIN lottery_game b ON a.sid = b.sid) LEFT JOIN lottery_room c ON a.rmid = c.rmid )
+    lottery_game_order a LEFT JOIN lottery_game b ON a.sid = b.sid
     WHERE 
-    a.lotteryterm  = (SELECT lotteryterm FROM LOTTERY_game_round where sid =#{sid,jdbcType=INTEGER}  ORDER BY OPENTIME DESC LIMIT 1) 
-    AND a.accountid =#{accountid,jdbcType=INTEGER} AND a.sid=#{sid,jdbcType=INTEGER} 
-    order by lotteryterm desc,ordertime desc
+    a.accountid =#{accountid,jdbcType=INTEGER} AND a.sid=#{sid,jdbcType=INTEGER} 
+    AND (a.ordertime BETWEEN #{startTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP}) GROUP BY result
+    ORDER BY a.ordertime DESC,a.opentime DESC
+    <if test="beginRow != null and pageSize !=null">
+	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
+	</if>
   </select>
   
   <select id="selectGameHisOrderBytime" resultMap="GameHisOrderMap">
@@ -420,15 +421,13 @@
   
   <select id="selectGameHisOrder" resultMap="GameHisOrderMap">
     select 
-    a.LGMID,b.gamename,b.gamelobbyname,a.lotteryterm,c.roomid,
-    a.noid,getCodeName('IsOridle',a.playoridle) AS playoridle,
-    a.orderamount,a.result,a.lastamount 
+    a.LGMID,b.gamename as gamename,a.lotteryterm,sum(a.orderamount) as orderamount,a.ordertime,a.result,a.lastamount 
     FROM
-    ((lottery_game_order a LEFT JOIN lottery_game b ON a.sid = b.sid) LEFT JOIN lottery_room c ON a.rmid = c.rmid )
+    lottery_game_order a LEFT JOIN lottery_game b ON a.sid = b.sid
     WHERE 
     a.accountid =#{accountid,jdbcType=INTEGER} AND a.sid=#{sid,jdbcType=INTEGER} 
-    AND (a.ordertime BETWEEN #{startTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP}) 
-    order by a.ordertime DESC,a.opentime desc
+    AND (a.ordertime BETWEEN #{startTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP}) GROUP BY result
+    ORDER BY a.ordertime DESC,a.opentime DESC
     <if test="beginRow != null and pageSize !=null">
 	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
 	</if>

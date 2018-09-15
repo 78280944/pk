@@ -44,10 +44,11 @@ import com.lottery.orm.util.MessageTool;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
-
+/*
 @RequestMapping(value = "/subAccount", produces = {"application/json;charset=UTF-8"})
 @Api(value = "/subAccount", description = "代理的子帐号信息接口")
 @Controller
+*/
 public class SubAccountInfoController {
 	public static final Logger LOG = Logger.getLogger(SubAccountInfoController.class);
 	

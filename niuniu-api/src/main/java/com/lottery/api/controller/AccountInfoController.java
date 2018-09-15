@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.lottery.api.dto.AccountBankVo;
+import com.lottery.api.dto.AccountInfoVo;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.log4j.Logger;
@@ -22,11 +25,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lottery.api.dto.AccountInfoVo;
 import com.lottery.api.dto.AccountRecordVo;
+import com.lottery.api.dto.AccountRemarkVo;
 import com.lottery.api.dto.CashOrderVo;
 import com.lottery.api.dto.DemoInfoVo;
 import com.lottery.api.dto.LoginParamVo;
 import com.lottery.api.dto.NoticeHisTypeVo;
 import com.lottery.api.dto.NoticeTypeVo;
+import com.lottery.api.dto.PasswordInfoVo;
 import com.lottery.api.dto.PlayAccountInfoVo;
 import com.lottery.api.dto.UpdateAccountVo;
 import com.lottery.api.dto.UserCashVo;
@@ -41,6 +46,7 @@ import com.lottery.orm.bo.AccountDetail;
 import com.lottery.orm.bo.AccountInfo;
 import com.lottery.orm.bo.AccountRecharge;
 import com.lottery.orm.bo.AccountRecord;
+import com.lottery.orm.bo.AccountRemark;
 import com.lottery.orm.bo.BankCash;
 import com.lottery.orm.bo.NoticeInfo;
 import com.lottery.orm.bo.OffAccountInfo;
@@ -51,6 +57,7 @@ import com.lottery.orm.dao.AccountDetailMapper;
 import com.lottery.orm.dao.AccountInfoMapper;
 import com.lottery.orm.dao.AccountRechargeMapper;
 import com.lottery.orm.dao.AccountRecordMapper;
+import com.lottery.orm.dao.AccountRemarkMapper;
 import com.lottery.orm.dao.BankCashMapper;
 import com.lottery.orm.dao.LotteryGameOrderMapper;
 import com.lottery.orm.dao.LotteryOrderMapper;
@@ -95,6 +102,9 @@ public class AccountInfoController {
 	
 	@Autowired
     private AccountInfoMapper accountInfoMapper;
+	
+	@Autowired
+    private AccountRemarkMapper accountRemarkMapper;
 	
 	@Autowired
     private AccountDetailMapper accountDetailMapper;
@@ -177,7 +187,7 @@ public class AccountInfoController {
 	@Value("${lottery.noplayoridle}")
     private String noplayoridle;
 	
-	
+	/*
 	@ApiOperation(value = "获取玩家或者代理商、子代理商信息", notes = "获取玩家或者代理商、子代理商信息", httpMethod = "POST")
 	@RequestMapping(value = "/getAccountInfo", method = RequestMethod.POST)
 	@ResponseBody
@@ -240,8 +250,8 @@ public class AccountInfoController {
 		return result;
 
 	}
-	
-	@ApiOperation(value = "获取账户信息", notes = "获取账户信息", httpMethod = "POST")
+	*/
+	@ApiOperation(value = "登录获取账户信息", notes = "登录获取账户信息", httpMethod = "POST")
 	@RequestMapping(value = "/getAccountSimInfo", method = RequestMethod.POST)
 	@ResponseBody
 	public AccountSimResult getAccountSimpleInfo(@ApiParam(value = "Json参数", required = true) @Validated @RequestBody LoginParamVo param) throws Exception {
@@ -263,12 +273,16 @@ public class AccountInfoController {
 				if(accountInfo.getState().equals("0")){
 					throw new LockedClientException();
 				}
-				    	
+				AccountRecord aRecord = new AccountRecord();
+				String sRecordid = CommonUtils.getCurrentMills();
+				aRecord.setRecordid(sRecordid);
+				aRecord.setAccountid(accountInfo.getAccountid());
+				aRecord.setIp(param.getIp());
+				aRecord.setInputtime(new Date());
+				accountRecordMapper.insert(aRecord);    	
 				AccountSimInfoDto rAcDto = new AccountSimInfoDto();
 				rAcDto = mapper.map(accountInfo, AccountSimInfoDto.class);
-				if (accountInfo.getOfftype().equals("99"))
-					rAcDto.setPassword("123456XYV");
-			    //rAcDto.setToken((new Des3Util()).encode(accountInfo.getAccountid()+tokenSplitter+tokenSecret));
+				rAcDto.setRecordid(sRecordid);
 				result.success(rAcDto);
 		    }else {
 			      result.fail(MessageTool.Code_3001);
@@ -286,7 +300,7 @@ public class AccountInfoController {
 
 	}
 	
-	
+	/*
 	@ApiOperation(value = "试玩获取", notes = "试玩获取", httpMethod = "POST")
 	@RequestMapping(value = "/getAccountDemoInfo", method = RequestMethod.POST)
 	@ResponseBody
@@ -333,7 +347,7 @@ public class AccountInfoController {
 		return result;
 
 	}
-	
+	*/
 	
 	
 	@ApiOperation(value = "玩家注册", notes = "玩家注册", httpMethod = "POST")
@@ -357,8 +371,8 @@ public class AccountInfoController {
 			      return result;
 			}
 			
-			if ("".equals(accountInfo.getCode())){
-			      result.fail("邀请码",MessageTool.Code_1009);
+			if ("".equals(accountInfo.getSupuserid())){
+			      result.fail("代理ID",MessageTool.Code_1009);
 			      LOG.info(result.getMessage());
 			      return result;
 			}
@@ -372,32 +386,18 @@ public class AccountInfoController {
 		    }else{
 		    	
 		    	//根据邀请码判断上级
-		    	
-		    	AccountInfo accountInfo2 = accountInfoMapper.selectByCode(accountInfo.getCode(), "9", "1");
-		    	if (accountInfo2!=null){
-		    		accountInfo.setSupuserid(accountInfo2.getAccountid());
-			    	accountInfo.setPassword(DigestUtils.md5Hex(accountInfo.getPassword())); 
-			    	//默认账户类型,试玩00;超级账户0；代理商1；子账户2；会员账户3
-			    	accountInfo.setOfftype("3");
-			    	//默认9，玩家账户
-			    	accountInfo.setLevel("9");
-			    	accountInfo.setState("1");//默认状态正常
-			    	accountInfo.setInputdate(new Date());
-			    	accountInfo.setUsermoney(BigDecimal.valueOf(0.0));
-			    	//增值账户
-			    	AccountInfo aInfo = accountInfoMapper.selectByCodeCount(accountInfo2.getAccountid());
-			    	if (aInfo.getLimited()>0){
-			    		accountInfo1 = accountInfoMapper.selectByPrimaryKey(1000);
-			    		if (aInfo.getLimited()>Integer.valueOf(accountInfo1.getBudget())){
-						      result.fail("增值代理客户已超过最大设置值，请核对邀请码");
-						      return result;
-			    		}
-			    	}
-			    	
-			    	
-			    	//注册环信帐号
-	                Boolean easeRegisterResult = easemobService.registerEaseMobUser(accountInfo.getUsername().toLowerCase(), accountInfo.getUsername().toLowerCase());
-			    	if (easeRegisterResult) {
+		    
+			    accountInfo.setPassword(DigestUtils.md5Hex(accountInfo.getPassword())); 
+			    accountInfo.setState("1");//默认状态正常
+			    accountInfo.setInputdate(new Date());
+			    accountInfo.setUsermoney(BigDecimal.valueOf(0.0));
+			    accountInfo.setPercentage((0.0));
+			    accountInfoMapper.insertSelective(accountInfo);
+			    result.success();	
+			    //注册环信帐号
+			    /*
+	            Boolean easeRegisterResult = easemobService.registerEaseMobUser(accountInfo.getUsername().toLowerCase(), accountInfo.getUsername().toLowerCase());
+			    if (easeRegisterResult) {
 	                    //环信帐号注册成功
 	                    accountInfoService.addAccountInfo(accountInfo);
 	                    result.success();
@@ -409,6 +409,7 @@ public class AccountInfoController {
 				     result.fail("邀请码",MessageTool.Code_3003);
 				     return result;
 		    	}
+		    	*/
 
 		    }
 			LOG.info(result.getMessage());
@@ -419,6 +420,7 @@ public class AccountInfoController {
 		return result;
 	}
 	
+	/*
 	@ApiOperation(value = "修改玩家", notes = "修改玩家", httpMethod = "POST")
 	@RequestMapping(value = "/updateAccountInfo", method = RequestMethod.POST)
 	@ResponseBody
@@ -464,7 +466,8 @@ public class AccountInfoController {
 
 		return result;
 	}
-	
+	*/
+	/*
 	@ApiOperation(value = "获取公告", notes = "获取公告", httpMethod = "POST")
 	@RequestMapping(value = "/lotteryMessage", method = RequestMethod.POST)
 	@ResponseBody
@@ -472,16 +475,14 @@ public class AccountInfoController {
 		RestResult result = new RestResult();
 		try {
 			String stype = param.getOfftype();
-			if (stype.equals("")||!(stype.equals("99")||stype.equals("0")||stype.equals("1")||stype.equals("2")||stype.equals("3"))){
+			if (stype.equals("")||!(stype.equals("3"))){
 			      result.fail("公告类型",MessageTool.Code_1005);
 			      LOG.info(result.getMessage());
 			      return result;
 			}
 			String offtype = "";
-			if (stype.equals("3")||stype.equals("99"))
+			if (stype.equals("3"))
 				offtype = "1";
-			else if (stype.equals("0")||stype.equals("1")||stype.equals("2"))
-				offtype = "2";
 
             NoticeInfo noticeInfo = noticeInfoMapper.selectByNotice(offtype);
 			if(noticeInfo==null){
@@ -496,24 +497,22 @@ public class AccountInfoController {
 		}
 		return result;
 	}
-	
-	@ApiOperation(value = "获取历史公告", notes = "获取历史公告", httpMethod = "POST")
+	*/
+	@ApiOperation(value = "获取消息公告", notes = "获取消息公告", httpMethod = "POST")
 	@RequestMapping(value = "/lotteryHisMessage", method = RequestMethod.POST)
 	@ResponseBody
 	public NoticeResult getLotteryHisMessage(@ApiParam(value = "Json参数", required = true) @Validated @RequestBody NoticeHisTypeVo param) throws Exception {
 		NoticeResult result = new NoticeResult();
 		try {
 			String stype = param.getOfftype();
-			if (stype.equals("")||!(stype.equals("99")||stype.equals("0")||stype.equals("1")||stype.equals("2")||stype.equals("3"))){
+			if (stype.equals("")||!(stype.equals("3"))){
 			      result.fail("公告类型",MessageTool.Code_1005);
 			      LOG.info(result.getMessage());
 			      return result;
 			}
 			String offtype = "";
-			if (stype.equals("3")||stype.equals("99"))
+			if (stype.equals("3"))
 				offtype = "1";
-			else if (stype.equals("0")||stype.equals("1")||stype.equals("2"))
-				offtype = "2";
 
             List<NoticeInfo> list = noticeInfoMapper.selectByHisNotice(offtype,param.getBeginRow(), param.getPageSize());
 			if(list==null){
@@ -528,6 +527,87 @@ public class AccountInfoController {
 		}
 		return result;
 	}
+	
+	
+	@ApiOperation(value = "修改密码", notes = "修改密码", httpMethod = "POST")
+	@RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
+	@ResponseBody
+	public RestResult updatePassword(@ApiParam(value = "Json参数", required = true) @Validated @RequestBody PasswordInfoVo param) throws Exception {
+		RestResult result = new RestResult();
+		try {
+			if (!(param.getPassword().equals(param.getSpassword()))){
+	    		result.fail("新密码和确认密码输入不一致，请重新输入");
+			    LOG.info(result.getMessage());
+			    return result;
+			}
+			param.setPassword(DigestUtils.md5Hex(param.getSfcode()));
+			AccountInfo accountInfo = mapper.map(param, AccountInfo.class);
+			AccountInfo accountInfo1  = accountInfoMapper.selectByLogin(accountInfo);
+			//AccountInfo accountInfo1 = accountInfoMapper.selectByUserAndSfcode(accountInfo.getUsername(), accountInfo.getSfcode());
+			if (accountInfo1!=null){
+				if ((accountInfo1.getPassword().equals(param.getPassword()))){
+					accountInfo1.setPassword(DigestUtils.md5Hex(param.getSpassword()));
+					accountInfoMapper.updateByPrimaryKey(accountInfo1);
+				    result.success();
+				}
+			}else {
+	    		result.fail("旧密码输入有误,请重新输入");
+			    LOG.info(result.getMessage());
+			    return result;
+			}
+         }catch(Exception e){
+				result.error();
+				LOG.error(e.getMessage(),e);
+        	 }
+		   return result;
+         }
+	
+	@ApiOperation(value = "意见反馈", notes = "意见反馈", httpMethod = "POST")
+	@RequestMapping(value = "/lotteryRemark", method = RequestMethod.POST)
+	@ResponseBody
+	public RestResult getLotteryMessage(@ApiParam(value = "Json参数", required = true) @Validated @RequestBody AccountRemarkVo param) throws Exception {
+		RestResult result = new RestResult();
+		try {
+			//参数合规性校验，必要参数不能为空;
+			if (ToolsUtil.isEmptyTrim(String.valueOf(param.getAccountid()))||ToolsUtil.isEmptyTrim(param.getRemark())){
+			      result.fail("用户ID或者意见为空");
+			      LOG.info(result.getMessage());
+			      return result;
+			}
+			AccountRemark ar = mapper.map(param, AccountRemark.class);
+			ar.setInputdate(new Date());
+			accountRemarkMapper.insertSelective(ar);
+			result.success();
+		}catch(Exception e){
+			result.error();
+			LOG.error(e.getMessage(),e);
+    	 }
+		return result;
+	}
+	
+	@ApiOperation(value = "绑定银行卡", notes = "绑定银行卡", httpMethod = "POST")
+	@RequestMapping(value = "/userBank", method = RequestMethod.POST)
+	@ResponseBody
+	public RestResult getUserBank(@ApiParam(value = "Json参数", required = true) @Validated @RequestBody AccountBankVo param) throws Exception {
+		RestResult result = new RestResult();
+		try {
+			//参数合规性校验，必要参数不能为空;
+			if (ToolsUtil.isEmptyTrim(String.valueOf(param.getAccountid()))||ToolsUtil.isEmptyTrim(param.getBankid())){
+			      result.fail("用户ID或者持卡人为空");
+			      LOG.info(result.getMessage());
+			      return result;
+			}
+			AccountInfo aInfo = accountInfoMapper.selectByPrimaryKey(param.getAccountid());
+			aInfo = mapper.map(param, AccountInfo.class);
+			accountInfoMapper.updateByPrimaryKeySelective(aInfo);
+			result.success();
+		}catch(Exception e){
+			result.error();
+			LOG.error(e.getMessage(),e);
+    	 }
+		return result;
+	}
+	
 	
 	@ApiOperation(value = "退出", notes = "退出", httpMethod = "POST")
 	@RequestMapping(value = "/userExit", method = RequestMethod.POST)
@@ -562,7 +642,7 @@ public class AccountInfoController {
 		return result;
 	}
 	
-	
+	/*
 	@ApiOperation(value = "用户充值", notes = "用户充值", httpMethod = "POST")
 	@RequestMapping(value = "/userRecharge", method = RequestMethod.POST)
 	@ResponseBody
@@ -601,7 +681,7 @@ public class AccountInfoController {
 			      LOG.info(result.getMessage());
 			      return result;
 	    	}*/
-	    	
+	    	/*
 			aRecharge.setRelativetype(EnumType.RalativeType.In.ID);
 			aRecharge.setOpuserid(String.valueOf(param.getAccountId()));
 			aRecharge.setOpusertime(new Date());
@@ -623,8 +703,8 @@ public class AccountInfoController {
 		return result;
 	}
 	
-	
-	
+	*/
+	/*
 	@ApiOperation(value = "用户充值结果", notes = "用户充值结果", httpMethod = "POST")
 	@RequestMapping(value = "/userRechargeResult", method = RequestMethod.POST)
 	@ResponseBody
@@ -917,5 +997,5 @@ public class AccountInfoController {
 		System.out.println("ddo..over."+new Date());
 		return result;
       }
-
+*/
 }

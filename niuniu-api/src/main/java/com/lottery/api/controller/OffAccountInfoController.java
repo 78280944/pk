@@ -55,10 +55,10 @@ import com.lottery.orm.util.MessageTool;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
-
+/*
 @RequestMapping(value = "/offAccount", produces = {"application/json;charset=UTF-8"})
 @Api(value = "/offAccount", description = "代理帐号信息接口")
-@Controller
+@Controller*/
 public class OffAccountInfoController {
 	public static final Logger LOG = Logger.getLogger(OffAccountInfoController.class);
 	

@@ -49,6 +49,7 @@
 		<jboss-logging.version>3.1.1.GA</jboss-logging.version>
 		<quartz.version>2.2.1</quartz.version>
 		<commons-lang3.version>3.5</commons-lang3.version>
+		<commons-lang.version>2.6</commons-lang.version>
 		<httpclient.version>4.5.2</httpclient.version>
 		<jjwt.version>0.7.0</jjwt.version>
 	</properties>
@@ -287,6 +288,11 @@
 			  <groupId>org.apache.commons</groupId>
 			  <artifactId>commons-lang3</artifactId>
 			  <version>${commons-lang3.version}</version>
+			</dependency>
+			<dependency>
+			  <groupId>org.apache.commons</groupId>
+			  <artifactId>commons-lang</artifactId>
+			  <version>${commons-lang.version}</version>
 			</dependency>
 			<dependency>
 			    <groupId>org.apache.httpcomponents</groupId>

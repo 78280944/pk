@@ -21,16 +21,20 @@ import com.lottery.orm.bo.AccountInfo;
 import com.lottery.orm.bo.LotteryService;
 import com.lottery.orm.bo.SysFee;
 import com.lottery.orm.bo.SysLimit;
+import com.lottery.orm.bo.SysRatio;
 import com.lottery.orm.bo.SysRoom;
 import com.lottery.orm.dao.AccountInfoMapper;
 import com.lottery.orm.dao.LotteryServiceMapper;
 import com.lottery.orm.dao.SysFeeMapper;
 import com.lottery.orm.dao.SysLimitMapper;
+import com.lottery.orm.dao.SysRatioMapper;
 import com.lottery.orm.dao.SysRoomMapper;
 import com.lottery.orm.dto.LotteryServiceDto;
 import com.lottery.orm.result.InitInfoResult;
 import com.lottery.orm.result.OffAccountListResult;
+import com.lottery.orm.result.RemarkResult;
 import com.lottery.orm.result.RestResult;
+import com.lottery.orm.result.SysRatioListResult;
 import com.lottery.orm.util.MessageTool;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -60,53 +64,41 @@ import com.wordnik.swagger.annotations.ApiParam;
 		@Autowired
 		private SysFeeMapper sysFeeMapper;
 		
-		@ApiOperation(value = "初始化信息", notes = "初始化信息", httpMethod = "POST")
-		@RequestMapping(value = "/initData", method = RequestMethod.POST)
+		@Autowired
+		private SysRatioMapper sysRatioMapper;
+		
+		@ApiOperation(value = "获取最新赔率及剩余金额", notes = "获取最新赔率及剩余金额", httpMethod = "POST")
+		@RequestMapping(value = "/getRatioAmount", method = RequestMethod.POST)
 		@ResponseBody
-		public InitInfoResult getInitInfo() throws Exception {
-			InitInfoResult result = new InitInfoResult();
+		public SysRatioListResult getRatioAmount() throws Exception {
+			SysRatioListResult result = new SysRatioListResult();
 			try {
-				LotteryService lotteryService = lotteryServiceMapper.selectByPrimaryKey(1000);
-				LotteryServiceDto  lotteryServiceDto = mapper.map(lotteryService, LotteryServiceDto.class); 
-				List<SysRoom> listsys = sysRoomMapper.selectByRoom();
-				List<SysLimit> listlimit = sysLimitMapper.selectByLimit();
-				SysFee sf = sysFeeMapper.selectByPrimaryKey(1001);
-				for (int i = 0;i<listsys.size();i++){
-					SysRoom sr = new SysRoom();
-					sr = listsys.get(i);
-					if (sr.getGametype().equals("1001")){
-						lotteryServiceDto.setLotteryniuroom(sr.getRoom());
-						lotteryServiceDto.setLotteryniunpman(sr.getCount());
-					}else if (sr.getGametype().equals("2001")){
-						lotteryServiceDto.setLotterybjroom(sr.getRoom());
-						lotteryServiceDto.setLotterybjman(sr.getCount());
-					}
-				}
-				for (int j=0;j<listlimit.size();j++){
-					SysLimit sl = new SysLimit();
-					sl = listlimit.get(j);
-					if (sl.getGametype().equals("01")&&sl.getOfftype().equals("1")){
-						lotteryServiceDto.setLotteryniunbanker(sl.getLimited());
-					}else if (sl.getGametype().equals("02")&&sl.getOfftype().equals("1")){
-						lotteryServiceDto.setLotterybjbanker(sl.getLimited());
-					}else if (sl.getGametype().equals("01")&&sl.getOfftype().equals("2")){
-						lotteryServiceDto.setLotteryniunpbet(sl.getLimited());
-					}else if (sl.getGametype().equals("02")&&sl.getOfftype().equals("2")){
-						lotteryServiceDto.setLotterybjbet(sl.getLimited());
-					}
-				}
-				lotteryServiceDto.setRatio(sf.getRatio());
-			    result.success(lotteryServiceDto);  
-				return result;
-			   
-			} catch (Exception e) {
-				result.error();
-				LOG.error(e.getMessage(),e);
-			}
+				List<SysRatio> sys = sysRatioMapper.selectSysRatio();
+				result.success(sys);  
+             }catch (Exception e) {
+ 				result.error();
+ 				LOG.error(e.getMessage(),e);
+ 			}
 			return result;
 		}
 		
-		@ApiOperation(value = "忘记密码", notes = "忘记密码", httpMethod = "POST")
+		/*
+		@ApiOperation(value = "初始化信息", notes = "初始化信息", httpMethod = "POST")
+		@RequestMapping(value = "/initDataAmount", method = RequestMethod.POST)
+		@ResponseBody
+		public SysRatioListResult getInitInfoAmount() throws Exception {
+			SysRatioListResult result = new SysRatioListResult();
+			try {
+				List<SysRatio> sys = sysRatioMapper.selectSysRatio();
+				result.success(sys);  
+             }catch (Exception e) {
+ 				result.error();
+ 				LOG.error(e.getMessage(),e);
+ 			}
+			return result;
+		}
+		
+		@ApiOperation(value = "修改密码", notes = "修改密码", httpMethod = "POST")
 		@RequestMapping(value = "/updatePassword", method = RequestMethod.POST)
 		@ResponseBody
 		public RestResult updatePassword(@ApiParam(value = "Json参数", required = true) @Validated @RequestBody PasswordInfoVo param) throws Exception {
@@ -135,4 +127,5 @@ import com.wordnik.swagger.annotations.ApiParam;
             	 }
 			   return result;
              }
+             */
 		}

@@ -1,6 +1,7 @@
 package com.lottery.api.controller;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -132,7 +133,6 @@ public class LotteryOrderController {
 	public synchronized RestResult addLotteryOrder(
 			@ApiParam(value = "Json参数", required = true) @Validated @RequestBody OrderParamVo param) throws Exception {
 		RestResult result = new RestResult();
-		String checkInfo = "";
 		try {
 			
 			LotteryGameOrder order = mapper.map(param, LotteryGameOrder.class);
@@ -152,78 +152,19 @@ public class LotteryOrderController {
 			for (OrderDetailVo orderDetailVo : param.getOrderDetails()) {
 				order.setOrdertime(new Date());
 				order.setNoid(orderDetailVo.getNoId());
-				order.setLtdid(orderDetailVo.getNoId());
 				order.setOrderamount(orderDetailVo.getOrderAmount());
-				order.setPlayoridle(orderDetailVo.getPlayOridle());
-				
-				SysLimit sys = sysLimitMapper.selectByOrder(String.valueOf(order.getSid()),order.getPlayoridle());
-				if (sys == null){
-					result.fail(MessageTool.Code_2002);
-					return result;
-				}
-			     //庄判断
-				List<LotteryGameOrder> list = lotteryGameOrderMapper.checkPlayOridle(order.getSid(),  order.getRmid(), order.getLotteryterm());
-				int noid = 0;
-				boolean isplay = false;
-				if ((null!=list) && (list.size()>0)){
-						LotteryGameOrder lg = new LotteryGameOrder();
-						lg = list.get(0);
-						noid = lg.getNoid();
-						isplay = true;
-				}
-				if (order.getNoid()==noid&&isplay)
-                    order.setPlayoridle("1");
-					
-				if (order.getPlayoridle().equals("1")){
-					//包含
-					if (order.getNoid()!=noid&&noid!=0){
-						result.fail("该房间已有庄，请继续投注");
-						return result;
-					}
-					if((order.getOrderamount()).compareTo(sys.getLimited())<0&&!isplay){
-					    result.fail("上庄下注金额需要"+sys.getLimited()+"元");
-						return result;
-				    }
-						
-				}else if (order.getPlayoridle().equals("2")){
-					if((order.getOrderamount()).compareTo(sys.getLimited())>0){
-					    result.fail("下注金额不能超过"+sys.getLimited()+"元");
-						return result;
-				    }
-					RoomOrderDto rod = lotteryGameOrderMapper.selectNoIdOrder(order.getAccountid(),order.getRmid(),order.getSid(),order.getLotteryterm(),order.getNoid());
-					if (rod == null){
-						
-					}else if (rod != null&&(rod.getOrderamount().add(order.getOrderamount())).compareTo(sys.getLimited())>0){
-					    result.fail("该桌下注金额不能超过"+sys.getLimited()+"元");
-						return result;
-					}
-				
-				}
-					
 				
 				//投注检查
-				checkInfo = lotteryOrderService.checkLotteryOrderInfo(accountInfo, order, sys);
-				if ((!"true".equals(checkInfo))){
-					result.fail(checkInfo);
+				if((order.getOrderamount()).compareTo(accountInfo.getUsermoney())>0){
+					result.fail("下注金额不能超过账户金额");
 					return result;
 				}
-				LotteryRoomPlayerDto lrp = lotteryRoomMapper.selectLotteryRoomCount(order.getSid(), order.getLotteryterm(), order.getRmid());
-				if (null != lrp){
-					if (lrp.getRoomid()<(lrp.getCount()+1)){
-						result.fail("该房间人数已满，请其它游戏房间投注");
-						return result;
-					}
-				}
-				//庄闲转换
-				if (order.getPlayoridle().equals("1")){
-					lotteryGameOrderMapper.updatePlayOridle(order.getSid(), order.getRmid(), order.getNoid(),order.getLotteryterm());
-				}
+
 				//账户变动
 				lotteryOrderService.changeAccountAmount(accountInfo, order);
 				
+				order.setResult(new SimpleDateFormat("yyyyMMddHHmmssS").format(new Date()));
 				//投注
-				//System.out.println("123-------------"+order.getLotteryterm());
-		
 				lotteryOrderService.insertLotteryGameOrder(order);
 				
 			}
@@ -238,7 +179,7 @@ public class LotteryOrderController {
 		return result;
 	}
 	
-
+    /*
 	@ApiOperation(value = "获取投注明细", notes = "获取投注明细", httpMethod = "POST")
 	@RequestMapping(value = "/getOrderItem", method = RequestMethod.POST)
 	@ResponseBody
@@ -256,6 +197,7 @@ public class LotteryOrderController {
 		return result;
 
 	}
+	
 	
 	@ApiOperation(value = "获取本期注单", notes = "获取本期注单", httpMethod = "POST")
 	@RequestMapping(value = "/getCurTermOrder", method = RequestMethod.POST)
@@ -295,8 +237,8 @@ public class LotteryOrderController {
 		return result;
 
 	}
-	
-	@ApiOperation(value = "获取历史注单", notes = "获取本历史注单", httpMethod = "POST")
+	*/
+	@ApiOperation(value = "获取历史注单", notes = "获取历史注单", httpMethod = "POST")
 	@RequestMapping(value = "/getHisOrder", method = RequestMethod.POST)
 	@ResponseBody
 	public synchronized OrderListResult getHisOrder(
@@ -321,6 +263,7 @@ public class LotteryOrderController {
 
 	}
 	
+	/*
 	@ApiOperation(value = "获取注单汇总金额", notes = "获取注单汇总金额", httpMethod = "POST")
 	@RequestMapping(value = "/getHisOrderAmount", method = RequestMethod.POST)
 	@ResponseBody
@@ -399,4 +342,5 @@ public class LotteryOrderController {
 		return result;
 
 	}
+	*/
 }

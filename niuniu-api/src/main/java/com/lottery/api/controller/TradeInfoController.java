@@ -34,7 +34,7 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
 @RequestMapping(value = "/trade", produces = { "application/json;charset=UTF-8" })
-@Api(value = "/trade", description = "出入金款项接口")
+@Api(value = "/trade", description = "鍑哄叆閲戞椤规帴鍙�")
 @Controller
 public class TradeInfoController {
 	public static final Logger LOG = Logger.getLogger(TradeInfoController.class);
@@ -48,16 +48,18 @@ public class TradeInfoController {
 	@Autowired
 	AccountRechargeMapper accountRechargeMapper;
 	
-	@ApiOperation(value = "查询交易记录", notes = "查询交易记录", httpMethod = "POST")
+	/*
+	@ApiOperation(value = "鏌ヨ浜ゆ槗璁板綍", notes = "鏌ヨ浜ゆ槗璁板綍", httpMethod = "POST")
 	@RequestMapping(value = "/getTradeInfo", method = RequestMethod.POST)
 	@ResponseBody
-	public TradeListResult getTradeInfo(@ApiParam(value = "Json参数", required = true) @Validated @RequestBody TradeInfoVo param) throws Exception {
+	*/
+	public TradeListResult getTradeInfo(@ApiParam(value = "Json鍙傛暟", required = true) @Validated @RequestBody TradeInfoVo param) throws Exception {
 		TradeListResult result = new TradeListResult();
 		try {
 			Date[] param1 = CommonUtils.getDateTime(param.getStarttime(), param.getOvertime());
 			List<TradeInfoDto> list  = accountRechargeMapper.selectByTrade(param.getAccountid(),param.getRelativetype(),param1[0],param1[1],Integer.valueOf(param.getBeginRow()),Integer.valueOf(param.getPageSize()));
 			if (list.size() == 0){
-				result.fail("该查询条件下", MessageTool.Code_1010);
+				result.fail("璇ユ煡璇㈡潯浠朵笅", MessageTool.Code_1010);
 				LOG.info(result.getMessage());
 				return result;
 			}

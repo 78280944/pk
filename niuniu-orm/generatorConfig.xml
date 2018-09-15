@@ -3,7 +3,7 @@
 
 <generatorConfiguration>
 	<!-- 配置文件路径 -->
-	<properties url="file:///E:/workspace/niuniu/niuniu-orm/generatorConfig.properties" />
+	<properties url="file:///F:/pkspace/niuniu/niuniu-orm/generatorConfig.properties" />
 
 	<!--数据库驱动包路径 -->
 	<classPathEntry location="${drive.class.path}" />
@@ -52,13 +52,13 @@
 	    </table>  -->
 		
 		
-		<table tableName="sys_order" domainObjectName="SysOrder"
+		<table tableName="sys_ratio" domainObjectName="SysRatio"
 	    	enableCountByExample="false"
 			enableUpdateByExample="false" 
 			enableDeleteByExample="false"
 			enableSelectByExample="false" 
 			selectByExampleQueryId="false">
-			<generatedKey column="soid" sqlStatement="MySql" identity="true"/>
+			<generatedKey column="srid" sqlStatement="MySql" identity="true"/>
 	    </table>
 
 <!-- 	    <table tableName="offaccount_info" domainObjectName="OffAccountInfo"

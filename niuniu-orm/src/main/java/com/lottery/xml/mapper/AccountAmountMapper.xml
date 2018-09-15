@@ -186,6 +186,7 @@
     <result column="LOSS" jdbcType="DECIMAL" property="loss" />
     <result column="EARNS" jdbcType="DECIMAL" property="earns" />
     <result column="GAINS" jdbcType="DECIMAL" property="gains" />
+    <result column="STARTTIME" jdbcType="TIMESTAMP" property="starttime" />
   </resultMap>
    
    <select id="selectProWinReport" resultMap="ProAccAmountMap">
@@ -234,21 +235,13 @@
   
    <select id="selectAccWinReport" resultMap="AccAmountMap">
     SELECT 
-    b.aaid,a.username,getSupUserName(a.supuserid) AS supusername,sum(b.loss) as loss,sum(b.earns) as earns, sum(b.gains) as gains 
+    b.aaid,a.username,b.lotteryterm,b.starttime,b.earns, b.gains 
     FROM account_info a,account_amount b 
     WHERE
-	a.accountid=b.accountid and a.level = '9' and offtype = '3'
+	a.accountid=b.accountid and a.accountid=#{accountid,jdbcType=INTEGER}
 	AND 
 	(b.starttime BETWEEN #{startTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP}) 
-	AND a.supuserid IN(select accountid FROM account_info n WHERE  (n.accountid = #{accountid,jdbcType=INTEGER}  and n.level = #{level,jdbcType=VARCHAR}) 
-	OR (n.offtype = #{offtype,jdbcType=VARCHAR} and n.level =  #{level,jdbcType=VARCHAR}
-	AND FIND_IN_SET(n.accountid, 
-	   (SELECT GROUP_CONCAT(LEVEL SEPARATOR ',') FROM (
-	      SELECT @Ids := (SELECT GROUP_CONCAT(c.accountid SEPARATOR ',') FROM account_info c WHERE FIND_IN_SET(supuserid, @Ids) ) LEVEL
-	      FROM account_info d
-	      JOIN (SELECT @Ids := #{accountid,jdbcType=INTEGER}) temp1
-	      WHERE FIND_IN_SET(d.supuserid, @Ids)
-	   ) temp2 )))) group by a.accountid order by a.accountid desc
+	order by lotteryterm desc
      <if test="beginRow != null and pageSize !=null">
 	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
 	</if>

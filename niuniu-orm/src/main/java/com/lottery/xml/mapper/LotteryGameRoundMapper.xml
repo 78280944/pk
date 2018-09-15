@@ -174,12 +174,12 @@
   
     <select id="selectGameResult" resultMap="ResultGameMap">
     select 
-    a.lgrid,a.lotteryterm,a.lotteryresult
-    from lottery_game_round a
+    a.lgrid,a.lotteryterm,a.lotteryresult,a.starttime,a.overtime,a.opentime,c.gcount
+    from lottery_game_round a left join 
+    (select count(recordid)*100 as gcount from account_record b where b.inputtime BETWEEN #{startTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP}) c 
+    on a.opentime BETWEEN #{startTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP}
     where a.sid = #{sid,jdbcType=INTEGER}
-    and
-    (a.opentime BETWEEN #{startTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP}) 
-    order by lotteryterm desc 
+    order by lgrid desc 
     <if test="beginRow != null and pageSize !=null">
 	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
 	</if>

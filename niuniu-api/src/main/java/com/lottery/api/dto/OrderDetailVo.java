@@ -12,16 +12,13 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
 
 public class OrderDetailVo {
 
-    @ApiModelProperty(value = "投注台编号", required = true)
+    @ApiModelProperty(value = "投注数字编号", required = true)
     private Integer noId;
 
     @ApiModelProperty(value = "投注金额", required = true)
     @NotNull(message = "投注金额不能为空")
     @DecimalMin(value="0.01", message = "金额必须大于零")
     private BigDecimal orderAmount;
-
-    @ApiModelProperty(value = "庄闲；1：庄；2：闲", required = true)
-    private String playOridle;
 
 	public Integer getNoId() {
 		return noId;
@@ -39,12 +36,4 @@ public class OrderDetailVo {
 		this.orderAmount = orderAmount;
 	}
 
-	public String getPlayOridle() {
-		return playOridle;
-	}
-
-	public void setPlayOridle(String playOridle) {
-		this.playOridle = playOridle;
-	}
-    
 }

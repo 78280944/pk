@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.AccountRemarkMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.AccountRemark" >
+    <id column="ARID" property="arid" jdbcType="INTEGER" />
+    <result column="ACCOUNTID" property="accountid" jdbcType="INTEGER" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="SUPUSERID" property="supuserid" jdbcType="INTEGER" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
+    <result column="IP" property="ip" jdbcType="VARCHAR" />
+    <result column="INPUTDATE" property="inputdate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ARID, ACCOUNTID, USERNAME, SUPUSERID, REMARK, IP, INPUTDATE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from account_remark
+    where ARID = #{arid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from account_remark
+    where ARID = #{arid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.AccountRemark" >
+    <selectKey resultType="java.lang.Integer" keyProperty="arid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into account_remark (ACCOUNTID, USERNAME, SUPUSERID, 
+      REMARK, IP, INPUTDATE
+      )
+    values (#{accountid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{supuserid,jdbcType=INTEGER}, 
+      #{remark,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{inputdate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.AccountRemark" >
+    <selectKey resultType="java.lang.Integer" keyProperty="arid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into account_remark
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        ACCOUNTID,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="supuserid != null" >
+        SUPUSERID,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
+      <if test="ip != null" >
+        IP,
+      </if>
+      <if test="inputdate != null" >
+        INPUTDATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="supuserid != null" >
+        #{supuserid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="inputdate != null" >
+        #{inputdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.AccountRemark" >
+    update account_remark
+    <set >
+      <if test="accountid != null" >
+        ACCOUNTID = #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="supuserid != null" >
+        SUPUSERID = #{supuserid,jdbcType=INTEGER},
+      </if>
+      <if test="remark != null" >
+        REMARK = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null" >
+        IP = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="inputdate != null" >
+        INPUTDATE = #{inputdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ARID = #{arid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.AccountRemark" >
+    update account_remark
+    set ACCOUNTID = #{accountid,jdbcType=INTEGER},
+      USERNAME = #{username,jdbcType=VARCHAR},
+      SUPUSERID = #{supuserid,jdbcType=INTEGER},
+      REMARK = #{remark,jdbcType=VARCHAR},
+      IP = #{ip,jdbcType=VARCHAR},
+      INPUTDATE = #{inputdate,jdbcType=TIMESTAMP}
+    where ARID = #{arid,jdbcType=INTEGER}
+  </update>
+</mapper>

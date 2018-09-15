@@ -43,7 +43,7 @@ public class CustomJavaPluginConfig {
 
 	private ApiInfo apiInfo() {
 		ApiInfo apiInfo = new ApiInfo(
-				"牛牛&板九后台API接口平台", 
+				"PK游戏后台API接口平台", 
 				"提供详细的后台所有restful接口", 
 				"", 
 				"", 

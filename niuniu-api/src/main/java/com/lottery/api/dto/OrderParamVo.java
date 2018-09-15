@@ -17,11 +17,8 @@ public class OrderParamVo {
     @Min(value=0, message = "账户ID格式不正确")
     private Integer accountId;
 
-    @ApiModelProperty(value = "游戏ID", required = true)
+    @ApiModelProperty(value = "游戏ID,2001", required = true)
     private Integer sid;
-
-    @ApiModelProperty(value = "房间ID", required = true)
-    private Integer rmid;
     
 	@ApiModelProperty(value = "游戏期次", required = true)
     private String lotteryTerm;
@@ -47,16 +44,6 @@ public class OrderParamVo {
 	public void setSid(Integer sid) {
 		this.sid = sid;
 	}
-
-	public Integer getRmid() {
-		return rmid;
-	}
-
-	public void setRmid(Integer rmid) {
-		this.rmid = rmid;
-	}
-
-
 
 	public String getLotteryTerm() {
 		return lotteryTerm;

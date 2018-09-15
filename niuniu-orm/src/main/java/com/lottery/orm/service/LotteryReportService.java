@@ -46,10 +46,10 @@ public class LotteryReportService {
 	
 	//会员报表
 	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor=Exception.class)
-	public List<AccAmountDto> getAccWinReport(Date startTime, Date endTime, Integer accountid,String level, String offtype,Integer beginRow, Integer pageSize) throws ParseException {
+	public List<AccAmountDto> getAccWinReport(Date startTime, Date endTime, Integer accountid,Integer beginRow, Integer pageSize) throws ParseException {
 		List<AccAmountDto> roundList = new ArrayList<AccAmountDto>();
 		//Date[] sTime = CommonUtils.getDateTime(startTime, endTime);
-		roundList = accountAmountMapper.selectAccWinReport(startTime, endTime, accountid,level,offtype,beginRow, pageSize);
+		roundList = accountAmountMapper.selectAccWinReport(startTime, endTime, accountid,beginRow, pageSize);
 		return roundList;
 	}
 	

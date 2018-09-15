@@ -1,7 +1,5 @@
 package com.lottery.orm.dao;
 
-import java.util.List;
-
 import com.lottery.orm.bo.SysOrder;
 
 public interface SysOrderMapper {

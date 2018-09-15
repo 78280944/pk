@@ -87,7 +87,7 @@ public class LotteryReportController {
 	@Value("${lottery.initDate}")
     private String initDate;
 	
-	
+	/*
 	@ApiOperation(value = "获取本房战绩", notes = "获取本房战绩", httpMethod = "POST")
 	@RequestMapping(value = "/getRoomQueryDate", method = RequestMethod.POST)
 	@ResponseBody
@@ -108,8 +108,8 @@ public class LotteryReportController {
 		return result;
 
 	}
-	
-
+	*/
+   /*
 	@ApiOperation(value = "获取代理输赢报表", notes = "获取代理输赢报表", httpMethod = "POST")
 	@RequestMapping(value = "/getAgencyWinReport", method = RequestMethod.POST)
 	@ResponseBody
@@ -138,8 +138,8 @@ public class LotteryReportController {
 		}
 		return result;
 	}
-	
-	@ApiOperation(value = "获取会员输赢报表", notes = "获取会员输赢报表", httpMethod = "POST")
+	*/
+	@ApiOperation(value = "获取代理分享佣金", notes = "获取代理分享佣金", httpMethod = "POST")
 	@RequestMapping(value = "/getAccWinReport", method = RequestMethod.POST)
 	@ResponseBody
 	public AccWinReportResult getAccWinReport(
@@ -149,17 +149,13 @@ public class LotteryReportController {
 			Date[] param1 = CommonUtils.getDateTime(param.getStartTime(), param.getEndTime());
 			Integer accountID = param.getAccountId();
 			AccountInfo accountInfo = accountInfoMapper.selectByPrimaryKey(accountID);
-			String offtype = "";
 			if (null == accountInfo){
 		        result.fail(MessageTool.Code_3001);
 		        return result;
 			}
-			if (param.getLevel().equals("0"))
-			    offtype = "0";
-			else
-				offtype = "1";
-			List<AccAmountDto> list = lotteryReportService.getAccWinReport(param1[0], param1[1], accountID, param.getLevel(),offtype, param.getBeginRow(), param.getPageSize());		
-			result.success(list);	
+			    List<AccAmountDto> list = lotteryReportService.getAccWinReport(param1[0], param1[1], accountID, param.getBeginRow(), param.getPageSize());	
+			    result.success(list);
+				
 			LOG.info(result.getMessage());
 		} catch (Exception e) {
 			result.error();
@@ -168,6 +164,7 @@ public class LotteryReportController {
 		return result;
 	}
 	
+	/*
 	@ApiOperation(value = "获取交易报表", notes = "获取交易报表", httpMethod = "POST")
 	@RequestMapping(value = "/getAccTradeReport", method = RequestMethod.POST)
 	@ResponseBody
@@ -191,8 +188,8 @@ public class LotteryReportController {
 		}
 		return result;
 	}
-	
-	
+	*/
+	/*
 	@ApiOperation(value = "获取玩家点数出入报表", notes = "获取玩家点数出入报表", httpMethod = "POST")
 	@RequestMapping(value = "/getPlayerInoutReport", method = RequestMethod.POST)
 	@ResponseBody
@@ -228,5 +225,5 @@ public class LotteryReportController {
 		}
 		return result;
 	}
-	
+	*/
 }

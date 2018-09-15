@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.SysRatioMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.SysRatio" >
+    <id column="SRID" property="srid" jdbcType="INTEGER" />
+    <result column="ITEMNO" property="itemno" jdbcType="VARCHAR" />
+    <result column="RATIO" property="ratio" jdbcType="DECIMAL" />
+    <result column="AMOUNT" property="amount" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SRID, ITEMNO, RATIO, AMOUNT
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_ratio
+    where SRID = #{srid,jdbcType=INTEGER}
+  </select>
+  <select id="selectSysRatio" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_ratio
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_ratio
+    where SRID = #{srid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.SysRatio" >
+    <selectKey resultType="java.lang.Integer" keyProperty="srid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_ratio (ITEMNO, RATIO, AMOUNT
+      )
+    values (#{itemno,jdbcType=VARCHAR}, #{ratio,jdbcType=DECIMAL}, #{amount,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.SysRatio" >
+    <selectKey resultType="java.lang.Integer" keyProperty="srid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_ratio
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="itemno != null" >
+        ITEMNO,
+      </if>
+      <if test="ratio != null" >
+        RATIO,
+      </if>
+      <if test="amount != null" >
+        AMOUNT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="itemno != null" >
+        #{itemno,jdbcType=VARCHAR},
+      </if>
+      <if test="ratio != null" >
+        #{ratio,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.SysRatio" >
+    update sys_ratio
+    <set >
+      <if test="itemno != null" >
+        ITEMNO = #{itemno,jdbcType=VARCHAR},
+      </if>
+      <if test="ratio != null" >
+        RATIO = #{ratio,jdbcType=DECIMAL},
+      </if>
+      <if test="amount != null" >
+        AMOUNT = #{amount,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where SRID = #{srid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.SysRatio" >
+    update sys_ratio
+    set ITEMNO = #{itemno,jdbcType=VARCHAR},
+      RATIO = #{ratio,jdbcType=DECIMAL},
+      AMOUNT = #{amount,jdbcType=DECIMAL}
+    where SRID = #{srid,jdbcType=INTEGER}
+  </update>
+</mapper>

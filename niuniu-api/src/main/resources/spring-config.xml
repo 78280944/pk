@@ -98,8 +98,7 @@
 		   <mvc:exclude-mapping path="/account/**"/>
 		   <mvc:exclude-mapping path="/account/getAccountInfo" />
 		   <mvc:exclude-mapping path="/account/getRemarkInfo" />
-		   <mvc:exclude-mapping path="/initService/initData"/>
-		   <mvc:exclude-mapping path="/initService/updatePassword"/>
+		   <mvc:exclude-mapping path="/initService/**"/>
 		   <mvc:exclude-mapping path="/account/addAccountInfo"/>
 		   <mvc:exclude-mapping path="/account/addAccountInfo"/>
 		   <mvc:exclude-mapping path="/account/userExit"/>

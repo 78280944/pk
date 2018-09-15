@@ -7,7 +7,7 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
 
 public class AccWinReportResult extends BaseRestResult {
 
-	@ApiModelProperty(value = "输赢报表数据", required = true)
+	@ApiModelProperty(value = "佣金数据", required = true)
 	private List<AccAmountDto> data;
 
 	public void success(List<AccAmountDto> data) {

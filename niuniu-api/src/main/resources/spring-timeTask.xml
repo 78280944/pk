@@ -173,15 +173,15 @@
 		<property name="dataSource"><null/></property>
 		<property name="triggers">
 			<list>
-<!-- 				<ref bean="openCQCronTrigger" />
+			<!-- 	<ref bean="openCQCronTrigger" />
 				<ref bean="openHLJCronTrigger" /> -->
 <!-- 				<ref bean="openTJCronTrigger" /> -->
 <!-- 				<ref bean="openYNCronTrigger" />
 				<ref bean="openXJCronTrigger" />
 				<ref bean="openBJSCCronTrigger" />
 				<ref bean="openXYFTCronTrigger" /> -->
-		<!-- 		<ref bean="openValueCronTrigger" /> -->
-<!-- 		        <ref bean="deletePlayerCronTrigger" />
+			<!-- 	<ref bean="openValueCronTrigger" />
+		        <ref bean="deletePlayerCronTrigger" />
 		        <ref bean="outResultCronTrigger" />  -->
 		        
 				<!-- <ref bean="openTJCronTrigger" />

@@ -26,5 +26,5 @@
 	    <property name="fileEncodings" value="utf-8"/>  
 	    <property name="cacheSeconds" value="120"/>  
 	</bean>  -->
-	
+	<mvc:default-servlet-handler/>
 </beans>
