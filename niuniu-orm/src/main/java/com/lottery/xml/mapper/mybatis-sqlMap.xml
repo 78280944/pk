@@ -64,5 +64,8 @@
         <mapper resource="com/lottery/xml/mapper/SysOrderMapper.xml" />
         <mapper resource="com/lottery/xml/mapper/AccountRemarkMapper.xml" />
         <mapper resource="com/lottery/xml/mapper/SysRatioMapper.xml" />
+        <mapper resource="com/lottery/xml/mapper/AccountBankMapper.xml" />
+        <mapper resource="com/lottery/xml/mapper/SysAgencyMapper.xml" />
+        <mapper resource="com/lottery/xml/mapper/SysPayMapper.xml" />
 	</mappers>
 </configuration>

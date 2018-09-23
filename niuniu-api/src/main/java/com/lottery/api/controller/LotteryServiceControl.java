@@ -8,6 +8,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.log4j.Logger;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,23 +19,30 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.lottery.api.dto.AccountInfoVo;
 import com.lottery.api.dto.PasswordInfoVo;
 import com.lottery.orm.bo.AccountInfo;
+import com.lottery.orm.bo.AccountRecord;
 import com.lottery.orm.bo.LotteryService;
 import com.lottery.orm.bo.SysFee;
 import com.lottery.orm.bo.SysLimit;
+import com.lottery.orm.bo.SysPay;
 import com.lottery.orm.bo.SysRatio;
 import com.lottery.orm.bo.SysRoom;
 import com.lottery.orm.dao.AccountInfoMapper;
+import com.lottery.orm.dao.AccountRecordMapper;
 import com.lottery.orm.dao.LotteryServiceMapper;
 import com.lottery.orm.dao.SysFeeMapper;
 import com.lottery.orm.dao.SysLimitMapper;
+import com.lottery.orm.dao.SysPayMapper;
 import com.lottery.orm.dao.SysRatioMapper;
 import com.lottery.orm.dao.SysRoomMapper;
 import com.lottery.orm.dto.LotteryServiceDto;
+import com.lottery.orm.dto.UserAmountDto;
 import com.lottery.orm.result.InitInfoResult;
 import com.lottery.orm.result.OffAccountListResult;
 import com.lottery.orm.result.RemarkResult;
 import com.lottery.orm.result.RestResult;
 import com.lottery.orm.result.SysRatioListResult;
+import com.lottery.orm.result.UserAmountResult;
+import com.lottery.orm.util.CommonUtils;
 import com.lottery.orm.util.MessageTool;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -43,7 +51,7 @@ import com.wordnik.swagger.annotations.ApiParam;
 	@RequestMapping(value = "/initService", produces = {"application/json;charset=UTF-8"})
 	@Api(value = "/initService", description = "初始化信息接口")
 	@Controller
-	public class LotteryServiceControl {
+	public class LotteryServiceControl<Sysnchronized> {
 		public static final Logger LOG = Logger.getLogger(LotteryServiceControl.class);
 		
 		@Autowired
@@ -67,14 +75,52 @@ import com.wordnik.swagger.annotations.ApiParam;
 		@Autowired
 		private SysRatioMapper sysRatioMapper;
 		
-		@ApiOperation(value = "获取最新赔率及剩余金额", notes = "获取最新赔率及剩余金额", httpMethod = "POST")
+		@Autowired
+		private SysPayMapper sysPayMapper;
+		
+		@Autowired
+		private AccountRecordMapper accountRecordMapper;
+		
+		@Value("${lottery.shareAddress}")
+	    private String shareAddress;
+		
+		@ApiOperation(value = "获取最新赔率及剩余金额、期次", notes = "获取最新赔率及剩余金额", httpMethod = "POST")
 		@RequestMapping(value = "/getRatioAmount", method = RequestMethod.POST)
 		@ResponseBody
-		public SysRatioListResult getRatioAmount() throws Exception {
+		public synchronized SysRatioListResult getRatioAmount() throws Exception {
 			SysRatioListResult result = new SysRatioListResult();
 			try {
 				List<SysRatio> sys = sysRatioMapper.selectSysRatio();
 				result.success(sys);  
+             }catch (Exception e) {
+ 				result.error();
+ 				LOG.error(e.getMessage(),e);
+ 			}
+			return result;
+		}
+		
+		@ApiOperation(value = "获取在线人数&支付图片", notes = "获取在线人数&支付图片", httpMethod = "POST")
+		@RequestMapping(value = "/getUserAmount", method = RequestMethod.POST)
+		@ResponseBody
+		public synchronized UserAmountResult getUserAmount() throws Exception {
+			UserAmountResult result = new UserAmountResult();
+			try {
+				Date[] sTime = CommonUtils.getDateTime(new Date(), new Date());
+				System.out.println(sTime[0]+"..."+sTime[1]);
+				List<SysPay> alist = sysPayMapper.getSysPayList();
+				String[] address = new String[alist.size()];
+				for (int i = 0;i<alist.size();i++){
+					SysPay sp = alist.get(i);
+					address[i]=sp.getAddress();
+				}
+				AccountRecord ard = accountRecordMapper.selectUserAmount(sTime[0], sTime[1]);
+				UserAmountDto ua = new UserAmountDto();
+				ua.setWebaddress(shareAddress+address[0]);
+				ua.setAlipayaddress(shareAddress+address[1]);
+				ua.setQqaddress(shareAddress+address[2]);
+				ua.setCount(Integer.valueOf(ard.getIp())*5);
+				System.out.println("23..."+ard.getIp());
+				result.success(ua);  
              }catch (Exception e) {
  				result.error();
  				LOG.error(e.getMessage(),e);

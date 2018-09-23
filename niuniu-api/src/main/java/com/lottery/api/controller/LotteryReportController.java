@@ -153,8 +153,14 @@ public class LotteryReportController {
 		        result.fail(MessageTool.Code_3001);
 		        return result;
 			}
-			    List<AccAmountDto> list = lotteryReportService.getAccWinReport(param1[0], param1[1], accountID, param.getBeginRow(), param.getPageSize());	
-			    result.success(list);
+			String stype = param.getStype();
+			if ((stype.equals("")||!(stype.equals("1")||stype.equals("2")))){
+			      result.fail("佣金类型",MessageTool.Code_1005);
+			      LOG.info(result.getMessage());
+			      return result;
+			}
+			List<AccAmountDto> list = lotteryReportService.getAccWinReport(param1[0], param1[1], accountID, param.getBeginRow(), param.getPageSize());	
+			result.success(list);
 				
 			LOG.info(result.getMessage());
 		} catch (Exception e) {

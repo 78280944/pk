@@ -23,7 +23,10 @@ public class AccountSimInfoDto {
 	
 	@ApiModelProperty(value = "上级用户ID", required = true)
 	private String supuserid;
-
+	
+	@ApiModelProperty(value = "代理级别", required = true)
+	private String level;
+    /*
 	@ApiModelProperty(value = "持卡人", required = true)
     private String bankno;
 	
@@ -35,7 +38,7 @@ public class AccountSimInfoDto {
 	
 	@ApiModelProperty(value = "银行预留手机号码", required = true)
     private String phoneno;
-	
+	*/
 	@ApiModelProperty(value = "登录记录流水号", required = true)
 	private String recordid;
 
@@ -71,38 +74,6 @@ public class AccountSimInfoDto {
 		this.supuserid = supuserid;
 	}
 
-	public String getBankno() {
-		return bankno;
-	}
-
-	public void setBankno(String bankno) {
-		this.bankno = bankno;
-	}
-
-	public String getBankid() {
-		return bankid;
-	}
-
-	public void setBankid(String bankid) {
-		this.bankid = bankid;
-	}
-
-	public String getBankaccount() {
-		return bankaccount;
-	}
-
-	public void setBankaccount(String bankaccount) {
-		this.bankaccount = bankaccount;
-	}
-
-	public String getPhoneno() {
-		return phoneno;
-	}
-
-	public void setPhoneno(String phoneno) {
-		this.phoneno = phoneno;
-	}
-
 	public BigDecimal getUsermoney() {
 		return usermoney;
 	}
@@ -125,6 +96,14 @@ public class AccountSimInfoDto {
 
 	public void setPercentage(BigDecimal percentage) {
 		this.percentage = percentage;
+	}
+
+	public String getLevel() {
+		return level;
+	}
+
+	public void setLevel(String level) {
+		this.level = level;
 	}
 
 	

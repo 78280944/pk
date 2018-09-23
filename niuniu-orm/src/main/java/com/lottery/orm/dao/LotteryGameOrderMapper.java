@@ -28,6 +28,10 @@ public interface LotteryGameOrderMapper {
     int insert(LotteryGameOrder record);
 
     int insertSelective(LotteryGameOrder record);
+    
+    int updateWinAmount(@Param("sid")Integer sid,@Param("lotteryterm")String lotteryterm,@Param("noid")Integer noid);
+    
+    List<LotteryGameOrder> selectWinAmount(@Param("sid")Integer sid,@Param("lotteryterm")String lotteryterm,@Param("noid")Integer noid);
 
     LotteryGameOrder selectByPrimaryKey(Integer lgmid);
 
@@ -84,4 +88,9 @@ public interface LotteryGameOrderMapper {
     List<RoomOrderDetailDto> selectGameAmountDetail(@Param("rmid")Integer rmid,@Param("lotteryterm")String lotteryterm);
     
     List<LotteryGameOrder> selectAddAccountIds(@Param("sid")Integer sid,@Param("rmid")Integer rmid,@Param("noid")Integer noid,@Param("lotteryterm")String lotteryterm,@Param("accountids")List<Integer> accountids);
+    
+    List<LotteryGameOrder> selectSumOrder(@Param("sid")Integer sid,@Param("lotteryterm")String lotteryterm,@Param("noid1")Integer noid1,@Param("noid2")Integer noid2,@Param("asc1")String asc1);
+    
+    List<LotteryGameOrder> selectNewRatio();
+    
 }

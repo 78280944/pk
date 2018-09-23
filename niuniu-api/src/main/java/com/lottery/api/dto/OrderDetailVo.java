@@ -15,6 +15,9 @@ public class OrderDetailVo {
     @ApiModelProperty(value = "投注数字编号", required = true)
     private Integer noId;
 
+    @ApiModelProperty(value = "投注赔率,*100", required = true)
+    private Integer ltdId;
+    
     @ApiModelProperty(value = "投注金额", required = true)
     @NotNull(message = "投注金额不能为空")
     @DecimalMin(value="0.01", message = "金额必须大于零")
@@ -35,5 +38,15 @@ public class OrderDetailVo {
 	public void setOrderAmount(BigDecimal orderAmount) {
 		this.orderAmount = orderAmount;
 	}
+
+	public Integer getLtdId() {
+		return ltdId;
+	}
+
+	public void setLtdId(Integer ltdId) {
+		this.ltdId = ltdId;
+	}
+	
+	
 
 }

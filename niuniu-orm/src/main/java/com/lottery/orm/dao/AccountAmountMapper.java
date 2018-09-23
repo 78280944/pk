@@ -37,5 +37,11 @@ public interface AccountAmountMapper {
    
     List<AccAmountDto> selectAccWinReportBytime(@Param("accountid")Integer accountid,@Param("time")String time,@Param("beginRow")Integer beginRow,@Param("pageSize")Integer pageSize);
 	
+    int updateWinAmount(@Param("accountid")Integer accountid,@Param("sid")Integer sid,@Param("lotteryterm")String lotteryterm,@Param("loss")BigDecimal loss);
+    
+    AccountAmount selectByAgency(@Param("accountid")Integer accountid,@Param("sid")Integer sid,@Param("lotteryterm")String lotteryterm);
+    
+    int insertAgency(AccountAmount record);
    
+    int updateAgency(AccountAmount record);
 }

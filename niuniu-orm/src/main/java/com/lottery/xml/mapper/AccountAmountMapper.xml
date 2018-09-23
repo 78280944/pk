@@ -27,6 +27,15 @@
       and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
       and SID = #{sid,jdbcType=INTEGER}
   </select>
+  
+  <select id="selectByAgency" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from account_amount
+    where ACCOUNTID = #{accountid,jdbcType=INTEGER}
+      and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+      and SID = #{sid,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPlayer" parameterType="java.lang.Integer">
     delete from account_amount
     where ACCOUNTID = #{accountid,jdbcType=INTEGER}
@@ -52,6 +61,29 @@
       #{cfee,jdbcType=DECIMAL}, #{profits,jdbcType=DECIMAL}, #{starttime,jdbcType=TIMESTAMP}, 
       #{overtime,jdbcType=TIMESTAMP})
   </insert>
+  
+  <insert id="insertAgency" parameterType="com.lottery.orm.bo.AccountAmount">
+    <selectKey keyProperty="aaid" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into account_amount (ACCOUNTID, LOTTERYTERM, SID, 
+      LOSS, EARNS, GAINS, 
+      CFEE, PROFITS, starttime, 
+      overtime)
+    values (#{accountid,jdbcType=INTEGER}, #{lotteryterm,jdbcType=VARCHAR}, #{sid,jdbcType=INTEGER}, 
+      #{loss,jdbcType=DECIMAL}, #{earns,jdbcType=DECIMAL}, getShareMoney(#{accountid,jdbcType=INTEGER},#{gains,jdbcType=DECIMAL}), 
+      #{cfee,jdbcType=DECIMAL}, #{profits,jdbcType=DECIMAL}, #{starttime,jdbcType=TIMESTAMP}, 
+      #{overtime,jdbcType=TIMESTAMP})
+  </insert>
+  
+ <update id="updateAgency" parameterType="com.lottery.orm.bo.AccountAmount">
+    update account_amount set gains = gains + getShareMoney(#{accountid,jdbcType=INTEGER},#{gains,jdbcType=DECIMAL})
+    where 
+    ACCOUNTID = #{accountid,jdbcType=INTEGER}
+    and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+    and SID = #{sid,jdbcType=INTEGER}
+  </update>
+  
   <insert id="insertSelective" parameterType="com.lottery.orm.bo.AccountAmount">
     <selectKey keyProperty="aaid" order="AFTER" resultType="java.lang.Integer">
       SELECT LAST_INSERT_ID()
@@ -166,6 +198,13 @@
       and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
       and SID = #{sid,jdbcType=INTEGER}
   </update>
+  <update id="updateWinAmount">
+    update account_amount set LOSS = LOSS + #{loss,jdbcType=DECIMAL} 
+    where 
+    ACCOUNTID = #{accountid,jdbcType=INTEGER}
+    and LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
+    and SID = #{sid,jdbcType=INTEGER}
+  </update>
   
   <resultMap id="ProAccAmountMap" type="com.lottery.orm.dto.ProAccAmountDto">
     <id column="AAID" jdbcType="INTEGER" property="aaid" />
@@ -245,6 +284,16 @@
      <if test="beginRow != null and pageSize !=null">
 	limit #{beginRow,jdbcType=INTEGER},#{pageSize,jdbcType=INTEGER}
 	</if>
+  </select>
+   
+    <select id="selectByAccountID" resultMap="BaseResultMap">
+    SELECT 
+    <include refid="Base_Column_List" />
+    FROM account_amount a
+    WHERE
+	a.accountid = #{accountid,jdbcType=INTEGER} 
+	and a.sid=#{sid,jdbcType=INTEGER} 
+	and a.LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR}
   </select>
    
   <select id="selectAccWinReportBytime" resultMap="AccAmountMap">

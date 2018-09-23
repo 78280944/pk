@@ -1554,6 +1554,18 @@ public class CommonUtils {
         
      }
      
+ 	public static int getDcount(Date begin) throws ParseException{
+		SimpleDateFormat dfs = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		DateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
+		String imptimeEnd = sdf1.format(new Date());
+		Date end = dfs.parse(imptimeEnd+" 23:00:01");
+		long between=(end.getTime()-begin.getTime())/1000;//除以1000是为了转换成秒
+		long min=between/60;
+		int count = Integer.valueOf(String.valueOf(min))/5;
+		return count;
+				
+	}
+     
 	/**
 	 * @param args
 	 * @throws Exception
@@ -1562,6 +1574,9 @@ public class CommonUtils {
 		//Date[] param1 = CommonUtils.getDateTime(param.getStartDate(), param.getEndDate());
 		//Date currentTime = AppUtils.getCurrentDate();
 		  //获取昨天时间
+		String ws="1";
+		if ((ws.equals("")||!(ws.equals("1")||ws.equals("2"))))
+			System.out.println("90--"+1);
 		Date s = CommonUtils.getStringToMillon(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()),1*60);
 	 System.out.println("ik--"+getChangeDate(20));
 		String s1="bankCode=CMB&cardType=0&commodityName=1009,充值金额：2,IP:&keyType=file&merNo=850610050942302&notifyUrl=http://api.niuniu668.com/swagger/wx_wap_notify.jsp&orderDate=20180126&orderNo=20180126133128&productId=1053&remark=充值金额:2,充值时间:2018-01-26 13:31:28&requestNo=20180126133128211&returnUrl=http://api.niuniu668.com/swagger/wx_wap_result.jsp&transAmt=200&transId=70&version=V1.0";

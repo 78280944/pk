@@ -42,6 +42,7 @@ import com.lottery.orm.bo.LotteryRoom;
 import com.lottery.orm.bo.LotteryRoomDetail;
 import com.lottery.orm.bo.LotteryService;
 import com.lottery.orm.bo.SysCom;
+import com.lottery.orm.bo.SysFee;
 import com.lottery.orm.bo.SysOrder;
 import com.lottery.orm.bo.TradeInfo;
 import com.lottery.orm.dao.AccountAmountMapper;
@@ -55,7 +56,10 @@ import com.lottery.orm.dao.LotteryRoomDetailMapper;
 import com.lottery.orm.dao.LotteryRoomMapper;
 import com.lottery.orm.dao.LotteryServiceMapper;
 import com.lottery.orm.dao.SysComMapper;
+import com.lottery.orm.dao.SysFeeMapper;
 import com.lottery.orm.dao.SysOrderMapper;
+import com.lottery.orm.dao.SysRatioMapper;
+import com.lottery.orm.dao.TradeInfoMapper;
 import com.lottery.orm.dto.AddLotteryAmountDto;
 import com.lottery.orm.dto.LotteryAmountDto;
 import com.lottery.orm.service.LotteryRoundService;
@@ -122,6 +126,13 @@ public class LotteryTaskService {
 	@Autowired
     private SysOrderMapper sysOrderMapper;
 	
+	@Autowired
+	private SysFeeMapper sysFeeMapper;
+	
+	@Autowired
+	private SysRatioMapper sysRatioMapper;
+	
+	
 	@Value("${lottery.apiUrl.cqklsf}")
     private String lotteryApiUrlCQ;
 	
@@ -174,8 +185,20 @@ public class LotteryTaskService {
 	@Value("${lottery.apiUrl.tjklsf}")
     private String lotteryApiUrlTJ;
 	
+	@Value("${lottery.apiUrl.bjpk}")
+    private String lotteryApiUrlBJPK;
+	
 	@Value("${outResultUrl}")
     private String outResultUrl;
+	
+	/**
+	 * 获取北京PK10
+	 * @throws Exception 
+	 */
+	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor=Exception.class)
+	public synchronized  void getBjPKCLotteryResult() throws Exception{
+		getLotteryOriginResultTotal(EnumType.LotteryType.BJPK.ID, lotteryApiUrlBJPK);
+	}
 	
 	/**
 	 * 获取重庆时时彩
@@ -231,7 +254,7 @@ public class LotteryTaskService {
 	public synchronized void getBJSCLotteryResult() throws Exception{
 		//System.out.println("00--------------------"+lotteryApiUrlCQSSC2);
 		//getLotteryOriginResult1(EnumType.LotteryType.BJSC.ID, lotteryApiUrlBJSC1);
-		getLotteryOriginResultTotal(EnumType.LotteryType.BJSC.ID, lotteryApiUrlBJSC2);
+		getLotteryOriginResultTotal(EnumType.LotteryType.BJPK.ID, lotteryApiUrlBJSC2);
 	}
 	
 	/**
@@ -359,7 +382,7 @@ public class LotteryTaskService {
 			url = lotteryApiUrlYNSSC1;
 		else if (lotteryType.equals(EnumType.LotteryType.XJSSC.ID))
 			url = lotteryApiUrlXJSSC1;
-		else if (lotteryType.equals(EnumType.LotteryType.BJSC.ID))
+		else if (lotteryType.equals(EnumType.LotteryType.BJPK.ID))
 			url = lotteryApiUrlBJSC1;
 		return url;
 	}
@@ -372,16 +395,17 @@ public class LotteryTaskService {
 		String result = HttpclientTool.get(apiUrl);
 		//String result = "";
 		System.out.println("8-------------:"+lotteryType+".."+result);
-		/*
-	
-		result = "{\"success\":true,\"data\":[{\"preDrawCode\":\"88131\","
-				+ "\"drawIssue\":\"2017112355\",\"drawTime\":\"2017/11/23 19:10:45\","
-				+ "\"preDrawTime\":\"2017-11-23 19:00:50\",\"preDrawIssue\":\"2017112354\","
-				+ "\"drawCount\":\"39\",\"totalCount\":\"120\"}]}";
+		
+	    /*
+		result = "{\"success\":true,\"data\":[{\"expect\":\"704504\","
+				+ "\"opencode\":\"01,06,02,09,04,07,03,08,05,10\",\"opentime\":\"2018-09-17 23:28:05\","
+				+ "\"opentimestamp\":\"1537198085\"},{\"expect\":\"704503\","
+				+ "\"opencode\":\"01,09,10,07,04,06,02,08,05,03\",\"opentime\":\"2018-09-17 23:22:40\","
+				+ "\"opentimestamp\":\"1537197760\"}]}";
           //result = "{\"sucess\":true,";
 		
 		//10,07,04,03,02,07,02,03,03,01
-	*/
+	
 		/*
 		result = "{\"success\":true,\"data\":[{\"preDrawCode\":\"4,9,4,7,9\","
 				+ "\"drawIssue\":\"20180202063\",\"drawTime\":\"2018/1/24 16:00:45\","
@@ -503,6 +527,39 @@ public class LotteryTaskService {
 	}
 	
 	/**
+	 * 更新赔率
+	 * @throws Exception 
+	 */
+	public  void LotteryComRatio() throws Exception{		
+		List<LotteryGameOrder> lgrs = lotteryGameOrderMapper.selectNewRatio();
+		SysFee sf = new SysFee();
+		BigDecimal order[][] = new BigDecimal[lgrs.size()][4];
+		BigDecimal sCount = BigDecimal.valueOf(0.0);
+		System.out.println("980-----"+lgrs.size());
+		for (int i=0;i<lgrs.size();i++){
+			LotteryGameOrder lg = new LotteryGameOrder();
+			lg = lgrs.get(i);
+			order[i][0] = BigDecimal.valueOf(lg.getNoid());
+			order[i][1] = BigDecimal.valueOf(Double.valueOf(lg.getLtdid())/100);
+			order[i][2] = lg.getOrderamount();
+			order[i][3] = lg.getLastamount();
+			sCount = sCount.add(order[i][2]);
+			System.out.println("value---"+sCount);
+		}
+		if (lgrs.size()>0)
+			sf = sysFeeMapper.selectByPrimaryKey(1001);
+		for (int i=0;i<lgrs.size();i++){
+			System.out.print("test.."+order[i][3]+".."+sCount+"..."+order[i][2]+".."+order[i][1]);
+		    if (order[i][3].subtract(sCount.subtract(order[i][2])).doubleValue()>0){
+		    	int time = (order[i][3].subtract(sCount.subtract(order[i][2]))).intValue()/sf.getTime();
+		    	order[i][1] = (order[i][1].subtract(sf.getCafee().multiply(BigDecimal.valueOf(time))).doubleValue())<0?BigDecimal.valueOf(0.02):order[i][1].subtract(sf.getCafee().multiply(BigDecimal.valueOf(time)));
+		    	sysRatioMapper.updateLotteryRatio(order[i][1], order[i][0].toString());
+		    	System.out.println("980--12---"+order[i][1]+".."+order[i][0]+"."+time+".."+order[i][1].subtract(sf.getCafee().multiply(BigDecimal.valueOf(time))).doubleValue());
+		    }
+		}
+	}
+	
+	/**
 	 * 获取开奖结果
 	 * @throws Exception 
 	 */
@@ -514,10 +571,11 @@ public class LotteryTaskService {
 		String result = HttpclientTool.get(apiUrl);
 		log.info("读取API接口："+new Date()+",游戏类型："+lotteryType+",访问地址，"+apiUrl);
 		/*
-		result = "{\"rows\":20,\"code\":\"cqssc\",\"remain\":\"6402hrs\","
-				+ "\"next\":[{\"expect\":\"20180319081\",\"opentime\":\"2018-03-19 20:50:40\"}],"
-				+ "\"open\":[{\"expect\":\"20180319080\",\"opencode\":\"1,8,9,9,0\",\"opentime\":\"2018-03-19 20:40:54\"},"
-				          + "{\"expect\":\"20180319079\",\"opencode\":\"8,0,1,6,4\",\"opentime\":\"2018-03-19 19:50:53\"}],\"time\":\"2018-03-19 20:09:28\"}";
+		result = "{\"success\":true,\"data\":[{\"expect\":\"704504\","
+				+ "\"opencode\":\"01,06,02,09,04,07,03,08,05,10\",\"opentime\":\"2018-09-17 23:28:05\","
+				+ "\"opentimestamp\":\"1537198085\"},{\"expect\":\"704503\","
+				+ "\"opencode\":\"01,09,10,07,04,06,02,08,05,03\",\"opentime\":\"2018-09-17 23:22:40\","
+				+ "\"opentimestamp\":\"1537197760\"}]}";
 		/*
 		try{
 			result = HttpclientTool.get(apiUrl);
@@ -532,298 +590,69 @@ public class LotteryTaskService {
 		try{
 		    if(StringUtils.isNotBlank(result)&&result.trim().startsWith("{")){
 			    JSONObject jObj = new JSONObject(result);
-			    String[] states = getAddService();
-			    String addState = states[0];//增值
-			    String playState = states[2];//试玩
-			    String dremState = states[1];//机器人
-			    String aremState = states[3];//上庄
 			    
-			    if(jObj.has("next")){
-					JSONArray nextArray = jObj.getJSONArray("next");//获取下一轮游戏期次
-					JSONArray topenArray = jObj.getJSONArray("open");
-					Date nextOpenTime = null;//最近的下一轮游戏
-					JSONObject nextObj = null;
-					JSONObject topenObj = null;
-					String topenTerm = "";
+			    if(jObj.has("data")){
+					JSONArray nextArray = jObj.getJSONArray("data");//获取下一轮游戏期次
+					//JSONArray topenArray = jObj.getJSONArray("open");
+					String openterm = "";
+					String opentime = "";
+					String opencodes = "";
 					for(int t=0; t<nextArray.length(); t++){
 						JSONObject tempObj = nextArray.getJSONObject(t);
-						topenObj = topenArray.getJSONObject(t);
-						String opentimeStr = tempObj.getString("opentime");
-						topenTerm = topenObj.getString("expect");
-						
-						Date tempOpenTime = format.parse(opentimeStr.replace("**", "01"));
-						if(nextOpenTime==null||nextOpenTime.after(tempOpenTime)){
-							nextOpenTime = tempOpenTime;
-							nextObj = tempObj;
-						}
-						//System.out.println("TEST.."+opentimeStr+"..."+lotteryType+".."+nextObj);
-					}
-					
-					//本期
-					LotteryGameRound lgr1 = new LotteryGameRound();
-					lgr1.setSid(Integer.valueOf(lotteryType));
-					lgr1.setLotteryterm(nextObj.getString("expect"));
-					String nOpentime = "";
-					//System.out.println("ceshi0---------------"+lotteryType+".."+CommonUtils.StrToDate(nextObj.getString("opentime"))+".."+new Date()+"..."+(CommonUtils.getCompareMin(CommonUtils.StrToDate(nextObj.getString("opentime")), new Date())>12));
-				   /*
-					if (CommonUtils.getCompareMin(CommonUtils.StrToDate(nextObj.getString("opentime")), new Date())>12)
-						nOpentime = CommonUtils.dateAddMin(10);
-				    else 
-				    	nOpentime = nextObj.getString("opentime");
-				    	*/
-					if ((lgr1.getSid()==1001&&CommonUtils.dateRange())||lgr1.getSid()==2001||lgr1.getSid()==2002){
-						//nOpentime = CommonUtils.dateAddMin(5);
-						if (CommonUtils.getCompareMin(CommonUtils.StrToDate(nextObj.getString("opentime")), new Date())>6)
-							nOpentime = CommonUtils.dateAddMin(5);
-					    else 
-					    	nOpentime = nextObj.getString("opentime"); 
-						//nOpentime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(nextOpenTime);
-					    //lgr1.setStarttime(CommonUtils.getStringToMillon(nOpentime,255));
-						lgr1.setStarttime(CommonUtils.getStringToMillon(nOpentime,300));
+						opentime = tempObj.getString("opentime");
+					    opencodes = tempObj.getString("opencode");
+						openterm = tempObj.getString("expect");
+						LotteryGameRound lgr1 = new LotteryGameRound();
+						lgr1.setSid(Integer.valueOf(lotteryType));
+						lgr1.setLotteryterm(String.valueOf(Integer.valueOf(openterm)+1));
+						lgr1.setStarttime(CommonUtils.getStringToMillon(opentime,0));
+						//lgr1.setLotteryresult(opencodes);
+						//lgr1.setFirst(opencodes.substring(0, 2));
 					    //lgr1.setOvertime(CommonUtils.getStringToMillon(nOpentime,40));
-						lgr1.setOvertime(CommonUtils.getStringToMillon(nOpentime,45));
-					    lgr1.setOpentime(CommonUtils.getStringToMillon(nOpentime,0));
-						lgr1.setClosetime(CommonUtils.getStringToMillon(nOpentime,40));
-					}
-					else{
-						//nOpentime = CommonUtils.dateAddMin(10);
-						//nOpentime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(nextOpenTime);
-						if (CommonUtils.getCompareMin(CommonUtils.StrToDate(nextObj.getString("opentime")), new Date())>12)
-							nOpentime = CommonUtils.dateAddMin(10);
-					    else 
-					    	nOpentime = nextObj.getString("opentime"); 
-						if (lgr1.getSid()==1005)
-							nOpentime = nOpentime.replaceAll(":00", ":10");
-						else if (lgr1.getSid()==1003) 
-							nOpentime = nOpentime.replaceAll("1:30", "2:10");
-		
-						//lgr1.setStarttime(CommonUtils.getStringToMillon(nOpentime,560));
-						//lgr1.setOvertime(CommonUtils.getStringToMillon(nOpentime,60));
-						lgr1.setStarttime(CommonUtils.getStringToMillon(nOpentime,600));
-						lgr1.setOvertime(CommonUtils.getStringToMillon(nOpentime,60));
-						lgr1.setOpentime(CommonUtils.getStringToMillon(nOpentime,0));
-						lgr1.setClosetime(CommonUtils.getStringToMillon(nOpentime,60));
-					}
-					//System.out.println("读取,start:"+lotteryType+"..."+lgr1.getLotteryterm()+".."+new Date()+".."+result);
-					LotteryGameRound gRound1 = lotteryRoundService.getLotteryTermResult(Integer.valueOf(lotteryType), lgr1.getLotteryterm());
-					//System.out.println("读取,over:"+lotteryType+"..."+lgr1.getLotteryterm()+".."+new Date());
-					if (aremState.equals("1"))
-					    jobsTaskService.taskplayoridle(lgr1);
-					
-					if (addState.equals("1"))
-					    getFirstValueLotteryResult(lgr1);
-					
-					System.out.println("9--45--------------"+String.valueOf(BigInteger.valueOf(Long.valueOf(lgr1.getLotteryterm())))+".."+gRound1+".."+lgr1.getLotteryterm()+".."+String.valueOf(BigInteger.valueOf(Long.valueOf(topenTerm)+1)));
-					//if (gRound1==null&&(!(results.equals("0")))){String.valueOf(BigInteger.valueOf(Long.valueOf(lg.getGameterm())-1))
-					//System.out.println(String.valueOf(BigInteger.valueOf(Long.valueOf(s))));
-					if (gRound1==null&&(String.valueOf(BigInteger.valueOf(Long.valueOf(lgr1.getLotteryterm()))).equals(String.valueOf(BigInteger.valueOf(Long.valueOf(topenTerm)+1))))||(gRound1==null&&lgr1.getLotteryterm().substring(lgr1.getLotteryterm().length()-3, lgr1.getLotteryterm().length()).equals("001"))){
-					//if (gRound1==null){
-						System.out.println("9--678--"+lgr1.getSid()+".."+lgr1.getLotteryterm()+".."+lgr1.getLotteryresult());
-						
-						lgr1.setLotteryresult(null);
-						lotteryGameRoundMapper.insertSelective(lgr1);
-						LotteryGame lr = new LotteryGame();
-						lr.setSid(Integer.valueOf(lgr1.getSid()));
-						lr.setGameterm(lgr1.getLotteryterm());
-						lr.setGamestarttime(lgr1.getStarttime());
-						lr.setGameovertime(lgr1.getOvertime());
-						lotteryGameMapper.updateLotteryTime(lr.getSid(),lr.getGameterm(),lr.getGamestarttime(), lr.getGameovertime());
-						//System.out.println("9----hello-----"+lgr1.getSid()+".."+lr.getGamestarttime());
-				        //结果处理1
-						LotteryResultHandle1(lr);
-						//试玩处理
-						if (playState.equals("1"))
-						    LotteryResultHandle4(lgr1);
-						//机器人下注
-						if (dremState.equals("1"))
-						    LotteryResultHandle10(lgr1);
-						
-						//增值服务
-						if (addState.equals("1"))
-						    LotteryResultValue(lgr1);
-						
-
-						System.out.println("读取,open:"+lotteryType+"..."+lgr1.getLotteryterm()+".."+new Date()+".."+jObj);
-						if(jObj.has("open")){
-							JSONArray openArray = jObj.getJSONArray("open");//更新游戏开奖结果
-							for(int i=0; i<5; i++){
-								JSONObject openObj = openArray.getJSONObject(i);
-								//上期
-								lgr.setSid(Integer.valueOf(lotteryType));
-								lgr.setLotteryterm(openObj.getString("expect"));
-								System.out.println("expect.."+i+".."+lgr.getLotteryterm()+".."+new Date());
-								lgr.setLotteryresult(openObj.getString("opencode").contains(",")?openObj.getString("opencode"):CommonUtils.getArrayString(openObj.getString("opencode")));
-								if ((lgr.getSid()==1001&&CommonUtils.dateRange())||lgr.getSid()==2001||lgr.getSid()==2002){
-									/*
-								    lgr.setStarttime(CommonUtils.getStringToMillon(openObj.getString("opentime"),260));
-								    lgr.setOvertime(CommonUtils.getStringToMillon(openObj.getString("opentime"),30));
-								    lgr.setOpentime(CommonUtils.getStringToMillon(openObj.getString("opentime"),0));
-									lgr.setClosetime(CommonUtils.getStringToMillon(openObj.getString("opentime"),30));
-									*/
-									nOpentime = openObj.getString("opentime");
-								    lgr.setStarttime(CommonUtils.getStringToMillon(nOpentime,300));
-								    lgr.setOvertime(CommonUtils.getStringToMillon(nOpentime,45));
-								    lgr.setOpentime(CommonUtils.getStringToMillon(nOpentime,0));
-									lgr.setClosetime(CommonUtils.getStringToMillon(nOpentime,40));
-								}
-								else{
-									/*
-									lgr.setStarttime(CommonUtils.getStringToMillon(openObj.getString("opentime"),525-40+5));
-									lgr.setOvertime(CommonUtils.getStringToMillon(openObj.getString("opentime"),60-35+30));
-									lgr.setOpentime(CommonUtils.getStringToMillon(openObj.getString("opentime"),-35));
-									lgr.setClosetime(CommonUtils.getStringToMillon(openObj.getString("opentime"),30-35));
-									*/
-									nOpentime = openObj.getString("opentime");
-									if (lgr.getSid()==1005)
-										nOpentime = nOpentime.replaceAll(":00", ":10");
-									else if (lgr.getSid()==1003) 
-										nOpentime = nOpentime.replaceAll("1:30", "2:10");
-									lgr.setStarttime(CommonUtils.getStringToMillon(nOpentime,600));
-									lgr.setOvertime(CommonUtils.getStringToMillon(nOpentime,60));
-									lgr.setOpentime(CommonUtils.getStringToMillon(nOpentime,0));
-									lgr.setClosetime(CommonUtils.getStringToMillon(nOpentime,60));
-								}
-								    //System.out.println("读取2,start:"+lgr.getSid()+"..."+lgr.getLotteryterm()+".."+new Date());
-							        gRound = lotteryRoundService.getLotteryTermResult(lgr.getSid(), lgr.getLotteryterm());
-							        //System.out.println("读取2,start:"+lgr.getSid()+"..."+lgr.getLotteryterm()+".."+new Date());
-									if (gRound!=null){
-										//System.out.println("9----------------"+gRound.getLotteryresult());
-									    //if (gRound.getLotteryterm().length()>0){
-										if ((null == gRound.getLotteryresult()) ||gRound.getLotteryresult().equals("")){
-											//更新结果
-											//System.out.println("9----------------"+lgr.getLotteryresult());
-											gRound.setLotteryresult(lgr.getLotteryresult());
-											gRound.setActopentime(new Date());
-											gRound.setActclosetime(new Date());
-											lotteryGameRoundMapper.updateByPrimaryKeySelective(gRound);
-										  
-											//结果更新
-											LotteryResultHandle2(gRound);
-											//结果排名
-											LotteryResultHandle3(gRound);	
-											//账户处理
-											List<LotteryGameOrder> list = lotteryGameOrderMapper.selectGameRmid(lgr.getSid(), lgr.getLotteryterm());
-											//sleep(20000);
-											// LotteryGameDetail record = new LotteryGameDetail();
-							        		// record.setLgmid(1002);
-											//lotteryGameDetailMapper.insert(record);
-											for (int m = 0;m<list.size();m++){
-												LotteryGameOrder lg = new LotteryGameOrder();
-												lg = list.get(m);
-												LotteryIsOrNotHandle(lgr.getLotteryterm(),lgr.getSid(),lg.getRmid(),addState,1);	
-												//sleep(20000);
-												
-												if (addState.equals("1")){
-											        getSecondValueLotteryResult(gRound,lg.getRmid());
-												    LotteryIsOrNotHandle(lgr.getLotteryterm(),lgr.getSid(),lg.getRmid(),"1",2);
-												}
-												
-											}
-										}
-									}else{
-									    lgr.setActopentime(new Date());
-										lgr.setActclosetime(new Date());
-										lotteryGameRoundMapper.insertSelective(lgr);
-									}
-								
-								}
+						lgr1.setOvertime(CommonUtils.getStringToMillon(opentime,-270));
+					    lgr1.setOpentime(CommonUtils.getStringToMillon(opentime,-300));
+						lgr1.setClosetime(CommonUtils.getStringToMillon(opentime,-270));
+						//System.out.println("9--2222678--"+lgr1.getFirst()+".."+lgr1.getLotteryterm()+".."+lgr1.getLotteryresult()+"..."+t);
+						if (t==0){
+							//下期
+							LotteryGameRound gRound1 = lotteryRoundService.getLotteryTermResult(Integer.valueOf(lotteryType), lgr1.getLotteryterm());
+							if (gRound1==null){
+									//System.out.println("9--678--"+lgr1.getSid()+".."+lgr1.getLotteryterm()+".."+lgr1.getLotteryresult());
+									
+									lgr1.setLotteryresult(null);
+									lgr1.setDcount(CommonUtils.getDcount(lgr1.getOpentime()));
+									lgr1.setGcount(191);
+									lotteryGameRoundMapper.insertSelective(lgr1);
+									
+							        //更新赔率
+									LotteryResultHandleRatio(lgr1);
 							}
+									
+						}else{
+							LotteryGameRound gRound1 = lotteryRoundService.getLotteryTermResult(lgr1.getSid(), lgr1.getLotteryterm());
+							if (gRound1!=null){
+								//System.out.println("9----------------"+lgr1.getLotteryresult());
+							    //if (gRound.getLotteryterm().length()>0){
+								if ((null == gRound1.getLotteryresult()) ||gRound1.getLotteryresult().equals("")){
+									//更新结果
+									//System.out.println("9----------------"+lgr.getLotteryresult());
+									gRound1.setLotteryresult(opencodes);
+									gRound1.setFirst(Integer.valueOf(opencodes.substring(0, 2)).toString());
+									gRound1.setActopentime(new Date());
+									gRound1.setActclosetime(new Date());
+									lotteryGameRoundMapper.updateByPrimaryKeySelective(gRound1);
+									//账务处理
+									LotteryResultHandleAmount(gRound1);
+								  
+								}
+						  }
+					  }
+					
+								}
+			
+							}
+				return true;
 						  
-					}
-				
-					else {
-						System.out.println("9--678-345-"+lgr1.getSid()+".."+lgr1.getLotteryterm()+".."+lgr1.getLotteryresult()+".."+new Date());
-						
-					}
-						/*
-						if (results.equals("0")){
-						
-						if(jObj.has("open")){
-							JSONArray openArray = jObj.getJSONArray("open");//更新游戏开奖结果
-							//openArray.length()
-							for(int i=0; i<1; i++){
-								JSONObject openObj = openArray.getJSONObject(i);
-								//上期
-								lgr.setSid(Integer.valueOf(lotteryType));
-								lgr.setLotteryterm(openObj.getString("expect"));
-								lgr.setLotteryresult(openObj.getString("opencode").contains(",")?openObj.getString("opencode"):CommonUtils.getArrayString(openObj.getString("opencode")));
-
-								if ((lgr.getSid()==1001&&CommonUtils.dateRange())||lgr.getSid()==2001||lgr.getSid()==2002){
-									
-								    lgr.setStarttime(CommonUtils.getStringToMillon(openObj.getString("opentime"),260));
-								    lgr.setOvertime(CommonUtils.getStringToMillon(openObj.getString("opentime"),30));
-								    lgr.setOpentime(CommonUtils.getStringToMillon(openObj.getString("opentime"),0));
-									lgr.setClosetime(CommonUtils.getStringToMillon(openObj.getString("opentime"),30));
-									
-									nOpentime = openObj.getString("opentime");
-								    lgr.setStarttime(CommonUtils.getStringToMillon(nOpentime,300));
-								    lgr.setOvertime(CommonUtils.getStringToMillon(nOpentime,45));
-								    lgr.setOpentime(CommonUtils.getStringToMillon(nOpentime,0));
-									lgr.setClosetime(CommonUtils.getStringToMillon(nOpentime,40));
-								}
-								else{
-									
-									lgr.setStarttime(CommonUtils.getStringToMillon(openObj.getString("opentime"),525-40+5));
-									lgr.setOvertime(CommonUtils.getStringToMillon(openObj.getString("opentime"),60-35+30));
-									lgr.setOpentime(CommonUtils.getStringToMillon(openObj.getString("opentime"),-35));
-									lgr.setClosetime(CommonUtils.getStringToMillon(openObj.getString("opentime"),30-35));
-									
-									nOpentime = openObj.getString("opentime");
-									if (lgr.getSid()==1005)
-										nOpentime = nOpentime.replaceAll(":00", ":45");
-									lgr.setStarttime(CommonUtils.getStringToMillon(nOpentime,600));
-									lgr.setOvertime(CommonUtils.getStringToMillon(nOpentime,60));
-									lgr.setOpentime(CommonUtils.getStringToMillon(nOpentime,0));
-									lgr.setClosetime(CommonUtils.getStringToMillon(nOpentime,60));
-								}
-								    //System.out.println("读取2,start:"+lgr.getSid()+"..."+lgr.getLotteryterm()+".."+new Date());
-							        gRound = lotteryRoundService.getLotteryTermResult(lgr.getSid(), lgr.getLotteryterm());
-							        //System.out.println("读取2,start:"+lgr.getSid()+"..."+lgr.getLotteryterm()+".."+new Date());
-									if (gRound!=null){
-										if ((null == gRound.getLotteryresult()) ||gRound.getLotteryresult().equals("")){
-											//更新结果
-											//System.out.println("9----------------"+lgr.getLotteryresult());
-											gRound.setLotteryresult(lgr.getLotteryresult());
-											gRound.setActopentime(new Date());
-											gRound.setActclosetime(new Date());
-											lotteryGameRoundMapper.updateByPrimaryKeySelective(gRound);
-										  
-											//结果更新
-											LotteryResultHandle2(gRound);
-											//结果排名
-											LotteryResultHandle3(gRound);	
-											//账户处理
-											List<LotteryGameOrder> list = lotteryGameOrderMapper.selectGameRmid(lgr.getSid(), lgr.getLotteryterm());
-											//sleep(20000);
-											// LotteryGameDetail record = new LotteryGameDetail();
-							        		// record.setLgmid(1002);
-											//lotteryGameDetailMapper.insert(record);
-											for (int m = 0;m<list.size();m++){
-												LotteryGameOrder lg = new LotteryGameOrder();
-												lg = list.get(m);
-												LotteryIsOrNotHandle(lgr.getLotteryterm(),lgr.getSid(),lg.getRmid(),addState,1);	
-												//sleep(20000);
-												
-												if (addState.equals("1")){
-											        getSecondValueLotteryResult(gRound,lg.getRmid());
-												    LotteryIsOrNotHandle(lgr.getLotteryterm(),lgr.getSid(),lg.getRmid(),"1",2);
-												}
-												
-											}
-										}
-									}
-								
-								}
-							}
-						
-					}
-					*/
-				}
-			    
-			    
-
-					
-					return true;	
 		    }else
 		    	throw new Exception("URL地址访问出错！"); 
 				
@@ -832,7 +661,55 @@ public class LotteryTaskService {
 				e.printStackTrace();
 				return false;
 			}
-		//return false;
+	}
+	
+	/**
+	 * 账务处理1,游戏的账务处理
+	 * @throws Exception 
+	 */
+	public  void LotteryResultHandleAmount(LotteryGameRound lottery) throws Exception{
+	
+	//更新结果
+	System.out.println("1---0.."+lottery.getSid()+"..."+lottery.getLotteryterm()+".."+lottery.getFirst());
+	lotteryGameOrderMapper.updateWinAmount(lottery.getSid(), lottery.getLotteryterm(), Integer.valueOf(lottery.getFirst()));
+	//输赢账号处理
+	List<LotteryGameOrder> list = lotteryGameOrderMapper.selectWinAmount(lottery.getSid(), lottery.getLotteryterm(), Integer.valueOf(lottery.getFirst()));
+	for (int i = 0;i<list.size();i++){
+		LotteryGameOrder lgr = new LotteryGameOrder();
+		lgr = list.get(i);
+		//accountInfoService.updateResultAccountMount(lgr.getLastamount(), lgr.getAccountid());
+		TradeInfo tr = new TradeInfo();
+		tr.setAccountid(lgr.getAccountid());
+        tr.setTradetype(EnumType.TradeType.Trade.ID);
+        tr.setRelativeid(EnumType.RalativeType.PlayerWin.NOID);
+        tr.setRelativetype(EnumType.RalativeType.PlayerWin.ID);
+        tr.setTradeamount(lgr.getLastamount().doubleValue());
+        tr.setInputtime(new Date());
+        tr.setRemark("下注赢钱,游戏号:"+lgr.getSid()+",游戏期次:"+lgr.getLotteryterm());
+        tradeInfoService.addInoutTradeInfo(tr,lottery.getSid(),lottery.getLotteryterm());
+    	//代理账号处理  
+        System.out.println("order...."+tr.getAccountid());
+        tradeInfoService.addAgencyTradeInfo(tr, lottery.getSid(), lottery.getLotteryterm());
+	}
+
+	
+    }
+	
+	
+	/**
+	 * 结果处理1,游戏的初始化赔率更新
+	 * @throws Exception 
+	 */
+	
+	public  void LotteryResultHandleRatio(LotteryGameRound lottery) throws Exception{
+		//System.out.println("00--------------------"+lotteryApiUrlCQ);
+		//getLotteryOriginResult(EnumType.LotteryType.CQ.ID, lotteryApiUrlCQ);
+		//更新赔率
+	    //lotteryGameResultsMapper.insertBatch(lottery);
+		sysRatioMapper.updateLotteryterm(lottery.getLotteryterm());
+		SysFee sf = sysFeeMapper.selectByPrimaryKey(1001);
+		lotteryGameRoundMapper.updateAmountRatio(sf.getRatio(), sf.getRefee(), sf.getCafee());
+		lotteryGameRoundMapper.updateBigSmalRatio();
 	}
 	
 
@@ -1534,7 +1411,7 @@ public class LotteryTaskService {
 			        tr.setTradeamount(Double.parseDouble(str1[k][0]));
 			        tr.setInputtime(new Date());
 			        tr.setRemark("会员返本金,游戏号:"+sid+",游戏期次:"+lotteryterm);
-			        tradeInfoService.addInoutTradeInfo(tr);
+			       // tradeInfoService.addInoutTradeInfo(tr);
 			     if (fee.doubleValue()>0){
 			    	tr.setAccountid(Integer.valueOf(str1[k][3])); 
 			    	tr.setTradetype(EnumType.TradeType.Trade.ID);
@@ -1543,7 +1420,7 @@ public class LotteryTaskService {
 			        tr.setTradeamount(Double.parseDouble(str1[k][2])-(fee.doubleValue()));
 			        tr.setInputtime(new Date());
 			        tr.setRemark("盈利金额,游戏号:"+sid+",游戏期次:"+lotteryterm);
-			        tradeInfoService.addInoutTradeInfo(tr);
+			        //tradeInfoService.addInoutTradeInfo(tr);
 		         }else{
 		        	tr.setAccountid(Integer.valueOf(str1[k][3]));
 		        	tr.setTradetype(EnumType.TradeType.Trade.ID);
@@ -1552,7 +1429,7 @@ public class LotteryTaskService {
 			        tr.setTradeamount(Double.parseDouble(str1[k][2]));
 			        tr.setRemark("输赢金额,游戏号:"+sid+",游戏期次:"+lotteryterm);
 			        tr.setInputtime(new Date());
-			        tradeInfoService.addInoutTradeInfo(tr);
+			        //tradeInfoService.addInoutTradeInfo(tr);
 		        }
 		        
 			    if (str1[k][3].length()>=4||String.valueOf(rmid).length()==7){

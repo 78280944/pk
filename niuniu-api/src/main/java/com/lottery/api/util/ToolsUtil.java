@@ -1,5 +1,7 @@
 package com.lottery.api.util;
 
+import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -170,9 +172,10 @@ public class ToolsUtil {
 		}
 	}
 	
+
 	
-	public static void main(String args[]){
-		System.out.println(checkTime());
+	public static void main(String args[]) throws ParseException{
+		//System.out.println(getDcount());
 		
 		Calendar c = Calendar.getInstance();
 		c.setTime(new Date());

@@ -12,6 +12,7 @@ import com.lottery.api.dto.AccountInfoVo;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.http.message.BasicNameValuePair;
+import org.apache.ibatis.annotations.Param;
 import org.apache.log4j.Logger;
 import org.dozer.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,7 @@ import com.lottery.api.dto.UserRechargeVo;
 import com.lottery.api.filter.LockedClientException;
 import com.lottery.api.util.Des3Util;
 import com.lottery.api.util.ToolsUtil;
+import com.lottery.orm.bo.AccountBank;
 import com.lottery.orm.bo.AccountDetail;
 import com.lottery.orm.bo.AccountInfo;
 import com.lottery.orm.bo.AccountRecharge;
@@ -50,9 +52,11 @@ import com.lottery.orm.bo.AccountRemark;
 import com.lottery.orm.bo.BankCash;
 import com.lottery.orm.bo.NoticeInfo;
 import com.lottery.orm.bo.OffAccountInfo;
+import com.lottery.orm.bo.SysAgency;
 import com.lottery.orm.bo.SysBene;
 import com.lottery.orm.bo.SysFee;
 import com.lottery.orm.dao.AccountAmountMapper;
+import com.lottery.orm.dao.AccountBankMapper;
 import com.lottery.orm.dao.AccountDetailMapper;
 import com.lottery.orm.dao.AccountInfoMapper;
 import com.lottery.orm.dao.AccountRechargeMapper;
@@ -63,14 +67,17 @@ import com.lottery.orm.dao.LotteryGameOrderMapper;
 import com.lottery.orm.dao.LotteryOrderMapper;
 import com.lottery.orm.dao.NoticeInfoMapper;
 import com.lottery.orm.dao.OffAccountInfoMapper;
+import com.lottery.orm.dao.SysAgencyMapper;
 import com.lottery.orm.dao.SysBeneMapper;
 import com.lottery.orm.dao.SysFeeMapper;
 import com.lottery.orm.dao.TradeInfoMapper;
+import com.lottery.orm.dto.AccBankDto;
 import com.lottery.orm.dto.AccountInfoDto;
 import com.lottery.orm.dto.AccountSimInfoDto;
 import com.lottery.orm.dto.RemarkDto;
 import com.lottery.orm.dto.UserRechargeDto;
 import com.lottery.orm.dto.UserRechargeResDto;
+import com.lottery.orm.result.AccBankResult;
 import com.lottery.orm.result.AccountListResult;
 import com.lottery.orm.result.AccountResult;
 import com.lottery.orm.result.AccountSimResult;
@@ -128,6 +135,9 @@ public class AccountInfoController {
 	private AccountAmountMapper accountAmountMapper;
 	
 	@Autowired
+	private AccountBankMapper accountBankMapper;
+	
+	@Autowired
 	private TradeInfoMapper tradeInfoMapper;
 	
 	@Autowired
@@ -153,6 +163,9 @@ public class AccountInfoController {
 	
 	@Autowired
 	private BankCashMapper bankCashMapper;
+	
+	@Autowired
+	private SysAgencyMapper sysAgencyMapper;
 	
 	@Autowired
 	private EasemobService easemobService;
@@ -300,6 +313,48 @@ public class AccountInfoController {
 
 	}
 	
+	@ApiOperation(value = "刷新账户信息", notes = "刷新账户信息", httpMethod = "POST")
+	@RequestMapping(value = "/getAccountRefresh", method = RequestMethod.POST)
+	@ResponseBody
+	public AccountSimResult getAccountRefresh(@ApiParam(value = "Json参数", required = true) @Validated @RequestBody LoginParamVo param) throws Exception {
+		AccountSimResult result = new AccountSimResult();
+		try {
+			String username = param.getUsername();
+			String password = param.getPassword();
+			
+			//参数合规性校验，必要参数不能为空;
+			if (ToolsUtil.isEmptyTrim(username)||ToolsUtil.isEmptyTrim(password)){
+			      result.fail(MessageTool.Code_2002);
+			      LOG.info(result.getMessage());
+			      return result;
+			}
+			param.setPassword(DigestUtils.md5Hex(password));
+		    AccountInfo paraInfo = mapper.map(param, AccountInfo.class);
+		    AccountInfo accountInfo = accountInfoMapper.selectByLogin(paraInfo);
+		    if(accountInfo!=null){	
+				if(accountInfo.getState().equals("0")){
+					throw new LockedClientException();
+				}   	
+				AccountSimInfoDto rAcDto = new AccountSimInfoDto();
+				rAcDto = mapper.map(accountInfo, AccountSimInfoDto.class);
+				rAcDto.setRecordid(CommonUtils.getCurrentMills());
+				result.success(rAcDto);
+		    }else {
+			      result.fail(MessageTool.Code_3001);
+			      LOG.info(result.getMessage());
+			      return result;
+		    }
+			//LOG.info(username+","+result.getMessage()+","+new Date());
+		} catch (LockedClientException e) {
+			throw new LockedClientException();
+		}catch (Exception e) {
+			result.error();
+			LOG.error(e.getMessage(),e);
+		}
+		return result;
+
+	}
+	
 	/*
 	@ApiOperation(value = "试玩获取", notes = "试玩获取", httpMethod = "POST")
 	@RequestMapping(value = "/getAccountDemoInfo", method = RequestMethod.POST)
@@ -392,7 +447,21 @@ public class AccountInfoController {
 			    accountInfo.setInputdate(new Date());
 			    accountInfo.setUsermoney(BigDecimal.valueOf(0.0));
 			    accountInfo.setPercentage((0.0));
+			    accountInfo.setLevel("7");
 			    accountInfoMapper.insertSelective(accountInfo);
+			    List<AccountInfo> aInfos = accountInfoMapper.selectAgencyInfo(accountInfo.getAccountid());
+			    for (int i=0;i<aInfos.size();i++){
+			    	AccountInfo af = new AccountInfo();
+			    	af = aInfos.get(i);
+			    	SysAgency sa = sysAgencyMapper.selectByAgency(af.getAccountid());
+			    	int level = 0;
+			    	if (null == sa)
+			    		level = 1;
+			    	else	
+			    		level = Integer.valueOf(sa.getLevel())+1;
+			    	af.setLevel(String.valueOf(level));
+			    	accountInfoMapper.updateLevel(af.getLevel(), af.getAccountid());
+			    }
 			    result.success();	
 			    //注册环信帐号
 			    /*
@@ -592,15 +661,36 @@ public class AccountInfoController {
 		RestResult result = new RestResult();
 		try {
 			//参数合规性校验，必要参数不能为空;
-			if (ToolsUtil.isEmptyTrim(String.valueOf(param.getAccountid()))||ToolsUtil.isEmptyTrim(param.getBankid())){
-			      result.fail("用户ID或者持卡人为空");
+			if (ToolsUtil.isEmptyTrim(String.valueOf(param.getAccountid()))||ToolsUtil.isEmptyTrim(param.getBankaddress())){
+			      result.fail("用户ID或者持卡人开户行相关信息为空");
 			      LOG.info(result.getMessage());
 			      return result;
 			}
-			AccountInfo aInfo = accountInfoMapper.selectByPrimaryKey(param.getAccountid());
-			aInfo = mapper.map(param, AccountInfo.class);
-			accountInfoMapper.updateByPrimaryKeySelective(aInfo);
+			AccountBank aBank = mapper.map(param, AccountBank.class);
+			accountBankMapper.insertSelective(aBank);
 			result.success();
+		}catch(Exception e){
+			result.error();
+			LOG.error(e.getMessage(),e);
+    	 }
+		return result;
+	}
+	
+	@ApiOperation(value = "获取已绑定银行卡信息", notes = "获取已绑定银行卡信息", httpMethod = "POST")
+	@RequestMapping(value = "/userBankList", method = RequestMethod.POST)
+	@ResponseBody
+	public AccBankResult getUserBankList(@ApiParam(value = "Json参数", required = true) @Validated @RequestBody AccountInfoVo param) throws Exception {
+		AccBankResult result = new AccBankResult();
+		try {
+			//参数合规性校验，必要参数不能为空;
+			if (ToolsUtil.isEmptyTrim(String.valueOf(param.getAccountid()))){
+			      result.fail("用户ID信息不能为空");
+			      LOG.info(result.getMessage());
+			      return result;
+			}
+			List<AccBankDto> aList = accountBankMapper.selectByAccount(param.getAccountid());
+			result.success(aList);
+			return result;
 		}catch(Exception e){
 			result.error();
 			LOG.error(e.getMessage(),e);

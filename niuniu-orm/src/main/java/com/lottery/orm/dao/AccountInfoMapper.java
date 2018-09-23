@@ -25,6 +25,7 @@ public interface AccountInfoMapper {
     int updateAccountState(@Param("state")String state,@Param("supusername")String supusername);
     
     int updateAccountSupuserState(@Param("state")String state,@Param("supusername")String supusername);
+    
   
     //get account info when login
     AccountInfo selectByLogin(AccountInfo record);
@@ -49,7 +50,15 @@ public interface AccountInfoMapper {
  
     int updateResultAccountMount(@Param("usermoney")BigDecimal usermoney,@Param("accountid")Integer accountid);
     
+    int updateAgencyAccountMount(@Param("usermoney")BigDecimal usermoney,@Param("accountid")Integer accountid);
+    
+    int updateAgencyShareMount(@Param("usermoney")BigDecimal usermoney,@Param("accountid")Integer accountid);
+   
+    int updateResultShareMount(@Param("usermoney")BigDecimal usermoney,@Param("accountid")Integer accountid);
+    
     int updateOffPercentage(@Param("percentage")Double percentage,@Param("accountid")Integer accountid);
     
     int updateOffState(@Param("state")String state,@Param("accountid")Integer accountid);
+    
+    int updateLevel(@Param("level")String level,@Param("accountid")Integer accountid);
 }

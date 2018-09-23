@@ -1,11 +1,13 @@
 package com.lottery.api.controller;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.log4j.Logger;
 import org.dozer.Mapper;
 import org.hibernate.validator.constraints.NotBlank;
@@ -29,6 +31,7 @@ import com.lottery.api.dto.ResultAmountVo;
 import com.lottery.api.dto.ResultParamVo;
 import com.lottery.api.dto.RoomAmountVo;
 import com.lottery.api.dto.RoomOrderVo;
+import com.lottery.orm.bo.AccountAmount;
 import com.lottery.orm.bo.AccountDetail;
 import com.lottery.orm.bo.AccountInfo;
 import com.lottery.orm.bo.LotteryGameOrder;
@@ -38,6 +41,8 @@ import com.lottery.orm.bo.LotteryOrder;
 import com.lottery.orm.bo.LotteryOrderDetail;
 import com.lottery.orm.bo.LotteryRound;
 import com.lottery.orm.bo.SysLimit;
+import com.lottery.orm.bo.SysRatio;
+import com.lottery.orm.dao.AccountAmountMapper;
 import com.lottery.orm.dao.AccountDetailMapper;
 import com.lottery.orm.dao.AccountInfoMapper;
 import com.lottery.orm.dao.CustomLotteryMapper;
@@ -49,12 +54,14 @@ import com.lottery.orm.dao.LotteryReportMapper;
 import com.lottery.orm.dao.LotteryRoomMapper;
 import com.lottery.orm.dao.LotteryRoundMapper;
 import com.lottery.orm.dao.SysLimitMapper;
+import com.lottery.orm.dao.SysRatioMapper;
 import com.lottery.orm.dto.HistoryOrderDto;
 import com.lottery.orm.dto.LotteryGameDetailDto;
 import com.lottery.orm.dto.LotteryNoidDto;
 import com.lottery.orm.dto.LotteryOrderDto;
 import com.lottery.orm.dto.LotteryRoomPlayerDto;
 import com.lottery.orm.dto.ResultAmountDto;
+import com.lottery.orm.dto.ResultDataDto;
 import com.lottery.orm.dto.RoomAmountDto;
 import com.lottery.orm.dto.RoomHisOrderDto;
 import com.lottery.orm.dto.RoomOrderDetailDto;
@@ -71,6 +78,7 @@ import com.lottery.orm.result.OrderAmountResult;
 import com.lottery.orm.result.OrderListResult;
 import com.lottery.orm.result.OrderResult;
 import com.lottery.orm.result.RestResult;
+import com.lottery.orm.result.ResultListResult;
 import com.lottery.orm.result.RoomAmountResult;
 import com.lottery.orm.result.RoomOrderDetaiResult;
 import com.lottery.orm.service.LotteryOrderService;
@@ -107,6 +115,9 @@ public class LotteryOrderController {
 	private AccountDetailMapper accountDetailMapper;
 	
 	@Autowired
+	private AccountAmountMapper accountAmountMapper;
+	
+	@Autowired
 	private LotteryReportMapper reportLotteryMapper;
 	
 	@Autowired
@@ -127,6 +138,9 @@ public class LotteryOrderController {
 	@Autowired
 	private LotteryRoomMapper lotteryRoomMapper;
 	
+	@Autowired
+	private SysRatioMapper sysRatioMapper;
+	
 	@ApiOperation(value = "新增投注记录", notes = "新增投注记录", httpMethod = "POST")
 	@RequestMapping(value = "/addLotteryOrder", method = RequestMethod.POST)
 	@ResponseBody
@@ -139,6 +153,10 @@ public class LotteryOrderController {
 			//System.out.println("投注开始时间------------------"+new Date());
 			LOG.info("投注开始时间------------------"+new Date()+".."+param.getAccountId());
 			LotteryGameRound lgr = lotteryGameRoundMapper.selectLotteryGameResult(order.getSid(), order.getLotteryterm());
+			if (null == lgr){
+				result.fail("该游戏或者期次不存在");
+				return result;
+			}
 			if (lgr.getOvertime().getTime()<(new java.util.Date()).getTime()){
 				result.fail("该游戏已封盘");
 				return result;
@@ -148,9 +166,10 @@ public class LotteryOrderController {
 				result.fail(MessageTool.Code_3001);
 				return result;
 			}
-
+			order.setResult(new SimpleDateFormat("yyyyMMddHHmmssS").format(new Date()));
 			for (OrderDetailVo orderDetailVo : param.getOrderDetails()) {
 				order.setOrdertime(new Date());
+				order.setLtdid(orderDetailVo.getLtdId());
 				order.setNoid(orderDetailVo.getNoId());
 				order.setOrderamount(orderDetailVo.getOrderAmount());
 				
@@ -160,13 +179,81 @@ public class LotteryOrderController {
 					return result;
 				}
 
-				//账户变动
-				lotteryOrderService.changeAccountAmount(accountInfo, order);
+				//剩余金额变动
+				SysRatio sr = sysRatioMapper.selectSingRatio(String.valueOf(order.getNoid()));
+				if (sr.getAmount()>order.getOrderamount().doubleValue()){
+					
+					//大小单双判断
+					if (order.getNoid()>10){
+						int noids = order.getNoid();
+						String asc = "asc";
+						if (order.getNoid()%2==1){
+							noids = noids+1;
+							asc = "asc";
+						}
+						else{
+							noids = noids -1;
+							asc = "desc";
+						}
+						List<LotteryGameOrder> lgs = lotteryGameOrderMapper.selectSumOrder(order.getSid(), order.getLotteryterm(), order.getNoid(), noids, asc);
+						LotteryGameOrder lg1 = new LotteryGameOrder();
+						lg1.setOrderamount(BigDecimal.valueOf(0.0));
+						LotteryGameOrder lg2 = new LotteryGameOrder();
+						lg2.setOrderamount(BigDecimal.valueOf(0.0));
+						for (int i=0;i<lgs.size();i++){
+							if (i==0)
+							  lg1 =  lgs.get(i);
+							else if (i==1)
+							  lg2 =  lgs.get(i);
+							if (lg1.getOrderamount().add(order.getOrderamount()).longValue()>sr.getAmounts()){
+								result.fail("下注金额不能超过购买总金额");
+								return result;
+							}
+						}
+						if (Math.abs(lg1.getOrderamount().add(order.getOrderamount()).subtract(lg2.getOrderamount()).longValue())>sr.getAmount()){
+							result.fail("下注金额不能超过剩余金额，请选择相对应号码投注（大小、双单）");
+							return result;
+						}
+						
+					}
+					
+					//账户变动
+					lotteryOrderService.changeAccountAmount(accountInfo, order);
+					
+					//投注
+					lotteryOrderService.insertLotteryGameOrder(order);
+					System.out.println("8------"+sr.getAmount()+"..."+order.getOrderamount());
+					if (order.getNoid()<=10)
+					    lotteryOrderService.updateLotteryAmount(sr, order);
+					//System.out.println("8------"+sr.getAmount());
+					//投注佣金
+					//accountInfo = accountInfoMapper.selectByPrimaryKey(accountInfo.getSupuserid());
+					if (!(accountInfo.getLevel().equals("0"))){
+						AccountAmount aa =  new AccountAmount();
+						aa.setAccountid(accountInfo.getSupuserid());
+						aa.setSid(order.getSid());
+						aa.setLotteryterm(order.getLotteryterm());
+						aa.setGains(order.getOrderamount());
+						aa.setStarttime(new Date());
+						aa.setOvertime(new Date());
+						//LotteryGameRound selectByAccountID(@Param("sid")Integer sid,@Param("accountid")Integer accountid,@Param("lotteryterm")String lotteryterm);
+					    
+						AccountAmount aas = accountAmountMapper.selectByAgency(aa.getAccountid(), aa.getSid(), aa.getLotteryterm());
+						if (null == aas)
+							accountAmountMapper.insertAgency(aa);
+						else{
+							aas.setGains(aa.getGains());
+							accountAmountMapper.updateAgency(aas);
+						}
+						accountInfoMapper.updateAgencyShareMount(order.getOrderamount(), accountInfo.getSupuserid());
+						accountInfoMapper.updateResultShareMount(BigDecimal.valueOf(0.0).subtract(order.getOrderamount()), accountInfo.getSupuserid());
+					}
+				}else{
+					result.fail("下注金额不能超过购买剩余金额");
+					return result;
+				}
 				
-				order.setResult(new SimpleDateFormat("yyyyMMddHHmmssS").format(new Date()));
-				//投注
-				lotteryOrderService.insertLotteryGameOrder(order);
-				
+
 			}
 			//System.out.println("投注结束时间------------------"+new Date());
 			LOG.info("投注结束时间------------------"+new Date()+".."+param.getAccountId());
@@ -257,6 +344,27 @@ public class LotteryOrderController {
 			LOG.info(result.getMessage());
 		} catch (Exception e) {
 			result.error();
+			LOG.error(e.getMessage(), e);
+		}
+		return result;
+
+	}
+	
+	@ApiOperation(value = "获取所有开奖结果", notes = "获取所有开奖结果", httpMethod = "POST")
+	@RequestMapping(value = "/getAllLottery", method = RequestMethod.POST)
+	@ResponseBody
+	public synchronized ResultListResult getAllLottery(
+			@ApiParam(value = "Json参数", required = true) @Validated @RequestBody CurResultParamVo param) throws Exception {
+        ResultListResult result = new ResultListResult();
+		
+		try {
+			//List<ResultDataDto> list = lotteryRoundService.getLotteryResult(param.getStartDate(), param.getEndDate(), param.getSid(), param.getBeginRow(), param.getPageSize());
+			List<ResultDataDto> roundList = new ArrayList<ResultDataDto>();
+			Date[] sTime = CommonUtils.getDateTime(param.getStartDate(), param.getEndDate());
+			roundList = lotteryGameRoundMapper.selectGameResult(sTime[0], sTime[1], param.getSid(), param.getBeginRow(), param.getPageSize());
+			result.success(roundList);
+		} catch (Exception e) {
+			result.fail(MessageTool.ErrorCode);
 			LOG.error(e.getMessage(), e);
 		}
 		return result;

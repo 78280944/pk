@@ -1,5 +1,6 @@
 package com.lottery.orm.dao;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
@@ -32,4 +33,12 @@ public interface LotteryGameRoundMapper {
     List<LotteryGameRound> selectLotteryOrderPlayer(@Param("startTime")Date startTime,@Param("endTime")Date endTime);
     
     List<LotteryGameRound> selectLotteryPlayoridle();
+    
+    int updateAmountRatio(@Param("ratio")BigDecimal ratio,@Param("refee")BigDecimal refee,@Param("cafee")BigDecimal cafee);
+    
+    int updateBigSmalRatio();
+    
+    LotteryGameRound selectByAccountID(@Param("sid")Integer sid,@Param("accountid")Integer accountid,@Param("lotteryterm")String lotteryterm);
+    
+    
 }

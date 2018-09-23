@@ -631,4 +631,35 @@ AND rmid NOT LIKE '9%') AND result IS NULL AND lotteryterm = #{lotteryterm,jdbcT
 AND rmid NOT LIKE '9%' AND playoridle = '2' and sid = #{sid,jdbcType=INTEGER}
   </select> 
   
+  <select id="selectWinAmount" resultMap="BaseResultMap">
+	SELECT 
+    <include refid="Base_Column_List" />
+    from lottery_game_order
+    where 
+    noid = #{noid,jdbcType=INTEGER}
+	and lotteryterm = #{lotteryterm,jdbcType=VARCHAR} 
+	and sid = #{sid,jdbcType=INTEGER}
+  </select> 
+  
+ <select id="selectNewRatio" resultMap="BaseResultMap">
+  SELECT noid,ltdid,SUM(orderamount) AS orderamount,SUM(orderamount)*(ltdid/100) AS lastamount 
+  FROM lottery_game_order a 
+  WHERE a.sid = 2001 AND a.lotteryterm=(SELECT lotteryterm FROM sys_ratio LIMIT 0,1 )
+  GROUP BY a.noid ORDER BY noid ASC
+  </select>
+  
+  <select id="selectSumOrder" resultMap="BaseResultMap">
+    SELECT  noid,sum(orderamount) as orderamount FROM lottery_game_order
+    WHERE sid = #{sid,jdbcType=INTEGER} AND lotteryterm = #{lotteryterm,jdbcType=VARCHAR}  AND noid IN (#{noid1,jdbcType=INTEGER},#{noid2,jdbcType=INTEGER})
+    GROUP BY noid order by noid ${asc1} 
+  </select>
+  
+  <update id="updateWinAmount">
+    update lottery_game_order 
+    set lastamount  = (case when noid = #{noid,jdbcType=INTEGER} then orderamount * (ltdid/100) else 0 end),opentime = now()
+    where
+    sid = #{sid,jdbcType=INTEGER} and lotteryterm = #{lotteryterm,jdbcType=VARCHAR} 
+    
+  </update>
+  
 </mapper>

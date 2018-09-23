@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.SysAgencyMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.SysAgency" >
+    <id column="SAID" property="said" jdbcType="INTEGER" />
+    <result column="LEVEL" property="level" jdbcType="VARCHAR" />
+    <result column="LEVALNAME" property="levalname" jdbcType="VARCHAR" />
+    <result column="AMOUNT" property="amount" jdbcType="INTEGER" />
+    <result column="AGRATIO" property="agratio" jdbcType="DECIMAL" />
+    <result column="ASRATIO" property="asratio" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SAID, LEVEL, LEVALNAME, AMOUNT, AGRATIO, ASRATIO
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_agency
+    where SAID = #{said,jdbcType=INTEGER}
+  </select>
+  
+   <select id="selectByAgency" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_agency a
+    WHERE a.amount> 
+    (SELECT COUNT(*) AS COUNT FROM account_info a WHERE state='1'
+     AND 
+     FIND_IN_SET(a.accountid, 
+	   (SELECT GROUP_CONCAT(LEVEL SEPARATOR ',') FROM (
+	      SELECT @Ids := (SELECT GROUP_CONCAT(c.accountid SEPARATOR ',') FROM account_info c WHERE FIND_IN_SET(supuserid, @Ids) ) LEVEL
+	      FROM account_info d
+	      JOIN (SELECT @Ids :=#{accountid,jdbcType=INTEGER}) temp1
+	      WHERE FIND_IN_SET(d.supuserid, @Ids)
+	   ) temp2 )) ) ORDER BY amount ASC LIMIT 0,1
+  </select> 
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_agency
+    where SAID = #{said,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.SysAgency" >
+    <selectKey resultType="java.lang.Integer" keyProperty="said" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_agency (LEVEL, LEVALNAME, AMOUNT, 
+      AGRATIO, ASRATIO)
+    values (#{level,jdbcType=VARCHAR}, #{levalname,jdbcType=VARCHAR}, #{amount,jdbcType=INTEGER}, 
+      #{agratio,jdbcType=DECIMAL}, #{asratio,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.SysAgency" >
+    <selectKey resultType="java.lang.Integer" keyProperty="said" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_agency
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="level != null" >
+        LEVEL,
+      </if>
+      <if test="levalname != null" >
+        LEVALNAME,
+      </if>
+      <if test="amount != null" >
+        AMOUNT,
+      </if>
+      <if test="agratio != null" >
+        AGRATIO,
+      </if>
+      <if test="asratio != null" >
+        ASRATIO,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="level != null" >
+        #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="levalname != null" >
+        #{levalname,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="agratio != null" >
+        #{agratio,jdbcType=DECIMAL},
+      </if>
+      <if test="asratio != null" >
+        #{asratio,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.SysAgency" >
+    update sys_agency
+    <set >
+      <if test="level != null" >
+        LEVEL = #{level,jdbcType=VARCHAR},
+      </if>
+      <if test="levalname != null" >
+        LEVALNAME = #{levalname,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        AMOUNT = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="agratio != null" >
+        AGRATIO = #{agratio,jdbcType=DECIMAL},
+      </if>
+      <if test="asratio != null" >
+        ASRATIO = #{asratio,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where SAID = #{said,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.SysAgency" >
+    update sys_agency
+    set LEVEL = #{level,jdbcType=VARCHAR},
+      LEVALNAME = #{levalname,jdbcType=VARCHAR},
+      AMOUNT = #{amount,jdbcType=INTEGER},
+      AGRATIO = #{agratio,jdbcType=DECIMAL},
+      ASRATIO = #{asratio,jdbcType=DECIMAL}
+    where SAID = #{said,jdbcType=INTEGER}
+  </update>
+</mapper>

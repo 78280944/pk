@@ -19,15 +19,14 @@ public class ResultDataDto {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date starttime;
 
-	@ApiModelProperty(value = "游戏封盘时间", required = true)
-	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
-	private Date overtime;
-
 	@ApiModelProperty(value = "游戏开奖时间", required = true)
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date opentime;
 	
-	@ApiModelProperty(value = "游戏人数", required = true)
+	@ApiModelProperty(value = "剩余期数", required = true)
+	private Integer dcount;
+	
+	@ApiModelProperty(value = "总期数", required = true)
 	private Integer gcount;
 	
 	public Integer getLgrid() {
@@ -62,13 +61,6 @@ public class ResultDataDto {
 		this.starttime = starttime;
 	}
 
-	public Date getOvertime() {
-		return overtime;
-	}
-
-	public void setOvertime(Date overtime) {
-		this.overtime = overtime;
-	}
 
 	public Date getOpentime() {
 		return opentime;
@@ -84,6 +76,14 @@ public class ResultDataDto {
 
 	public void setGcount(Integer gcount) {
 		this.gcount = gcount;
+	}
+
+	public Integer getDcount() {
+		return dcount;
+	}
+
+	public void setDcount(Integer dcount) {
+		this.dcount = dcount;
 	}
 	
 	

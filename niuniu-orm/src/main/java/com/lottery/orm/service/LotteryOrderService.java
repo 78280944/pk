@@ -26,6 +26,7 @@ import com.lottery.orm.bo.LotteryRound;
 import com.lottery.orm.bo.LotteryRoundItem;
 import com.lottery.orm.bo.OffAccountInfo;
 import com.lottery.orm.bo.SysLimit;
+import com.lottery.orm.bo.SysRatio;
 import com.lottery.orm.bo.TradeInfo;
 import com.lottery.orm.dao.AccountDetailMapper;
 import com.lottery.orm.dao.AccountInfoMapper;
@@ -36,6 +37,7 @@ import com.lottery.orm.dao.LotteryOrderMapper;
 import com.lottery.orm.dao.LotteryOrderResultMapper;
 import com.lottery.orm.dao.LotteryRoomDetailMapper;
 import com.lottery.orm.dao.OffAccountInfoMapper;
+import com.lottery.orm.dao.SysRatioMapper;
 import com.lottery.orm.dao.TradeInfoMapper;
 import com.lottery.orm.dto.QueryRoomDateDto;
 import com.lottery.orm.dto.ResultDataDto;
@@ -79,6 +81,8 @@ public class LotteryOrderService {
 	@Autowired
 	private LotteryRoomDetailMapper lotteryRoomDetailMapper;
 	
+	@Autowired
+	private SysRatioMapper sysRatioMapper;
 	
 	// 添加投注单
 	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor=Exception.class)
@@ -314,7 +318,6 @@ public class LotteryOrderService {
 	}
 	
 	//账户变动
-	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor=Exception.class)
 	public synchronized void changeAccountAmount(AccountInfo accountInfo,LotteryGameOrder order){
 		//账户变动明细
 		TradeInfo trade = new TradeInfo();
@@ -530,5 +533,10 @@ public class LotteryOrderService {
 	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor=Exception.class)
 	public synchronized void insertLotteryGameOrder(LotteryGameOrder record) throws Exception{
 		lotteryGameOrderMapper.insert(record);
+	}
+	
+	public synchronized void updateLotteryAmount(SysRatio sysRatio,LotteryGameOrder record) throws Exception{
+		sysRatio.setAmount((sysRatio.getAmount().longValue()-record.getOrderamount().longValue()));
+		sysRatioMapper.updateByPrimaryKeySelective(sysRatio);
 	}
 }

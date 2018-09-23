@@ -18,6 +18,9 @@ public class LotteryGameRound {
 
 	@ApiModelProperty(value = "游戏结果", required = true)
 	private String lotteryresult;
+	
+	@ApiModelProperty(value = "游戏获奖号码", required = true)
+	private String first;
 
 	@ApiModelProperty(value = "游戏开始时间", required = true)
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
@@ -43,6 +46,12 @@ public class LotteryGameRound {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date actclosetime;
 
+	@ApiModelProperty(value = "剩余期数", required = true)
+	private Integer dcount;
+	
+	@ApiModelProperty(value = "总期数", required = true)
+	private Integer gcount;
+	
 	public Integer getLgrid() {
 		return lgrid;
 	}
@@ -121,6 +130,30 @@ public class LotteryGameRound {
 
 	public void setActclosetime(Date actclosetime) {
 		this.actclosetime = actclosetime;
+	}
+
+	public String getFirst() {
+		return first;
+	}
+
+	public void setFirst(String first) {
+		this.first = first;
+	}
+
+	public Integer getDcount() {
+		return dcount;
+	}
+
+	public void setDcount(Integer dcount) {
+		this.dcount = dcount;
+	}
+
+	public Integer getGcount() {
+		return gcount;
+	}
+
+	public void setGcount(Integer gcount) {
+		this.gcount = gcount;
 	}
 
 

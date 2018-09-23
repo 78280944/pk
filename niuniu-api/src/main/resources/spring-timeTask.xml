@@ -55,7 +55,7 @@
 	<bean id="lotteryBJSCTaskJob"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="lotteryTaskService" />
-		<property name="targetMethod" value="getBJSCLotteryResult" />
+		<property name="targetMethod" value="getBjPKCLotteryResult" />
 		<property name="concurrent" value="false" />
 	</bean>
 	
@@ -78,6 +78,13 @@
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
 		<property name="targetObject" ref="lotteryTaskService" />
 		<property name="targetMethod" value="LotteryPlayerDelete" />
+		<property name="concurrent" value="false" />
+	</bean>
+	
+	<bean id="comRatioTaskJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<property name="targetObject" ref="lotteryTaskService" />
+		<property name="targetMethod" value="LotteryComRatio" />
 		<property name="concurrent" value="false" />
 	</bean>
 	
@@ -131,7 +138,7 @@
 	
 	<bean id="openBJSCCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
 		<property name="jobDetail" ref="lotteryBJSCTaskJob" />
-		<property name="cronExpression" value="0/13 * 9-0 * * ?" />
+		<property name="cronExpression" value="0/13 * * * * ?" />
 	</bean>
 	
 	<bean id="openXYFTCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
@@ -139,10 +146,14 @@
 		<property name="cronExpression" value="0/13 * 13-5 * * ?" />
 	</bean>
 	
-	
      <bean id="deletePlayerCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
 		<property name="jobDetail" ref="deletePlayerTaskJob" />
 		<property name="cronExpression" value="0 0 5 * * ?" />
+	</bean>
+	
+	<bean id="comRatioCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
+		<property name="jobDetail" ref="comRatioTaskJob" />
+		<property name="cronExpression" value="0 0/1 9-23 * * ?" />
 	</bean>
 	
 	<bean id="closeCQCronTrigger" class="com.lottery.api.timer.DataBaseCronTriggerBean">
@@ -176,10 +187,10 @@
 			<!-- 	<ref bean="openCQCronTrigger" />
 				<ref bean="openHLJCronTrigger" /> -->
 <!-- 				<ref bean="openTJCronTrigger" /> -->
-<!-- 				<ref bean="openYNCronTrigger" />
-				<ref bean="openXJCronTrigger" />
+				<!-- <ref bean="openYNCronTrigger" />
+				<ref bean="openXJCronTrigger" /> -->
 				<ref bean="openBJSCCronTrigger" />
-				<ref bean="openXYFTCronTrigger" /> -->
+			    <ref bean="comRatioCronTrigger" />
 			<!-- 	<ref bean="openValueCronTrigger" />
 		        <ref bean="deletePlayerCronTrigger" />
 		        <ref bean="outResultCronTrigger" />  -->

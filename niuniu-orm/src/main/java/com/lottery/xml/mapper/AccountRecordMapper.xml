@@ -10,6 +10,7 @@
     <result column="LEVEL" property="level" jdbcType="VARCHAR" />
     <result column="OFFTYPE" property="offtype" jdbcType="VARCHAR" />
   </resultMap>
+
   <sql id="Base_Column_List" >
     RECORDID, ACCOUNTID, INPUTTIME, IP, OUTTIME, LEVEL, OFFTYPE
   </sql>
@@ -19,6 +20,14 @@
     from account_record
     where RECORDID = #{recordid,jdbcType=VARCHAR}
   </select>
+  
+  <select id="selectUserAmount" resultMap="BaseResultMap" >
+    select 
+    count(*) as IP
+    from account_record
+    where (inputtime BETWEEN #{startTime,jdbcType=TIMESTAMP} and #{endTime,jdbcType=TIMESTAMP}) 
+  </select>
+  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete from account_record
     where RECORDID = #{recordid,jdbcType=VARCHAR}

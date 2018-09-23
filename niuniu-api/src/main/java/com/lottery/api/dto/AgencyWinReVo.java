@@ -13,6 +13,9 @@ public class AgencyWinReVo  extends PageParamVo {
 	@Min(value = 0, message = "用户ID格式不正确")
 	private Integer accountId;
 	
+	@ApiModelProperty(value = "佣金类型，1：代理佣金；2：分享佣金")
+	private String stype;
+	
 	@ApiModelProperty(value = "开始时间,格式:yyyy-MM-dd")
 	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
 	private Date startTime;
@@ -43,6 +46,14 @@ public class AgencyWinReVo  extends PageParamVo {
 
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
+	}
+
+	public String getStype() {
+		return stype;
+	}
+
+	public void setStype(String stype) {
+		this.stype = stype;
 	}
 	
 	

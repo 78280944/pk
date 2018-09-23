@@ -364,7 +364,9 @@
 	   ) temp2 )) 
   </update>
   
-  
+  <update id="updateLevel" >
+  UPDATE account_info a set a.level = #{level,jdbcType=VARCHAR} where a.accountid = #{accountid,jdbcType=INTEGER}
+   </update>
   <update id="updateOffState" >
    UPDATE account_info a SET state = (#{state,jdbcType=VARCHAR}),percentage = 0.0 WHERE (a.offtype = '1' or a.offtype = '2') AND 
      FIND_IN_SET(a.accountid, 
@@ -382,6 +384,27 @@
   set  USERMONEY = a.USERMONEY + (#{usermoney,jdbcType=DECIMAL})
   where ACCOUNTID = #{accountid,jdbcType=INTEGER}
   </update>
+  
+  <update id="updateAgencyAccountMount" >
+  update account_info a
+  set  percentage = a.percentage + (#{usermoney,jdbcType=DECIMAL})
+  where ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateAgencyShareMount" >
+  update account_info a
+  left join sys_agency b
+  on a.level = b.level
+  set  a.percentage = a.percentage + (#{usermoney,jdbcType=DECIMAL}*b.asratio)
+  where ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateResultShareMount" >
+  update account_info a
+  set  a.percentage = a.percentage + getShareMoney(#{accountid,jdbcType=INTEGER},#{usermoney,jdbcType=DECIMAL})
+  where ACCOUNTID = 1000
+  </update>
+  
   <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.AccountInfo" >
     update account_info
     set USERNAME = #{username,jdbcType=VARCHAR},
@@ -466,8 +489,10 @@
     where accountid = #{accountid,jdbcType=INTEGER} and password = #{password,jdbcType=VARCHAR}
   </select>
   
-  <select id="selectAgencyInfo" parameterType="java.lang.Integer" resultMap="BaseResultMap">  
-	SELECT T2.accountid, T2.username,T2.level,T2.offtype,T2.PERCENTAGE,T2.usermoney
+  <select id="selectAgencyInfo" parameterType="java.lang.Integer" resultMap="BaseResultMap"> 
+    SELECT T3.accountid,T3.username,T3.level,T4.agratio AS offtype,T3.PERCENTAGE,T3.usermoney
+    FROM 
+	(SELECT T2.accountid, T2.username,T2.level,T2.offtype,T2.PERCENTAGE,T2.usermoney
 	FROM ( 
 	<![CDATA[
 	    SELECT 
@@ -479,8 +504,10 @@
 	        account_info h 
 	    WHERE @r <> 0) T1 
 	JOIN account_info T2 
-	ON T1._id = T2.accountid WHERE accountid <>#{accountid,jdbcType=INTEGER}]]>
-	ORDER BY T1.lvl ASC   
+	ON T1._id = T2.accountid WHERE accountid <>#{accountid,jdbcType=INTEGER} and accountid<>1000]]>
+	ORDER BY T1.lvl ASC ) T3
+	LEFT JOIN sys_agency T4
+	ON T3.level = T4.level
   </select>
   
 </mapper>

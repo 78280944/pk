@@ -6,9 +6,12 @@
     <result column="ITEMNO" property="itemno" jdbcType="VARCHAR" />
     <result column="RATIO" property="ratio" jdbcType="DECIMAL" />
     <result column="AMOUNT" property="amount" jdbcType="DECIMAL" />
+    <result column="AMOUNTS" property="amounts" jdbcType="DECIMAL" />
+    <result column="LOTTERYTERM" property="lotteryterm" jdbcType="VARCHAR" />
+    <result column="REMARK" property="remark" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    SRID, ITEMNO, RATIO, AMOUNT
+    SRID, ITEMNO, RATIO, AMOUNT,AMOUNTS,LOTTERYTERM,REMARK
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -21,6 +24,11 @@
     <include refid="Base_Column_List" />
     from sys_ratio
   </select>
+  <select id="selectSingRatio" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_ratio where ITEMNO = #{itemno,jdbcType=VARCHAR}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from sys_ratio
     where SRID = #{srid,jdbcType=INTEGER}
@@ -29,9 +37,9 @@
     <selectKey resultType="java.lang.Integer" keyProperty="srid" order="AFTER" >
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into sys_ratio (ITEMNO, RATIO, AMOUNT
+    insert into sys_ratio (ITEMNO, RATIO, AMOUNT,AMOUNTS,LOTTERYTERM,REMARK
       )
-    values (#{itemno,jdbcType=VARCHAR}, #{ratio,jdbcType=DECIMAL}, #{amount,jdbcType=DECIMAL}
+    values (#{itemno,jdbcType=VARCHAR}, #{ratio,jdbcType=DECIMAL}, #{amount,jdbcType=DECIMAL},#{amounts,jdbcType=DECIMAL},#{lotteryterm,jdbcType=VARCHAR},#{remark,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.lottery.orm.bo.SysRatio" >
@@ -49,6 +57,15 @@
       <if test="amount != null" >
         AMOUNT,
       </if>
+      <if test="amounts != null" >
+        AMOUNTS,
+      </if>
+      <if test="lotteryterm != null" >
+        LOTTERYTERM,
+      </if>
+      <if test="remark != null" >
+        REMARK,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="itemno != null" >
@@ -59,6 +76,15 @@
       </if>
       <if test="amount != null" >
         #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="amounts != null" >
+        #{amounts,jdbcType=DECIMAL},
+      </if>
+      <if test="lotteryterm != null" >
+        #{lotteryterm,jdbcType=VARCHAR},
+      </if>
+     <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -74,6 +100,15 @@
       <if test="amount != null" >
         AMOUNT = #{amount,jdbcType=DECIMAL},
       </if>
+      <if test="amounts != null" >
+        AMOUNTS = #{amounts,jdbcType=DECIMAL},
+      </if>
+      <if test="lotteryterm != null" >
+        LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR},
+      </if> 
+      <if test="remark != null" >
+        REMARK =  #{remark,jdbcType=VARCHAR},
+      </if>
     </set>
     where SRID = #{srid,jdbcType=INTEGER}
   </update>
@@ -81,7 +116,20 @@
     update sys_ratio
     set ITEMNO = #{itemno,jdbcType=VARCHAR},
       RATIO = #{ratio,jdbcType=DECIMAL},
-      AMOUNT = #{amount,jdbcType=DECIMAL}
+      AMOUNT = #{amount,jdbcType=DECIMAL},
+      AMOUNTS = #{amounts,jdbcType=DECIMAL},
+      LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR},
+      REMARK = #{remark,jdbcType=VARCHAR}
     where SRID = #{srid,jdbcType=INTEGER}
   </update>
+  <update id="updateLotteryterm" >
+    update sys_ratio
+    set LOTTERYTERM = #{lotteryterm,jdbcType=VARCHAR},AMOUNT = AMOUNTS
+  </update>
+  
+  <update id="updateLotteryRatio" >
+    update sys_ratio
+    set RATIO = #{ratio,jdbcType=DECIMAL} where itemno = #{itemno,jdbcType=VARCHAR}
+  </update>
+  
 </mapper>

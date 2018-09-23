@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -14,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.lottery.orm.bo.AccountAmount;
 import com.lottery.orm.bo.AccountDetail;
 import com.lottery.orm.bo.AccountInfo;
+import com.lottery.orm.bo.LotteryGameOrder;
 import com.lottery.orm.bo.OffAccountInfo;
 import com.lottery.orm.bo.TradeInfo;
 import com.lottery.orm.dao.AccountAmountMapper;
@@ -22,6 +22,7 @@ import com.lottery.orm.dao.AccountInfoMapper;
 import com.lottery.orm.dao.OffAccountInfoMapper;
 import com.lottery.orm.dao.TradeInfoMapper;
 import com.lottery.orm.result.TradeListResult;
+import com.lottery.orm.util.EnumType;
 
 @Service
 @Transactional
@@ -98,14 +99,67 @@ public class TradeInfoService {
     */
     // 添加出入金款项并更新账户
     
-    public synchronized String addInoutTradeInfo(TradeInfo tradeInfo) {
+    public synchronized String addInoutTradeInfo(TradeInfo tradeInfo,Integer sid,String lotteryterm) {
     	AccountInfo aInfo = accountInfoMapper.selectByPrimaryKey(tradeInfo.getAccountid());
     	tradeInfo.setAccountamount(aInfo.getUsermoney().add(BigDecimal.valueOf(tradeInfo.getTradeamount())));
-    	if (String.valueOf(tradeInfo.getAccountid()).length()>=4)
-    	    tradeInfoMapper.insertSelective(tradeInfo);
+    	tradeInfoMapper.insertSelective(tradeInfo);
     	aInfo.setUsermoney(aInfo.getUsermoney().add(BigDecimal.valueOf(tradeInfo.getTradeamount())));
     	accountInfoMapper.updateByPrimaryKeySelective(aInfo);
-    	//accountInfoMapper.updateResultAccountMount(aInfo.getUsermoney(), aInfo.getAccountid());
+    	AccountAmount aa = accountAmountMapper.selectByAgency(aInfo.getAccountid(), sid, lotteryterm);
+    	if (null == aa){
+    		AccountAmount aas = new AccountAmount();
+    		aas.setAccountid(aInfo.getAccountid());
+    		aas.setSid(sid);
+    		aas.setLotteryterm(lotteryterm);
+    		aas.setLoss(BigDecimal.valueOf(tradeInfo.getTradeamount()));
+    		aas.setStarttime(new Date());
+    		aas.setOvertime(new Date());
+    		accountAmountMapper.insert(aas);
+    	}else{
+    		accountAmountMapper.updateWinAmount(aInfo.getAccountid(), sid, lotteryterm, BigDecimal.valueOf(tradeInfo.getTradeamount()));
+    	}
+    	//accountAmountMapper.updateWinAmount(tradeInfo.getAccountid(),sid, lotteryterm,BigDecimal.valueOf(tradeInfo.getTradeamount()));
+    	accountInfoMapper.updateResultAccountMount(BigDecimal.valueOf(0.0).subtract(BigDecimal.valueOf(tradeInfo.getTradeamount())), 1000);
+    	return "sucess";
+    }
+    
+    //代理
+    public synchronized String addAgencyTradeInfo(TradeInfo tradeInfo,Integer sid,String lotteryterm) {
+    	//System.out.println("78-----------"+tradeInfo.getAccountid());
+    	List<AccountInfo> aInfo = accountInfoMapper.selectAgencyInfo(tradeInfo.getAccountid());
+    	//System.out.println("78-----------"+aInfo.size());
+    	TradeInfo tradeInfos = tradeInfo;
+    	Double amount = tradeInfo.getTradeamount();
+    	for (int i = 0;i<aInfo.size();i++){
+    		AccountInfo ac = new AccountInfo();
+    		ac = aInfo.get(i);
+    		accountInfoMapper.updateAgencyAccountMount(BigDecimal.valueOf(amount*Double.valueOf(ac.getOfftype())), ac.getAccountid());
+    		tradeInfos.setRelativeid(EnumType.RalativeType.AgencyWin.NOID);
+    		tradeInfos.setRelativetype(EnumType.RalativeType.AgencyWin.ID);
+			tradeInfos.setAccountid(ac.getAccountid());
+			tradeInfos.setAccountamount(ac.getUsermoney());
+			
+			tradeInfos.setTradeamount(amount*Double.valueOf(ac.getOfftype()));
+			//System.out.println("78----23--rrr-----"+tradeInfos.getAccountid()+".."+tradeInfos.getTradeamount()+".."+tradeInfos.getAccountamount());
+			tradeInfos.setRemark("代理返现，accountid:"+tradeInfo.getAccountid()+",游戏号:"+sid+",游戏期数:"+lotteryterm);
+	    	tradeInfoMapper.insertSelective(tradeInfos);
+	        AccountAmount aa = new AccountAmount();
+	        aa.setAccountid(ac.getAccountid());
+	        aa.setSid(sid);
+	        aa.setLotteryterm(lotteryterm);
+	        aa.setEarns(BigDecimal.valueOf(amount*Double.valueOf(ac.getOfftype())));
+	        aa.setStarttime(new Date());
+	        aa.setOvertime(new Date());
+	    	//System.out.println("78------rrr-----"+ac.getAccountid()+".."+aa.getAccountid()+".."+aa.getEarns());
+	        AccountAmount aAmount = accountAmountMapper.selectByAgency(ac.getAccountid(), sid, lotteryterm);
+	        if (null == aAmount)
+	            accountAmountMapper.insert(aa);
+	        else{
+	        	aAmount.setEarns(((null==aAmount.getEarns())?BigDecimal.valueOf(0.0):aAmount.getEarns()).add(aa.getEarns()));
+	        	accountAmountMapper.updateByPrimaryKey(aAmount);
+	        }
+	        accountInfoMapper.updateAgencyAccountMount(BigDecimal.valueOf(0.0).subtract(BigDecimal.valueOf(amount*Double.valueOf(ac.getOfftype()))), 1000);
+    	}
     	return "sucess";
     }
     

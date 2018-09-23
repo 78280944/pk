@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.SysPayMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.SysPay" >
+    <id column="SPID" property="spid" jdbcType="INTEGER" />
+    <result column="STYPE" property="stype" jdbcType="VARCHAR" />
+    <result column="PAYNAME" property="payname" jdbcType="VARCHAR" />
+    <result column="ADDRESS" property="address" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="VARCHAR" />
+    <result column="INPUTTIME" property="inputtime" jdbcType="TIMESTAMP" />
+    <result column="INPUTUSERID" property="inputuserid" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    SPID, STYPE, PAYNAME, ADDRESS, STATE, INPUTTIME, INPUTUSERID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_pay
+    where SPID = #{spid,jdbcType=INTEGER}
+  </select>
+  <select id="getSysPayList" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from sys_pay
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sys_pay
+    where SPID = #{spid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.SysPay" >
+    <selectKey resultType="java.lang.Integer" keyProperty="spid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_pay (STYPE, PAYNAME, ADDRESS, 
+      STATE, INPUTTIME, INPUTUSERID
+      )
+    values (#{stype,jdbcType=VARCHAR}, #{payname,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{state,jdbcType=VARCHAR}, #{inputtime,jdbcType=TIMESTAMP}, #{inputuserid,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.SysPay" >
+    <selectKey resultType="java.lang.Integer" keyProperty="spid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into sys_pay
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="stype != null" >
+        STYPE,
+      </if>
+      <if test="payname != null" >
+        PAYNAME,
+      </if>
+      <if test="address != null" >
+        ADDRESS,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="inputtime != null" >
+        INPUTTIME,
+      </if>
+      <if test="inputuserid != null" >
+        INPUTUSERID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="stype != null" >
+        #{stype,jdbcType=VARCHAR},
+      </if>
+      <if test="payname != null" >
+        #{payname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="inputtime != null" >
+        #{inputtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inputuserid != null" >
+        #{inputuserid,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.SysPay" >
+    update sys_pay
+    <set >
+      <if test="stype != null" >
+        STYPE = #{stype,jdbcType=VARCHAR},
+      </if>
+      <if test="payname != null" >
+        PAYNAME = #{payname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        ADDRESS = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        STATE = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="inputtime != null" >
+        INPUTTIME = #{inputtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="inputuserid != null" >
+        INPUTUSERID = #{inputuserid,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where SPID = #{spid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.SysPay" >
+    update sys_pay
+    set STYPE = #{stype,jdbcType=VARCHAR},
+      PAYNAME = #{payname,jdbcType=VARCHAR},
+      ADDRESS = #{address,jdbcType=VARCHAR},
+      STATE = #{state,jdbcType=VARCHAR},
+      INPUTTIME = #{inputtime,jdbcType=TIMESTAMP},
+      INPUTUSERID = #{inputuserid,jdbcType=VARCHAR}
+    where SPID = #{spid,jdbcType=INTEGER}
+  </update>
+</mapper>

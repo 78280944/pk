@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lottery.orm.dao.AccountBankMapper" >
+  <resultMap id="BaseResultMap" type="com.lottery.orm.bo.AccountBank" >
+    <id column="ABID" property="abid" jdbcType="INTEGER" />
+    <id column="ACCOUNTID" property="accountid" jdbcType="INTEGER" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="BANKNAME" property="bankname" jdbcType="VARCHAR" />
+    <result column="BANKNO" property="bankno" jdbcType="VARCHAR" />
+    <result column="BANKADDRESS" property="bankaddress" jdbcType="VARCHAR" />
+    <result column="BANKID" property="bankid" jdbcType="VARCHAR" />
+    <result column="BANKACCOUNT" property="bankaccount" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMap" type="com.lottery.orm.dto.AccBankDto" >
+    <id column="ABID" property="abid" jdbcType="INTEGER" />
+    <id column="ACCOUNTID" property="accountid" jdbcType="INTEGER" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="BANKNO" property="bankno" jdbcType="VARCHAR" />
+    <result column="BANKADDRESS" property="bankaddress" jdbcType="VARCHAR" />
+    <result column="BANKACCOUNT" property="bankaccount" jdbcType="VARCHAR" />
+    <result column="PHONE" property="phone" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ABID, ACCOUNTID, USERNAME, BANKNAME, BANKNO, BANKADDRESS, BANKID, BANKACCOUNT, PHONE
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="com.lottery.orm.bo.AccountBankKey" >
+    select 
+    <include refid="Base_Column_List" />
+    from account_bank
+    where ABID = #{abid,jdbcType=INTEGER}
+      and ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </select>
+  <select id="selectByAccount" resultMap="ResultMap">
+    select 
+    ABID, ACCOUNTID, USERNAME, BANKNO, BANKADDRESS, BANKACCOUNT, PHONE
+    from account_bank
+    where  ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.lottery.orm.bo.AccountBankKey" >
+    delete from account_bank
+    where ABID = #{abid,jdbcType=INTEGER}
+      and ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.lottery.orm.bo.AccountBank" >
+    <selectKey resultType="java.lang.Integer" keyProperty="abid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into account_bank (ACCOUNTID, USERNAME, BANKNAME, 
+      BANKNO, BANKADDRESS, BANKID, 
+      BANKACCOUNT, PHONE)
+    values (#{accountid,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{bankname,jdbcType=VARCHAR}, 
+      #{bankno,jdbcType=VARCHAR}, #{bankaddress,jdbcType=VARCHAR}, #{bankid,jdbcType=VARCHAR}, 
+      #{bankaccount,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lottery.orm.bo.AccountBank" >
+    <selectKey resultType="java.lang.Integer" keyProperty="abid" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into account_bank
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        ACCOUNTID,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="bankname != null" >
+        BANKNAME,
+      </if>
+      <if test="bankno != null" >
+        BANKNO,
+      </if>
+      <if test="bankaddress != null" >
+        BANKADDRESS,
+      </if>
+      <if test="bankid != null" >
+        BANKID,
+      </if>
+      <if test="bankaccount != null" >
+        BANKACCOUNT,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="accountid != null" >
+        #{accountid,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankno != null" >
+        #{bankno,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaddress != null" >
+        #{bankaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="bankid != null" >
+        #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccount != null" >
+        #{bankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.lottery.orm.bo.AccountBank" >
+    update account_bank
+    <set >
+      <if test="username != null" >
+        USERNAME = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="bankname != null" >
+        BANKNAME = #{bankname,jdbcType=VARCHAR},
+      </if>
+      <if test="bankno != null" >
+        BANKNO = #{bankno,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaddress != null" >
+        BANKADDRESS = #{bankaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="bankid != null" >
+        BANKID = #{bankid,jdbcType=VARCHAR},
+      </if>
+      <if test="bankaccount != null" >
+        BANKACCOUNT = #{bankaccount,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        PHONE = #{phone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ABID = #{abid,jdbcType=INTEGER}
+      and ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.lottery.orm.bo.AccountBank" >
+    update account_bank
+    set USERNAME = #{username,jdbcType=VARCHAR},
+      BANKNAME = #{bankname,jdbcType=VARCHAR},
+      BANKNO = #{bankno,jdbcType=VARCHAR},
+      BANKADDRESS = #{bankaddress,jdbcType=VARCHAR},
+      BANKID = #{bankid,jdbcType=VARCHAR},
+      BANKACCOUNT = #{bankaccount,jdbcType=VARCHAR},
+      PHONE = #{phone,jdbcType=VARCHAR}
+    where ABID = #{abid,jdbcType=INTEGER}
+      and ACCOUNTID = #{accountid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,41 +1,24 @@
-package com.lottery.api.dto;
+package com.lottery.orm.dto;
 
-import javax.validation.constraints.NotNull;
-
+import com.lottery.orm.bo.AccountBankKey;
 import com.wordnik.swagger.annotations.ApiModelProperty;
 
-public class AccountBankVo {
+public class AccBankDto extends AccountBankKey {
 	
-	@ApiModelProperty(value = "用户ID", required = true)
-	@NotNull(message = "用户ID不能为空")
-	private Integer accountid;
-
 	@ApiModelProperty(value = "用户名", required = true)
-	@NotNull(message = "用户名不能为空")
-    private String username;
+	private String username;
 
 	@ApiModelProperty(value = "持卡人", required = true)
-    private String bankno;
-	
+	private String bankno;
+
 	@ApiModelProperty(value = "开户行", required = true)
-    private String bankaddress;
-	
-	@ApiModelProperty(value = "银行卡号", required = true)
+	private String bankaddress;
+
+	@ApiModelProperty(value = "账号", required = true)
     private String bankaccount;
-	
-	@ApiModelProperty(value = "手机号", required = true)
-    private String phone;
-	
-	@ApiModelProperty(value = "IP", required = true)
-    private String ip;
 
-	public Integer getAccountid() {
-		return accountid;
-	}
-
-	public void setAccountid(Integer accountid) {
-		this.accountid = accountid;
-	}
+	@ApiModelProperty(value = "电话", required = true)
+	private String phone;
 
 	public String getUsername() {
 		return username;
@@ -43,14 +26,6 @@ public class AccountBankVo {
 
 	public void setUsername(String username) {
 		this.username = username;
-	}
-
-	public String getIp() {
-		return ip;
-	}
-
-	public void setIp(String ip) {
-		this.ip = ip;
 	}
 
 	public String getBankno() {
@@ -85,5 +60,6 @@ public class AccountBankVo {
 		this.phone = phone;
 	}
 
-
+	
+	
 }

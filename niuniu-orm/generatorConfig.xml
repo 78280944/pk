@@ -52,13 +52,13 @@
 	    </table>  -->
 		
 		
-		<table tableName="sys_ratio" domainObjectName="SysRatio"
+		<table tableName="sys_pay" domainObjectName="SysPay"
 	    	enableCountByExample="false"
 			enableUpdateByExample="false" 
 			enableDeleteByExample="false"
 			enableSelectByExample="false" 
 			selectByExampleQueryId="false">
-			<generatedKey column="srid" sqlStatement="MySql" identity="true"/>
+			<generatedKey column="spid" sqlStatement="MySql" identity="true"/>
 	    </table>
 
 <!-- 	    <table tableName="offaccount_info" domainObjectName="OffAccountInfo"

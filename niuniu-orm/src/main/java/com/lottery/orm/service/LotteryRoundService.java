@@ -60,6 +60,7 @@ public class LotteryRoundService {
 	@Autowired
 	private TSTimeTaskMapper TSTimeTaskMapper;
 	
+	
 	// 添加投注单
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
 	public boolean addLotteryRound(LotteryRound round) throws Exception {
@@ -281,4 +282,7 @@ public class LotteryRoundService {
 		}
 		return lgc;
 	}
+	
+	
+	
 }

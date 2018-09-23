@@ -13,8 +13,9 @@ public interface EnumType {
 	    public final static String enumDesc = "游戏";
 	  }
   enum LotteryType {
+
 	  CQSSC("1001","重庆时时彩"),TJSSC("1002","天津时时彩"),HLJSSC("1003","黑龙江时时彩"),XJSSC("1004","新疆时时彩"),
-	  YNSSC("1005","云南时时彩"),BJSC("2001","北京赛车"),XYFT("2002","幸运飞艇"),
+	  YNSSC("1005","云南时时彩"),BJPK("2001","北京PK10"),XYFT("2002","幸运飞艇"),
 	  CQ("01", "重庆快乐十分玉米籽"),GD("02", "广东快乐十分玉米籽"),TJ("03", "天津快乐十分玉米籽");
 	 
     private LotteryType(String ID, String NAME) {
@@ -100,7 +101,7 @@ public interface EnumType {
   
   enum RalativeType {
     Trade("Trade",1001,"下注"),In("In", 1002,"入金"),Out("Out", 1003,"出金"), Commision("Commision",1004, "公司损益"),
-    Order("Order",1005, "下注本金"), PlayerWin("PlayerWin", 1006,"会员输赢"),AgencyWin("AgencyWin",1007, "代理输赢"), Return("Return", 1008,"返利");
+    Order("Order",1005, "下注本金"), PlayerWin("PlayerWin", 1006,"会员输赢"),AgencyWin("AgencyWin",1007, "代理佣金"), Return("Return", 1008,"分享佣金");
     private RalativeType(String ID, int NOID,String NAME) {
       this.ID = ID;
       this.NOID  = NOID;
