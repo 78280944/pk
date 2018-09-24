@@ -623,6 +623,12 @@ public class LotteryTaskService {
 									lgr1.setDcount(CommonUtils.getDcount(lgr1.getOpentime()));
 									lgr1.setGcount(191);
 									lotteryGameRoundMapper.insertSelective(lgr1);
+									LotteryGame lr = new LotteryGame();
+									lr.setSid(Integer.valueOf(lgr1.getSid()));
+									lr.setGameterm(lgr1.getLotteryterm());
+									lr.setGamestarttime(lgr1.getStarttime());
+									lr.setGameovertime(lgr1.getOvertime());
+									lotteryGameMapper.updateLotteryTime(lr.getSid(),lr.getGameterm(),lr.getGamestarttime(), lr.getGameovertime());
 									
 							        //更新赔率
 									LotteryResultHandleRatio(lgr1);

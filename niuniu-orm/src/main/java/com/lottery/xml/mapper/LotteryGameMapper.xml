@@ -33,7 +33,7 @@
     from 
     lottery_game a
     right join
-    (SELECT lotteryresult,sid FROM lottery_Game_round WHERE sid = #{sid,jdbcType=INTEGER} ORDER BY opentime DESC LIMIT 1,1) b
+    (SELECT lotteryresult,sid FROM lottery_game_round WHERE sid = #{sid,jdbcType=INTEGER} ORDER BY opentime DESC LIMIT 1,1) b
     on a.sid = b.sid 
   </select>  
   
