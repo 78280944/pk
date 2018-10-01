@@ -23,6 +23,10 @@ public class ResultDataDto {
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
 	private Date opentime;
 	
+	@ApiModelProperty(value = "系统当前时间", required = true)
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+	private Date systime;
+	
 	@ApiModelProperty(value = "剩余期数", required = true)
 	private Integer dcount;
 	
@@ -84,6 +88,14 @@ public class ResultDataDto {
 
 	public void setDcount(Integer dcount) {
 		this.dcount = dcount;
+	}
+
+	public Date getSystime() {
+		return systime;
+	}
+
+	public void setSystime(Date systime) {
+		this.systime = systime;
 	}
 	
 	

@@ -23,6 +23,9 @@ public class AccountBankVo {
 	@ApiModelProperty(value = "银行卡号", required = true)
     private String bankaccount;
 	
+	@ApiModelProperty(value = "开户行所在城市,例如长沙市", required = true)
+    private String banklocityname;
+	
 	@ApiModelProperty(value = "手机号", required = true)
     private String phone;
 	
@@ -83,6 +86,14 @@ public class AccountBankVo {
 
 	public void setPhone(String phone) {
 		this.phone = phone;
+	}
+
+	public String getBanklocityname() {
+		return banklocityname;
+	}
+
+	public void setBanklocityname(String banklocityname) {
+		this.banklocityname = banklocityname;
 	}
 
 

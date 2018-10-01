@@ -16,12 +16,12 @@ public class UserRechargeVo {
     @NotNull(message = "用户名不能为空")
     private String username;
 	
-	@ApiModelProperty(value = "产品编号，QQ92,网银32", required = true)
-    @NotNull(message = "产品编号不能为空")
+	@ApiModelProperty(value = "充值类型编号，网银17", required = true)
+    @NotNull(message = "充值类型不能为空")
 	private String productId;
 	
-	@ApiModelProperty(value = "交易金额，单位为分，1元传1", required = true)
-    @NotNull(message = "交易金额不能为空")
+	@ApiModelProperty(value = "交易金额，单位为元，1元传1", required = true)
+    @NotNull(message = "交易金额不能为空,不能有小数")
 	private Double transAmt;
 	
 	@ApiModelProperty(value = "IP", required = true)

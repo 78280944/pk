@@ -604,7 +604,7 @@ public class LotteryTaskService {
 						openterm = tempObj.getString("expect");
 						LotteryGameRound lgr1 = new LotteryGameRound();
 						lgr1.setSid(Integer.valueOf(lotteryType));
-						lgr1.setLotteryterm(String.valueOf(Integer.valueOf(openterm)+1));
+						lgr1.setLotteryterm(String.valueOf(Integer.valueOf(openterm)));
 						lgr1.setStarttime(CommonUtils.getStringToMillon(opentime,0));
 						//lgr1.setLotteryresult(opencodes);
 						//lgr1.setFirst(opencodes.substring(0, 2));
@@ -615,10 +615,10 @@ public class LotteryTaskService {
 						//System.out.println("9--2222678--"+lgr1.getFirst()+".."+lgr1.getLotteryterm()+".."+lgr1.getLotteryresult()+"..."+t);
 						if (t==0){
 							//下期
-							LotteryGameRound gRound1 = lotteryRoundService.getLotteryTermResult(Integer.valueOf(lotteryType), lgr1.getLotteryterm());
+							LotteryGameRound gRound1 = lotteryRoundService.getLotteryTermResult(Integer.valueOf(lotteryType), String.valueOf(Integer.valueOf(openterm)+1));
 							if (gRound1==null){
 									//System.out.println("9--678--"+lgr1.getSid()+".."+lgr1.getLotteryterm()+".."+lgr1.getLotteryresult());
-									
+								    lgr1.setLotteryterm(String.valueOf(Integer.valueOf(openterm)+1));
 									lgr1.setLotteryresult(null);
 									lgr1.setDcount(CommonUtils.getDcount(lgr1.getOpentime()));
 									lgr1.setGcount(191);
@@ -632,9 +632,10 @@ public class LotteryTaskService {
 									
 							        //更新赔率
 									LotteryResultHandleRatio(lgr1);
+									lgr1.setLotteryterm(String.valueOf(Integer.valueOf(openterm)));
 							}
 									
-						}else{
+						}
 							LotteryGameRound gRound1 = lotteryRoundService.getLotteryTermResult(lgr1.getSid(), lgr1.getLotteryterm());
 							if (gRound1!=null){
 								//System.out.println("9----------------"+lgr1.getLotteryresult());
@@ -654,7 +655,7 @@ public class LotteryTaskService {
 						  }
 					  }
 					
-								}
+								
 			
 							}
 				return true;

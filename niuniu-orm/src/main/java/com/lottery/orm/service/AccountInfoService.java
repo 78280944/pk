@@ -97,7 +97,6 @@ public class AccountInfoService {
 	
 	
 	//打款金额检查
-	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor=Exception.class)
 	public synchronized String checkDoMoneyInfo(AccountInfo accountInfo,Double transAmt) {
 		//下注金额checkDoMoneyInfo最大值
 		RoomOrderDto  rd  = new RoomOrderDto();
@@ -114,13 +113,14 @@ public class AccountInfoService {
 			return "账户金额不足，请重新输入取现金额";
 		return "true";
 	}
-	@Transactional(propagation = Propagation.REQUIRES_NEW, rollbackFor=Exception.class)
+	
+	
 	public synchronized String checkResult(String orderNo,String payNo,String transAmt,String orderDate,String respCode,String respDesc){
 		LOG.info("返回时间："+new Date()+"，订单编号："+orderNo+",支付订单号："+payNo+",交易金额："+transAmt+",返回消息代码："+respCode+",消息描述："+respDesc);
 		AccountRecharge aRecharge = new AccountRecharge();
     	aRecharge.setOrderno(orderNo);
 		aRecharge.setPayno(payNo);
-		aRecharge.setTransamt((Double.valueOf(transAmt).intValue())/100);
+		aRecharge.setTransamt((Double.valueOf(transAmt).intValue()));
 		aRecharge.setOrderdate(orderDate);
 		aRecharge.setRespcode(respCode);
 		aRecharge.setRespdesc(respDesc);
@@ -132,7 +132,7 @@ public class AccountInfoService {
     	}
     	if (ar.getOrderstate().equals("01"))
     		return "success";
-    	if (null!=payNo&&(aRecharge.getRespcode().equals("0000"))){
+    	if (null!=payNo&&(aRecharge.getRespcode().equals("00"))){
     		SysBene sb = sysBeneMapper.selectByAmount(BigDecimal.valueOf(aRecharge.getTransamt()));
 			Double bene = 0.0;
 			Double amount = 0.0;
@@ -141,7 +141,7 @@ public class AccountInfoService {
 			}else{
 				bene = sb.getBenefit().doubleValue();
 			}
-			SysFee sf = sysFeeMapper.selectByPrimaryKey(1001);
+			SysFee sf = sysFeeMapper.selectByPrimaryKey(1000);
 			ar.setDonatamt(bene);//赠送金额
 			ar.setFee(ar.getTransamt()*sf.getRefee().doubleValue());//充值费用
 			ar.setPayamt(ar.getTransamt()-ar.getFee());//实际金额
@@ -167,7 +167,7 @@ public class AccountInfoService {
 	    	ar.setOrderstate("01");//成功
 	    	accountRechargeMapper.updateByRechargeMessage(ar);
 		    return "success";
-	   }else if (aRecharge.getRespcode().equals("P000")){
+	   }else if (aRecharge.getRespcode().equals("P000")||aRecharge.getRespcode().equals("02")||aRecharge.getRespcode().equals("03")){
 		   
 	   }else {
 		   ar.setOrderstate("02");

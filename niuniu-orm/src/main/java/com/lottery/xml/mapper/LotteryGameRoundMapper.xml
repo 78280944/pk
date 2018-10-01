@@ -23,6 +23,7 @@
     <result column="LOTTERYRESULT" jdbcType="VARCHAR" property="lotteryresult" />
     <result column="STARTTIME" jdbcType="TIMESTAMP" property="starttime" />
     <result column="OPENTIME" jdbcType="TIMESTAMP" property="opentime" />
+    <result column="SYSTIME" jdbcType="TIMESTAMP" property="systime" />
     <result column="DCOUNT" jdbcType="INTEGER" property="dcount" />
     <result column="GCOUNT" jdbcType="INTEGER" property="gcount" />
   </resultMap>
@@ -217,7 +218,7 @@
   
     <select id="selectGameResult" resultMap="AllResultMap">
     select 
-    a.lgrid,a.lotteryterm,a.lotteryresult,a.starttime,a.overtime,a.opentime,a.dcount,a.gcount
+    a.lgrid,a.lotteryterm,a.lotteryresult,a.starttime,a.overtime, a.opentime,now() as systime,a.dcount,a.gcount
     from lottery_game_round a
     where a.sid = #{sid,jdbcType=INTEGER}
     order by lgrid desc 

@@ -8,109 +8,41 @@ import com.wordnik.swagger.annotations.ApiModelProperty;
 public class UserCashVo {
 	
 	@ApiModelProperty(value = "用户ID", required = true)
-    @NotNull(message = "用户ID不能为空")
-    @Min(value=0, message = "用户ID格式不正确")
-    private Integer accountId;
+	@NotNull(message = "用户ID不能为空")
+	private Integer accountid;
+
+	@ApiModelProperty(value = "用户名", required = true)
+	@NotNull(message = "用户名不能为空")
+    private String username;
+
+	@ApiModelProperty(value = "持卡人", required = true)
+    private String bankno;
+	
+	@ApiModelProperty(value = "开户行", required = true)
+    private String bankaddress;
+	
+	@ApiModelProperty(value = "银行卡号", required = true)
+    private String bankaccount;
+	
+	@ApiModelProperty(value = "开户行所在城市,例如长沙市", required = true)
+    private String banklocityname;
+	
+	@ApiModelProperty(value = "手机号", required = true)
+    private String phone;
 
 	@ApiModelProperty(value = "提现金额", required = true)
     @NotNull(message = "提现金额不能为空")
     private Double transAmt;
 	
-	@ApiModelProperty(value = "用户名", required = true)
-    @NotNull(message = "用户名不能为空")
-    private String username;
-	
-	@ApiModelProperty(value = "开户用户名", required = true)
-    @NotNull(message = "开户用户名不能为空")
-    private String bankId;
-
-	
-	@ApiModelProperty(value = "银行名称", required = true)
-    @NotNull(message = "银行名称不能为空")
-    private String bankName;
-
-	@ApiModelProperty(value = "银行账户", required = true)
-    @NotNull(message = "银行账户不能为空")
-    private String bankAccount;
-
-	@ApiModelProperty(value = "开户行/地址", required = true)
-    @NotNull(message = "开户行/地址不能为空")
-    private String bankAddress;
-	
-	@ApiModelProperty(value = "银行编码,例如工商银行，1",required = true)
-    @NotNull(message = "银行编码不能为空")
-	private String bankNo;
-
-	@ApiModelProperty(value = "银行卡开户省份,福建省，上海市", required = true)
-    @NotNull(message = "银行卡开户省份不能为空")
-	private String bankloproname;
-	
-	@ApiModelProperty(value = "银行卡开户城市,厦门市，上海市", required = true)
-    @NotNull(message = "银行卡开户城市不能为空")
-	private String banklocityname;
-
-	@ApiModelProperty(value = "银行预留手机号", required = true)
-    @NotNull(message = "银行预留手机号不能为空")
-	private String phoneno;
-	
 	@ApiModelProperty(value = "IP", required = true)
     private String orderIp;
-	
-	public Integer getAccountId() {
-		return accountId;
+
+	public Integer getAccountid() {
+		return accountid;
 	}
 
-	public void setAccountId(Integer accountId) {
-		this.accountId = accountId;
-	}
-
-	public String getBankId() {
-		return bankId;
-	}
-
-	public void setBankId(String bankId) {
-		this.bankId = bankId;
-	}
-
-	public String getBankName() {
-		return bankName;
-	}
-
-	public void setBankName(String bankName) {
-		this.bankName = bankName;
-	}
-
-	public String getBankAccount() {
-		return bankAccount;
-	}
-
-	public void setBankAccount(String bankAccount) {
-		this.bankAccount = bankAccount;
-	}
-
-	public String getBankAddress() {
-		return bankAddress;
-	}
-
-	public void setBankAddress(String bankAddress) {
-		this.bankAddress = bankAddress;
-	}
-
-	public Double getTransAmt() {
-		return transAmt;
-	}
-
-	public void setTransAmt(Double transAmt) {
-		this.transAmt = transAmt;
-	}
-
-
-	public String getOrderIp() {
-		return orderIp;
-	}
-
-	public void setOrderIp(String orderIp) {
-		this.orderIp = orderIp;
+	public void setAccountid(Integer accountid) {
+		this.accountid = accountid;
 	}
 
 	public String getUsername() {
@@ -121,20 +53,28 @@ public class UserCashVo {
 		this.username = username;
 	}
 
-	public String getBankNo() {
-		return bankNo;
+	public String getBankno() {
+		return bankno;
 	}
 
-	public void setBankNo(String bankNo) {
-		this.bankNo = bankNo;
+	public void setBankno(String bankno) {
+		this.bankno = bankno;
 	}
 
-	public String getBankloproname() {
-		return bankloproname;
+	public String getBankaddress() {
+		return bankaddress;
 	}
 
-	public void setBankloproname(String bankloproname) {
-		this.bankloproname = bankloproname;
+	public void setBankaddress(String bankaddress) {
+		this.bankaddress = bankaddress;
+	}
+
+	public String getBankaccount() {
+		return bankaccount;
+	}
+
+	public void setBankaccount(String bankaccount) {
+		this.bankaccount = bankaccount;
 	}
 
 	public String getBanklocityname() {
@@ -145,12 +85,28 @@ public class UserCashVo {
 		this.banklocityname = banklocityname;
 	}
 
-	public String getPhoneno() {
-		return phoneno;
+	public String getPhone() {
+		return phone;
 	}
 
-	public void setPhoneno(String phoneno) {
-		this.phoneno = phoneno;
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Double getTransAmt() {
+		return transAmt;
+	}
+
+	public void setTransAmt(Double transAmt) {
+		this.transAmt = transAmt;
+	}
+
+	public String getOrderIp() {
+		return orderIp;
+	}
+
+	public void setOrderIp(String orderIp) {
+		this.orderIp = orderIp;
 	}
 	
 	

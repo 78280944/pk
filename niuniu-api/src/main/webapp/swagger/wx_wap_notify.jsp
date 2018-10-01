@@ -11,12 +11,19 @@
 <%@ page import="org.apache.http.entity.StringEntity" %>
 <%@ page import="com.alibaba.fastjson.JSONObject" %>
 <%@ page import="com.colotnet.util.SignUtils" %>
+<%@ page import="java.io.UnsupportedEncodingException" %>
+<%@ page import="com.jetpay.model.netpayment.ResponseNetPayMent" %>
+<%@ page import="com.jetpay.service.netpayment.NetPayMentService" %>
+<%@ page import="com.jetpay.utils.XmlObjMcUtil" %>
+<%@ page import="com.jfinal.core.Controller" %>
+
 
 <%
 	 //request.setCharacterEncoding("UTF-8");
 try {
 	 System.out.println("----------- Payment system --> 异步通知URL，网关接口参数(notifyUrl) .....  ------>  wx_wap_notify.jsp");
 	 byte[] bytes = new byte[1024 * 1024];  
+	 System.out.println("request:"+request.getContextPath());
      InputStream is = request.getInputStream();  
      int nRead = 1;  
      int nTotalRead = 0;  
@@ -29,25 +36,50 @@ try {
     // notifyStr = "{\"accNo\":\"123456\",\"orderDate\":\"20171223\",\"orderNo\":\"20171223131135\",\"payNo\":\"123456\",\"respCode\":\"1001\",\"respDesc\":\"??\",\"token\":\"123456\",\"transAmt\":\"1000\"}";
     //notifyStr = "{\"respCode\":\"0000\",\"extendField\":\"\",\"remark\":\"\",\"orderDate\":\"20171226\",\"respDesc\":\"交易成功\",\"transAmt\":\"100\",\"productId\":\"1205\",\"payNo\":\"220000000415\",\"orderNo\":\"20171226165109\",\"transId\":\"\",\"signature\":\"fDgwG5GNbIsXISseGHbDicT9oh/QwwmKpvDOdQQ68WP3u3gFkILQbR7jNs5AUzWu1gpO4X/HdP1jUu6Z3JC4oeqbZ4sjIScgMnHOWXmEC81j15YBCaYMlT4w5zvTMlk3lxOqzG4eTx4dPKsNUemU1IayooY7mxqGo4TTGr75msvPO/yQPsFQfFZ+1xIoQIZ6P5gWNk30F99yuYZFEVY6YRv/TpcK3Tq/qIPbSCI2CywqNviw0z7p4sUPUioBowzUVUpxPT4FNHkzd6JjnN/94HZ9I7fuJRDg0pX/HMtOGRg11s939RA4c6QSrwotQwKjaMWVsFEHe8ShGShvZLRbUQ==\",\"merNo\":\"850610050942302\"}";
  
-    System.out.println("通知内容:"+notifyStr);
+      System.out.println("通知内容:"+notifyStr);
      //进行验签
      boolean signFlag = SignUtils.verferSignData(notifyStr);
      Map mapTypes = JSON.parseObject(notifyStr);
      Map<String, Object> data = new HashMap<String, Object>();
-	 if (signFlag) {
-		 System.out.println("验签成功");
-         //验签成功后解析返回的字段
-     
-         for (Object obj : mapTypes.keySet()){  
-             if((!obj.toString().equals("signature"))){
-             	System.out.println("通知字段-"+obj+":"+mapTypes.get(obj).toString());
-             }
-         }  
-	}
+	 try{
+     	//xml数据
+			//将xml转换为javabean
+			ResponseNetPayMent respay=(ResponseNetPayMent) XmlObjMcUtil.converyToJavaBean(notifyStr, ResponseNetPayMent.class);
+			//进行返回数据验签
+			if(NetPayMentService.netpayservice.isCheckRespSign(respay)){
+				//支付详情页
+				/*PaymentState: 00 支付成功	01 支付失败	02:不确定(对于不确定状态交易，需要商户稍后发起订单查询) 03：已接收 （注意：根据不同的状态可做相应的处理）*/
+				if("00".equals(respay.getPaymentState())){
+					data.put("respCode",respay.getPaymentState());
+					data.put("respDesc", "支付成功");
+				}else if("01".equals(respay.getPaymentState())){
+					//支付失败
+					data.put("respCode",respay.getPaymentState());
+					data.put("respDesc", "支付失败");
+				}else if("02".equals(respay.getPaymentState())){
+					//不确定
+					data.put("respCode",respay.getPaymentState());
+					data.put("respDesc", "不确定");
+				}else if("03".equals(respay.getPaymentState())){
+					//已接收
+					data.put("respCode",respay.getPaymentState());
+					data.put("respDesc", "已接收");
+				}
+				data.put("orderNo", respay.getOrderNo());
+				data.put("transAmt",respay.getOrdAmt());
+				data.put("payNo",respay.getFlowNo());
+				data.put("orderDate",respay.getOrderDate());
+			}
+		} catch (UnsupportedEncodingException e){
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	 
+	 
 	    System.out.println("----------------------------- 异步通知   end ---------------------------------------------");
 	    DefaultHttpClient httpClient = new DefaultHttpClient();
         HttpPost postMethod = new HttpPost(ConfigUtils.getProperty("resultUrl"));
-        JSONObject json = new JSONObject(mapTypes);
+        JSONObject json = new JSONObject(data);
         StringEntity se = new StringEntity(json.toString());
         se.setContentEncoding("UTF-8");
         se.setContentType("application/json");//发送json数据需要设置contentType
